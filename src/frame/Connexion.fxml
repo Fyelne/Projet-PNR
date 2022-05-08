@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DebutListener">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="620.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/co.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="39.0" layoutX="551.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/copieP.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c4c4c4" height="221.0" layoutX="86.0" layoutY="89.0" stroke="TRANSPARENT" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeType="OUTSIDE" style="-fx-arc-width: 35; -fx-arc-height: 35;" width="379.0" />
+      <Label layoutX="217.0" layoutY="105.0" style="-fx-background-color: none;" text="CONNEXION" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="206.0" layoutY="266.0" mnemonicParsing="false" onAction="#connect" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Se Connecter" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="user" alignment="CENTER" layoutX="160.0" layoutY="155.0" prefHeight="31.0" prefWidth="238.0" promptText="identifiant" style="-fx-background-color: #6fb09c; -fx-background-radius: 12; -fx-font-family: Avenir LT Std;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <PasswordField fx:id="mdp" alignment="CENTER" layoutX="160.0" layoutY="205.0" prefHeight="31.0" prefWidth="238.0" promptText="mot de passe" style="-fx-background-color: #6fb09c; -fx-background-radius: 12;" />
+      <Label fx:id="wrong" layoutX="194.0" layoutY="244.0" text="Identifiant ou mot de passe incorrect" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
