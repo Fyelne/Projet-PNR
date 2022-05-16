@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ListenerAccueil">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAccueil">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="92.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="1200.0" />
       <Label layoutX="399.0" layoutY="152.0" text="Bienvenue, Mr Durand." textAlignment="CENTER">
@@ -50,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Pane fx:id="Menu" layoutX="-392.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;">
+      <Pane fx:id="Menu" layoutX="-400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="92.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="400.0" />
             <Label layoutX="32.0" layoutY="17.0" text="MENU" textFill="WHITE">
@@ -73,7 +73,30 @@
                   <Font size="25.0" />
                </font>
             </Button>
+            <Button fx:id="quit" cancelButton="true" layoutX="312.0" layoutY="35.0" mnemonicParsing="false" onAction="#quitMenu" text="Quitter">
+               <font>
+                  <Font name="AvenirLTStd-Roman" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
+         <effect>
+            <DropShadow radius="7.75" width="20.0" />
+         </effect>
       </Pane>
+      <AnchorPane fx:id="menuUser" layoutX="1234.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #dddddd;">
+        <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="92.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="1200.0" />
+            <Label fx:id="username" layoutX="35.0" layoutY="20.0" prefHeight="48.0" prefWidth="104.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="AvenirLTStd-Roman" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="closeUser" layoutX="1063.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeUserMenu" prefHeight="43.0" prefWidth="87.0" text="close" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="user" layoutX="1083.0" layoutY="24.0" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="43.0" prefWidth="87.0" text="[avatar]" />
    </children>
 </AnchorPane>

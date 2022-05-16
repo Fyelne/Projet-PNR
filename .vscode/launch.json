@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch LogBDD",
+            "request": "launch",
+            "mainClass": "Modele.LogBDD",
+            "projectName": "PNR_c502537c"
+        },
+        {
+            "type": "java",
+            "name": "Launch Maquette",
+            "request": "launch",
+            "mainClass": "View.Maquette",
+            "projectName": "PNR_c502537c"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

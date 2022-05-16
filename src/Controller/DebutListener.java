@@ -1,3 +1,4 @@
+package Controller;
 import java.awt.Dimension;
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class DebutListener {
         Parent root;
         try {
             // change the scene
-            root = FXMLLoader.load(getClass().getResource("frame//Connexion.fxml"));
+            root = FXMLLoader.load(getClass().getResource("..//View//frame//Connexion.fxml"));
             sc.setRoot(root);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -56,14 +57,13 @@ public class DebutListener {
      * @param event Event
      */
     void connect(ActionEvent event) {
-
         String username = user.getText();
         String password = mdp.getText();
         if(username.equals("hugo") && password.equals("123456")){
             Stage newStage = new Stage();
             Parent r;
             try {
-                r = FXMLLoader.load(getClass().getResource("frame\\Accueil.fxml"));
+                r = FXMLLoader.load(getClass().getResource("..\\View\\frame\\Accueil.fxml"));
                 Scene s = new Scene(r);
                 newStage.setTitle("Accueil");
                 newStage.setScene(s);
@@ -82,6 +82,7 @@ public class DebutListener {
         }else{
             wrong.setVisible(true);
         }
+    
     }
    
 
