@@ -1,45 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ListenerAccueil">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="600.0" />
-      <ImageView fitHeight="92.0" fitWidth="72.0" layoutX="264.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/copieP.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="174.0" layoutY="109.0" text="Bienvenue, Mr Durand." textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="92.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="1200.0" />
+      <Label layoutX="399.0" layoutY="152.0" text="Bienvenue, Mr Durand." textAlignment="CENTER">
          <font>
-            <Font size="25.0" />
+            <Font size="40.0" />
          </font>
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
          </effect>
       </Label>
-      <Label layoutX="45.0" layoutY="15.0" text="Accueil" textFill="WHITE">
+      <Label layoutX="95.0" layoutY="17.0" text="Accueil" textFill="WHITE">
          <font>
-            <Font size="22.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <Button layoutX="65.0" layoutY="181.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Consulter les relevés">
+      <Button layoutX="134.0" layoutY="356.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="332.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Consulter les relevés">
          <font>
-            <Font size="15.0" />
+            <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="360.0" layoutY="178.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Consulter les relevés">
+      <Button layoutX="769.0" layoutY="356.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="313.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Consulter les relevés">
          <font>
-            <Font size="15.0" />
+            <Font size="25.0" />
          </font>
       </Button>
+      <ImageView fitHeight="205.0" fitWidth="160.0" layoutX="520.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Maquette/src/frame/image/copieP.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="menu" layoutX="29.0" layoutY="24.0" mnemonicParsing="false" onAction="#openMenu" text="-">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Pane fx:id="Menu" layoutX="-392.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="92.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="400.0" />
+            <Label layoutX="32.0" layoutY="17.0" text="MENU" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Button layoutX="61.0" layoutY="209.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Accueil">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="61.0" layoutY="478.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Traitement données">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="61.0" layoutY="342.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Vos relevés">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

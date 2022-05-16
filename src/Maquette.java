@@ -15,7 +15,9 @@ public class Maquette extends Application{
 
     public void start(Stage primaryStage) {
         Parent root;
+        
         try {
+            // Création de la 1ère frame, celle d'accueil
             root = FXMLLoader.load(getClass().getResource("frame\\Debut.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Connexion");
