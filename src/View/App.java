@@ -1,4 +1,5 @@
 package View;
+
 import Controller.*;
 import java.io.IOException;
 import javafx.application.Application;
@@ -10,7 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-public class Maquette extends Application{
+
+public class App extends Application{
 
     private Stage primaryStage;
 
@@ -29,7 +31,6 @@ public class Maquette extends Application{
             primaryStage.centerOnScreen();
             this.primaryStage = primaryStage;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }  
     }
