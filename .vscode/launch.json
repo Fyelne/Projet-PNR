@@ -6,16 +6,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch LogBDD",
-            "request": "launch",
-            "mainClass": "Modele.LogBDD",
-            "projectName": "PNR_c502537c"
-        },
-        {
-            "type": "java",
             "name": "Launch Maquette",
             "request": "launch",
             "mainClass": "View.Maquette",
+            "projectName": "Projet-PNR_ef58121f"
+        },
+        {
+            "type": "java",
+            "name": "Launch LogBDD",
+            "request": "launch",
+            "mainClass": "Modele.LogBDD",
             "projectName": "PNR_c502537c"
         },
         {
@@ -29,7 +29,7 @@
             "name": "Launch Maquette",
             "request": "launch",
             "mainClass": "Maquette",
-            "projectName": "PNR_c502537c",
+            "projectName": "PROJET-PNR",
             "vmArgs": "--module-path \"C:/Java/javafx-sdk-18/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
