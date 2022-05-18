@@ -29,9 +29,9 @@ public class LogBDD {
         try{
             this.con = DriverManager.getConnection(this.url, this.user, this.pass);
             System.out.println("Connected to the database");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
-            e.printStackTrace();
+            System.out.println(e.getLocalizedMessage());
         
         }
         return this.con;
