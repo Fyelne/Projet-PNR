@@ -41,7 +41,7 @@ public class ScenarioDonnee {
         ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE);
         System.out.println("Informations de l'observation du batracien :" 
         + "\n\tId : " + obsBatracien.getId() + "\n\tDate : " + obsBatracien.getDate() + "\n\tHeure : " + obsBatracien.getHeure()
-        + "\n\tLieu : " + obsBatracien.getLieu() + "\n\tObservateurs : " + obsBatracien.getObservateurs() 
+        + "\n\tLieu : " + obsBatracien.getLieu() + "\n\tObservateurs : " + printArray(obsBatracien.getObservateurs())
         + "\n\tNombres d'adultes : " + obsBatracien.getNombreAdultes()
         + "\n\tNombres d'amplexus : " + obsBatracien.getNombreAmplexus()
         + "\n\tNombres de tetard : " + obsBatracien.getNombreTetard()
@@ -51,13 +51,13 @@ public class ScenarioDonnee {
         ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE);
         System.out.println("Informations de l'observation de la chouette :"
         + "\n\tId : " + obsChouette.getId() + "\n\tDate : " + obsChouette.getDate() + "\n\tHeure : " + obsChouette.getHeure()
-        + "\n\tLieu : " + obsChouette.getLieu() + "\n\tObservateurs : " + obsChouette.getObservateurs()
+        + "\n\tLieu : " + obsChouette.getLieu() + "\n\tObservateurs : " + printArray(obsChouette.getObservateurs())
         + "\n\tType d'observation : " + obsChouette.getTypeObs());
         
         ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1);
         System.out.println("Informations de l'observation du GCI :"
         + "\n\tId : " + obsGCI.getId() + "\n\tDate : " + obsGCI.getDate() + "\n\tHeure : " + obsGCI.getHeure()
-        + "\n\tLieu : " + obsGCI.getLieu() + "\n\tObservateurs : " + obsGCI.getObservateurs()
+        + "\n\tLieu : " + obsGCI.getLieu() + "\n\tObservateurs : " + printArray(obsGCI.getObservateurs())
         + "\n\tContenu du nid : " + obsGCI.getNatureNid()
         + "\n\tNombre d'oiseaux observés : " + obsGCI.getNombre());
 
@@ -73,9 +73,21 @@ public class ScenarioDonnee {
         ObsLoutre obsLoutre = new ObsLoutre(1, new Date(1000), new Time(1), lieu, observateurs, IndiceLoutre.POSITIF);
         System.out.println("Informations de l'observation de la loutre :"
         + "\n\tId : " + obsLoutre.getId() + "\n\tDate : " + obsLoutre.getDate() + "\n\tHeure : " + obsLoutre.getHeure()
-        + "\n\tLieu : " + obsLoutre.getLieu() + "\n\tObservateurs : " + obsLoutre.getObservateurs()
+        + "\n\tLieu : " + obsLoutre.getLieu() + "\n\tObservateurs : " + printArray(obsLoutre.getObservateurs())
         + "\n\tIndice : " + obsLoutre.getIndice());
 
         
     }
+
+    public static String printArray(ArrayList<Observateur> observateurs) {
+        String ret = "[";
+        for (Observateur observateur : observateurs) {
+            ret += observateur.getNom() + " " + observateur.getPrenom() + ", ";
+        }
+        ret = ret.substring(0, ret.length() - 2);
+        ret += "]";
+        return ret;
+    }
 }
+
+
