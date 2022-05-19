@@ -90,6 +90,7 @@ public class NidGCI implements IObs<ObsGCI>{
         int i = 0;
         while(!trouve && i < this.lesObservations.size()) {
             if(this.lesObservations.get(i).getId() == idObs) {
+                this.lesObservations.remove(i);
                 trouve = true;
             } else {
                 i++;
