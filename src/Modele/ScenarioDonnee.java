@@ -6,24 +6,12 @@ import java.util.ArrayList;
 
 public class ScenarioDonnee {
     public static void main(String[] args) {
-        Chouette chouette = new Chouette("C", Sexe.MALE, EspeceChouette.EFFRAIE);
-        System.out.println("Informations de la chouette : \n\tId : " + chouette.getId() + "\n\tSexe : " + chouette.getSexe() + "\n\tEspece : " + chouette.getEspece());
-        chouette.setEspece(EspeceChouette.CHEVECHE);
-        chouette.setSexe(Sexe.FEMELLE);
-        System.out.println("Informations de la chouette : \n\tId : " + chouette.getId() + "\n\tSexe : " + chouette.getSexe() + "\n\tEspece : " + chouette.getEspece());
-        
         
         Lieu lieu = new Lieu(1, 2);
         System.out.println("Informations du lieu : \n\txCoord : " + lieu.getxCoord() + "\n\tyCoord : " + lieu.getyCoord());
         lieu.setXCoord(3);
         lieu.setYCoord(4);
         System.out.println("Informations du lieu : \n\txCoord : " + lieu.getxCoord() + "\n\tyCoord : " + lieu.getyCoord());
-
-
-        NidGCI nidGCI = new NidGCI(1, "laPlage");
-        System.out.println("Informations du nidGCI : \n\tId : " + nidGCI.getId() + "\n\tNom de la plage : " + nidGCI.getNomPlage() + "\n\tNombre d'envol : " + nidGCI.getNbEnvol());
-        nidGCI.setNomPlage("laNouvellePlage");
-        nidGCI.setNbEnvol(1);
 
 
         Observateur observateur = new Observateur(1, "leNom", "lePrenom");
@@ -42,7 +30,7 @@ public class ScenarioDonnee {
         ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE);
         System.out.println("Informations de l'observation du batracien :" 
         + "\n\tId : " + obsBatracien.getId() + "\n\tDate : " + obsBatracien.getDate() + "\n\tHeure : " + obsBatracien.getHeure()
-        + "\n\tLieu : " + printLieu(obsBatracien.getLieu()) + "\n\tObservateurs : " + printArray(obsBatracien.getObservateurs())
+        + "\n\tLieu : " + printLieu(obsBatracien.getLieu()) + "\n\tObservateurs : " + printObservateur(obsBatracien.getObservateurs())
         + "\n\tNombres d'adultes : " + obsBatracien.getNombreAdultes()
         + "\n\tNombres d'amplexus : " + obsBatracien.getNombreAmplexus()
         + "\n\tNombres de tetard : " + obsBatracien.getNombreTetard()
@@ -55,7 +43,7 @@ public class ScenarioDonnee {
         + "\n\tDate : " + obsChouette.getDate() 
         + "\n\tHeure : " + obsChouette.getHeure()
         + "\n\tLieu : " + printLieu(obsChouette.getLieu()) 
-        + "\n\tObservateurs : " + printArray(obsChouette.getObservateurs())
+        + "\n\tObservateurs : " + printObservateur(obsChouette.getObservateurs())
         + "\n\tType d'observation : " + obsChouette.getTypeObs());
         
         ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1);
@@ -64,7 +52,7 @@ public class ScenarioDonnee {
         + "\n\tDate : " + obsGCI.getDate() 
         + "\n\tHeure : " + obsGCI.getHeure()
         + "\n\tLieu : " + printLieu(obsGCI.getLieu()) 
-        + "\n\tObservateurs : " + printArray(obsGCI.getObservateurs())
+        + "\n\tObservateurs : " + printObservateur(obsGCI.getObservateurs())
         + "\n\tContenu du nid : " + obsGCI.getNatureNid()
         + "\n\tNombre d'oiseaux observés : " + obsGCI.getNombre());
 
@@ -74,7 +62,7 @@ public class ScenarioDonnee {
         + "\n\tDate : " + obsHippocampe.getDate() 
         + "\n\tHeure : " + obsHippocampe.getHeure()
         + "\n\tLieu : " + printLieu(obsHippocampe.getLieu()) 
-        + "\n\tObservateurs : " + printArray(obsHippocampe.getObservateurs())
+        + "\n\tObservateurs : " + printObservateur(obsHippocampe.getObservateurs())
         + "\n\tTaille : " + obsHippocampe.getTaille()
         + "\n\tPeche : " + obsHippocampe.getTypePeche()
         + "\n\tEspece : " + obsHippocampe.getEspece()
@@ -86,16 +74,73 @@ public class ScenarioDonnee {
         + "\n\tDate : " + obsLoutre.getDate() 
         + "\n\tHeure : " + obsLoutre.getHeure()
         + "\n\tLieu : " + printLieu(obsLoutre.getLieu()) 
-        + "\n\tObservateurs : " + printArray(obsLoutre.getObservateurs())
+        + "\n\tObservateurs : " + printObservateur(obsLoutre.getObservateurs())
         + "\n\tIndice : " + obsLoutre.getIndice());
+
+        Chouette chouette = new Chouette("C", Sexe.MALE, EspeceChouette.EFFRAIE);
+        System.out.println("Informations de la chouette : \n\tId : " + chouette.getId() + "\n\tSexe : " + chouette.getSexe() + "\n\tEspece : " + chouette.getEspece());
+        chouette.setEspece(EspeceChouette.CHEVECHE);
+        chouette.setSexe(Sexe.FEMELLE);
+        System.out.println("Informations de la chouette : \n\tId : " + chouette.getId() + "\n\tSexe : " + chouette.getSexe() + "\n\tEspece : " + chouette.getEspece());
+        chouette.retireObs(1);
+        System.out.println("Observations : " + printObsChouette(chouette.getObservations()));
+        System.out.println("Ajout d'une observation");
+        chouette.ajouteUneObs(obsChouette);
+        System.out.println("Observations : " + printObsChouette(chouette.getObservations()));
+        System.out.println("Réinitialisation des observations");
+        chouette.videObs();
+        System.out.println("Observations : " + printObsChouette(chouette.getObservations()));
+
+        NidGCI nidGCI = new NidGCI(1, "laPlage");
+        System.out.println("Informations du nidGCI : \n\tId : " + nidGCI.getId() + "\n\tNom de la plage : " + nidGCI.getNomPlage() + "\n\tNombre d'envol : " + nidGCI.getNbEnvol());
+        nidGCI.setNomPlage("laNouvellePlage");
+        nidGCI.setNbEnvol(1);
+        System.out.println("Observations : " + printObsGCI(nidGCI.getObservations()));
+        System.out.println("Ajout d'une observation");
+        nidGCI.ajouteUneObs(obsGCI);
+        System.out.println("Observations : " + printObsGCI(nidGCI.getObservations()));
+        System.out.println("Réinitialisation des observations");
+        nidGCI.retireObs(1);
+        System.out.println("Observations : " + printObsGCI(nidGCI.getObservations()));
+
     }
 
-    public static String printArray(ArrayList<Observateur> observateurs) {
+    public static String printObservateur(ArrayList<Observateur> observateurs) {
         String ret = "[";
         for (Observateur observateur : observateurs) {
             ret += observateur.getNom() + " " + observateur.getPrenom() + ", ";
         }
-        ret = ret.substring(0, ret.length() - 2);
+
+        if(ret.length() > 2)
+            ret = ret.substring(0, ret.length() - 2);
+            
+        ret += "]";
+        return ret;
+    }
+
+    public static String printObsChouette(ArrayList<ObsChouette> observations) {
+        String ret = "[";
+
+        for (ObsChouette observation : observations) {
+            ret += observation.getId() + ", ";
+        }
+
+        if(ret.length() > 2)
+            ret = ret.substring(0, ret.length() - 2);
+        ret += "]";
+        return ret;
+    }
+
+    public static String printObsGCI(ArrayList<ObsGCI> observations) {
+        String ret = "[";
+
+        for (ObsGCI observation : observations) {
+            ret += observation.getId() + ", ";
+        }
+
+        if(ret.length() > 2)
+            ret = ret.substring(0, ret.length() - 2);
+        
         ret += "]";
         return ret;
     }
