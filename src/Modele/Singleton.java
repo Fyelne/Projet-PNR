@@ -17,7 +17,6 @@ public class Singleton {
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
             System.out.println(e.getLocalizedMessage());
-        
         }
     }
 
