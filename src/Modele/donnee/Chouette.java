@@ -65,6 +65,7 @@ public class Chouette implements IObs<ObsChouette>{
         int i = 0;
         while(!trouve && i < this.lesObservations.size()) {
             if(this.lesObservations.get(i).getId() == idObs) {
+                this.lesObservations.remove(i);
                 trouve = true;
             } else {
                 i++;
