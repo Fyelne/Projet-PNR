@@ -2,13 +2,15 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class ListenerAccueil {
     @FXML
-    private Pane Menu;
+    private AnchorPane Menu;
 
     @FXML
     private Button closeUser;
@@ -30,8 +32,9 @@ public class ListenerAccueil {
 
     @FXML
     void openMenu(ActionEvent event) {
-        Menu.setLayoutX(0);
+        //rMenu.setLayoutX(0);
         Menu.setVisible(true);
+
     }
 
     @FXML

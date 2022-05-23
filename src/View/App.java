@@ -22,8 +22,7 @@ public class App extends Application{
             root = FXMLLoader.load(getClass().getResource("frame\\Debut.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Connexion");
-            primaryStage.setWidth(600);
-            primaryStage.setHeight(435);
+            primaryStage.setMaximized(true);
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.centerOnScreen();

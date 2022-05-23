@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ScenarioDonnee",
+            "request": "launch",
+            "mainClass": "Modele.ScenarioDonnee",
+            "projectName": "PNR_c502537c"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "View.App",
+            "projectName": "PNR_c502537c"
+        },
+        {
+            "type": "java",
             "name": "Launch Maquette",
             "request": "launch",
             "mainClass": "View.Maquette",

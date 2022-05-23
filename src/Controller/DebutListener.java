@@ -67,8 +67,7 @@ public class DebutListener {
                 Scene s = new Scene(r);
                 newStage.setTitle("Accueil");
                 newStage.setScene(s);
-                newStage.setHeight(800);
-                newStage.setWidth(1200);
+                newStage.setMaximized(true);
                 newStage.show();
                 newStage.centerOnScreen();
             }catch (IOException e) {

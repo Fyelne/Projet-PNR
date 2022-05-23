@@ -1,65 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;" type="Pane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAccueil">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008864" height="92.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="400.0" />
-      <Label layoutX="32.0" layoutY="17.0" text="MENU" textFill="WHITE">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
-      <Button layoutX="61.0" layoutY="188.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Accueil">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Button>
-      <Button layoutX="61.0" layoutY="431.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Traitement données">
-         <font>
-            <Font name="AvenirLTStd-Medium" size="25.0" />
-         </font>
-      </Button>
-      <Button layoutX="61.0" layoutY="311.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Vos relevés">
-         <font>
-            <Font name="AvenirLTStd-Medium" size="25.0" />
-         </font>
-      </Button>
-      <Button fx:id="quit" cancelButton="true" layoutX="319.0" layoutY="22.0" mnemonicParsing="false" onAction="#quitMenu" style="-fx-background-color: #008864;">
-         <font>
-            <Font name="AvenirLTStd-Roman" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="41.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@image/proto_blanc/close.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="142.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/copieP.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="68.0" layoutY="733.0" prefHeight="33.0" prefWidth="265.0" text="&quot;Une autre vie s'invente ici.&quot;" textAlignment="CENTER">
-         <font>
-            <Font name="AvenirLTStd-Medium" size="20.0" />
-         </font>
-      </Label>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="22.0">
+                     <children>
+                        <Label maxHeight="2000.0" maxWidth="2000.0" minHeight="55.0" minWidth="121.0" text="MENU" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="40.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane maxWidth="2000.0" prefHeight="62.0" prefWidth="161.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="quit" cancelButton="true" minWidth="57.0" mnemonicParsing="false" onAction="#quitMenu" style="-fx-background-color: #008864;">
+                           <font>
+                              <Font name="AvenirLTStd-Roman" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/proto_blanc/close.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button minHeight="52.0" minWidth="278.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Accueil" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="70.0" />
+                           </VBox.margin>
+                        </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Button minHeight="52.0" minWidth="278.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Vos relevés">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Button minHeight="52.0" minWidth="278.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Traitement données" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="70.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="279.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="file:/C:/Users/hugol/Documents/Cours/S2/SAE/GIGA_SAE/G2/dev/PNR/src/View/frame/image/copieP.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="33.0" prefWidth="265.0" text="&quot;Une autre vie s'invente ici.&quot;" textAlignment="CENTER">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
    </children>
-   <effect>
-      <DropShadow radius="7.75" width="12.0" />
-   </effect>
-</fx:root>
+</AnchorPane>
