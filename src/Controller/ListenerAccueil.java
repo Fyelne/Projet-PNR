@@ -1,7 +1,11 @@
 package Controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -13,13 +17,9 @@ public class ListenerAccueil {
     private AnchorPane Menu;
 
     @FXML
-    private Button closeUser;
-
-    @FXML
     private Button menu;
 
-    @FXML
-    private AnchorPane menuUser;
+    
 
     @FXML
     private Button quit;
@@ -27,12 +27,14 @@ public class ListenerAccueil {
     @FXML
     private Button user;
 
+    private Utilitaire util = new Utilitaire();
+
     //@FXML
     //private Label username;
 
     @FXML
     void openMenu(ActionEvent event) {
-        //rMenu.setLayoutX(0);
+        
         Menu.setVisible(true);
 
     }
@@ -44,16 +46,7 @@ public class ListenerAccueil {
 
     @FXML
     void openUserMenu(ActionEvent event) {
-        menuUser.setLayoutX(0);
-        menuUser.setVisible(true);
-        user.setVisible(false);
-    }
-
-    @FXML
-    void closeUserMenu(ActionEvent event) {
-        menuUser.setLayoutX(1200);
-        menuUser.setVisible(false);
-        user.setVisible(true);
+        util.changeScene("InfoUser", event);
     }
 
 }
