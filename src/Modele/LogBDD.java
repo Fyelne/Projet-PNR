@@ -40,7 +40,7 @@ public class LogBDD {
         LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
         Connection PNR = l.connexion();
         try {
-            PreparedStatement  stmt = PNR.prepareStatement("SELECT * FROM `bd_pnr`.`obs_loutre` WHERE commune = 'ELVEN'; ");
+            PreparedStatement  stmt = PNR.prepareStatement("SELECT * `obs_loutre` WHERE commune = 'ELVEN'; ");
             ResultSet res = stmt.executeQuery();
             while(res.next()){
                 
