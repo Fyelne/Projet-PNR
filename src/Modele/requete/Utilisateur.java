@@ -16,6 +16,7 @@ public class Utilisateur {
             String sql = "INSERT INTO utilisateur (nomUtilisateur, prenomUtilisateur, mdpUtilisateur, telephone, adresse, estAdmin, dateCreation)"
                 + " VALUES ('" + nom + "', '" + prenom + "', '" + mdp + "', '" + telephone + "', '" + adresse + "'," + admin + ", DEFAULT)";
             stmt.executeUpdate(sql);
+            sql = "CREATE USER '" + nom + "'@'localhost' IDENTIFIED BY '" + mdp + "'";
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,24 +36,23 @@ public class Utilisateur {
         }
     }
 
-    public void connexion(String nomUtilisateur, String motDePasse) {
+    public boolean ajouterRole(String idUtilisateur, String idRole) {
         try {
             Statement stmt = con.createStatement();
-            String sql = "SELECT * FROM utilisateur WHERE nomUtilisateur = '" + nomUtilisateur + "' AND mdpUtilisateur = '" + motDePasse + "'";
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                System.out.println("Connexion réussie");
-            } else {
-                System.out.println("Connexion échouée");
-            }
+            String sql = "INSERT INTO utilisateur_role (idUtilisateur, idRole)"
+                + " VALUES (" + idUtilisateur + ", " + idRole + ")";
+            stmt.executeUpdate(sql);
+            return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getErrorCode();
+            return false;
         }
     }
 
     public static void main(String[] args) {
-        Utilisateur u = new Utilisateur();
-        u.ajouterUtilisateur("Dupont", "Jean", "mdp", "0612345678", "1 rue de la paix", false);
-        u.connexion("Dupont", "Jean");
+
+        // Utilisateur u = new Utilisateur();
+        // u.ajouterUtilisateur("Dupont", "Jean", "mdp", "0612345678", "1 rue de la paix", false);
+        
     }
 }
