@@ -198,9 +198,7 @@ public class Graphe {
     public double calculeDist(int idSom1, int idSom2) {
         double ret = -1;
         if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2)) {
-            Sommet s1 = searchSommet(idSom1);
-            Sommet s2 = searchSommet(idSom2);
-            ret = s1.calculeDist(s2);
+            
         }
 
         return ret;
