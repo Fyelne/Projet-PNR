@@ -67,6 +67,7 @@ public class Graphe {
     }
     
     public HashMap<Sommet, Integer> calculeDegres() {
+        //bite
         return null;
     }
     
