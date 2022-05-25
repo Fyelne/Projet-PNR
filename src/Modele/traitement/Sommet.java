@@ -24,7 +24,7 @@ public class Sommet {
         this.espece = obs.especeObs();
     }
 
-    public double calculDist(Sommet som) {
+    public double calculeDist(Sommet som) {
         double ret = -1;
         if(som != null) {
             ret = Math.sqrt(Math.pow(this.coordLieu.getxCoord() - som.getCoordLieu().getxCoord(), 2) 
