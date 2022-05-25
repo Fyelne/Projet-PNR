@@ -6,6 +6,14 @@ import javafx.scene.control.Button;
 
 public class ListenerUtilisateur {
 
+    private String PagePrec;
+
+    public ListenerUtilisateur(String file){
+        if(file != null){
+            this.PagePrec = file;
+        }
+    }
+
     @FXML
     private Button quit;
     private Utilitaire util = new Utilitaire();

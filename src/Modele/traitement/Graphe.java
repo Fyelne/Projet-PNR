@@ -2,6 +2,7 @@ package Modele.traitement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class Graphe {
@@ -46,6 +47,7 @@ public class Graphe {
     }
     
     public int nbAretes() {
+        
         return 0;
     }
     
@@ -53,6 +55,7 @@ public class Graphe {
         boolean ret = false;
         int i = 0;
         
+        //test pour benji 
         
         return ret;
     }

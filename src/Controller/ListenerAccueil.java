@@ -46,6 +46,7 @@ public class ListenerAccueil {
 
     @FXML
     void openUserMenu(ActionEvent event) {
+        ListenerUtilisateur u = new ListenerUtilisateur("Accueil");
         util.changeScene("InfoUser", event);
     }
 
