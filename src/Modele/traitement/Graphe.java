@@ -47,8 +47,17 @@ public class Graphe {
     }
     
     public int nbAretes() {
+<<<<<<< HEAD
         
         return 0;
+=======
+        int ret = 0;
+        Set<Sommet> lessommets = this.sommetsVoisins.keySet();
+        for(Sommet som : lessommets){
+            ret = ret + (this.sommetsVoisins.get(som)).size();
+        }
+        return ret;
+>>>>>>> ab1870a294a2272adb2371a9cc1c3ed14610182d
     }
     
     public boolean estDansGraphe(int idSom) {
