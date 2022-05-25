@@ -168,7 +168,27 @@ public class Graphe {
     }
     
     public int[][] matriceAdjacence() {
-        return null;
+        int[][] ret = new int[this.nbSommets()][this.nbSommets() + 1];
+        
+        int i = 0;
+        int j = 0;
+
+        Set<Sommet> keys = this.sommetsVoisins.keySet();
+        Iterator<Sommet> it = keys.iterator();
+        while(it.hasNext()) {
+            Sommet s = it.next();
+            ret[i][j] = s.getId();
+            j++;
+            ArrayList<Sommet> voisins = this.sommetsVoisins.get(s);
+            for(Sommet voisin : voisins) {
+                ret[i][voisin.getId()] = 1;
+                j++;
+            }
+            i++;
+            j = 0;
+        }
+        
+        return ret;
     }
     
     public boolean estConnexe() {

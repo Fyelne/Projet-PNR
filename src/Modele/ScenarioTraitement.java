@@ -26,8 +26,12 @@ public class ScenarioTraitement {
         sommets.add(new Sommet(3, lieu3, date3, EspeceObservee.HIPPOCAMPE));
         sommets.add(new Sommet(4, lieu4, date4, EspeceObservee.LOUTRE));
 
-        Graphe g = new Graphe(sommets, 100);
+        Graphe g = new Graphe(sommets, 1);
         System.out.println(g.calculeDegre(1));
+        int[][] adjacence = g.matriceAdjacence();
+        for (int[] ligne : adjacence) {
+            System.out.println(Arrays.toString(ligne));
+        }
 
         
     }
