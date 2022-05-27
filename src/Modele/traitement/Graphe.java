@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Set;
 
 public class Graphe {
@@ -28,7 +29,8 @@ public class Graphe {
     }
     
     public Graphe(HashMap<Sommet, ArrayList<Sommet>> somVoisins) {
-        if(sommetsVoisins != null) {
+        System.out.println(somVoisins != null);
+        if(somVoisins != null) {
             this.sommetsVoisins = somVoisins;
         } else {
             throw new IllegalArgumentException("Graphe null");
@@ -117,12 +119,17 @@ public class Graphe {
     }
     
     public boolean existeChemin(int idSom1, int idSom2) {
+        boolean ret = false;
         if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2)){
-
+            ArrayList<Sommet> DFS = this.LaunchDFS(idSom1);
+            if(DFS.contains(searchSommet(idSom1)) && DFS.contains(searchSommet(idSom2))){
+                ret = true;
+            }
         }
-        return false;
+        return ret;
     }
-    
+
+
     public ArrayList<Sommet> voisins(int idSom) {
         ArrayList<Sommet> ret = new ArrayList<Sommet>();
         Set<Sommet> keys = this.sommetsVoisins.keySet();
@@ -196,12 +203,59 @@ public class Graphe {
     }
     
     public boolean estConnexe() {
-        
-        return false;
+        boolean ret = true;
+        ArrayList<Sommet> res;
+        for(Map.Entry som : this.sommetsVoisins.entrySet()){
+            Sommet s = (Sommet) som.getKey();
+            res = this.LaunchDFS(s.getId());
+            for(Map.Entry check : this.sommetsVoisins.entrySet()){
+                if(!(res.contains(check.getKey()))){
+                    ret = false;
+                }
+            }
+        }
+        return ret;
     }
     
     public ArrayList<Graphe> composanteConnexe() {
-        return null;
+        ArrayList<Sommet> allSom = new ArrayList<Sommet>();
+        ArrayList<Graphe> ret = new ArrayList<Graphe>();
+        //Recupère l'ensemble des sommets du graphes 
+        for(Map.Entry som : this.sommetsVoisins.entrySet()){
+            allSom.add((Sommet) som.getKey());
+        }
+
+        /**
+         * Pour chaque sommet du graphe  : 
+         * - Vérifie si le sommet fait déjà partie d'une composante connexe
+         * - Si ce n'est pas le cas, récupère tout les sommets de sa composante, 
+         *      créer un graphe et l'ajoute à la liste 
+         */
+        for(Sommet s : allSom){
+            boolean dejaDansConnexe = false;
+            if(ret != null){
+                int i = 0;
+                System.out.println(("test1"));
+                while((!dejaDansConnexe) && i < ret.size()){
+                    System.out.println(("test2"));
+                    if(ret.get(i).estDansGraphe(s.getId())){
+                        dejaDansConnexe = true;
+                    }
+                    i = i + 1;
+                }
+            }
+            if(!dejaDansConnexe){
+                ArrayList<Sommet> composante = this.LaunchDFS(s.getId());
+                HashMap<Sommet, ArrayList<Sommet>> compoGraphe = new HashMap<Sommet, ArrayList<Sommet>>();
+                for(Sommet som : composante){
+                    compoGraphe.putIfAbsent(som, this.voisins(som.getId()));
+                }
+
+                ret.add(new Graphe(compoGraphe));
+            }
+
+        }
+        return ret;
     }
     
     public int distArete(int idSom1, int idSom2) {
@@ -276,25 +330,39 @@ public class Graphe {
         return s;
     }
 
-
-    public void launchDFS(){
-        boolean[] visited = new boolean [this.sommetsVoisins.size()];
-        LinkedList<Integer> adjLists[] = new LinkedList[this.sommetsVoisins.size()]; 
-
-        for (int i = 0; i < this.sommetsVoisins.size(); i++)
-        adjLists[i] = new LinkedList<Integer>();
-    }
     
-    public void DFS(int vertex, boolean visited[],  LinkedList<Integer> adjLists[]) {
-    visited[vertex] = true;
-    System.out.print(vertex + " ");
-
-    Iterator<Integer> ite = adjLists[vertex].listIterator();
-    while (ite.hasNext()) {
-      int adj = ite.next();
-      if (!visited[adj])
-        DFS(adj, visited, adjLists);
+    public ArrayList<Sommet> LaunchDFS(int idSom){
+        ArrayList<Sommet> parcouru = new ArrayList<Sommet>();
+        ArrayList<Sommet> stack = new ArrayList<Sommet>();
+        stack.add(this.searchSommet(idSom));
+        for(Sommet s : this.voisins(idSom)){
+            stack.add(s);
+        }
+        ArrayList<Sommet> ret = this.DFS(parcouru, stack, 0);
+        return ret;
     }
 
+    public ArrayList<Sommet> DFS(ArrayList<Sommet> parcouru, ArrayList<Sommet> stack, int index){ 
+        if(index < stack.size()){
+
+            // ajout des voisins a la stack
+            ArrayList<Sommet> tampon = this.voisins(stack.get(index).getId());
+            ArrayList<Sommet> newStack = (ArrayList<Sommet>) stack.clone();
+            for(Sommet s : tampon){
+                if(!(parcouru.contains(s))){
+                    newStack.add(s);
+                }
+            }
+            if(!(parcouru.contains(stack.get(index)))){
+                parcouru.add(stack.get(index));
+            }
+
+            index = index + 1;
+            this.DFS(parcouru,newStack, index);
+
+        }
+
+        return parcouru;
     }
+
 }
