@@ -3,6 +3,7 @@ package Modele.traitement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Set;
 
 public class Graphe {
@@ -116,6 +117,9 @@ public class Graphe {
     }
     
     public boolean existeChemin(int idSom1, int idSom2) {
+        if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2)){
+
+        }
         return false;
     }
     
@@ -192,6 +196,7 @@ public class Graphe {
     }
     
     public boolean estConnexe() {
+        
         return false;
     }
     
@@ -204,6 +209,7 @@ public class Graphe {
     }
     
     public int excentricite(int idSom) {
+        
         return 0;
     }
     
@@ -212,14 +218,22 @@ public class Graphe {
     }
     
     public int rayon() {
-        return 0;
+        int ret = -1;
+        if(this.estConnexe()){
+            ret = excentricite(this.sommetsVoisins.keySet().iterator().next().getId());
+            for (Sommet s : this.sommetsVoisins.keySet()) {
+                int ex = excentricite(s.getId());
+                if(ret > ex) {
+                    ret = ex;
+                }
+            }
+        }
+        return ret;
     }
     
     public double calculeDist(int idSom1, int idSom2) {
         double ret = -1;
-        if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2)) {
-            
-        }
+        int[][] mat = matriceAdjacence(); 
 
         return ret;
     }
@@ -260,5 +274,33 @@ public class Graphe {
         }
         
         return s;
+    }
+
+
+    public void launchDFS(){
+        boolean[] visited = new boolean [this.sommetsVoisins.size()];
+        LinkedList<Integer> adjLists[] = new LinkedList[this.sommetsVoisins.size()]; 
+
+        for (int i = 0; i < this.sommetsVoisins.size(); i++)
+        adjLists[i] = new LinkedList<Integer>();
+
+
+    }
+    
+
+
+    .
+    
+    public void DFS(int vertex, boolean visited[],  LinkedList<Integer> adjLists[]) {
+    visited[vertex] = true;
+    System.out.print(vertex + " ");
+
+    Iterator<Integer> ite = adjLists[vertex].listIterator();
+    while (ite.hasNext()) {
+      int adj = ite.next();
+      if (!visited[adj])
+        DFS(adj, visited, adjLists);
+    }
+
     }
 }
