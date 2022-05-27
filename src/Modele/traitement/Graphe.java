@@ -283,8 +283,6 @@ public class Graphe {
 
         for (int i = 0; i < this.sommetsVoisins.size(); i++)
         adjLists[i] = new LinkedList<Integer>();
-
-
     }
     
     public void DFS(int vertex, boolean visited[],  LinkedList<Integer> adjLists[]) {
