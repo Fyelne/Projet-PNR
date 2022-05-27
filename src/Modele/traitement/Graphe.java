@@ -287,10 +287,6 @@ public class Graphe {
 
     }
     
-
-
-    .
-    
     public void DFS(int vertex, boolean visited[],  LinkedList<Integer> adjLists[]) {
     visited[vertex] = true;
     System.out.print(vertex + " ");
