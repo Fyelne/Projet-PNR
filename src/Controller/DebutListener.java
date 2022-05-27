@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 //Listener for the start of the program until connection
 public class DebutListener {
 
+    private Utilitaire util = new Utilitaire();
     //passer a la page de connexion
     @FXML
     /**
@@ -21,19 +22,8 @@ public class DebutListener {
      * @param event Event
      */
     void conClicked(ActionEvent event) {
-        Button bt = (Button) event.getSource();
-        Scene sc = bt.getScene();
-        Parent root;
-        try {
-            // change the scene
-            root = FXMLLoader.load(getClass().getResource("..//View//frame//Connexion.fxml"));
-            sc.setRoot(root);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         
-        System.out.println("test");
+        util.changeScene("Connexion", event);
         
     }
 
