@@ -2,6 +2,9 @@ package View;
 
 import Controller.*;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.application.Application;
 import javafx.event.*;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +22,7 @@ public class App extends Application{
         
         try {
             // Création de la 1ère frame, celle d'accueil
-            root = FXMLLoader.load(getClass().getResource("frame\\Debut.fxml"));
+            root = FXMLLoader.load(getClass().getResource("frame\\Loading.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Connexion");
             primaryStage.setMaximized(true);
@@ -27,9 +30,13 @@ public class App extends Application{
             primaryStage.show();
             primaryStage.centerOnScreen();
             this.primaryStage = primaryStage;
+
         } catch (IOException e) {
             e.printStackTrace();
         }  
+        
+        
+        
     }
  
  public static void main(String[] args) {

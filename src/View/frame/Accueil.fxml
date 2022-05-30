@@ -67,7 +67,7 @@
          <top>
             <AnchorPane prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="ALWAYS">
                            <font>
