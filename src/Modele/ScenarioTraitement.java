@@ -81,8 +81,8 @@ public class ScenarioTraitement {
         for(Graphe gra : compo){
             HashMap<Sommet, ArrayList<Sommet>> liste = gra.getSommetsVoisins();
 
-            for(Map.Entry l : liste.entrySet()){
-                Sommet somme = (Sommet) l.getKey();
+            for(Map.Entry<Sommet, ArrayList<Sommet>> l : liste.entrySet()){
+                Sommet somme = l.getKey();
                 System.out.print(somme.getId() + "/");
             }
             System.out.println(" \t compo");
