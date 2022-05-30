@@ -257,9 +257,15 @@ public class Graphe {
         }
         return ret;
     }
+
+
     
     public int distArete(int idSom1, int idSom2) {
-        return 0;
+        int ret = 0;
+        
+
+        
+        return ret;
     }
     
     public int excentricite(int idSom) {
