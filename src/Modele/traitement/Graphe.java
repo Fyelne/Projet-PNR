@@ -262,12 +262,40 @@ public class Graphe {
     
     public int distArete(int idSom1, int idSom2) {
         int ret = 0;
-        
+        /*
+        if(estDansGraphe(idSom1) && estDansGraphe(idSom2)){
+            if(existeChemin(idSom1, idSom2)){
+                HashMap<Sommet,Integer> dist = new HashMap<Sommet,Integer>();
+                ArrayList<Graphe> g = this.composanteConnexe();
+                int id = 0;
+                for(Graphe parcour : g){
+                    if(parcour.estDansGraphe(idSom1) && parcour.estDansGraphe(idSom2)){
+                        id = g.indexOf(parcour);
+                    }
+                }
+                Graphe cherche = g.get(id);
+                HashMap<Sommet, ArrayList<Sommet>> list = cherche.getSommetsVoisins();
+                for(Map.Entry l : list.entrySet()){
+                    int in = Integer.MAX_VALUE;
+                    Integer m = new Integer(in);
+                    dist.put((Sommet) l.getKey(), m);
+
+                }
+
+            }else{
+                ret = 0;
+            }
+        }else{
+            ret = -1;
+        }
+        */
 
         
         return ret;
     }
     
+
+
     public int excentricite(int idSom) {
         
         return 0;
