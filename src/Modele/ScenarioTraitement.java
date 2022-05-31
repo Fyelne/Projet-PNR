@@ -30,13 +30,13 @@ public class ScenarioTraitement {
         sommets.add(s2);
         sommets.add(s3);
         sommets.add(s4);
-
+        /*
         Graphe g = new Graphe(sommets, 1);
         System.out.println(g.calculeDegre(1));
         int[][] adjacence = g.matriceAdjacence();
         for (int[] ligne : adjacence) {
             System.out.println(Arrays.toString(ligne));
-        }
+        }*/
 
 
         //test du DFS 
@@ -45,13 +45,15 @@ public class ScenarioTraitement {
         ArrayList<Sommet> sVoisin3 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin4 = new ArrayList<Sommet>();
         
-        sVoisin1.add(s3);
+        sVoisin1.add(s2);
         
-        sVoisin2.add(s4);
+        sVoisin2.add(s1);
+        sVoisin2.add(s3);
 
-        sVoisin3.add(s1);
+        sVoisin3.add(s2);
+        sVoisin3.add(s4);
 
-        sVoisin4.add(s2);
+        sVoisin4.add(s3);
 
         sommetsVoisins.put(s1, sVoisin1);
         sommetsVoisins.put(s2, sVoisin2);
@@ -87,5 +89,7 @@ public class ScenarioTraitement {
             }
             System.out.println(" \t compo");
         }
+
+        System.out.println(g2.distArete(1, 4));
     }
 }

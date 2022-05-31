@@ -264,7 +264,7 @@ public class Graphe {
     
     public int distArete(int idSom1, int idSom2) {
         int ret = 0;
-        /*
+        //prepare data for launch dikstra
         if(estDansGraphe(idSom1) && estDansGraphe(idSom2)){
             if(existeChemin(idSom1, idSom2)){
                 HashMap<Sommet,Integer> dist = new HashMap<Sommet,Integer>();
@@ -276,23 +276,48 @@ public class Graphe {
                     }
                 }
                 Graphe cherche = g.get(id);
+
                 HashMap<Sommet, ArrayList<Sommet>> list = cherche.getSommetsVoisins();
                 for(Map.Entry<Sommet, ArrayList<Sommet>> l : list.entrySet()){
                     int in = Integer.MAX_VALUE;
-                    Integer m = new Integer(in);
+                    Integer m = in;
                     dist.put((Sommet) l.getKey(), m);
-
                 }
-
+                dist.replace(cherche.searchSommet(idSom1), 0);
+                //Launch de dextra
+                this.Dijkstra(idSom2, idSom1, dist, cherche, 0);
             }else{
                 ret = 0;
             }
         }else{
             ret = -1;
         }
-        */
+        return ret;
+    }
 
+    // need to be fix doesnt work
+    private int Dijkstra(int Som2, int SomCourant, HashMap<Sommet,Integer> s, Graphe g, int ret){
         
+        for(Map.Entry<Sommet, Integer> l : s.entrySet()){
+            System.out.println(l.getKey().getId() + " : " + l.getValue());
+        }
+        if(!s.containsValue((Integer) Integer.MAX_VALUE) ){
+            System.out.println(s.get(g.searchSommet(Som2)));
+            ret = s.get(g.searchSommet(Som2));
+        }else{
+            ArrayList<Sommet> vois = g.voisins(SomCourant);
+            int min = Integer.MAX_VALUE;
+            int SMin = 0;
+            for(Sommet v : vois){
+                if(s.get(g.searchSommet(SomCourant)) + 1 < s.get(v) ){
+                    s.replace(v, (s.get(g.searchSommet(SomCourant)) + 1));
+                }
+
+            }
+            System.out.println("Sommet min : " + SMin);
+            this.Dijkstra(Som2, SMin, s, g, ret);
+        }
+        System.out.println(ret);
         return ret;
     }
     
