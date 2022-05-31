@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -19,13 +20,15 @@ public class ListenerAccueil {
     @FXML
     private Button menu;
 
-    
-
     @FXML
     private Button quit;
 
     @FXML
     private Button user;
+    
+    @FXML
+    private Label bv;
+    private String name;
 
     private Utilitaire util = new Utilitaire();
 
@@ -46,8 +49,27 @@ public class ListenerAccueil {
 
     @FXML
     void openUserMenu(ActionEvent event) {
-        ListenerUtilisateur u = new ListenerUtilisateur("Accueil");
-        util.changeScene("InfoUser", event);
+        Button bt = (Button) event.getSource();
+        Scene sc = bt.getScene();
+        Parent root;
+        
+        String url = "..//View//frame//InfoUser.fxml";
+        try {
+            // change the scene
+            FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
+            root = fx.load();
+            ListenerUtilisateur lu = fx.getController();
+            lu.load(this.name, "Accueil");
+            sc.setRoot(root);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    void setNom(String nom){
+        bv.setText("Bienvenue " + nom);
+        this.name = nom;
     }
 
 }

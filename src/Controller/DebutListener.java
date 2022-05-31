@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 //Listener for the start of the program until connection
 public class DebutListener {
 
+    
     //Ecran de chargement 
     private Utilitaire util = new Utilitaire();
     //passer a la page de connexion
@@ -43,6 +44,10 @@ public class DebutListener {
     @FXML
     private Label wrong; // label who is show when the password is incorect
 
+    
+    private LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
+    private Connection c = l.connexion();
+    
     @FXML
     /**
      * To check password and username / if they are good, you can connect
@@ -50,9 +55,6 @@ public class DebutListener {
      * @param event Event
      */
     void connect(ActionEvent event) {
-
-        LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
-        Connection c = l.connexion();
         try {
             String requete = "SELECT * FROM `utilisateur` WHERE prenomUtilisateur = \'" + user.getText() +"\'";
             System.out.println(requete);
@@ -64,13 +66,17 @@ public class DebutListener {
                     Stage newStage = new Stage();
                     Parent r;
                     try {
-                        r = FXMLLoader.load(getClass().getResource("..\\View\\frame\\Accueil.fxml"));
+                        FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\LoadBis.fxml"));
+                        r = loader.load();
+                        LoadBis controle = loader.getController();
+                        controle.myFonction(true, user.getText());
                         Scene s = new Scene(r);
                         newStage.setTitle("Accueil");
                         newStage.setScene(s);
                         newStage.setMaximized(true);
                         newStage.show();
                         newStage.centerOnScreen();
+                        
                     }catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -79,38 +85,15 @@ public class DebutListener {
                     Scene sc = bt.getScene();
                     Stage st = (Stage) sc.getWindow();
                     st.close();
+                }else{
+                    wrong.setVisible(true);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } 
 
-        /*
-        String username = user.getText();
-        String password = mdp.getText();
-        if(username.equals("hugo") && password.equals("123456")){
-            Stage newStage = new Stage();
-            Parent r;
-            try {
-                r = FXMLLoader.load(getClass().getResource("..\\View\\frame\\Accueil.fxml"));
-                Scene s = new Scene(r);
-                newStage.setTitle("Accueil");
-                newStage.setScene(s);
-                newStage.setMaximized(true);
-                newStage.show();
-                newStage.centerOnScreen();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-            //fermeture de la page de connexion
-            Button bt = (Button) event.getSource();
-            Scene sc = bt.getScene();
-            Stage st = (Stage) sc.getWindow();
-            st.close();
-        }else{
-            wrong.setVisible(true);
-        }
-        */
+    
     }
    
 

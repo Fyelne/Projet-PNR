@@ -3,7 +3,6 @@ package Modele.traitement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,7 +28,6 @@ public class Graphe {
     }
     
     public Graphe(HashMap<Sommet, ArrayList<Sommet>> somVoisins) {
-        System.out.println(somVoisins != null);
         if(somVoisins != null) {
             this.sommetsVoisins = somVoisins;
         } else {
@@ -40,6 +38,8 @@ public class Graphe {
     public Graphe(Graphe g) {
         if(g != null) {
             this.sommetsVoisins = g.getSommetsVoisins();
+        } else {
+            throw new IllegalArgumentException("Graphe null");
         }
     }
     
@@ -53,7 +53,7 @@ public class Graphe {
     
     public int nbAretes() {
         int ret = 0;
-        //forearch key 
+
         for (Sommet s : this.sommetsVoisins.keySet()) {
             ret+= this.sommetsVoisins.get(s).size();
         }
@@ -64,6 +64,7 @@ public class Graphe {
     
     public boolean estDansGraphe(int idSom) {
         boolean ret = false;
+
         if(this.searchSommet(idSom) != null) {
             ret = true;
         }
@@ -73,6 +74,7 @@ public class Graphe {
     
     public int calculeDegre(int idSom) {
         int ret = 0;
+
         if(this.estDansGraphe(idSom)) {
             Sommet s = searchSommet(idSom);
             
@@ -205,10 +207,10 @@ public class Graphe {
     public boolean estConnexe() {
         boolean ret = true;
         ArrayList<Sommet> res;
-        for(Map.Entry som : this.sommetsVoisins.entrySet()){
-            Sommet s = (Sommet) som.getKey();
+        for(Map.Entry<Sommet, ArrayList<Sommet>> som : this.sommetsVoisins.entrySet()){
+            Sommet s = som.getKey();
             res = this.LaunchDFS(s.getId());
-            for(Map.Entry check : this.sommetsVoisins.entrySet()){
+            for(Map.Entry<Sommet, ArrayList<Sommet>> check : this.sommetsVoisins.entrySet()){
                 if(!(res.contains(check.getKey()))){
                     ret = false;
                 }
@@ -221,11 +223,11 @@ public class Graphe {
         ArrayList<Sommet> allSom = new ArrayList<Sommet>();
         ArrayList<Graphe> ret = new ArrayList<Graphe>();
         //Recupère l'ensemble des sommets du graphes 
-        for(Map.Entry som : this.sommetsVoisins.entrySet()){
-            allSom.add((Sommet) som.getKey());
+        for(Map.Entry<Sommet, ArrayList<Sommet>> som : this.sommetsVoisins.entrySet()){
+            allSom.add(som.getKey());
         }
 
-        /**
+        /*
          * Pour chaque sommet du graphe  : 
          * - Vérifie si le sommet fait déjà partie d'une composante connexe
          * - Si ce n'est pas le cas, récupère tout les sommets de sa composante, 
@@ -275,7 +277,7 @@ public class Graphe {
                 }
                 Graphe cherche = g.get(id);
                 HashMap<Sommet, ArrayList<Sommet>> list = cherche.getSommetsVoisins();
-                for(Map.Entry l : list.entrySet()){
+                for(Map.Entry<Sommet, ArrayList<Sommet>> l : list.entrySet()){
                     int in = Integer.MAX_VALUE;
                     Integer m = new Integer(in);
                     dist.put((Sommet) l.getKey(), m);
@@ -381,7 +383,7 @@ public class Graphe {
 
             // ajout des voisins a la stack
             ArrayList<Sommet> tampon = this.voisins(stack.get(index).getId());
-            ArrayList<Sommet> newStack = (ArrayList<Sommet>) stack.clone();
+            ArrayList<Sommet> newStack = new ArrayList<Sommet>(stack);
             for(Sommet s : tampon){
                 if(!(parcouru.contains(s))){
                     newStack.add(s);

@@ -30,7 +30,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                      <children>
                         <AnchorPane minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Label minWidth="394.0" text="Bienvenue, Mr Durand">
+                        <Label fx:id="bv" minWidth="394.0" text="Bienvenue, Mr Durand">
                            <font>
                               <Font size="40.0" />
                            </font>
