@@ -3,11 +3,50 @@ package Modele;
 import Modele.traitement.*;
 import Modele.donnee.*;
 import java.util.*;
-import java.sql.*;
 import java.sql.Date;
 
 public class ScenarioTraitement {
+    static Graphe g;
+    static Graphe g2;
     public static void main(String[] args) {
+        creationGraphe();
+
+        // Test calcul degré
+        System.out.println("Voisins du sommet 1 : " + arrayIdtoString(g.voisins(1)));
+        System.out.println("Degre du sommet 1 : " + g.calculeDegre(1));
+        // System.out.println("Excentricité du sommet 1 : " + g.excentricite(1) + "\n");
+
+        //Test Matrice Adjacence
+        System.out.println("Matrice d'adjacence : ");
+        int[][] adjacence = g.matriceAdjacence();
+        for (int[] ligne : adjacence) {
+            System.out.println(Arrays.toString(ligne));
+        }
+        System.out.println();
+
+        //Test DFS
+        System.out.println("Voisins de 2 : " + arrayIdtoString(g.voisins(2)) + "\n");
+       
+        System.out.println("Nouveau Graphe \n");
+        ArrayList<Sommet> DFS = g2.LaunchDFS(1);
+        System.out.print("DFS du sommet 1 : " + arrayIdtoString(DFS) + "\n");
+
+        System.out.println("Test si g2 est connexe(non) : " + g2.estConnexe() + "\n");
+
+        ArrayList<Graphe> compo = g2.composanteConnexe();
+        System.out.println("Composantes connexes : ");
+
+        for(Graphe gra : compo){
+            HashMap<Sommet, ArrayList<Sommet>> liste = gra.getSommetsVoisins();
+
+            ArrayList<Sommet> listeKeys = new ArrayList<Sommet>(liste.keySet());
+            System.out.println("\tComposante connexe : " + arrayIdtoString(listeKeys));
+        }
+
+        System.out.println();
+    }
+
+    public static void creationGraphe(){
         HashMap<Sommet, ArrayList<Sommet>> sommetsVoisins = new HashMap<Sommet, ArrayList<Sommet>>();
         Lieu lieu1 = new Lieu(1,1);
         Lieu lieu2 = new Lieu(2,2);
@@ -31,15 +70,8 @@ public class ScenarioTraitement {
         sommets.add(s3);
         sommets.add(s4);
 
-        Graphe g = new Graphe(sommets, 1);
-        System.out.println(g.calculeDegre(1));
-        int[][] adjacence = g.matriceAdjacence();
-        for (int[] ligne : adjacence) {
-            System.out.println(Arrays.toString(ligne));
-        }
+        g = new Graphe(sommets, 3);
 
-
-        //test du DFS 
         ArrayList<Sommet> sVoisin1 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin2 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin3 = new ArrayList<Sommet>();
@@ -58,34 +90,18 @@ public class ScenarioTraitement {
         sommetsVoisins.put(s3, sVoisin3);
         sommetsVoisins.put(s4, sVoisin4);
 
-        
+        g2 = new Graphe(sommetsVoisins);
 
-        Graphe g2 = new Graphe(sommetsVoisins);
+    }
 
-        for(Sommet s : g2.voisins(2)){
-            System.out.println(s.getId());
+    public static String arrayIdtoString(ArrayList<Sommet> liste){
+        String s = "[";
+        for(Sommet sommet : liste){
+            s += sommet.getId() + ", ";
         }
-       
-        
-        ArrayList<Sommet> DFS = g2.LaunchDFS(1);
-        
-        for(Sommet s : DFS){
-            System.out.print(s.getId() + "/");
-        }
-        System.out.println();
+        s = s.substring(0, s.length()-2);
+        s += "]";
 
-        System.out.println(g2.estConnexe());
-
-        ArrayList<Graphe> compo = g2.composanteConnexe();
-
-        for(Graphe gra : compo){
-            HashMap<Sommet, ArrayList<Sommet>> liste = gra.getSommetsVoisins();
-
-            for(Map.Entry<Sommet, ArrayList<Sommet>> l : liste.entrySet()){
-                Sommet somme = l.getKey();
-                System.out.print(somme.getId() + "/");
-            }
-            System.out.println(" \t compo");
-        }
+        return s;
     }
 }

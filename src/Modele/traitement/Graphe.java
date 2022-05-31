@@ -1,6 +1,7 @@
 package Modele.traitement;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,8 +22,6 @@ public class Graphe {
                 }
                 this.sommetsVoisins.put(s, voisins);
             }
-            
-            System.out.println("Graphe construit");
         }
         
     }
@@ -47,6 +46,21 @@ public class Graphe {
         return this.sommetsVoisins;
     }
     
+    public ArrayList<Sommet> getSommets() {
+        ArrayList<Sommet> sommets = new ArrayList<Sommet>(this.sommetsVoisins.keySet());
+
+        //On trie les sommets par id
+        sommets.sort(new Comparator<Sommet>() {
+            @Override
+            public int compare(Sommet o1, Sommet o2) {
+                return o1.getId() - o2.getId();
+            }
+        });
+        return sommets;
+        
+    }
+    
+
     public int nbSommets() {
         return this.sommetsVoisins.size();
     }
@@ -186,7 +200,8 @@ public class Graphe {
         int i = 0;
         int j = 0;
 
-        Set<Sommet> keys = this.sommetsVoisins.keySet();
+        ArrayList<Sommet> keys = this.getSommets();
+
         Iterator<Sommet> it = keys.iterator();
         while(it.hasNext()) {
             Sommet s = it.next();
@@ -237,12 +252,12 @@ public class Graphe {
             boolean dejaDansConnexe = false;
             if(ret != null){
                 int i = 0;
-                System.out.println(("test1"));
+
                 while((!dejaDansConnexe) && i < ret.size()){
-                    System.out.println(("test2"));
                     if(ret.get(i).estDansGraphe(s.getId())){
                         dejaDansConnexe = true;
                     }
+
                     i = i + 1;
                 }
             }
@@ -262,36 +277,8 @@ public class Graphe {
 
 
     
-    public int distArete(int idSom1, int idSom2) {
+    public int distAretes(int idSom1, int idSom2) {
         int ret = 0;
-        /*
-        if(estDansGraphe(idSom1) && estDansGraphe(idSom2)){
-            if(existeChemin(idSom1, idSom2)){
-                HashMap<Sommet,Integer> dist = new HashMap<Sommet,Integer>();
-                ArrayList<Graphe> g = this.composanteConnexe();
-                int id = 0;
-                for(Graphe parcour : g){
-                    if(parcour.estDansGraphe(idSom1) && parcour.estDansGraphe(idSom2)){
-                        id = g.indexOf(parcour);
-                    }
-                }
-                Graphe cherche = g.get(id);
-                HashMap<Sommet, ArrayList<Sommet>> list = cherche.getSommetsVoisins();
-                for(Map.Entry<Sommet, ArrayList<Sommet>> l : list.entrySet()){
-                    int in = Integer.MAX_VALUE;
-                    Integer m = new Integer(in);
-                    dist.put((Sommet) l.getKey(), m);
-
-                }
-
-            }else{
-                ret = 0;
-            }
-        }else{
-            ret = -1;
-        }
-        */
-
         
         return ret;
     }
@@ -299,12 +286,30 @@ public class Graphe {
 
 
     public int excentricite(int idSom) {
-        
-        return 0;
+        int ret = 0;
+        if(estDansGraphe(idSom) && this.estConnexe()){
+            
+        }else{
+            ret = -1;
+        }
+
+        return ret;
     }
     
     public int diametre() {
-        return 0;
+        int ret = 0;
+        if(this.estConnexe()){
+            for (Sommet s : this.sommetsVoisins.keySet()){
+                int excent = this.excentricite(s.getId());
+                if(excent > ret){
+                    ret = excent;
+                }
+            }
+        } else {
+            ret = -1;
+        }
+
+        return ret;
     }
     
     public int rayon() {
@@ -321,10 +326,17 @@ public class Graphe {
         return ret;
     }
     
+
+    /*
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Méthodes non obligatoires à prtir d'ici
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    */
+
+
     public double calculeDist(int idSom1, int idSom2) {
         double ret = -1;
-        int[][] mat = matriceAdjacence(); 
-
+        int[][] mat = matriceAdjacence();
         return ret;
     }
     
@@ -399,6 +411,31 @@ public class Graphe {
         }
 
         return parcouru;
+    }
+
+
+    public int[][] multiplication_matrix(int[][] A, int[][] B) {
+        int[][] C = new int[A.length][B[0].length];
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < B[0].length; j++) {
+                for (int k = 0; k < A[0].length; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+        return C;
+    }
+
+    public int[][] puissance_matrix(int[][] A, int n) {
+        if (n == 1) {
+            return A;
+        }
+        int[][] B = puissance_matrix(A, n / 2);
+        B = multiplication_matrix(B, B);
+        if (n % 2 == 1) {
+            B = multiplication_matrix(B, A);
+        }
+        return B;
     }
 
 }
