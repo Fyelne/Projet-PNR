@@ -90,18 +90,10 @@ public class ListenerUtilisateur {
                     try{
                         PreparedStatement  st = log.prepareStatement(r);
                         st.executeUpdate();
-                        String save = notif.getText();
-                        notif.setText("Mot de passe modifier avec succès");
                         oldPass.setText("");
                         newPass.setText("");
                         checkPass.setText("");
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                        notif.setText(save);
+                       //ajouter un pop up de mot de passe changer avec succès
                         
                     }catch (SQLException e) {
                         e.printStackTrace();

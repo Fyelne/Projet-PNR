@@ -36,6 +36,29 @@ public class ListenerAccueil {
     //private Label username;
 
     @FXML
+    private Button test;
+
+    @FXML
+    void changeTest(ActionEvent event) {
+        Button bt = (Button) event.getSource();
+        Scene sc = bt.getScene();
+        Parent root;
+        
+        String url = "..//View//frame//ChoixConsultation.fxml";
+        try {
+            // change the scene
+            FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
+            root = fx.load();
+            ListenerAfficheAllLoutre lu = fx.getController();
+            lu.load();
+            sc.setRoot(root);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void openMenu(ActionEvent event) {
         
         Menu.setVisible(true);

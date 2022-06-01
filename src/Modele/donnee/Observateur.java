@@ -12,7 +12,7 @@ public class Observateur {
      * @param lePrenom prenom de l'observateur
      */
     public Observateur(int id, String leNom, String lePrenom) {
-        if(id >= 0 && leNom != null && lePrenom != null) {
+        if(id >= 0 && lePrenom != null) {
             this.idObs = id;
             this.nom = leNom;
             this.prenom = lePrenom;

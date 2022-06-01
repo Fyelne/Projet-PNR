@@ -41,7 +41,7 @@
                   <HBox prefHeight="272.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
                      <children>
                         <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Button maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="401.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Consulter les relevés" HBox.hgrow="ALWAYS">
+                        <Button fx:id="test" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#changeTest" prefHeight="87.0" prefWidth="401.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Consulter les relevés" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="25.0" />
                            </font>
