@@ -1,6 +1,7 @@
 package Modele.traitement;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -296,7 +297,7 @@ public class Graphe {
                 for(Map.Entry<Sommet, ArrayList<Sommet>> l : list.entrySet()){
                     int in = Integer.MAX_VALUE;
                     Integer m = in;
-                    dist.put((Sommet) l.getKey(), m);
+                    dist.put(l.getKey(), m);
                 }
                 dist.replace(cherche.searchSommet(idSom1), 0);
                 //Launch de dextra
@@ -390,6 +391,37 @@ public class Graphe {
     public double calculeDist(int idSom1, int idSom2) {
         double ret = -1;
         int[][] mat = matriceAdjacence();
+        int[][] mat2 = new int[mat.length][mat[0].length - 1];
+        int x = 0;
+        int y = 0;
+        for(int i = 0; i < mat.length; i++){
+            if(mat[i][0] == idSom1){
+                x = i;
+            }
+            if(mat[i][0] == idSom2){
+                y = i;
+            }
+            for(int j = 1; j < mat[0].length; j++){
+                mat2[i][j - 1] = mat[i][j];
+            }
+        }
+        
+        boolean trouve = false;
+        int[][] mult = mat2.clone();
+        while(ret < mat2.length && !trouve){
+            ret++;
+            if(mat2[x][y] == 1){
+                trouve = true;
+            }
+
+            mat2 = multiplication_matrix(mat2, mult);
+        }
+        if(trouve){
+            ret++;
+        } else {
+            ret = -1;
+        }
+
         return ret;
     }
     
