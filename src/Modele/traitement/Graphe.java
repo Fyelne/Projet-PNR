@@ -322,18 +322,20 @@ public class Graphe {
         if(estDansGraphe(idSom) && this.estConnexe()){
             int[][] adj = this.matriceAdjacence();
             int[][] matrice = new int[adj.length][adj[0].length - 1];
-            int x = 0;
+            int indexSommet = 0;
             for(int i = 0; i < adj.length; i++){
                 if(adj[i][0] == idSom){
-                    x = i;
+                    indexSommet = i;
                 }
                 for(int j = 1; j < adj[0].length; j++){
                     matrice[i][j - 1] = adj[i][j];
                 }
             }
-            for(int i = 0; i < matrice[x].length; i++){
-                if(matrice[x][i] > ret){
-                    ret = matrice[x][i];
+
+            int[] dist = this.dijkstra(matrice, indexSommet);
+            for(int i = 0; i < dist.length; i++){
+                if(dist[i] > ret){
+                    ret = dist[i];
                 }
             }
         }else{

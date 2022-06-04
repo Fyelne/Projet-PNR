@@ -12,6 +12,7 @@ public class ScenarioTraitement {
 
     //test de la classe Graphe et Sommet 
     public static void main(String[] args) {
+        creationGraphe();
         //Sommet 
         //Création de 4 sommets
         System.out.println("|--------------------------------------------------------|");
@@ -72,7 +73,7 @@ public class ScenarioTraitement {
         // Test calcul degré
         System.out.println("Voisins du sommet 1 : " + arrayIdtoString(g.voisins(1)));
         System.out.println("Degre du sommet 1 : " + g.calculeDegre(1));
-        // System.out.println("Excentricité du sommet 1 : " + g.excentricite(1) + "\n");
+        System.out.println("Excentricité du sommet 1 : " + g.excentricite(1) + "\n");
 
         //Test Matrice Adjacence
         System.out.println("Matrice d'adjacence : ");
@@ -135,14 +136,8 @@ public class ScenarioTraitement {
         sommets.add(s2);
         sommets.add(s3);
         sommets.add(s4);
-        /*
-        Graphe g = new Graphe(sommets, 1);
-        System.out.println(g.calculeDegre(1));
-        int[][] adjacence = g.matriceAdjacence();
-        for (int[] ligne : adjacence) {
-            System.out.println(Arrays.toString(ligne));
-        }*/
-
+        
+        g = new Graphe(sommets, 2);
 
         ArrayList<Sommet> sVoisin1 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin2 = new ArrayList<Sommet>();
