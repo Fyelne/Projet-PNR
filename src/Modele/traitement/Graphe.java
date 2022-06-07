@@ -384,41 +384,27 @@ public class Graphe {
     
     
     public int calculeDist(int idSom1, int idSom2) {
-        int ret = -1;
+        int ret = 0;
         if(estDansGraphe(idSom1) && estDansGraphe(idSom2)){
-            int[][] mat = matriceAdjacence();
-            int[][] mat2 = new int[mat.length][mat[0].length - 1];
-            int x = 0;
-            int y = 0;
-            for(int i = 0; i < mat.length; i++){
-                if(mat[i][0] == idSom1){
-                    x = i;
+            int[][] adj = this.matriceAdjacence();
+            int[][] matrice = new int[adj.length][adj[0].length - 1];
+            int indexSommet1 = 0;
+            int indexSommet2 = 0;
+            for(int i = 0; i < adj.length; i++){
+                if(adj[i][0] == idSom1){
+                    indexSommet1 = i;
                 }
-                if(mat[i][0] == idSom2){
-                    y = i;
+                if(adj[i][0] == idSom2){
+                    indexSommet2 = i;
                 }
-                for(int j = 1; j < mat[0].length; j++){
-                    mat2[i][j - 1] = mat[i][j];
+                for(int j = 1; j < adj[0].length; j++){
+                    matrice[i][j - 1] = adj[i][j];
                 }
             }
-            
-            boolean trouve = false;
-            int[][] mult = mat2.clone();
-            while(ret < mat2.length && !trouve){
-                ret++;
-                if(mat2[x][y] == 1){
-                    trouve = true;
-                }
-                
-                mat2 = multiplication_matrix(mat2, mult);
-            }
-            if(trouve){
-                ret++;
-            } else {
-                ret = -1;
-            }
+
+            int[] dist = this.dijkstra(matrice, indexSommet1);
+            ret = dist[indexSommet2];
         }
-        
         return ret;
     }
     
