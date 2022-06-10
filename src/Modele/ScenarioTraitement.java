@@ -252,7 +252,6 @@ public class ScenarioTraitement {
         }
     }
 
-    
 
     public static String arrayIdtoString(ArrayList<Sommet> liste){
         String s = "[";
