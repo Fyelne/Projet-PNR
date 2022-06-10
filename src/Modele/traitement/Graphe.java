@@ -61,7 +61,6 @@ public class Graphe {
         
     }
     
-    
     public int nbSommets() {
         return this.sommetsVoisins.size();
     }
@@ -145,7 +144,6 @@ public class Graphe {
         }
         return ret;
     }
-    
     
     public ArrayList<Sommet> voisins(int idSom) {
         ArrayList<Sommet> ret = new ArrayList<Sommet>();
@@ -316,7 +314,6 @@ public class Graphe {
 		return dist;
 	}
     
-    
     public int excentricite(int idSom) {
         int ret = 0;
         if(estDansGraphe(idSom) && this.estConnexe()){
@@ -374,20 +371,11 @@ public class Graphe {
         }
         return ret;
     }
-    
-    
-    /*
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    Méthodes non obligatoires à prtir d'ici
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    */
-    
-    
-    public int calculeDist(int idSom1, int idSom2) {
-        int ret = 0;
-        if(estDansGraphe(idSom1) && estDansGraphe(idSom2)){
+
+    public int distAretes(int idSom1, int idSom2) {
+        int ret = -1;
+        if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2) && existeChemin(idSom1, idSom2)){
             int[][] adj = this.matriceAdjacence();
-            int[][] matrice = new int[adj.length][adj[0].length - 1];
             int indexSommet1 = 0;
             int indexSommet2 = 0;
             for(int i = 0; i < adj.length; i++){
@@ -397,15 +385,21 @@ public class Graphe {
                 if(adj[i][0] == idSom2){
                     indexSommet2 = i;
                 }
-                for(int j = 1; j < adj[0].length; j++){
-                    matrice[i][j - 1] = adj[i][j];
-                }
             }
-
-            int[] dist = this.dijkstra(matrice, indexSommet1);
+            int[] dist = this.dijkstra(adj, indexSommet1);
             ret = dist[indexSommet2];
         }
         return ret;
+    }
+    
+    /*
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Méthodes non obligatoires à prtir d'ici
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    */
+    
+    public int calculeDist(int idSom1, int idSom2) {
+        return 0;
     }
     
     public double excentriciteDist(int idSom) {
@@ -421,11 +415,30 @@ public class Graphe {
     }
     
     public double[][] matricePonderation(){
-        return null;
+        double[][] ret = new double[this.sommetsVoisins.size()][this.sommetsVoisins.size()];
+        for(int i = 0; i < ret.length; i++){
+            for(int j = 0; j < ret[0].length; j++){
+                ret[i][j] = this.distAretes(i, j);
+            }
+        }
+        return ret;
     }
     
     public Graphe clotureTransitive() {
-        return null;
+        HashMap<Sommet, ArrayList<Sommet>> voisins = new HashMap<Sommet, ArrayList<Sommet>>();
+        for(Sommet s : this.sommetsVoisins.keySet()){
+            voisins.put(s, new ArrayList<Sommet>());
+        }
+        for(Sommet s : this.sommetsVoisins.keySet()){
+            for(Sommet s2 : this.sommetsVoisins.keySet()){
+                if(existeChemin(s.getId(), s2.getId()) && s.getId() != s2.getId()){
+                    voisins.get(s).add(s2);
+                }
+            }
+        }
+
+        Graphe ret = new Graphe(voisins);
+        return ret;
     }
     
     public Sommet searchSommet(int idSom) {
@@ -445,8 +458,7 @@ public class Graphe {
         
         return s;
     }
-    
-    
+     
     public ArrayList<Sommet> LaunchDFS(int idSom){
         ArrayList<Sommet> parcouru = new ArrayList<Sommet>();
         ArrayList<Sommet> stack = new ArrayList<Sommet>();
@@ -479,32 +491,6 @@ public class Graphe {
         }
         
         return parcouru;
-    }
-    
-    
-    public int[][] multiplication_matrix(int[][] A, int[][] B) {
-        int[][] C = new int[A.length][B[0].length];
-        for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < B[0].length; j++) {
-                for (int k = 0; k < A[0].length; k++) {
-                    C[i][j] += A[i][k] * B[k][j];
-                }
-            }
-        }
-        return C;
-    }
-    
-    public int[][] puissance_matrix(int[][] A, int n) {
-        if (n == 1) {
-            return A;
-        }
-        int[][] B = puissance_matrix(A, n / 2);
-        B = multiplication_matrix(B, B);
-        // System.out.println(Arrays.deepToString(B));
-        if (n % 2 == 1) {
-            B = multiplication_matrix(B, A);
-        }
-        return B;
     }
     
 }
