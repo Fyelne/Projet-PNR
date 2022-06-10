@@ -44,7 +44,7 @@ public class ScenarioTraitement {
         Sommet s3 = new Sommet(obsChouette);
         Sommet s4 = new Sommet(4, lieu4, date4, EspeceObservee.LOUTRE);
 
-        System.out.println("\t Sommets Crées ");
+        System.out.println("\t Sommets Créés ");
         System.out.println("|--------------------------------------------------------|");
 
         System.out.println("| - Test de méthodes de Sommet : ");

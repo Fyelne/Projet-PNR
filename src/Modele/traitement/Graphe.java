@@ -298,7 +298,6 @@ public class Graphe {
 		
 		for (int count = 0; count < adjacence.length - 1; count++) {
 			int u = minDistance(dist, visite);
-			System.out.println(u+""+dist[u]);
 			visite[u] = true;
 			for (int v = 0; v < adjacence.length; v++){
 				//Si le sommet v n'est pas visité et que le chemin u -> v existe
