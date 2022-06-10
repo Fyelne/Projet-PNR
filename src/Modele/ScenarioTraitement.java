@@ -224,7 +224,7 @@ public class ScenarioTraitement {
         System.out.print("| - Le diametre du graphe est de : " + g.diametre());
         test(g.diametre(), 3);
 
-        System.out.println("| - Le rayon du graphe est de : " + g.rayon());
+        System.out.print("| - Le rayon du graphe est de : " + g.rayon());
         test(g.rayon(), 2);
 
         System.out.println("|--------------------------------------------------------|");
