@@ -360,14 +360,15 @@ public class Graphe {
     public int rayon() {
         int ret = -1;
         if(this.estConnexe()){
-            ret = excentricite(this.sommetsVoisins.keySet().iterator().next().getId());
-            for (Sommet s : this.sommetsVoisins.keySet()) {
-                int excent = excentricite(s.getId());
-                if(ret < excent) {
+            ret = Integer.MAX_VALUE;
+            for (Sommet s : this.sommetsVoisins.keySet()){
+                int excent = this.excentricite(s.getId());
+                if(excent < ret){
                     ret = excent;
                 }
             }
         }
+
         return ret;
     }
 
