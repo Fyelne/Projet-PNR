@@ -195,7 +195,7 @@ public class Graphe {
     
     public int[][] matriceAdjacence() {
         int[][] ret = new int[this.nbSommets()][this.nbSommets() + 1];
-        
+
         int i = 0;
         int j = 0;
         
