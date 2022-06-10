@@ -30,7 +30,8 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "View.App",
-            "projectName": "PNR_c502537c"
+            "projectName": "PNR_c502537c",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-18/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
