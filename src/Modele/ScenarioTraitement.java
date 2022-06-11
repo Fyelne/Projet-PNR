@@ -27,11 +27,15 @@ public class ScenarioTraitement {
         Lieu lieu2 = new Lieu(1,2);
         Lieu lieu3 = new Lieu(3,3);
         Lieu lieu4 = new Lieu(4,4);
+        Lieu lieu5 = new Lieu (8, 13);
+        Lieu lieu6 = new Lieu(19, 5);
 
         Date date1 = new Date(0);
         Date date2 = new Date(86400000);
         Date date3 = new Date(86400000*2);
         Date date4 = new Date(86400000*3);
+        Date date5 = new Date(3600 * 10000);
+        Date date6 = new Date(24000);
 
         ArrayList<Observateur> observateurs = new ArrayList<Observateur>();
         observateurs.add(new Observateur(1, "Noel", "Andy"));
@@ -43,6 +47,8 @@ public class ScenarioTraitement {
         
         Sommet s3 = new Sommet(obsChouette);
         Sommet s4 = new Sommet(4, lieu4, date4, EspeceObservee.LOUTRE);
+        Sommet s5 = new Sommet(5, lieu5, date5, EspeceObservee.CHOUETTE);
+        Sommet s6 = new Sommet(6, lieu5, date5, EspeceObservee.HIPPOCAMPE);
 
         System.out.println("\t Sommets Crées ");
         System.out.println("|--------------------------------------------------------|");
@@ -76,26 +82,45 @@ public class ScenarioTraitement {
         sommets.add(s2);
         sommets.add(s3);
         sommets.add(s4);
+        sommets.add(s5);
+        sommets.add(s6);
+
         System.out.println("\t - Ajout des Sommet ");
 
         ArrayList<Sommet> sVoisin1 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin2 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin3 = new ArrayList<Sommet>();
         ArrayList<Sommet> sVoisin4 = new ArrayList<Sommet>();
+        ArrayList<Sommet> sVoisin5 = new ArrayList<Sommet>();
+        ArrayList<Sommet> sVoisin6 = new ArrayList<Sommet>();
         
     
         sVoisin1.add(s2);
+        sVoisin1.add(s4);
+
         sVoisin2.add(s1);
-        sVoisin2.add(s3);
-        sVoisin3.add(s2);
+        sVoisin2.add(s4);
+
         sVoisin3.add(s4);
+
+        sVoisin4.add(s1);
+        sVoisin4.add(s2);
         sVoisin4.add(s3);
+        sVoisin4.add(s6);
+
+        sVoisin6.add(s4);
+        
+              
         System.out.println("\t - Ajout des voisins de chaque sommet");
         HashMap<Sommet, ArrayList<Sommet>> sommetsVoisins = new HashMap<Sommet, ArrayList<Sommet>>();
         sommetsVoisins.put(s1, sVoisin1);
         sommetsVoisins.put(s2, sVoisin2);
         sommetsVoisins.put(s3, sVoisin3);
         sommetsVoisins.put(s4, sVoisin4);
+        sommetsVoisins.put(s5, sVoisin5);
+        sommetsVoisins.put(s6, sVoisin6);
+        
+
         System.out.println("\t - Ajout des Sommet et de leur voisin dans la Hashmap");
         
         g = new Graphe(sommetsVoisins);
@@ -114,20 +139,26 @@ public class ScenarioTraitement {
         System.out.println("|--------------------------------------------------------|");
 
         System.out.print("| - Le graphe contient " + g.nbSommets() + " sommets");
-        test(g.nbSommets(), 4);
+        test(g.nbSommets(), 6);
 
         System.out.print("| - Le graphe contient " + g.nbAretes() + " arêtes");
-        test(g.nbAretes(), 3);
+        test(g.nbAretes(), 5);
 
-        System.out.print("| - Le sommet avec l'id 2 est dans le graphe : " + g.estDansGraphe(2));
-        System.out.println(" -> " + (g.estDansGraphe(2) == true ));
+        System.out.print("| - Le sommet avec l'id 7 est dans le graphe : " + g.estDansGraphe(7));
+        System.out.println(" -> " + (g.estDansGraphe(7) == false ));
 
-        System.out.print("| - Le sommet avec l'id 12 est dans le graphe : " + g.estDansGraphe(12));
-        System.out.println(" -> " + (g.estDansGraphe(12) == false ));
+        System.out.print("| - Le sommet avec l'id 5 est dans le graphe : " + g.estDansGraphe(5));
+        System.out.println(" -> " + (g.estDansGraphe(5) == true ));
 
 
-        System.out.print("| - Le sommet 2 a un degré de " + g.calculeDegre(2));
-        test(g.calculeDegre(2), 2);
+        System.out.print("| - Le sommet 3 a un degré de " + g.calculeDegre(3));
+        test(g.calculeDegre(3), 1);
+
+        System.out.print("| - Le sommet 4 a un degré de " + g.calculeDegre(4));
+        test(g.calculeDegre(4), 4);
+
+        System.out.print("| - Le sommet 5 a un degré de " + g.calculeDegre(5));
+        test(g.calculeDegre(5), 0);
 
         System.out.println("Le sommet avec le degré maximum est le sommet " + g.somMaxDegre().getId());
         System.out.println("|--------------------------------------------------------|");   
@@ -141,17 +172,17 @@ public class ScenarioTraitement {
         }
         System.out.println("|--------------------------------------------------------|");
 
-        System.out.println("| - Les sommets 1 et 2 sont voisins -> " + g.sontVoisins(1,2)  + " \t OK ?-> " + (g.sontVoisins(1, 2)== true));
-        System.out.println("| - Les sommets 1 et 4 sont voisins -> " + g.sontVoisins(1,4)  + " \t OK ?-> " + (g.sontVoisins(1, 4)== false));
+        System.out.println("| - Les sommets 3 et 4 sont voisins -> " + g.sontVoisins(3,4)  + " \t OK ?-> " + (g.sontVoisins(3, 4)== true));
+        System.out.println("| - Les sommets 6 et 2 sont voisins -> " + g.sontVoisins(6,2)  + " \t OK ?-> " + (g.sontVoisins(6, 2)== false));
 
 
         System.out.println("|--------------------------------------------------------|");  
 
         
 
-        System.out.println("| - Voisins du sommet 3 : ");
-        ArrayList<Sommet> v = g.voisins(3);
-        int[] res = {2,4};
+        System.out.println("| - Voisins du sommet 4 : ");
+        ArrayList<Sommet> v = g.voisins(4);
+        int[] res = {1,2,3,6};
         int j = 0;
         for(Sommet s : v){
             System.out.print("\t - Sommet " + s.getId());
@@ -159,21 +190,11 @@ public class ScenarioTraitement {
             j = j + 1;
         }
         
-        System.out.println("|--------------------------------------------------------|");
 
-        System.out.println("| - Suppression d'une arête entre 2 et 3");
-        System.out.print("| - Suppression réussite ? -> ");
-        System.out.println(g.retireArete(2, 3));
-
-        System.out.println("| - Test de la suppression");
-        System.out.println("| - test 2 voisins de 3 -> " + g.sontVoisins(2, 3));
-
-        System.out.println("|--------------------------------------------------------|");
-
-        System.out.print("| - Il existe un chemin entre le sommet 1 et le 2 : " + g.existeChemin(1, 2));
-        System.out.println(" -> " + (g.existeChemin(1, 2) == true));
-        System.out.print("| - Il existe un chemin entre le sommet 1 et le 4 : " + g.existeChemin(1, 4));
-        System.out.println(" -> " + (g.existeChemin(1, 4) == false));
+        System.out.print("| - Il existe un chemin entre le sommet 5 et le 6 : " + g.existeChemin(5, 6));
+        System.out.println(" -> " + (g.existeChemin(5, 6) == false));
+        System.out.print("| - Il existe un chemin entre le sommet 6 et le 2 : " + g.existeChemin(6, 2));
+        System.out.println(" -> " + (g.existeChemin(6, 2) == true));
 
         System.out.println("|--------------------------------------------------------|");
 
@@ -203,40 +224,41 @@ public class ScenarioTraitement {
         
         System.out.println("|--------------------------------------------------------|");
 
-        System.out.println("| - Rajout de l'arete entre 2 et 3 pour refaire un graphe connexe ");
-        g.ajouteArete(2, 3);
-        System.out.print("| - Vérification de la création : -> " + g.sontVoisins(2, 3));
-        System.out.println(" -> " + (g.sontVoisins(2, 3) == true));
-
-        System.out.println("|--------------------------------------------------------|");
-        System.out.print("| - Le graphe est maintenant connexe : " +  g.estConnexe());
-        System.out.println(" -> " + (g.estConnexe() == true));
-
+        System.out.print("| - Distance entre le sommet 3 et le sommet 2 : " + g.distAretes(3, 2));
+        test(g.distAretes(6, 4), 1);
         System.out.println("|--------------------------------------------------------|");
 
-        //System.out.print("| - Distance entre le sommet 1 et le sommet 4 : " + g.distAretes(1, 4));
-        //test(g.distAretes(1, 4), 3);
-        System.out.println("|--------------------------------------------------------|");
+        System.out.print("| -  Excentricité du sommet 6 : " + g.excentricite(6));
+        test(g.excentricite(6), -1);;
 
-        System.out.print("| -  Excentricité du sommet 2 : " + g.excentricite(2));
-        test(g.excentricite(2), 2);;
+        System.out.print("| - Le diametre du graphe est de : " + g.diametre());
+        test(g.diametre(), -1);
+
+        System.out.print("| - Le rayon du graphe est de : " + g.rayon());
+        test(g.rayon(), -1);
+
+        System.out.println("|--------------------------------------------------------|");
+        System.out.println("| Ajout d'une arete entre 2 et 5 pour rendre le graphe connexe ");
+        g.ajouteArete(2, 5);
+        System.out.println("| Le graphe est maintenant connexe : -> " + g.estConnexe());
+
+        System.out.println("|--------------------------------------------------------|");
+        System.out.print("| -  Excentricité du sommet 6 : " + g.excentricite(6));
+        test(g.excentricite(6), 3);;
 
         System.out.print("| - Le diametre du graphe est de : " + g.diametre());
         test(g.diametre(), 3);
 
-        System.out.println("| - Le rayon du graphe est de : " + g.rayon());
+        System.out.print("| - Le rayon du graphe est de : " + g.rayon());
         test(g.rayon(), 2);
+
 
         System.out.println("|--------------------------------------------------------|");
         System.out.println("|\t\t Fin du Scenario Traitement \t\t |");
         System.out.println("|--------------------------------------------------------|");
         
-        /* 
-        int[] dij = g.dijkstra(g.matriceAdjacence(), 4);
-        for(int c = 0; c < dij.length; c++){
-            System.out.print(dij[c] + " ; ");
-        }
-        */
+         
+        
     }
    
 
