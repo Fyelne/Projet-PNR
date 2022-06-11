@@ -374,25 +374,25 @@ public class Graphe {
 
     public int distAretes(int idSom1, int idSom2) {
         int ret = -1;
-        if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2)){
-            if(existeChemin(idSom1, idSom2)){
-                int[][] adj = this.matriceAdjacence();
-                int indexSommet1 = 0;
-                int indexSommet2 = 0;
-                for(int i = 0; i < adj.length; i++){
-                    if(adj[i][0] == idSom1){
-                        indexSommet1 = i;
-                    }
-                    if(adj[i][0] == idSom2){
-                        indexSommet2 = i;
-                    }
+        if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2) && existeChemin(idSom1, idSom2)){
+            int[][] adj = this.matriceAdjacence();
+            int[][] matrice = new int[adj.length][adj[0].length - 1];
+            int indexSommet1 = 0;
+            int indexSommet2 = 0;
+            for(int i = 0; i < adj.length; i++){
+                if(adj[i][0] == idSom1){
+                    indexSommet1 = i;
                 }
-                int[] dist = this.dijkstra(adj, indexSommet1);
-                ret = dist[indexSommet2];
-            }else{
-                ret = 0;
+                if(adj[i][0] == idSom2){
+                    indexSommet2 = i;
+                }
+                for(int j = 1; j < adj[0].length; j++){
+                    matrice[i][j - 1] = adj[i][j];
+                }
             }
-            
+
+            int[] dist = this.dijkstra(matrice, indexSommet1);
+            ret = dist[indexSommet2];
         }
         return ret;
     }

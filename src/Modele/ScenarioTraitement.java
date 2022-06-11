@@ -50,7 +50,7 @@ public class ScenarioTraitement {
         Sommet s5 = new Sommet(5, lieu5, date5, EspeceObservee.CHOUETTE);
         Sommet s6 = new Sommet(6, lieu5, date5, EspeceObservee.HIPPOCAMPE);
 
-        System.out.println("\t Sommets Crées ");
+        System.out.println("\t Sommets Créés ");
         System.out.println("|--------------------------------------------------------|");
 
         System.out.println("| - Test de méthodes de Sommet : ");
@@ -224,7 +224,7 @@ public class ScenarioTraitement {
         
         System.out.println("|--------------------------------------------------------|");
 
-        System.out.print("| - Distance entre le sommet 3 et le sommet 2 : " + g.distAretes(3, 2));
+        System.out.print("| - Distance entre le sommet 3 et le sommet 2 : " + g.distAretes(2, 3));
         test(g.distAretes(6, 4), 1);
         System.out.println("|--------------------------------------------------------|");
 
