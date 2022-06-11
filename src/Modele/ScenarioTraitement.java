@@ -256,6 +256,10 @@ public class ScenarioTraitement {
         System.out.println("|--------------------------------------------------------|");
         System.out.println("|\t\t Fin du Scenario Traitement \t\t |");
         System.out.println("|--------------------------------------------------------|");
+
+        System.out.println("Distance aretes sommet 2 et 3 : " + g.distAretes(2, 3));
+        System.out.println("Distance aretes sommet 3 et 2 : " + g.distAretes(3, 2));
+
         
          
         
