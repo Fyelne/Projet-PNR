@@ -376,6 +376,7 @@ public class Graphe {
         int ret = -1;
         if(this.estDansGraphe(idSom1) && this.estDansGraphe(idSom2) && existeChemin(idSom1, idSom2)){
             int[][] adj = this.matriceAdjacence();
+            int[][] matrice = new int[adj.length][adj[0].length - 1];
             int indexSommet1 = 0;
             int indexSommet2 = 0;
             for(int i = 0; i < adj.length; i++){
@@ -385,8 +386,12 @@ public class Graphe {
                 if(adj[i][0] == idSom2){
                     indexSommet2 = i;
                 }
+                for(int j = 1; j < adj[0].length; j++){
+                    matrice[i][j - 1] = adj[i][j];
+                }
             }
-            int[] dist = this.dijkstra(adj, indexSommet1);
+
+            int[] dist = this.dijkstra(matrice, indexSommet1);
             ret = dist[indexSommet2];
         }
         return ret;
