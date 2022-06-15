@@ -44,13 +44,11 @@ public class ListenerAccueil {
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//ChoixConsultation.fxml";
+        String url = "..//View//frame//Consultation.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
             root = fx.load();
-            ListenerAfficheAllLoutre lu = fx.getController();
-            lu.load();
             sc.setRoot(root);
         } catch (IOException e) {
             // TODO Auto-generated catch block
