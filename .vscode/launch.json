@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ScenarioRequete",
+            "request": "launch",
+            "mainClass": "Modele.ScenarioRequete",
+            "projectName": "PNR_c502537c"
+        },
+        {
+            "type": "java",
             "name": "Launch ScenarioTraitement",
             "request": "launch",
             "mainClass": "Modele.ScenarioTraitement",
@@ -70,7 +77,8 @@
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "${file}",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-18/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",

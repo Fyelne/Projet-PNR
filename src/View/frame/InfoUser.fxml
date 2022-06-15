@@ -19,7 +19,7 @@
          <children>
             <HBox prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="20.0">
                <children>
-                  <Label minWidth="130.4" text="Durand" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Label fx:id="enTete" minWidth="130.4" text="Durand" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="40.0" />
                      </font>
@@ -68,22 +68,22 @@
                               <Insets left="-15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="Prénom : ">
+                        <Label fx:id="prenom" text="Prénom : ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Nom : ">
+                        <Label fx:id="nom" text="Nom : ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Adresse : ">
+                        <Label fx:id="adresse" text="Adresse : ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Télephone :  ">
+                        <Label fx:id="tel" text="Télephone :  ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
@@ -107,17 +107,17 @@
                               <Insets left="-15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="Rôle : ">
+                        <Label fx:id="role" text="Rôle : ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Nombre d'observation : ">
+                        <Label fx:id="nb_Obs" text="Nombre d'observation : ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Membres depuis : ">
+                        <Label fx:id="since" text="Membres depuis : ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
@@ -135,7 +135,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="266.0" prefWidth="297.0" spacing="10.0">
                      <children>
-                        <Label text="Changer de mot de passe">
+                        <Label fx:id="notif" text="Changer de mot de passe">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="25.0" />
                            </font>
@@ -148,20 +148,20 @@
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <PasswordField />
+                        <PasswordField fx:id="oldPass" />
                         <Label text="Nouveau :  ">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <PasswordField />
+                        <PasswordField fx:id="newPass" />
                         <Label text="Validation du nouveau :">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
                         </Label>
-                        <PasswordField />
-                        <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #07B137; -fx-background-radius: 20;" text="Valider" VBox.vgrow="ALWAYS">
+                        <PasswordField fx:id="checkPass" />
+                        <Button fx:id="btPass" alignment="CENTER" mnemonicParsing="false" onAction="#changePass" style="-fx-background-color: #07B137; -fx-background-radius: 20;" text="Valider" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="18.0" />
                            </font>
@@ -184,7 +184,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #008864; -fx-background-radius: 25;" text="Déconnexion" textFill="WHITE">
+                  <Button fx:id="deco" mnemonicParsing="false" onAction="#deconnexion" style="-fx-background-color: #008864; -fx-background-radius: 25;" text="Déconnexion" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="25.0" />
                      </font>

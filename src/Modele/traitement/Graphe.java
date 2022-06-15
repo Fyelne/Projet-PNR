@@ -67,7 +67,6 @@ public class Graphe {
     
     public int nbAretes() {
         int ret = 0;
-        
         for (Sommet s : this.sommetsVoisins.keySet()) {
             ret+= this.sommetsVoisins.get(s).size();
         }
@@ -78,7 +77,6 @@ public class Graphe {
     
     public boolean estDansGraphe(int idSom) {
         boolean ret = false;
-        
         if(this.searchSommet(idSom) != null) {
             ret = true;
         }
@@ -88,7 +86,6 @@ public class Graphe {
     
     public int calculeDegre(int idSom) {
         int ret = 0;
-        
         if(this.estDansGraphe(idSom)) {
             Sommet s = searchSommet(idSom);
             
@@ -240,13 +237,13 @@ public class Graphe {
         for(Map.Entry<Sommet, ArrayList<Sommet>> som : this.sommetsVoisins.entrySet()){
             allSom.add(som.getKey());
         }
-        
+
         /*
-        * Pour chaque sommet du graphe  : 
-        * - Vérifie si le sommet fait déjà partie d'une composante connexe
-        * - Si ce n'est pas le cas, récupère tout les sommets de sa composante, 
-        *      créer un graphe et l'ajoute à la liste 
-        */
+         * Pour chaque sommet du graphe  : 
+         * - Vérifie si le sommet fait déjà partie d'une composante connexe
+         * - Si ce n'est pas le cas, récupère tout les sommets de sa composante, 
+         *      créer un graphe et l'ajoute à la liste 
+         */
         for(Sommet s : allSom){
             boolean dejaDansConnexe = false;
             if(ret != null){
