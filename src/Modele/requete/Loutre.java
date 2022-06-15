@@ -26,7 +26,14 @@ public class Loutre{
                 double y = r.getDouble("lieu_Lambert_Y");
                 Lieu l = new Lieu(x, y);
 
-                IndiceLoutre indice = IndiceLoutre.POSITIF;
+                IndiceLoutre indice = null;
+                if(r.getString("indice").equals("positif")){
+                    indice = IndiceLoutre.POSITIF;
+                }else{
+                    indice = IndiceLoutre.NEGATIF;
+                    
+                }
+                
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
                 ResultSet res = this.recupObs(r.getInt("idObs"));
                 while(res.next()){
@@ -59,7 +66,7 @@ public class Loutre{
         String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice "+
         "FROM `obs_loutre`, `observation`" +
         "WHERE ObsL = idObs " +
-        "ORDER BY dateObs DESC LIMIT 5";
+        "ORDER BY dateObs DESC ";
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();

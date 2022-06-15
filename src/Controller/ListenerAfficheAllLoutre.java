@@ -28,8 +28,6 @@ public class ListenerAfficheAllLoutre {
     @FXML
     private Button menu;
     @FXML
-    private TableColumn<Observation, Integer> nom;
-    @FXML
     private TableColumn<ObsLoutre, IndiceLoutre> statut;
     @FXML
     private TableView<ObsLoutre> tab;
@@ -38,16 +36,16 @@ public class ListenerAfficheAllLoutre {
 
     protected void load(){
         Loutre data = new Loutre();
+
         ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
 
-        date.setCellValueFactory(new PropertyValueFactory<>("dateObs"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        heure.setCellValueFactory(new PropertyValueFactory<>("heureObs"));
+        heure.setCellValueFactory(new PropertyValueFactory<>("heure"));
 
-        id.setCellValueFactory(new PropertyValueFactory<>("idObs"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        nom.setCellValueFactory(new PropertyValueFactory<>("idObs"));
 
         statut.setCellValueFactory(new PropertyValueFactory<>("indice"));
 

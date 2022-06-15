@@ -23,7 +23,8 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "View.App",
-            "projectName": "Projet-PNR_aa5d4996"
+            "projectName": "Projet-PNR_aa5d4996",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-18/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -37,7 +38,8 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "View.App",
-            "projectName": "PNR_c502537c"
+            "projectName": "PNR_c502537c",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-18/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -57,7 +59,8 @@
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "${file}",
+            "vmArgs": "--module-path \"C:/Java/javafx-sdk-18/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
