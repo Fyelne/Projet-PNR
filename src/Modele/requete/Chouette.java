@@ -1,7 +1,7 @@
 package Modele.requete;
 
 import java.sql.*;
-
+import java.util.ArrayList;
 
 import Modele.Singleton;
 import Modele.donnee.EspeceChouette;
@@ -13,6 +13,16 @@ public class Chouette {
         this.con = Singleton.getInstance().getConnection();
     }
 
+    public ArrayList<Chouette> builder(ResultSet r){
+        ArrayList<Chouette> ret = new ArrayList<Chouette>();
+
+        
+
+
+        return ret;
+
+        
+    }
 
     
     public ResultSet getAllChouette(String... sort){
