@@ -51,7 +51,7 @@ public class ListenerAccueil {
             root = fx.load();
             ListenerAfficheAllLoutre lu = fx.getController();
             lu.load();
-            sc.setRoot(root);
+            sc.setRoot(root); 
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

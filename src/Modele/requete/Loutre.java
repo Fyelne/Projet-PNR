@@ -22,9 +22,7 @@ public class Loutre{
         try {
             while(r.next()){
                 // Creation lieu 
-                double x = r.getDouble("lieu_Lambert_X");
-                double y = r.getDouble("lieu_Lambert_Y");
-                Lieu l = new Lieu(x, y);
+                Lieu l = Utilitaire.recupLieu(r);
 
                 IndiceLoutre indice = null;
                 if(r.getString("indice").equals("positif")){
@@ -35,7 +33,7 @@ public class Loutre{
                 }
                 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
-                ResultSet res = this.recupObs(r.getInt("idObs"));
+                ResultSet res = Utilitaire.recupObs(r.getInt("idObs"));
                 while(res.next()){
                     int id = res.getInt("idObservateur");
                     String nom = res.getString("nom");
@@ -76,18 +74,7 @@ public class Loutre{
         return ret;
     }
 
-    private ResultSet recupObs(int id){
-        ResultSet ret = null;
-        String req = "SELECT idObservateur, nom, prenom FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
-        try{
-            PreparedStatement  stmt = con.prepareStatement(req);
-            ret = stmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return ret;
-        
-    }
+
 
     public ResultSet getAllLoutreBDD(){
         ResultSet ret = null;
