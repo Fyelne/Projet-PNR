@@ -3,6 +3,8 @@ package Modele.requete;
 import java.sql.*;
 import java.util.ArrayList;
 
+import com.mysql.cj.util.Util;
+
 import Modele.Singleton;
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.Lieu;
@@ -22,7 +24,9 @@ public class Loutre{
         try {
             while(r.next()){
                 // Creation lieu 
-                Lieu l = Utilitaire.recupLieu(r);
+                double x = r.getDouble("lieu_Lambert_X");
+                double y = r.getDouble("lieu_Lambert_Y");
+                Lieu l = new Lieu(x, y);
 
                 IndiceLoutre indice = null;
                 if(r.getString("indice").equals("positif")){
@@ -45,7 +49,9 @@ public class Loutre{
                 int idLoutre = r.getInt("idObs");
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
-                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice);
+                String lieuD = r.getString("lieuDit");
+                String commune = r.getString("commune");
+                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice, lieuD, commune);
 
                 ret.add(oLoutre);
             
@@ -87,5 +93,44 @@ public class Loutre{
         }
 
         return ret;
+    }
+
+    
+    public void insertOneIntoBdd(ObsLoutre l){
+        
+        Utilitaire.insertBaseObs(l);
+        
+        String indice = "";
+        IndiceLoutre ind = l.getIndice();
+        switch(ind){
+            case POSITIF:
+                indice = "positif";
+                break;
+            
+            case NEGATIF:
+                indice = "negatif";
+                break;
+
+            case NON_PROSPECTION:
+                indice = "non prospection";
+                break;
+
+        } 
+        String addLoutre = "INSERT INTO Obs_Loutre (ObsL,commune,lieuDit,indice) VALUES ("
+                            + l.getId()  + " , \'" + l.getCommune() + "\' , \'" + l.getLieuDit() + "\' , \'" + indice + "\');";
+        System.out.println(addLoutre);
+        
+        try{
+            PreparedStatement  stmt = con.prepareStatement(addLoutre);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertAllIntoBdd(ArrayList<ObsLoutre> oL){
+        for(ObsLoutre o : oL){
+            insertOneIntoBdd(o);
+        }
     }
 }
