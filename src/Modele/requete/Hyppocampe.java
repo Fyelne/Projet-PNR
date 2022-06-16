@@ -97,7 +97,9 @@ public class Hyppocampe {
                         sex = Sexe.FEMELLE;
                 }
 
-                ObsHippocampe n = new ObsHippocampe(i, d, t, l , obs, taille, gestant, typePeche, espH, sex);
+                double temp = r.getDouble("temperatureEau");
+
+                ObsHippocampe n = new ObsHippocampe(i, d, t, l , obs, taille, gestant, typePeche, espH, sex, temp);
                 ret.add(n);
             }
         } catch (SQLException e) {
@@ -106,6 +108,87 @@ public class Hyppocampe {
         
         return ret;
 
+    }
+
+    public void insertOneHippocampe(ObsHippocampe h){
+        Utilitaire.insertBaseObs(h);
+        double taille = h.getTaille();
+        int gestant = 0;
+        if(h.getEstGestant()){
+            gestant = 1;
+        }
+
+        Peche p = h.getTypePeche();
+        String typePeche = "";
+        switch(p){
+            case CASIER_CREVETTES:
+                typePeche = "CasierCrevettes";
+                break;
+            case CASIER_MORGATES:
+                typePeche = "casierMorgates";
+                break;
+            case PETIT_FILET:
+                typePeche = "petitFilet";
+                break;
+            case VERVEUX_ANGUILLES:
+                typePeche = "verveuxAnguilles";
+                break;
+            default:
+                typePeche = "nonRenseigner";
+                break;
+        }
+
+        EspeceHippocampe e =  h.getEspece();
+        String espece = "";
+        switch(e){
+            case SYNGNATHUS_ACUS:
+                espece = "Syngnathus acus";
+                break;
+
+            case HIPPOCAMPUS_GUTTULATUS:
+                espece = "Hippocampus guttulatus";
+                break;
+
+            case HIPPOCAMPUS_HIPPOCAMPUS :
+                espece = "Hippocampus Hippocampus";
+                break;
+
+            case ENTERURUS_AEQUOREUS:
+                espece = "Enterurus aequoreus";
+                break;
+        }
+
+        Sexe s = h.getSexe();
+        String sexe = "";
+        switch(s){
+            case MALE:
+                sexe = "male";
+                break;
+
+            case FEMELLE:
+                sexe = "femelle";
+                break;
+            default:
+                sexe = "inconnu";
+                break;
+        }
+
+        String addHippo = "INSERT INTO obs_hippocampe (obsH, espece, sexe, temperatureEau, typePeche, taille, gestant) VALUES ("
+                            + h.getId() + " , \'" + espece + "\' , \'" + sexe + "\' , " +  + h.getTemperature() +  " , \'" + typePeche + "\' , " + taille + " , " + gestant + ");" ;
+        System.out.println(addHippo);
+
+        try{
+            PreparedStatement  stmt = con.prepareStatement(addHippo);
+            stmt.executeUpdate();
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+    }
+
+    public void insertAllIntoBdd(ArrayList<ObsHippocampe> oH){
+        for(ObsHippocampe obsH : oH){
+            insertOneHippocampe(obsH);
+        }
     }
 
 

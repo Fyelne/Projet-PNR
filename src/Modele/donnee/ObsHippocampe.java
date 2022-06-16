@@ -10,6 +10,7 @@ public class ObsHippocampe extends Observation {
     private Peche typePeche;
     private EspeceHippocampe espece;
     private Sexe sexe;
+    private double temperature;
 
     /**
      * Constructeur de la classe ObsHippocampe
@@ -24,7 +25,7 @@ public class ObsHippocampe extends Observation {
      * @param lEspece espece de l'hippocampe
      * @param leSexe sexe de l'hippocampe
      */
-    public ObsHippocampe(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, double laTaille, boolean estGestant, Peche leTypePeche, EspeceHippocampe lEspece, Sexe leSexe) {
+    public ObsHippocampe(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, double laTaille, boolean estGestant, Peche leTypePeche, EspeceHippocampe lEspece, Sexe leSexe, double temperatureEau) {
         super(id, date, heure, lieu, observateurs);
         if(laTaille >= 0 && leTypePeche != null && lEspece != null && leSexe != null) {
             this.taille = laTaille;
@@ -32,6 +33,7 @@ public class ObsHippocampe extends Observation {
             this.typePeche = leTypePeche;
             this.espece = lEspece;
             this.sexe = leSexe;
+            this.temperature = temperatureEau;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -143,5 +145,13 @@ public class ObsHippocampe extends Observation {
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
+    }
+
+    public double getTemperature(){
+        return this.temperature;
+    }
+
+    public void setTemperature(double temp){
+        this.temperature = temp;
     }
 }

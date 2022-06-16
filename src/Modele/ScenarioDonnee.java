@@ -56,7 +56,7 @@ public class ScenarioDonnee {
         + "\n\tContenu du nid : " + obsGCI.getNatureNid()
         + "\n\tNombre d'oiseaux observés : " + obsGCI.getNombre());
 
-        ObsHippocampe obsHippocampe = new ObsHippocampe(1, new Date(1000), new Time(1), lieu, observateurs, 5.0, false, Peche.PETIT_FILET, EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS, Sexe.FEMELLE);
+        ObsHippocampe obsHippocampe = new ObsHippocampe(1, new Date(1000), new Time(1), lieu, observateurs, 5.0, false, Peche.PETIT_FILET, EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS, Sexe.FEMELLE,18);
         System.out.println("Informations de l'observation du hippocampe :"
         + "\n\tId : " + obsHippocampe.getId() 
         + "\n\tDate : " + obsHippocampe.getDate() 
