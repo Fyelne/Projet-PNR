@@ -4,7 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import Modele.Singleton;
-import Modele.donnee.EspeceChouette;
+import Modele.donnee.TypeObservation;
+import Modele.donnee.Lieu;
+import Modele.donnee.*;
+import Modele.donnee.Observateur;
 
 public class Chouette {
     private Connection con;
@@ -13,12 +16,50 @@ public class Chouette {
         this.con = Singleton.getInstance().getConnection();
     }
 
-    public ArrayList<Chouette> builder(ResultSet r){
-        ArrayList<Chouette> ret = new ArrayList<Chouette>();
+    public ArrayList<ObsChouette> builder(ResultSet r){
+        ArrayList<ObsChouette> ret = new ArrayList<ObsChouette>();
+        //Construction des objets
+        try {
+            while (r.next()) {
+                int idChouette = r.getInt("numObs");
 
+                Date d = r.getDate("dateObs");
+                Time t = r.getTime("heureObs");
+
+                double x = r.getDouble("lieu_Lambert_X");
+                double y = r.getDouble("lieu_Lambert_Y");
+                Lieu l = new Lieu(x, y);
+
+                ArrayList<Observateur> obs = new ArrayList<Observateur>();
+                ResultSet res = this.recupObs(r.getInt("idObs"));
+                while(res.next()){
+                    int id = res.getInt("idObservateur");
+                    String nom = res.getString("nom");
+                    String prenom = res.getString("prenom");
+                    Observateur nObservateur = new Observateur(id, nom, prenom);
+                    obs.add(nObservateur);
+                }
+
+                TypeObservation typeObserv = null ;
+                if (r.getString("typeObs").equals("Sonore")) {
+                    typeObserv = TypeObservation.SONORE ;
+                }
+                else if (r.getString("typeObs").equals("Visuel")) {
+                    typeObserv = TypeObservation.VISUELLE ;
+                }
+                else {
+                    typeObserv = TypeObservation.SONORE_VISUELLE ;
+                }
+
+                ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObserv) ;
+                ret.add(oChouette);
+
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
-
-
         return ret;
 
         
@@ -80,5 +121,18 @@ public class Chouette {
         return ret;
     }
 
+
+    private ResultSet recupObs(int id){
+        ResultSet ret = null;
+        String req = "SELECT idObservateur, nom, prenom FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+        
+    }
 
 }
