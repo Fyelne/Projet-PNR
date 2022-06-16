@@ -47,7 +47,9 @@ public class Loutre{
                 int idLoutre = r.getInt("idObs");
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
-                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice);
+                String lieuD = r.getString("lieuDit");
+                String commune = r.getString("commune");
+                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice, lieuD, commune);
 
                 ret.add(oLoutre);
             
@@ -63,7 +65,7 @@ public class Loutre{
 
     public ResultSet getAllLoutreToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice "+
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice, commune, lieuDit "+
         "FROM `obs_loutre`, `observation`" +
         "WHERE ObsL = idObs " +
         "ORDER BY dateObs DESC ";

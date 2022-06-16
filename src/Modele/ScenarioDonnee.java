@@ -68,7 +68,7 @@ public class ScenarioDonnee {
         + "\n\tEspece : " + obsHippocampe.getEspece()
         + "\n\tSexe : " + obsHippocampe.getSexe());
 
-        ObsLoutre obsLoutre = new ObsLoutre(1, new Date(1000), new Time(1), lieu, observateurs, IndiceLoutre.POSITIF);
+        ObsLoutre obsLoutre = new ObsLoutre(1, new Date(1000), new Time(1), lieu, observateurs, IndiceLoutre.POSITIF, "Lieu Dit", "Com");
         System.out.println("Informations de l'observation de la loutre :"
         + "\n\tId : " + obsLoutre.getId() 
         + "\n\tDate : " + obsLoutre.getDate() 

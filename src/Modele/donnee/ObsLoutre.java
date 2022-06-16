@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class ObsLoutre extends Observation {
     private IndiceLoutre indice;
+    private String lieuDit;
+    private String commune;
 
     /**
      * Constructeur de la classe ObsLoutre
@@ -16,10 +18,12 @@ public class ObsLoutre extends Observation {
      * @param observateurs observateurs de l'observation
      * @param lIndice indice de prospection de l'observation de la loutre
      */
-    public ObsLoutre(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, IndiceLoutre lIndice) {
+    public ObsLoutre(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, IndiceLoutre lIndice, String lDit, String com) {
         super(id, date, heure, lieu, observateurs);
         if(lIndice != null) {
             this.indice = lIndice;
+            this.lieuDit = lDit;
+            this.commune = com;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -40,8 +44,12 @@ public class ObsLoutre extends Observation {
         return this.indice;
     }
 
-    public int getId(){
-        return super.getId();
+    public String getLieuDit(){
+        return this.lieuDit;
+    }
+
+    public String getCommune(){
+        return this.commune;
     }
 
     /**

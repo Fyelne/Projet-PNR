@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -11,12 +12,11 @@ import Modele.requete.Loutre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TreeTableColumn;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.*;
 
 public class ListenerAfficheAllLoutre {
     @FXML
@@ -50,6 +50,38 @@ public class ListenerAfficheAllLoutre {
         statut.setCellValueFactory(new PropertyValueFactory<>("indice"));
 
         tab.setItems(tr);
+    }
+
+
+    @FXML
+    void chooseObs(MouseEvent event) {
+
+        if(event.getButton().equals(MouseButton.PRIMARY)){
+            if(event.getClickCount() == 2){
+                ObsLoutre l = tab.getSelectionModel().getSelectedItem();
+                Scene sc = ((Node) event.getSource()).getScene();
+                Parent root;
+                
+                String url = "..//View//frame//AfficheObsLoutre.fxml";
+                try {
+                    // change the scene
+                    FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
+                    root = fx.load();
+                    ListenerObsLoutre lu = fx.getController();
+                    lu.load(l);
+                    sc.setRoot(root);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println("Double clicked");
+            }
+        }
+        
+
+
+        
+
     }
 
 }
