@@ -1,18 +1,16 @@
 package Modele.requete;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.util.*;
 
 import Modele.Singleton;
-import Modele.donnee.TypeObservation;
-import Modele.donnee.Lieu;
 import Modele.donnee.*;
-import Modele.donnee.Observateur;
 
-public class Chouette {
+public class ObsChouetteBdd {
     private Connection con;
 
-    public Chouette(){
+    public ObsChouetteBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
 
@@ -119,6 +117,8 @@ public class Chouette {
         return ret;
     }
 
+    public void insertIneIntoBdd(ObsChouette c){
 
-
+        Utilitaire.insertBaseObs(c);
+    }
 }
