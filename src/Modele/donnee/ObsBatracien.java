@@ -9,6 +9,9 @@ public class ObsBatracien extends Observation {
     private int nombreTetard;
     private int nombrePonte;
     private EspeceBatracien espece;
+    private int temperature;
+    private String[] meteo;
+
 
     /**
      * Constructeur de la classe ObsBatracien
@@ -20,14 +23,16 @@ public class ObsBatracien extends Observation {
      * @param resObs resultats de l'observation
      * @param lEspece espece de l'observation
      */
-    public ObsBatracien(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, int[] resObs, EspeceBatracien lEspece){
+    public ObsBatracien(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, int[] resObs, EspeceBatracien lEspece, int temp, String[] met){
         super(id, date, heure, lieu, observateurs);
-        if(resObs != null && lEspece != null && resObs.length == 4) {
+        if(resObs != null && lEspece != null && resObs.length == 4 && met.length == 4) {
             this.nombreAdultes = resObs[0];
             this.nombreAmplexus = resObs[1];
             this.nombreTetard = resObs[2];
             this.nombrePonte = resObs[3];
             this.espece = lEspece;
+            this.meteo = met;
+            this.temperature = temp;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -138,5 +143,21 @@ public class ObsBatracien extends Observation {
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
+    }
+
+    public int getTemperature(){
+        return this.temperature;
+    }
+
+    public void setTemperature(int temp){
+        this.temperature = temp;
+    }
+
+    public String[] getMeteo(){
+        return this.meteo;
+    }
+
+    public void setMeteo(String[] met){
+        this.meteo = met;
     }
 }

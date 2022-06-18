@@ -27,7 +27,8 @@ public class ScenarioDonnee {
 
 
         int[] resObs = {1, 2, 3, 4};
-        ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE);
+        String[] met= {"degagé", "froid", "leger", "non"};
+        ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE, 8, met);
         System.out.println("Informations de l'observation du batracien :" 
         + "\n\tId : " + obsBatracien.getId() + "\n\tDate : " + obsBatracien.getDate() + "\n\tHeure : " + obsBatracien.getHeure()
         + "\n\tLieu : " + printLieu(obsBatracien.getLieu()) + "\n\tObservateurs : " + printObservateur(obsBatracien.getObservateurs())
