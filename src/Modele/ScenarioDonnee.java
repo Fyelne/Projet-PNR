@@ -37,7 +37,7 @@ public class ScenarioDonnee {
         + "\n\tNombres de ponte : " + obsBatracien.getNombrePonte()
         + "\n\tEspece : " + obsBatracien.getEspece());
 
-        ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE);
+        ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE, false);
         System.out.println("Informations de l'observation de la chouette :"
         + "\n\tId : " + obsChouette.getId() 
         + "\n\tDate : " + obsChouette.getDate() 

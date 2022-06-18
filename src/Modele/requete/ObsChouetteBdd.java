@@ -47,7 +47,13 @@ public class ObsChouetteBdd {
                     typeObserv = TypeObservation.SONORE_VISUELLE ;
                 }
 
-                ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObserv) ;
+                int p = r.getInt("protocole");
+                boolean protocole = false;
+                if(p == 1){
+                    protocole = true;
+                }
+
+                ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObserv, protocole) ;
                 ret.add(oChouette);
 
             }
@@ -117,8 +123,43 @@ public class ObsChouetteBdd {
         return ret;
     }
 
-    public void insertIneIntoBdd(ObsChouette c){
+    public void insertIneIntoBdd(ObsChouette c, String idIndiv){
 
         Utilitaire.insertBaseObs(c);
+        TypeObservation t = c.getTypeObs();
+        String type = "";
+        switch(t){
+            case SONORE:
+                type = "Sonore";
+                break;
+            case VISUELLE:
+                type = "Visuelle";
+                break;
+            case SONORE_VISUELLE:
+                type = "Sonore et Visuelle";
+                break;
+        }
+
+        boolean p = c.getProtocole();
+        int protocole = 0;
+        if(p){
+            protocole = 1;
+        }
+
+        String req = "INSERT INTO obs_chouette (protocole,typeObs,leNumIndividu,numObs) VALUES ("
+                        + protocole + ", '" + type + "' , '" + idIndiv + "' , " + c.getId() + ");"; 
+
+         
+        try {
+            PreparedStatement stmt = con.prepareStatement(req);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+
+
     }
 }

@@ -51,8 +51,24 @@ public class ChouetteBdd {
                 break;
         }
 
-        
+        String req = "INSERT INTO chouette(numIndividu, espece, sexe) VALUES ('" +
+                        id +"' , '" + espece + "' , '" +sexe + "');";
+
+        try  {
+            PreparedStatement stmt = con.prepareStatement(req);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        ObsChouetteBdd cBdd = new ObsChouetteBdd();
+        for(ObsChouette o : ch.getObservations()){
+            cBdd.insertIneIntoBdd(o, id);
+        }
     }
+
+    
 
 
 
