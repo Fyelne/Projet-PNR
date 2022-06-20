@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -38,7 +37,7 @@
                         <Insets left="25.0" top="8.0" />
                      </HBox.margin>
                   </Button>
-                  <Label minWidth="130.4" prefHeight="50.0" prefWidth="264.0" text="Saisie Loutre" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Label minWidth="235.0" prefHeight="50.0" prefWidth="235.0" text="Saisie Loutre" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="40.0" />
                      </font>
@@ -87,7 +86,7 @@
                               <Insets bottom="10.0" top="-20.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="user1" alignment="CENTER" prefHeight="46.0" prefWidth="332.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                        <TextField fx:id="user1" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="332.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -103,7 +102,7 @@
                               <Font name="AvenirLTStd-Medium" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="user11" alignment="CENTER" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                        <TextField fx:id="user11" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -119,7 +118,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="user12" alignment="CENTER" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                        <TextField fx:id="user12" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -135,7 +134,7 @@
                               <Font name="AvenirLTStd-Medium" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="user13" alignment="CENTER" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                        <TextField fx:id="user13" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -221,13 +220,13 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#connect" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter" textFill="WHITE">
+                  <Button minWidth="140.0" mnemonicParsing="false" onAction="#connect" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>
                   </Button>
                   <AnchorPane prefHeight="95.0" prefWidth="119.0" HBox.hgrow="SOMETIMES" />
-                  <Button mnemonicParsing="false" onAction="#connect" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
+                  <Button minWidth="140.0" mnemonicParsing="false" onAction="#connect" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>

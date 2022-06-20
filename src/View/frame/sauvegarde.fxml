@@ -26,7 +26,7 @@
                                     <Image url="@image/copieP.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="62.0" prefWidth="429.0" text="Sauvegarde en cours..." textAlignment="CENTER">
+                              <Label minWidth="429.0" prefHeight="62.0" prefWidth="429.0" text="Sauvegarde en cours..." textAlignment="CENTER">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
