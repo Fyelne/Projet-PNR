@@ -12,6 +12,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,12 +20,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 
 /**
 *
 * @author Cool IT Help
 */
 public class GestionUtilisateur implements Initializable {
+    @FXML
+    private AnchorPane Menu;
     
     @FXML
     private Label label;
@@ -101,5 +105,16 @@ public class GestionUtilisateur implements Initializable {
 
         tableview.setItems(data);
                        
-    }  
+    } 
+    
+    @FXML
+    void openUserMenu(ActionEvent event) {
+        Menu.setVisible(true);
+    }
+
+    @FXML
+    void quitUserMenu(ActionEvent event) {
+        Menu.setVisible(false);
+    }
+
 }

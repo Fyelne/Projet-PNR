@@ -69,15 +69,17 @@ public class DebutListener {
     void connect(ActionEvent event) {
         try {
             String requete = "SELECT * FROM `utilisateur` WHERE prenomUtilisateur = \'" + user.getText() +"\'";
-            System.out.println(requete);
             PreparedStatement  stmt = c.prepareStatement(requete);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
-                    Stage newStage = new Stage();
-                    Parent r;
-                    util.changeScene("Accueil", connectButton);
+                    if(res.getString("estAdmin").equals("1")){
+                        util.changeScene("Admin", connectButton);
+                    }
+                    else{
+                        util.changeScene("Utilisateur", connectButton);
+                    }
                 }else{
                     wrong.setVisible(true);
                 }
