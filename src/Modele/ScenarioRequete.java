@@ -11,7 +11,7 @@ public class ScenarioRequete {
     public static void main(String[] args) {
 
 
-        Lieu lieu = new Lieu(7, 78);
+        Lieu lieu = new Lieu(13, 6);
 
         Observateur observateur = new Observateur(81, "leNom", "lePrenom");
         observateur.setNom("NOEL");
@@ -21,9 +21,11 @@ public class ScenarioRequete {
         observateurs.add(observateur);
         observateurs.add(new Observateur(82, "leNom", "lePrenom"));
 
-        ObsLoutre obsLoutre = new ObsLoutre(2130, new Date(1000), new Time(1), lieu, observateurs, IndiceLoutre.POSITIF, "Vannes", "Bar");
+        int id = Utilitaire.giveID();
         
-        Loutre bddLoutre = new Loutre();
-        bddLoutre.insertOneIntoBdd(obsLoutre);
+
+        
+
+
     }
 }
