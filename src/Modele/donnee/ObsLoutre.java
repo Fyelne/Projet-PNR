@@ -40,9 +40,6 @@ public class ObsLoutre extends Observation {
         return this.indice;
     }
 
-    public int getId(){
-        return super.getId();
-    }
 
     /**
      * Modifie l'indice de prospection de l'observation de la loutre
