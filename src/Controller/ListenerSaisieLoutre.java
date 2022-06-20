@@ -9,7 +9,7 @@ import java.util.*;
 import com.mysql.cj.xdevapi.PreparableStatement;
 
 import Modele.donnee.*;
-import Modele.requete.Loutre;
+import Modele.requete.ObsLoutreBdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -82,7 +82,7 @@ public class ListenerSaisieLoutre implements Initializable {
 
         ObsLoutre obsL = new ObsLoutre(id, d, ti, l, observateurs, indice.getValue(), commune.getText(), lieuDit.getText());
 
-        Loutre loutreBDD = new Loutre();
+        ObsLoutreBdd loutreBDD = new ObsLoutreBdd();
         
         loutreBDD.insertOneIntoBdd(obsL);
         System.out.println("L'observation a été Ajouté");

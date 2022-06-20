@@ -23,10 +23,10 @@ public class ObsLoutreBdd {
         //Construction des objets
         try {
             while(r.next()){
-                int idLoutre = r.getInt("idObs");
+                int idLoutre = r.getInt("ObsL");
 
-                Date d = r.getDate("dateObs");
-                Time t = r.getTime("heureObs");
+                Date d = r.getDate("date");
+                Time t = r.getTime("heure");
 
                 // Creation lieu 
                 Lieu l = Utilitaire.recupLieu(r);
@@ -72,7 +72,7 @@ public class ObsLoutreBdd {
         ResultSet ret = null;
         try{
             PreparedStatement  stmt = con.prepareStatement(
-                "SELECT * FROM `bd_pnr`.`Obs_Chouette`");
+                "SELECT * FROM `bd_pnr`.`Obs_loutre`");
             ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
