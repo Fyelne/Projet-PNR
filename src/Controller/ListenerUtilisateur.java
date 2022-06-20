@@ -118,13 +118,44 @@ public class ListenerUtilisateur {
             System.out.println(requete);
             PreparedStatement  stmt = log.prepareStatement(requete);
             ResultSet res = stmt.executeQuery();
+            String nomString = "";
+            String prenomString = "";
             while(res.next()){
-                prenom.setText(prenom.getText() + " " + res.getString("prenomUtilisateur"));
-                nom.setText(nom.getText() + " " + res.getString("nomUtilisateur"));
+                nomString = res.getString("nomUtilisateur");
+                prenomString = res.getString("prenomUtilisateur");
+                prenom.setText(prenom.getText() + " " + prenomString);
+                nom.setText(nom.getText() + " " + nomString);
                 tel.setText(tel.getText() + " " + res.getString("telephone"));
                 adresse.setText(adresse.getText() + " " + res.getString("adresse"));
+                if(res.getString("estAdmin").equals("1")){
+                    role.setText(role.getText() + " " + "Administrateur");
+                } else{
+                    role.setText(role.getText() + " " + "Utilisateur");
+                }
+                String date = res.getString("dateCreation");
+                String[] dateSplit = date.split("-");
+                since.setText(since.getText() + " " + dateSplit[2].split(" ")[0] + "/" + dateSplit[1] + "/" + dateSplit[0]);
                 enTete.setText(name);
             }
+
+            requete = "SELECT COUNT(*) nbObs " +
+            "FROM Observateur, AObserve, Observation WHERE lObservateur = idObservateur " +
+            "AND lObservation = idObs " +
+            "AND nom = '" + nomString + "' " +
+            "AND PRENOM = '" + prenomString + "' " +
+            "GROUP BY idObservateur;";
+            System.out.println(requete);
+
+            stmt = log.prepareStatement(requete);
+
+            res = stmt.executeQuery();
+            if(res.next()){
+                nb_Obs.setText(nb_Obs.getText() + " " + res.getString("nbObs"));
+            } else{
+                nb_Obs.setText(nb_Obs.getText() + " " + "0");
+            }
+
+            
         }catch (SQLException e) {
             e.printStackTrace();
         } 
