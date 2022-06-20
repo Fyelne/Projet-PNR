@@ -27,7 +27,7 @@ public class DebutListener {
      */
     void conClicked(ActionEvent event) {
         
-        util.changeScene("Connexion", event);
+        util.changeScene("Connexion");
         
     }
 
@@ -63,6 +63,7 @@ public class DebutListener {
             while(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
+                    Utilitaire.setCurrentUser(res.getInt("idUtilisateur"));
                     Stage newStage = new Stage();
                     Parent r;
                     try {
@@ -76,6 +77,7 @@ public class DebutListener {
                         newStage.setMaximized(true);
                         newStage.show();
                         newStage.centerOnScreen();
+                        Utilitaire.setScene(s);
                         
                     }catch (IOException e) {
                         e.printStackTrace();
@@ -85,6 +87,7 @@ public class DebutListener {
                     Scene sc = bt.getScene();
                     Stage st = (Stage) sc.getWindow();
                     st.close();
+                    
                 }else{
                     wrong.setVisible(true);
                 }

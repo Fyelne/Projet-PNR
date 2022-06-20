@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -22,6 +23,7 @@ public class LoadBis {
     private Label bonjour;
 
     private String name;
+    private Utilitaire util = new Utilitaire();
 
     @FXML
     void change(MouseEvent event) {
@@ -34,23 +36,10 @@ public class LoadBis {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        BorderPane bt = (BorderPane) event.getSource();
-        Scene sc = bt.getScene();
-        Parent root;
         
         String url = "..//View//frame//Accueil.fxml";
-        try {
-            // change the scene
-            FXMLLoader l = new FXMLLoader(getClass().getResource(url));
-            root = l.load();
-            ListenerAccueil controle = l.getController();
-            controle.setNom(this.name);
-            sc.setRoot(root);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        util.changeScene("Accueil");
+
         
     }
     

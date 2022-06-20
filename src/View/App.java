@@ -30,6 +30,7 @@ public class App extends Application{
             primaryStage.show();
             primaryStage.centerOnScreen();
             this.primaryStage = primaryStage;
+            Utilitaire.setScene(scene);
 
         } catch (IOException e) {
             e.printStackTrace();

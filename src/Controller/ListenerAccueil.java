@@ -1,10 +1,13 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ListenerAccueil {
+public class ListenerAccueil implements Initializable{
     @FXML
     private AnchorPane Menu;
 
@@ -28,9 +31,8 @@ public class ListenerAccueil {
     
     @FXML
     private Label bv;
-    private String name;
 
-    private Utilitaire util = new Utilitaire();
+    
 
     //@FXML
     //private Label username;
@@ -38,24 +40,12 @@ public class ListenerAccueil {
     @FXML
     private Button test;
 
+    private Utilitaire util = new Utilitaire();
     @FXML
     void changeTest(ActionEvent event) {
-        Button bt = (Button) event.getSource();
-        Scene sc = bt.getScene();
-        Parent root;
-        
-        String url = "..//View//frame//ChoixConsultation.fxml";
-        try {
             // change the scene
-            FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
-            root = fx.load();
-            ListenerAfficheAllLoutre lu = fx.getController();
-            lu.load();
-            sc.setRoot(root);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            util.changeScene("ChoixConsultation");
+
     }
 
     @FXML
@@ -82,7 +72,7 @@ public class ListenerAccueil {
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
             root = fx.load();
             ListenerUtilisateur lu = fx.getController();
-            lu.load(this.name, "Accueil");
+            lu.load(Utilitaire.getCurrentNameUser(), "Accueil");
             sc.setRoot(root);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -90,9 +80,12 @@ public class ListenerAccueil {
         }
     }
 
-    void setNom(String nom){
-        bv.setText("Bienvenue " + nom);
-        this.name = nom;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+        bv.setText("Bienvenue " + Utilitaire.getCurrentNameUser());
+        
     }
 
 }

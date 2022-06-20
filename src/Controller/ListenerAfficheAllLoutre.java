@@ -1,9 +1,11 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.ObsLoutre;
@@ -18,7 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.*;
 
-public class ListenerAfficheAllLoutre {
+public class ListenerAfficheAllLoutre implements Initializable{
     @FXML
     private TableColumn<ObsLoutre, Date> date;
     @FXML
@@ -34,7 +36,7 @@ public class ListenerAfficheAllLoutre {
     @FXML
     private Button user;
 
-    protected void load(){
+    public void initialize(URL location, ResourceBundle resources){
         Loutre data = new Loutre();
 
         ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
@@ -62,7 +64,7 @@ public class ListenerAfficheAllLoutre {
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
-                String url = "..//View//frame//AfficheObsLoutre.fxml";
+                String url = "..//View//frame//AffichageObservationLoutre.fxml";
                 try {
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
@@ -83,5 +85,7 @@ public class ListenerAfficheAllLoutre {
         
 
     }
+
+
 
 }

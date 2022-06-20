@@ -162,7 +162,7 @@
                               <Font size="35.0" />
                            </font>
                         </Label>
-                        <Label text="Label">
+                        <Label fx:id="lieuDit" text="Label">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -175,7 +175,7 @@
                               <Font name="AvenirLTStd-Medium" size="35.0" />
                            </font>
                         </Label>
-                        <Label text="Label">
+                        <Label fx:id="indice" text="Label">
                            <font>
                               <Font size="25.0" />
                            </font>
