@@ -17,6 +17,7 @@ public class BatracienBdd{
         this.con = Singleton.getInstance().getConnection();
     }
 
+    // à revoir pour la liaison avec zonehumide et lieuVege
     public void insertOneInto(ObsBatracien b){
         Utilitaire.insertBaseObs(b);
 
@@ -37,6 +38,7 @@ public class BatracienBdd{
         int nbTet = b.getNombreTetard();
         int temp = b.getTemperature();
         String[] met = b.getMeteo();
+        // à revoir 
         int idVege = this.idLieuVege();
         int idZh = this.idZH();
 
