@@ -67,21 +67,6 @@ public class ObsLoutreBdd {
         return ret;
     }
 
-    public ResultSet getAllLoutreToBuild(){
-        ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice "+
-        "FROM `obs_loutre`, `observation`" +
-        "WHERE ObsL = idObs " +
-        "ORDER BY dateObs DESC ";
-        try{
-            PreparedStatement  stmt = con.prepareStatement(req);
-            ret = stmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return ret;
-    }
-    
 
     public ResultSet getAllLoutreBDD(){
         ResultSet ret = null;
