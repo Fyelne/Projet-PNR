@@ -37,7 +37,7 @@ public class ListenerAfficheAllLoutre {
     protected void load(){
         ObsLoutreBdd data = new ObsLoutreBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreBDD());
+        ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
