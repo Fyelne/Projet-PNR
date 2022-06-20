@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.io.IOException;
 import java.sql.*;
 
+import com.mysql.cj.util.Util;
+
 import Modele.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +31,7 @@ public class DebutListener {
      */
     void conClicked(ActionEvent event) {
         
-        util.changeScene("Connexion", event);
+        util.changeScene("Connexion", (Button)event.getSource());
     }
 
 
@@ -75,25 +77,7 @@ public class DebutListener {
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
                     Stage newStage = new Stage();
                     Parent r;
-                    try {
-                        FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\LoadBis.fxml"));
-                        r = loader.load();
-                        LoadBis controle = loader.getController();
-                        controle.myFonction(true, user.getText());
-                        Scene s = new Scene(r);
-                        newStage.setTitle("Accueil");
-                        newStage.setScene(s);
-                        newStage.setMaximized(true);
-                        newStage.show();
-                        newStage.centerOnScreen();
-                        
-                    }catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //fermeture de la page de connexion
-                    Scene sc = connectButton.getScene();
-                    Stage st = (Stage) sc.getWindow();
-                    st.close();
+                    util.changeScene("Accueil", connectButton);
                 }else{
                     wrong.setVisible(true);
                 }
