@@ -47,7 +47,7 @@ public class ScenarioDonnee {
         + "\n\tObservateurs : " + printObservateur(obsChouette.getObservateurs())
         + "\n\tType d'observation : " + obsChouette.getTypeObs());
         
-        ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1);
+        ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1, false);
         System.out.println("Informations de l'observation du GCI :"
         + "\n\tId : " + obsGCI.getId() 
         + "\n\tDate : " + obsGCI.getDate() 
@@ -92,7 +92,7 @@ public class ScenarioDonnee {
         chouette.videObs();
         System.out.println("Observations : " + printObsChouette(chouette.getObservations()));
 
-        NidGCI nidGCI = new NidGCI(1, "laPlage");
+        NidGCI nidGCI = new NidGCI(1, "laPlage", false);
         System.out.println("Informations du nidGCI : \n\tId : " + nidGCI.getId() + "\n\tNom de la plage : " + nidGCI.getNomPlage() + "\n\tNombre d'envol : " + nidGCI.getNbEnvol());
         nidGCI.setNomPlage("laNouvellePlage");
         nidGCI.setNbEnvol(1);
