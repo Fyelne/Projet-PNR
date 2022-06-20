@@ -22,6 +22,8 @@ public class ScenarioRequete {
         observateurs.add(new Observateur(82, "leNom", "lePrenom"));
 
         int id = Utilitaire.giveID();
+        Time t = new Time(17*60*60*1000 );
+        System.out.println(t.toString());
         
 
         

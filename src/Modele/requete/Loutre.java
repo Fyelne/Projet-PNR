@@ -117,7 +117,7 @@ public class Loutre{
 
         } 
         String addLoutre = "INSERT INTO Obs_Loutre (ObsL,commune,lieuDit,indice) VALUES ("
-                            + l.getId()  + " , \'" + l.getCommune() + "\' , \'" + l.getLieuDit() + "\' , \'" + indice + "\');";
+                            + l.getId()  + " , \'" +  l.getLieuDit() + "\' , \'" + l.getCommune() + "\' , \'" + indice + "\');";
         System.out.println(addLoutre);
         
         try{

@@ -73,12 +73,6 @@ public class ListenerObsLoutre {
         commune.setText(commune.getText() + " " + l.getCommune());
         indice.setText(indice.getText() + " " +  l.getIndice().toString());
 
-        /* 
-        map.initialize();
-        Coordinate c1 = new Coordinate(l.getLieu().getyCoord(), l.getLieu().getxCoord());
-        map.setCenter(c1);
-        */
-        
     }
 
 

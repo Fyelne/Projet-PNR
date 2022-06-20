@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieLoutre">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -91,7 +91,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="56.0" prefWidth="391.0">
                            <children>
-                              <DatePicker editable="false" prefHeight="66.0" prefWidth="312.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                              <DatePicker fx:id="date" editable="false" prefHeight="66.0" prefWidth="312.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
                            </children>
                         </HBox>
                         <Label text="Horaire">
@@ -105,13 +105,13 @@
                         <HBox alignment="CENTER" prefHeight="66.0" prefWidth="391.0">
                            <children>
                               <AnchorPane prefHeight="66.0" prefWidth="89.0" HBox.hgrow="ALWAYS" />
-                              <Spinner fx:id="heure" prefHeight="25.0" prefWidth="70.0" />
+                              <Spinner fx:id="heure" editable="true" prefHeight="25.0" prefWidth="70.0" />
                               <Label prefHeight="24.0" prefWidth="8.0" text=":">
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="20.0" />
                                  </font>
                               </Label>
-                              <Spinner fx:id="minute" prefHeight="25.0" prefWidth="70.0" />
+                              <Spinner fx:id="minute" editable="true" prefHeight="25.0" prefWidth="70.0" />
                               <AnchorPane prefHeight="66.0" prefWidth="102.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
@@ -158,17 +158,33 @@
                   <AnchorPane minWidth="0.0" prefHeight="700.0" prefWidth="168.0" HBox.hgrow="SOMETIMES" />
                   <VBox alignment="CENTER_LEFT" prefHeight="700.0" prefWidth="377.0" HBox.hgrow="SOMETIMES">
                      <children>
-                        <ImageView fitHeight="187.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/loutre.jpg" />
-                           </image>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@image/loutre.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="365.0">
+                           <children>
+                              <Button fx:id="btAddObs" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addObservateur" prefHeight="39.0" prefWidth="211.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Gérer les observateurs">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
                            <VBox.margin>
-                              <Insets left="40.0" />
+                              <Insets top="20.0" />
                            </VBox.margin>
-                        </ImageView>
+                        </HBox>
                         <Label text="Commune">
                            <VBox.margin>
-                              <Insets bottom="10.0" top="40.0" />
+                              <Insets bottom="10.0" top="20.0" />
                            </VBox.margin>
                            <font>
                               <Font name="AvenirLTStd-Medium" size="20.0" />
@@ -209,7 +225,7 @@
                         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0">
                            <children>
                               <AnchorPane prefHeight="53.0" prefWidth="92.0" />
-                              <ComboBox prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                              <ComboBox fx:id="indice" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
                               <AnchorPane prefHeight="53.0" prefWidth="119.0" />
                            </children>
                         </HBox>
