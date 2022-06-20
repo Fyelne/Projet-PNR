@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.ObsLoutre;
 import Modele.donnee.Observation;
-import Modele.requete.Loutre;
+import Modele.requete.ObsLoutreBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,9 +35,9 @@ public class ListenerAfficheAllLoutre {
     private Button user;
 
     protected void load(){
-        Loutre data = new Loutre();
+        ObsLoutreBdd data = new ObsLoutreBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
+        ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreBDD());
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
