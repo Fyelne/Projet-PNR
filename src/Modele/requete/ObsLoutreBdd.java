@@ -11,10 +11,10 @@ import Modele.donnee.Lieu;
 import Modele.donnee.ObsLoutre;
 import Modele.donnee.Observateur;
 
-public class Loutre{
+public class ObsLoutreBdd {
     private Connection con;
 
-    public Loutre(){
+    public ObsLoutreBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
 
@@ -23,18 +23,13 @@ public class Loutre{
         //Construction des objets
         try {
             while(r.next()){
-                // Creation lieu 
-                double x = r.getDouble("lieu_Lambert_X");
-                double y = r.getDouble("lieu_Lambert_Y");
-                Lieu l = new Lieu(x, y);
+                int idLoutre = r.getInt("idObs");
 
-                IndiceLoutre indice = null;
-                if(r.getString("indice").equals("positif")){
-                    indice = IndiceLoutre.POSITIF;
-                }else{
-                    indice = IndiceLoutre.NEGATIF;
-                    
-                }
+                Date d = r.getDate("dateObs");
+                Time t = r.getTime("heureObs");
+
+                // Creation lieu 
+                Lieu l = Utilitaire.recupLieu(r);
                 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
                 ResultSet res = Utilitaire.recupObs(r.getInt("idObs"));
@@ -46,15 +41,22 @@ public class Loutre{
                     obs.add(nObservateur);
                 }
 
-                int idLoutre = r.getInt("idObs");
-                Date d = r.getDate("dateObs");
-                Time t = r.getTime("heureObs");
+                IndiceLoutre indice = null;
+                if(r.getString("indice").equals("positif")){
+                    indice = IndiceLoutre.POSITIF;
+                }
+                if(r.getString("indice").equals("negatif")){
+                    indice = IndiceLoutre.NEGATIF;
+                } else{
+                    indice = IndiceLoutre.NON_PROSPECTION;
+                }
+
                 String lieuD = r.getString("lieuDit");
                 String commune = r.getString("commune");
+
                 ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice, lieuD, commune);
 
                 ret.add(oLoutre);
-            
             }
 
         } catch (SQLException e) {
@@ -79,8 +81,7 @@ public class Loutre{
         }
         return ret;
     }
-
-
+    
 
     public ResultSet getAllLoutreBDD(){
         ResultSet ret = null;
@@ -91,13 +92,11 @@ public class Loutre{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return ret;
     }
-
     
-    public void insertOneIntoBdd(ObsLoutre l){
-        
+
+    public void insertOneIntoBdd(ObsLoutre l){        
         Utilitaire.insertBaseObs(l);
         
         String indice = "";
@@ -114,8 +113,8 @@ public class Loutre{
             case NON_PROSPECTION:
                 indice = "non prospection";
                 break;
-
         } 
+
         String addLoutre = "INSERT INTO Obs_Loutre (ObsL,commune,lieuDit,indice) VALUES ("
                             + l.getId()  + " , \'" + l.getCommune() + "\' , \'" + l.getLieuDit() + "\' , \'" + indice + "\');";
         System.out.println(addLoutre);

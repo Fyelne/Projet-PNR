@@ -7,6 +7,10 @@ import java.sql.SQLException;
 
 import Modele.Singleton;
 import Modele.donnee.EspeceBatracien;
+import Modele.donnee.MeteoCiel;
+import Modele.donnee.MeteoPluie;
+import Modele.donnee.MeteoTemp;
+import Modele.donnee.MeteoVent;
 import Modele.donnee.ObsBatracien;
 
 public class BatracienBdd{
@@ -16,6 +20,8 @@ public class BatracienBdd{
     public BatracienBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
+
+
 
     // à revoir pour la liaison avec zonehumide et lieuVege
     public void insertOneInto(ObsBatracien b){
@@ -37,14 +43,18 @@ public class BatracienBdd{
         int nbPonte = b.getNombrePonte();
         int nbTet = b.getNombreTetard();
         int temp = b.getTemperature();
-        String[] met = b.getMeteo();
+        MeteoCiel metCiel = b.getMeteoCiel();
+        MeteoTemp metTemp = b.getMeteoTemp();
+        MeteoVent metVent = b.getMeteoVent();
+        MeteoPluie metPluie = b.getMeteoPluie();
+
         // à revoir 
         int idVege = this.idLieuVege();
         int idZh = this.idZH();
 
         String req = "INSERT INTO obs_batracien VALUES ( " + b.getId() + " , '" + espece + "' , " + nbAdulte + " , " + nbAmpl +
-                        " , " + nbPonte + " , " + nbTet + " , " + temp + " , '" + met[0] + "','" + met[1] + "','" + 
-                        met[2] + "', '" + met[3] + "' , " + idZh + " , " + idVege + ");";
+                        " , " + nbPonte + " , " + nbTet + " , " + temp + " , '" + metCiel + "','" + metTemp + "','" + 
+                        metVent + "', '" + metPluie + "' , " + idZh + " , " + idVege + ");";
 
         PreparedStatement stmt;
         try {

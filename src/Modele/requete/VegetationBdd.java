@@ -2,7 +2,9 @@ package Modele.requete;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Modele.Singleton;
 import Modele.donnee.NatureVege;
@@ -14,6 +16,39 @@ public class VegetationBdd {
     public VegetationBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
+
+
+    public ArrayList<Vegetation> builder(ResultSet r) {
+        ArrayList<Vegetation> ret = new ArrayList<Vegetation>();
+        //Construction des objets
+        try {
+            while (r.next()) {
+                int idVegetation = r.getInt("idVege");
+
+                NatureVege natVeg = null ;
+                if (r.getString("natureVege").equals("environnement")) {
+                    natVeg = NatureVege.ENVIRONNEMENT ;
+                } else if (r.getString("natureVege").equals("bordure")) {
+                    natVeg = NatureVege.BORDURE ;
+                } else {
+                    natVeg = NatureVege.RISPYLE ;
+                }
+
+                String vege = r.getString("vegetation");
+
+                int decritLieuVege = r.getInt("decrit_LieuVege");
+
+                Vegetation vegetation = new Vegetation(idVegetation, natVeg, vege, decritLieuVege) ;
+                ret.add(vegetation);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
 
     public void insertOneInto(Vegetation v){
         int id = v.getId();

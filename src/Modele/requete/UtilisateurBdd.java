@@ -1,14 +1,44 @@
 package Modele.requete;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import Modele.Singleton;
+import Modele.donnee.Utilisateur;
 
-public class Utilisateur {
+public class UtilisateurBdd {
     private Connection con;
-    public Utilisateur() {
+
+    public UtilisateurBdd() {
         con = Singleton.getInstance().getConnection();
     }
+
+    public ArrayList<Utilisateur> builder (ResultSet r) {
+        ArrayList<Utilisateur> ret = new ArrayList<Utilisateur>();
+        //Construction des objets
+        try {
+            while (r.next()) {
+                int id = r.getInt("idUtilisateur");
+
+                String nom = r.getString("nomUtilisateur");
+                String prenom = r.getString("prenomUtilisateur");
+
+                int e =  r.getInt("estAdmin");
+                boolean isAdmin = false;
+                if (e == 1) {
+                    isAdmin = true;
+                }
+
+                Utilisateur utilisateur = new Utilisateur(id, nom, prenom, isAdmin) ;
+                ret.add(utilisateur);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ret;
+    }   
 
     public boolean ajouterUtilisateur(String nom, String prenom, String mdp, String telephone, String adresse, boolean admin) {
         try {
