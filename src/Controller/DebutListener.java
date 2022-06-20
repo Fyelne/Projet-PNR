@@ -70,7 +70,7 @@ public class DebutListener {
             System.out.println(requete);
             PreparedStatement  stmt = c.prepareStatement(requete);
             ResultSet res = stmt.executeQuery();
-            while(res.next()){
+            if(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
                     Stage newStage = new Stage();
@@ -97,6 +97,8 @@ public class DebutListener {
                 }else{
                     wrong.setVisible(true);
                 }
+            } else {
+                wrong.setVisible(true);
             }
         } catch (SQLException e) {
             e.printStackTrace();
