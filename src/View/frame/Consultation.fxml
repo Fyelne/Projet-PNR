@@ -22,7 +22,7 @@
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/proto_blanc/menu.png" />
+                        <Image url="@image/proto_blanc/menu.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -43,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/proto_blanc/user.png" />
+                        <Image url="@image/proto_blanc/user.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -57,9 +57,9 @@
    <bottom>
       <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #008864; -fx-background-radius: 80;" BorderPane.alignment="CENTER">
          <graphic>
-            <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="47.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/proto_blanc/retour.png" />
+                  <Image url="@image/retour.png" />
                </image>
             </ImageView>
          </graphic>
@@ -71,16 +71,16 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox minWidth="0.0" prefHeight="189.0" prefWidth="1136.0">
+            <HBox alignment="CENTER" minWidth="0.0" prefHeight="189.0" prefWidth="1136.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="800.0" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <AnchorPane minWidth="0.0" prefHeight="193.0" prefWidth="288.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/batracien.jpg" />
+                                    <Image url="@image/batracien.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -95,16 +95,17 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets right="150.0" />
+                        <Insets />
                      </HBox.margin>
                   </VBox>
+                  <AnchorPane minWidth="0.0" prefHeight="193.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/gravelot.jpg" />
+                                    <Image url="@image/gravelot.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -119,16 +120,17 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets left="150.0" right="150.0" />
+                        <Insets />
                      </HBox.margin>
                   </VBox>
+                  <AnchorPane minWidth="0.0" prefHeight="200.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/hippocampe.jpg" />
+                                    <Image url="@image/hippocampe.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -143,25 +145,25 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets left="150.0" />
+                        <Insets />
                      </HBox.margin>
                   </VBox>
-                  <AnchorPane prefHeight="200.0" prefWidth="800.0" />
+                  <AnchorPane minWidth="0.0" prefHeight="193.0" prefWidth="288.0" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="800.0" />
+                  <AnchorPane prefHeight="177.0" prefWidth="500.0" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <HBox.margin>
-                        <Insets right="200.0" />
+                        <Insets />
                      </HBox.margin>
                      <children>
                         <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/loutre.jpg" />
+                                    <Image url="@image/loutre.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -179,16 +181,17 @@
                         </Label>
                      </children>
                   </VBox>
+                  <AnchorPane prefHeight="177.0" prefWidth="333.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="177.0" prefWidth="332.0">
                      <HBox.margin>
-                        <Insets left="200.0" />
+                        <Insets />
                      </HBox.margin>
                      <children>
                         <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/chouette.jpg" />
+                                    <Image url="@image/chouette.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -203,7 +206,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <AnchorPane prefHeight="200.0" prefWidth="800.0" />
+                  <AnchorPane prefHeight="177.0" prefWidth="500.0" />
                </children>
                <VBox.margin>
                   <Insets top="60.0" />
