@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.io.IOException;
 import java.sql.*;
 
+import com.mysql.cj.util.Util;
+
 import Modele.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +13,8 @@ import javafx.geometry.Dimension2D;
 import javafx.scene.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 //Listener for the start of the program until connection
@@ -36,7 +40,10 @@ public class DebutListener {
     // password
 
     @FXML
-    private PasswordField mdp; // field mdp
+    private PasswordField mdp;
+    //Add listener to mdp when enter is pressed
+
+
 
     @FXML
     private TextField user; // field for identifiant
@@ -44,10 +51,16 @@ public class DebutListener {
     @FXML
     private Label wrong; // label who is show when the password is incorect
 
+    @FXML
+    private Button connectButton; // button to connect
+
     
     private LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
     private Connection c = l.connexion();
     
+
+
+
     @FXML
     /**
      * To check password and username / if they are good, you can connect
@@ -57,49 +70,39 @@ public class DebutListener {
     void connect(ActionEvent event) {
         try {
             String requete = "SELECT * FROM `utilisateur` WHERE prenomUtilisateur = \'" + user.getText() +"\'";
-            System.out.println(requete);
             PreparedStatement  stmt = c.prepareStatement(requete);
             ResultSet res = stmt.executeQuery();
-            while(res.next()){
+            if(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
-                    Utilitaire.setCurrentUser(res.getInt("idUtilisateur"));
-                    Stage newStage = new Stage();
-                    Parent r;
-                    try {
-                        FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\LoadBis.fxml"));
-                        r = loader.load();
-                        LoadBis controle = loader.getController();
-                        controle.myFonction(true, user.getText());
-                        Scene s = new Scene(r);
-                        newStage.setTitle("Accueil");
-                        newStage.setScene(s);
-                        newStage.setMaximized(true);
-                        newStage.show();
-                        newStage.centerOnScreen();
-                        Utilitaire.setScene(s);
-                        
-                    }catch (IOException e) {
-                        e.printStackTrace();
+                    if(res.getString("estAdmin").equals("1")){
+                        util.changeScene("Admin");
                     }
-                    //fermeture de la page de connexion
-                    Button bt = (Button) event.getSource();
-                    Scene sc = bt.getScene();
-                    Stage st = (Stage) sc.getWindow();
-                    st.close();
-                    
+                    else{
+                        util.changeScene("Utilisateur");
+                    }
                 }else{
                     wrong.setVisible(true);
                 }
+            } else {
+                wrong.setVisible(true);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
-
-    
+        }
     }
    
-
+    @FXML
+    /**
+     * To check password and username / if they are good, you can connect
+     * Change the scene if it's good
+     * @param event Event
+     */
+    void enterPressed(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.ENTER)){
+            connect(null);
+        }
+    }
 
 
 }

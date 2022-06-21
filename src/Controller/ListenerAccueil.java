@@ -75,6 +75,12 @@ public class ListenerAccueil implements Initializable{
     }
 
     @FXML
+    private void goToGestionUtilisateur(ActionEvent event) {
+        Utilitaire util = new Utilitaire();
+        util.changeScene("GestionUtilisateur", (Button)event.getSource());
+    }
+
+    @FXML
     void quitMenu(ActionEvent event) {
         Menu.setVisible(false);
     }
