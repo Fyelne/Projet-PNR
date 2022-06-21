@@ -44,7 +44,7 @@
                         <AnchorPane prefHeight="181.0" prefWidth="400.0" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <PasswordField fx:id="mdp" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="400.0" promptText="Mot de passe" style="-fx-background-color: #6fb09c; -fx-background-radius: 12;" />
+                              <PasswordField fx:id="mdp" onKeyPressed="#enterPressed" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="400.0" promptText="Mot de passe" style="-fx-background-color: #6fb09c; -fx-background-radius: 12;" />
                            </children>
                         </HBox>
                         <Label fx:id="wrong" prefHeight="15.0" prefWidth="395.0" text="Identifiant ou mot de passe incorrect" visible="false">
@@ -56,7 +56,7 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <AnchorPane prefHeight="31.0" prefWidth="128.0" />
-                              <Button mnemonicParsing="false" onAction="#connect" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Se connecter" textFill="WHITE">
+                              <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connect" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Se connecter" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

@@ -10,8 +10,7 @@ import javafx.scene.control.Button;
 public class Utilitaire {
 
     //To change easily the frame
-    public  void changeScene(String file, ActionEvent event){
-        Button bt = (Button) event.getSource();
+    public  void changeScene(String file, Button bt) {
         Scene sc = bt.getScene();
         Parent root;
         

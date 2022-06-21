@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -71,7 +71,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Label prefHeight="122.0" prefWidth="704.0" style="-fx-text-alignment: center;" text="L'observation a été supprimé avec succès !" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                  <Label minWidth="704.0" prefHeight="122.0" prefWidth="704.0" style="-fx-text-alignment: center;" text="L'observation a été supprimé avec succès !" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>

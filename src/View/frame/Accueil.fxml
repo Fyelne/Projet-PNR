@@ -209,7 +209,7 @@
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                                  <image>
-                                    <Image url="file:/C:/Users/hugol/Documents/Cours/S2/SAE/GIGA_SAE/G2/dev/PNR/src/View/frame/image/copieP.png" />
+                                    <Image url="@image/copieP.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="33.0" prefWidth="265.0" text="&quot;Une autre vie s'invente ici.&quot;" textAlignment="CENTER">
