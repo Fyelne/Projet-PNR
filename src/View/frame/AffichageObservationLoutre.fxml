@@ -106,12 +106,8 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-<<<<<<< HEAD
                         <AnchorPane prefHeight="76.0" prefWidth="468.0" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;">
-=======
-                        <AnchorPane minWidth="420.0" prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;">
->>>>>>> ba497c38cc329b48382a81650b0f4cf2af218477
                            <children>
                               <GridPane layoutX="144.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
