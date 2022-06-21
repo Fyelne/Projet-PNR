@@ -44,7 +44,7 @@ public class ListenerAccueil implements Initializable{
     @FXML
     void changeTest(ActionEvent event) {
             // change the scene
-            util.changeScene("ChoixConsultation");
+            util.changeScene("ChoixConsultation", user);
 
     }
 
@@ -77,7 +77,7 @@ public class ListenerAccueil implements Initializable{
     @FXML
     private void goToGestionUtilisateur(ActionEvent event) {
         Utilitaire util = new Utilitaire();
-        util.changeScene("GestionUtilisateur");
+        util.changeScene("GestionUtilisateur", user);
     }
 
     @FXML

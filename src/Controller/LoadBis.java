@@ -41,16 +41,19 @@ public class LoadBis implements Initializable{
         }
         
         String url = "..//View//frame//Accueil.fxml";
-        util.changeScene("Accueil");
+        Scene sc = bonjour.getScene();
+        Parent root;
+        try {
+            // change the scene
+            root = FXMLLoader.load(getClass().getResource(url));
+            sc.setRoot(root);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         
     }
-    
-
-
-
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

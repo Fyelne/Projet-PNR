@@ -29,7 +29,7 @@ public class DebutListener {
      */
     void conClicked(ActionEvent event) {
         
-        util.changeScene("Connexion");
+        util.changeScene("Connexion", (Button) event.getSource());
         
     }
 
@@ -45,6 +45,9 @@ public class DebutListener {
 
     @FXML
     private Label wrong; // label who is show when the password is incorect
+
+    @FXML
+    private Button connectButton;
 
     
     private LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
@@ -65,29 +68,10 @@ public class DebutListener {
             while(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
-                    Stage newStage = new Stage();
-                    Parent r;
-                    try {
-                        FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\LoadBis.fxml"));
-                        r = loader.load();
-                        Scene s = new Scene(r);
-                        newStage.setTitle("Accueil");
-                        newStage.setScene(s);
-                        newStage.setMaximized(true);
-                        newStage.show();
-                        newStage.centerOnScreen();
-                        Utilitaire.setScene(s);
                         Utilitaire.setCurrentNameUser(user.getText());
-                        Utilitaire.setCurrentUser(res.getInt("idUtilisateur"));
+                        util.changeScene("Accueil", connectButton);
                         
-                    }catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //fermeture de la page de connexion
-                    Button bt = (Button) event.getSource();
-                    Scene sc = bt.getScene();
-                    Stage st = (Stage) sc.getWindow();
-                    st.close();
+                        
                 }else{
                     wrong.setVisible(true);
                 }

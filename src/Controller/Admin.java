@@ -8,6 +8,6 @@ public class Admin {
     @FXML
     private void goToGestionUtilisateur(ActionEvent event) {
         Utilitaire util = new Utilitaire();
-        util.changeScene("GestionUtilisateur");
+        util.changeScene("GestionUtilisateur", (Button) event.getSource());
     }
 }

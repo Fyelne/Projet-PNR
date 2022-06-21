@@ -23,14 +23,15 @@ public class Utilitaire {
     private static Scene actualScene;
 
     //To change easily the frame
-    public   void changeScene(String file){
+    public  void changeScene(String file, Button bt) {
+        Scene sc = bt.getScene();
         Parent root;
         
         String url = "..//View//frame//" + file + ".fxml";
         try {
             // change the scene
             root = FXMLLoader.load(getClass().getResource(url));
-            actualScene.setRoot(root);
+            sc.setRoot(root);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -64,11 +65,13 @@ public class Utilitaire {
     }
 
     public static String getCurrentNameUser(){
+        System.out.println(currentUsername);
         return currentUsername;
     }
 
     public static void setCurrentNameUser(String name){
         if(name != null){
+            System.out.println(name + "/");
             currentUsername = name;
         }
         
