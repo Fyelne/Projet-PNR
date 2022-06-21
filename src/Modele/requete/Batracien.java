@@ -2,22 +2,23 @@ package Modele.requete;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Modele.Singleton;
-import Modele.donnee.IndiceLoutre;
+import Modele.donnee.EspeceBatracien;
 import Modele.donnee.Lieu;
-import Modele.donnee.ObsLoutre;
+import Modele.donnee.ObsBatracien;
 import Modele.donnee.Observateur;
 
-public class Loutre{
+public class Batracien{
     private Connection con;
 
-    public Loutre(){
+    public Batracien(){
         this.con = Singleton.getInstance().getConnection();
     }
 
-    public ArrayList<ObsLoutre> builder(ResultSet r){
-        ArrayList<ObsLoutre> ret = new ArrayList<ObsLoutre>();
+    public ArrayList<ObsBatracien> builder(ResultSet r){
+        ArrayList<ObsBatracien> ret = new ArrayList<ObsBatracien>();
         //Construction des objets
         try {
             while(r.next()){
@@ -25,14 +26,6 @@ public class Loutre{
                 double x = r.getDouble("lieu_Lambert_X");
                 double y = r.getDouble("lieu_Lambert_Y");
                 Lieu l = new Lieu(x, y);
-
-                IndiceLoutre indice = null;
-                if(r.getString("indice").equals("positif")){
-                    indice = IndiceLoutre.POSITIF;
-                }else{
-                    indice = IndiceLoutre.NEGATIF;
-                    
-                }
                 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
                 ResultSet res = this.recupObs(r.getInt("idObs"));
@@ -44,12 +37,16 @@ public class Loutre{
                     obs.add(nObservateur);
                 }
 
-                int idLoutre = r.getInt("idObs");
+                int idBatracien = r.getInt("idObs");
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
-                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice);
+                int[] resObs = new int[] {r.getInt("nombreAdultes"), r.getInt("nombreAmplexus"), r.getInt("nombrePonte"), r.getInt("nombreTetard")};
+                EspeceBatracien especeBatracien = EspeceBatracien.valueOf(r.getString("espece").toUpperCase());                
+                if(idBatracien >= 0 && d != null && t != null && l != null){
+                    ObsBatracien oBatracien = new ObsBatracien(idBatracien, d, t, l, obs, resObs, especeBatracien);
+                    ret.add(oBatracien);
+                }
 
-                ret.add(oLoutre);
             
             }
 
@@ -61,12 +58,12 @@ public class Loutre{
         return ret;
     }
 
-    public ResultSet getAllLoutreToBuild(){
+    public ResultSet getAllBatracienToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice "+
-        "FROM `obs_loutre`, `observation`" +
-        "WHERE ObsL = idObs " +
-        "ORDER BY dateObs DESC ";
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y, nombreAdultes, nombreAmplexus, nombrePonte, nombreTetard, espece "+
+        "FROM `obs_Batracien`, `observation`" +
+        "WHERE ObsB = idObs " +
+        "ORDER BY dateObs DESC;";
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();
@@ -89,11 +86,11 @@ public class Loutre{
         
     }
 
-    public ResultSet getAllLoutreBDD(){
+    public ResultSet getAllBatracienBDD(){
         ResultSet ret = null;
         try{
             PreparedStatement  stmt = con.prepareStatement(
-                "SELECT * FROM `bd_pnr`.`Obs_Loutre`");
+                "SELECT * FROM `bd_pnr`.`Obs_Batracien`");
             ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();

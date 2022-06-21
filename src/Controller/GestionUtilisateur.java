@@ -50,16 +50,6 @@ public class GestionUtilisateur implements Initializable {
         
         tableview.getColumns().addAll(nomCol,prenomCol,emailCol,droitsCol,deleteCol);
         
-        // data = FXCollections.observableArrayList(
-        // new Person("Jacob", "Smith", "jacob.smith@example.com", "Good"),
-        // new Person("Isabella", "Johnson", "isabella.johnson@example.com", "Good"),
-        // new Person("Ethan", "Williams", "ethan.williams@example.com", "Good"),
-        // new Person("Emma", "Jones", "emma.jones@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good")
-        // );
         data = FXCollections.observableArrayList();
         try{
             Connection conn = SQLConnect.connect();
