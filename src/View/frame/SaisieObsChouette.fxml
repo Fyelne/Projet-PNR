@@ -16,13 +16,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieLoutre">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieObsChouette">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="ALWAYS">
+                  <Button mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </AnchorPane>
-                  <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;" HBox.hgrow="SOMETIMES">
+                  <Button mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;" HBox.hgrow="SOMETIMES">
                      <graphic>
                         <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -83,7 +83,7 @@
                      <children>
                         <AnchorPane prefHeight="102.0" prefWidth="386.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" layoutY="41.0" text="Observation sur la chouette : " textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="laChouette" alignment="CENTER" layoutY="41.0" text="Observation sur la chouette : " textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="22.0" />
                                  </font>
@@ -202,14 +202,13 @@
                               <Font name="AvenirLTStd-Medium" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="commune" alignment="CENTER" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <VBox.margin>
-                              <Insets left="10.0" right="50.0" />
-                           </VBox.margin>
-                        </TextField>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0">
+                           <children>
+                              <AnchorPane prefHeight="53.0" prefWidth="92.0" />
+                              <ComboBox fx:id="prot" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez Le protocole" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                              <AnchorPane prefHeight="53.0" prefWidth="119.0" />
+                           </children>
+                        </HBox>
                         <Label text="TypeObs">
                            <VBox.margin>
                               <Insets bottom="10.0" top="40.0" />
@@ -221,7 +220,7 @@
                         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0">
                            <children>
                               <AnchorPane prefHeight="53.0" prefWidth="92.0" />
-                              <ComboBox fx:id="typeObs" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                              <ComboBox fx:id="typeObs" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez le type d'obs" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
                               <AnchorPane prefHeight="53.0" prefWidth="119.0" />
                            </children>
                         </HBox>
@@ -245,7 +244,7 @@
                      </font>
                   </Button>
                   <AnchorPane prefHeight="95.0" prefWidth="119.0" HBox.hgrow="SOMETIMES" />
-                  <Button minWidth="140.0" mnemonicParsing="false" onAction="#connect" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
+                  <Button fx:id="retour" minWidth="140.0" mnemonicParsing="false" onAction="#goBack" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>

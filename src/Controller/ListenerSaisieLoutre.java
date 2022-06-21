@@ -21,7 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class ListenerSaisieLoutre implements Initializable {
+public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
 
     @FXML
     private Button ajouter;
@@ -64,12 +64,12 @@ public class ListenerSaisieLoutre implements Initializable {
     void openUserMenu(ActionEvent event) {
 
     }
-    void setListDesObs(ArrayList<Observateur> o){
+    public void setListDesObs(ArrayList<Observateur> o){
         this.listDesObs = o;
     }
 
-    @FXML
-    void addObservateur(ActionEvent event) {
+    @Override
+    public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
         Parent r;
         try {
@@ -109,21 +109,10 @@ public class ListenerSaisieLoutre implements Initializable {
     }
 
     @FXML
-    void addObs(ActionEvent event) {
+    public void addObs(ActionEvent event) {
         Lieu l = new Lieu(Double.parseDouble(coordX.getText()), Double.parseDouble(coordY.getText()));
 
-        Observateur observateur = new Observateur(81, "leNom", "lePrenom");
-        observateur.setNom("NOEL");
-        observateur.setPrenom("Andy");
-        
-        ArrayList<Observateur> observateurs = new ArrayList<Observateur>();
-        observateurs.add(observateur);
-        observateurs.add(new Observateur(82, "leNom", "lePrenom"));
 
-
-
-
-        Date d = Date.valueOf(date.getValue());
         System.out.println(date.getValue().toString());
         // à revoir pour avoir un timePicker
         int h = heure.getValue();
@@ -131,7 +120,7 @@ public class ListenerSaisieLoutre implements Initializable {
         Time t = new Time((h-1)*60*100*60 + min*60*1000);
         
         int id = Modele.requete.Utilitaire.giveID();
-        Date da = new Date(500000);
+        Date da = Date.valueOf(date.getValue());
         
 
         ObsLoutre obsL = new ObsLoutre(id, da, t, l, this.listDesObs, indice.getValue(), commune.getText(), lieuDit.getText());
@@ -140,6 +129,12 @@ public class ListenerSaisieLoutre implements Initializable {
         
         loutreBDD.insertOneIntoBdd(obsL);
         System.out.println("L'observation a été Ajouté");
+    }
+
+    
+    public void addObservateur() {
+        // TODO Auto-generated method stub
+        
     }
 
 

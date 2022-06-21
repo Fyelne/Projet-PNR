@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerGestionObs">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAjoutChouette">
    <top>
       <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -50,8 +50,8 @@
                   <AnchorPane prefHeight="253.0" prefWidth="105.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="253.0" prefWidth="595.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <AnchorPane prefHeight="45.0" prefWidth="463.0" VBox.vgrow="ALWAYS" />
-                        <HBox alignment="CENTER" prefHeight="76.0" prefWidth="522.0" VBox.vgrow="ALWAYS">
+                        <AnchorPane prefHeight="33.0" prefWidth="523.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="84.0" prefWidth="523.0" VBox.vgrow="ALWAYS">
                            <children>
                               <VBox alignment="CENTER" prefHeight="86.0" prefWidth="209.0">
                                  <children>
@@ -63,7 +63,8 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField prefHeight="33.0" prefWidth="209.0" />
+                                    <TextField fx:id="numIndiv" prefHeight="34.0" prefWidth="210.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" />
+                                    <Label fx:id="mess" text="Numéro Invalide réessayer" visible="false" />
                                  </children>
                               </VBox>
                            </children>
@@ -82,7 +83,7 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ComboBox prefHeight="31.0" prefWidth="150.0" />
+                                    <ComboBox fx:id="espece" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" />
                                  </children>
                               </VBox>
                               <AnchorPane prefHeight="67.0" prefWidth="166.0" HBox.hgrow="ALWAYS" />
@@ -96,7 +97,7 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ComboBox prefHeight="29.0" prefWidth="150.0" />
+                                    <ComboBox fx:id="sexe" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" />
                                  </children>
                               </VBox>
                               <AnchorPane prefHeight="67.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />

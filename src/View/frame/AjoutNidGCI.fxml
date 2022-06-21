@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="533.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerGestionObs">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="533.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAjoutNidGCI">
    <top>
       <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -55,14 +55,14 @@
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <TextField minHeight="30.0" prefHeight="25.0" prefWidth="191.0" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="plage" minHeight="30.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="123.0" prefWidth="245.0" VBox.vgrow="ALWAYS" />
                         <Label prefHeight="30.0" prefWidth="95.0" text="Protection : " VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <ComboBox minHeight="30.0" prefHeight="58.0" prefWidth="188.0" VBox.vgrow="ALWAYS" />
+                        <ComboBox fx:id="protect" minHeight="30.0" prefHeight="30.0" prefWidth="202.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="143.0" prefWidth="245.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
@@ -75,14 +75,14 @@
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <TextField minHeight="30.0" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="bMale" minHeight="30.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="190.0" prefWidth="230.0" VBox.vgrow="ALWAYS" />
                         <Label text="Bague de la Femelle :" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <TextField minHeight="30.0" prefHeight="60.0" prefWidth="169.0" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="bFemelle" minHeight="30.0" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>

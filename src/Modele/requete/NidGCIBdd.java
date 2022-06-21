@@ -75,4 +75,20 @@ public class NidGCIBdd {
         
     }
 
+    public int getIdNid(){
+        int ret = 0;
+        String req = "SELECT MAX(idNid) FROM nid_gci;";
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement(req);
+            ResultSet res = stmt.executeQuery();
+            res.next();
+            ret = res.getInt("MAX(idNid)") + 1;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
 }

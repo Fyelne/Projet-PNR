@@ -16,10 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.InputMethodEvent;
@@ -51,7 +48,7 @@ public class ListenerGestionObs implements Initializable{
 
     @FXML
     private Button val;
-    private ListenerSaisieLoutre lelistener;
+    private ListenerObs lelistener;
 
 
 
@@ -94,7 +91,7 @@ public class ListenerGestionObs implements Initializable{
 
     }
 
-    void getControl(ListenerSaisieLoutre s, ArrayList<Observateur> o){
+    void getControl(ListenerObs s, ArrayList<Observateur> o){
         this.lelistener = s;
         this.listObserve = o;
         this.updateTable();
