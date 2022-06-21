@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.ObsLoutre;
 import Modele.donnee.Observation;
-import Modele.requete.Loutre;
+import Modele.requete.ObsLoutreBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,8 +36,8 @@ public class ListenerAfficheAllLoutre implements Initializable{
     @FXML
     private Button user;
 
-    public void initialize(URL location, ResourceBundle resources){
-        Loutre data = new Loutre();
+    protected void load(){
+        ObsLoutreBdd data = new ObsLoutreBdd();
 
         ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);

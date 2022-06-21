@@ -2,7 +2,9 @@ package Modele.requete;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Modele.Singleton;
 import Modele.donnee.Ouverture;
@@ -17,6 +19,70 @@ public class ZoneHumideBdd {
     public ZoneHumideBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
+
+    public ArrayList<ZoneHumide> builder(ResultSet r) {
+        ArrayList<ZoneHumide> ret = new ArrayList<ZoneHumide>();
+        //Construction des objets
+        try {
+            while (r.next()) {
+                int idZoneHumide = r.getInt("zh_id");
+
+                int t = r.getInt("zh_temporaire");
+                boolean tempoZH = false;
+                if (t == 1) {
+                    tempoZH = true;
+                }
+
+                double profondeurZH = r.getDouble("zh_profondeur");
+                double surfaceZH = r.getDouble("zh_surface");
+
+                TypeMare mareType = null ;
+                if (r.getString("zh_typeMare").equals("Prairie")) {
+                    mareType = TypeMare.PRAIRIE ;
+                } else if (r.getString("zh_typeMare").equals("Etang")) {
+                    mareType = TypeMare.ETANG ;
+                } else if (r.getString("zh_typeMare").equals("Marais")) {
+                    mareType = TypeMare.MARAIS ;
+                }else if (r.getString("zh_typeMare").equals("Mare")) {
+                    mareType = TypeMare.MARE ;
+                }else {
+                    mareType = null ;
+                }
+
+                Pente pente = null ;
+                if (r.getString("zh_pente").equals("Raide")) {
+                    pente = Pente.RAIDE ;
+                } else if (r.getString("zh_pente").equals("Abrupte")) {
+                    pente = Pente.ABRUPTE ;
+                } else if (r.getString("zh_pente").equals("Douce")) {
+                    pente = Pente.DOUCE ;
+                }else {
+                    pente = null ;
+                }
+
+                Ouverture ouverture = null ;
+                if (r.getString("zh_ouverture").equals("Abritee")) {
+                    ouverture = Ouverture.ABRITEE ;
+                } else if (r.getString("zh_ouverture").equals("Ouverte")) {
+                    ouverture = Ouverture.OUVERTE ;
+                } else if (r.getString("zh_ouverture").equals("Semi-abritee")) {
+                    ouverture = Ouverture.SEMI_ABRITEE ;
+                }else {
+                    ouverture = null ;
+                }
+
+                ZoneHumide zoneHumide = new ZoneHumide(idZoneHumide, tempoZH, profondeurZH, surfaceZH, mareType, pente, ouverture) ;
+                ret.add(zoneHumide);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
 
     public void insertOneInto(ZoneHumide z){
         int id = z.getId();

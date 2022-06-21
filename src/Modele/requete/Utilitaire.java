@@ -24,7 +24,6 @@ public class Utilitaire {
 
     protected static Lieu recupLieu(ResultSet r){
         Lieu ret = null;
-        
        
         try {
             double x = r.getDouble("lieu_Lambert_X");
@@ -34,7 +33,6 @@ public class Utilitaire {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
 
         return ret;
     }
@@ -81,8 +79,6 @@ public class Utilitaire {
             }else{
                 ret = false;
             }
-            
-
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -131,9 +127,6 @@ public class Utilitaire {
 
         return id+1;
     }
-
-
-
 
 
 }

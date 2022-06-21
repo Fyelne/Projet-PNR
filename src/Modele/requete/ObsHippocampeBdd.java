@@ -1,27 +1,30 @@
 package Modele.requete;
 
+import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.lang.model.element.TypeElement;
-
 import Modele.Singleton;
+import Modele.donnee.Lieu;
+import Modele.donnee.ObsHippocampe;
+import Modele.donnee.Observateur;
 import Modele.donnee.*;
 
-public class Hyppocampe {
+public class ObsHippocampeBdd {
 
     private Connection con;
 
-    public Hyppocampe(){
+    public ObsHippocampeBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
 
     public ArrayList<ObsHippocampe> builder(ResultSet r){
         ArrayList<ObsHippocampe> ret = new ArrayList<ObsHippocampe>();
-
+        //Construction des objets
         try {
-            while(r.next()){
-                int i = r.getInt("obsH");
+            while (r.next()) {
+                int idHippocampe = r.getInt("obsH");
+
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
 
@@ -37,78 +40,62 @@ public class Hyppocampe {
                     obs.add(nObservateur);
                 }
 
-                double taille = r.getDouble("taille");
+                double taille = res.getDouble("taille");
 
-                int g = r.getInt("gestant");
-                boolean gestant = false;
-                if(g == 1){
-                    gestant = true;
+                int g = res.getInt("gestant");
+                boolean gestant = false ;
+                if (g == 1) {
+                    gestant = true ;
                 }
 
-                Peche typePeche = null; 
-                String sPeche = r.getString("typePeche");
+                Peche unTypePeche = null ;
+                if (r.getString("typePeche").equals("casierMorgates")) {
+                    unTypePeche = Peche.CASIER_MORGATES ;
+                } else if (r.getString("typePeche").equals("casierCrevettes")) {
+                    unTypePeche = Peche.CASIER_CREVETTES ;
+                } else if (r.getString("typePeche").equals("petitFilet")) {
+                    unTypePeche = Peche.PETIT_FILET ;
+                } else if (r.getString("typePeche").equals("VerveuxAnguilles")) {
+                    unTypePeche = Peche.VERVEUX_ANGUILLES ;
+                } else {
+                    unTypePeche = Peche.NON_RENSEIGNE ;
+                }
+
+                EspeceHippocampe especeHip = null ;
+                if (r.getString("espece").equals("Syngnathus acus")) {
+                    especeHip = EspeceHippocampe.SYNGNATHUS_ACUS ;
+                } else if (r.getString("espece").equals("Hippocampus guttulatus")) {
+                    especeHip = EspeceHippocampe.HIPPOCAMPUS_GUTTULATUS ;
+                } else if (r.getString("espece").equals("Hippocampus hippocampus")) {
+                    especeHip = EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS ;
+                } else {
+                    especeHip = EspeceHippocampe.ENTERURUS_AEQUOREUS ;
+                }
+
+                Sexe sexeHip = null ;
+                if (r.getString("sexe").equals("male")) {
+                    sexeHip = Sexe.MALE ;
+                } else if (r.getString("sexe").equals("femelle")) {
+                    sexeHip = Sexe.FEMELLE ;
+                } else {
+                    sexeHip = Sexe.INCONNU ;
+                }
                 
-                switch(sPeche){
-                    case "verveuxAnguilles":
-                        typePeche = Peche.VERVEUX_ANGUILLES;
-                        break;
-                    case "casierCrevettes":
-                        typePeche = Peche.CASIER_CREVETTES;
-                        break;
-                    case "casierMorgates" : 
-                        typePeche = Peche.CASIER_MORGATES;
-                        break;
-                    case "petitFilet" :
-                        typePeche = Peche.PETIT_FILET;
-                        break;
-                    default:
-                        typePeche = Peche.NON_RENSEIGNE;
-                        break;
-                }
+                double tempEau = (double) r.getInt("temperatureEau") ;
 
-                EspeceHippocampe espH = null;
-                String esp = r.getString("espece");
-
-                switch(esp){
-                    case "Syngnathus acus": 
-                        espH = EspeceHippocampe.SYNGNATHUS_ACUS;
-                        break;
-                    case "Hippocampus guttulatus":
-                        espH = EspeceHippocampe.HIPPOCAMPUS_GUTTULATUS;
-                        break;
-
-                    case "Hippocampus Hippocampus":
-                        espH = EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS;
-                        break;
-
-                    case "Enterurus aequoreus":
-                        espH = EspeceHippocampe.ENTERURUS_AEQUOREUS;
-                        break;
-                }
-
-                Sexe sex = Sexe.INCONNU;
-
-                String s = r.getString("sexe");
-                
-                switch(s){
-                    case "male":
-                        sex = Sexe.MALE;
-                    case "femelle":
-                        sex = Sexe.FEMELLE;
-                }
-
-                double temp = r.getDouble("temperatureEau");
-
-                ObsHippocampe n = new ObsHippocampe(i, d, t, l , obs, taille, gestant, typePeche, espH, sex, temp);
-                ret.add(n);
+                ObsHippocampe oHippocampe = new ObsHippocampe(idHippocampe, d, t, l, obs, taille, gestant, unTypePeche, especeHip, sexeHip, tempEau) ;
+                ret.add(oHippocampe);
             }
+
         } catch (SQLException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
         return ret;
 
     }
+
 
     public void insertOneHippocampe(ObsHippocampe h){
         Utilitaire.insertBaseObs(h);
@@ -190,7 +177,4 @@ public class Hyppocampe {
             insertOneHippocampe(obsH);
         }
     }
-
-
-    
 }

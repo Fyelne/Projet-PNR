@@ -11,10 +11,10 @@ import Modele.donnee.Lieu;
 import Modele.donnee.ObsLoutre;
 import Modele.donnee.Observateur;
 
-public class Loutre{
+public class ObsLoutreBdd{
     private Connection con;
 
-    public Loutre(){
+    public ObsLoutreBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
 
@@ -86,7 +86,7 @@ public class Loutre{
         ResultSet ret = null;
         try{
             PreparedStatement  stmt = con.prepareStatement(
-                "SELECT * FROM `bd_pnr`.`Obs_Chouette`");
+                "SELECT * FROM `bd_pnr`.`Obs_Loutre`");
             ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();

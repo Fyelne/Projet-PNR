@@ -16,6 +16,42 @@ public class ChouetteBdd {
         this.con = Singleton.getInstance().getConnection();
     }
 
+    public ArrayList<Chouette> builder(ResultSet r) {
+        ArrayList<Chouette> ret = new ArrayList<Chouette>();
+        //Construction des objets
+        try {
+            while (r.next()) {
+                String idChouette = r.getString("numIndividu");
+
+                Sexe sexeChouette = null ;
+                if (r.getString("sexe").equals("male")) {
+                    sexeChouette = Sexe.MALE ;
+                } else if (r.getString("sexe").equals("femelle")) {
+                    sexeChouette = Sexe.FEMELLE ;
+                } else {
+                    sexeChouette = Sexe.INCONNU ;
+                }
+
+                EspeceChouette especeChouette = null ;
+                if (r.getString("espece").equals("Hulotte")) {
+                    especeChouette = EspeceChouette.HULOTTE ;
+                } else if (r.getString("espece").equals("Effraie")) {
+                    especeChouette = EspeceChouette.EFFRAIE ;
+                } else {
+                    especeChouette = EspeceChouette.CHEVECHE ;
+                }
+
+                Chouette chouette = new Chouette(idChouette, sexeChouette, especeChouette) ;
+                ret.add(chouette);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ret;
+        
+    }
 
 
     public void insertOneIntoBdd(Chouette ch){

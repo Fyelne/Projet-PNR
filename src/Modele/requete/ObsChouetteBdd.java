@@ -55,16 +55,14 @@ public class ObsChouetteBdd {
 
                 ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObserv, protocole) ;
                 ret.add(oChouette);
-
             }
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
         return ret;
-
-        
     }
 
     
@@ -122,6 +120,7 @@ public class ObsChouetteBdd {
 
         return ret;
     }
+
 
     public void insertIneIntoBdd(ObsChouette c, String idIndiv){
 

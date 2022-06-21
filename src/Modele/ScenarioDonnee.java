@@ -27,8 +27,11 @@ public class ScenarioDonnee {
 
 
         int[] resObs = {1, 2, 3, 4};
-        String[] met= {"degagé", "froid", "leger", "non"};
-        ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE, 8, met);
+        MeteoCiel meteoCiel = MeteoCiel.DEGAGE;
+        MeteoTemp meteoTemp = MeteoTemp.CHAUD;
+        MeteoVent meteoVent = MeteoVent.FORT;
+        MeteoPluie meteoPluie = MeteoPluie.FORTE;
+        ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE, 8, meteoCiel, meteoTemp, meteoVent, meteoPluie);
         System.out.println("Informations de l'observation du batracien :" 
         + "\n\tId : " + obsBatracien.getId() + "\n\tDate : " + obsBatracien.getDate() + "\n\tHeure : " + obsBatracien.getHeure()
         + "\n\tLieu : " + printLieu(obsBatracien.getLieu()) + "\n\tObservateurs : " + printObservateur(obsBatracien.getObservateurs())
@@ -36,7 +39,11 @@ public class ScenarioDonnee {
         + "\n\tNombres d'amplexus : " + obsBatracien.getNombreAmplexus()
         + "\n\tNombres de tetard : " + obsBatracien.getNombreTetard()
         + "\n\tNombres de ponte : " + obsBatracien.getNombrePonte()
-        + "\n\tEspece : " + obsBatracien.getEspece());
+        + "\n\tEspece : " + obsBatracien.getEspece()
+        + "\n\tMeteo Ciel : " + obsBatracien.getMeteoCiel()
+        + "\n\tMeteo Temperature : " + obsBatracien.getMeteoTemp()
+        + "\n\tMeteo Vent : " + obsBatracien.getMeteoVent()
+        + "\n\tMeteo Pluie : " + obsBatracien.getMeteoPluie() );
 
         ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE, false);
         System.out.println("Informations de l'observation de la chouette :"
