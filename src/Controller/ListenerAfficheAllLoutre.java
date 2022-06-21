@@ -24,13 +24,13 @@ public class ListenerAfficheAllLoutre implements Initializable{
     @FXML
     private TableColumn<ObsLoutre, Date> date;
     @FXML
-    private TableColumn<ObsLoutre, Time> heure;
+    private TableColumn<ObsLoutre, IndiceLoutre> indice;
     @FXML
     private TableColumn<ObsLoutre, Integer> id;
     @FXML
     private Button menu;
     @FXML
-    private TableColumn<ObsLoutre, IndiceLoutre> statut;
+    private TableColumn<ObsLoutre, String> commune;
     @FXML
     private TableView<ObsLoutre> tab;
     @FXML
@@ -44,12 +44,12 @@ public class ListenerAfficheAllLoutre implements Initializable{
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        heure.setCellValueFactory(new PropertyValueFactory<>("heure"));
+        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
 
-        statut.setCellValueFactory(new PropertyValueFactory<>("indice"));
+        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
 
         tab.setItems(tr);
     }

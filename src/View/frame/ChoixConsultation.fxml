@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAfficheAllLoutre">
@@ -74,36 +75,46 @@
             <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <TextField alignment="CENTER" prefHeight="40.0" prefWidth="441.0" promptText="Recherche">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="20.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <VBox prefHeight="612.0" prefWidth="983.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <TextField alignment="CENTER" prefHeight="40.0" prefWidth="441.0" promptText="Recherche">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="490.0" prefWidth="1200.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <TableView fx:id="tab" onMouseClicked="#chooseObs" prefHeight="490.0" prefWidth="943.0" HBox.hgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="id" editable="false" prefWidth="106.0" text="Identifiant" />
+                                  <TableColumn fx:id="date" prefWidth="150.0" text="Date" />
+                                    <TableColumn fx:id="indice" prefWidth="75.0" text="Indice" />
+                                    <TableColumn fx:id="commune" prefWidth="75.0" text="Commune" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox prefHeight="490.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <TableView fx:id="tab" onMouseClicked="#chooseObs" prefHeight="490.0" prefWidth="943.0">
-                    <columns>
-                        <TableColumn fx:id="id" editable="false" prefWidth="75.0" text="Identifiant" />
-                      <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
-                        <TableColumn fx:id="heure" prefWidth="75.0" text="Heure" />
-                        <TableColumn fx:id="statut" prefWidth="75.0" text="Statut" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </AnchorPane>
                </children>
             </HBox>
          </children>
