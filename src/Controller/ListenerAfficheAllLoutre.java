@@ -37,21 +37,7 @@ public class ListenerAfficheAllLoutre implements Initializable{
     private Button user;
 
     protected void load(){
-        ObsLoutreBdd data = new ObsLoutreBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
-        ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
-
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
-
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-
-        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
-
-        tab.setItems(tr);
     }
 
 
@@ -84,6 +70,27 @@ public class ListenerAfficheAllLoutre implements Initializable{
 
         
 
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ObsLoutreBdd data = new ObsLoutreBdd();
+
+        ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
+        ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
+
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
+
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+
+        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
+
+        tab.setItems(tr);
+        
     }
 
 

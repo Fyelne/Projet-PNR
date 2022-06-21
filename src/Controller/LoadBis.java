@@ -17,7 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
-public class LoadBis {
+public class LoadBis implements Initializable{
 
     @FXML
     private Label bonjour;
@@ -26,10 +26,13 @@ public class LoadBis {
     private Utilitaire util = new Utilitaire();
 
     @FXML
-    void change(MouseEvent event) {
+    void change() {
+        System.out.print("tru");
         try {
             for(int i = 0; i < 50 ; i ++){
+                
                 Thread.sleep(10);
+                System.out.println("test");
             }
             
         } catch (InterruptedException e) {
@@ -44,17 +47,18 @@ public class LoadBis {
     }
     
 
-    public void myFonction(boolean connecter, String name){
-        if(connecter && name != null){
-            this.ecranCon(name);
-            this.name = name;
-        }
 
-    }
 
-    private void ecranCon(String name){
-        bonjour.setText("Bonjour Monsieur " + name);
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        name = Utilitaire.getCurrentNameUser();
+        bonjour.setText("Bonjour " + name);
         bonjour.setVisible(true);
+        change();
+        
     }
 
     

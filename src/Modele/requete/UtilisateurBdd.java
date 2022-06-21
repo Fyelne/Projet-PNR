@@ -4,50 +4,15 @@
  * and open the template in the editor.
  */
 /* 
-package Modele.requete;
-
-import java.sql.*;
-import Controller.SQLConnect;
-import javafx.beans.property.*;
-import javafx.scene.control.*;
-
-public class Utilisateur {
-    private final SimpleStringProperty nom;
-    private final SimpleStringProperty prenom;
-    private final SimpleStringProperty email;
-    private ComboBox<String> droits;
-    private Button supprimer;
-    
- 
-    public Utilisateur(String nom, String prenom, String email, String value) {
-        this.nom = new SimpleStringProperty(nom);
-        this.prenom = new SimpleStringProperty(prenom);
-        this.email = new SimpleStringProperty(email);
-        this.droits = new ComboBox<String>(){
-            {
-                getItems().addAll("Administrateur", "Utilisateur");
-                setValue(value);
-            }
-        };
-
-        this.supprimer = new Button("Supprimer"){
-            {
-                setOnAction(e -> {
-                    System.out.println("Suppression de l'utilisateur " + getNom() + " " + getPrenom());
-                    setText("Supprimé");
-                    setDisable(true);
-                    getDroits().setDisable(true);
-                    try {
-                        SQLConnect.connect().createStatement().executeUpdate(
-                            "UPDATE Observateur SET nom = 'Utilisateur supprimé', prenom = NULL WHERE nom = '" + getNom() + "' AND prenom = '" + getPrenom() + "'");
-                    } catch (SQLException ex) {
-                        System.out.println("Erreur lors de la suppression de l'utilisateur");
-                    }
-                });
-            }
-        };        
+        
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.cj.xdevapi.Statement;
+
+import Controller.SQLConnect;
 import Modele.Singleton;
 import Modele.donnee.Utilisateur;
 
@@ -131,9 +96,7 @@ public class UtilisateurBdd {
         
     }
  
-    public String getNom() {
-        return this.nom.get();
-    }
+    
     public void setNom(String nom) {
         try {
             SQLConnect.connect().createStatement().executeUpdate(
@@ -144,9 +107,7 @@ public class UtilisateurBdd {
         this.nom.set(nom);
     }
         
-    public String getPrenom() {
-        return this.prenom.get();
-    }
+
     public void setPrenom(String prenom) {
         try {
             SQLConnect.connect().createStatement().executeUpdate(
@@ -157,17 +118,10 @@ public class UtilisateurBdd {
         this.prenom.set(prenom);
     }
     
-    public String getEmail() {
-        return this.email.get();
-    }
-    public void setEmail(String nom) {
-        this.email.set(nom);
-    }
+
+
     
 
- public ComboBox<String> getDroits() {
-        return this.droits;
-    }
  
     public void setDroits(ComboBox<String> droits) {
         this.droits = droits;

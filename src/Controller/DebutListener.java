@@ -3,8 +3,6 @@ import java.awt.Dimension;
 import java.io.IOException;
 import java.sql.*;
 
-import com.mysql.cj.util.Util;
-
 import Modele.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,10 +38,7 @@ public class DebutListener {
     // password
 
     @FXML
-    private PasswordField mdp;
-    //Add listener to mdp when enter is pressed
-
-
+    private PasswordField mdp; // field mdp
 
     @FXML
     private TextField user; // field for identifiant
@@ -51,16 +46,10 @@ public class DebutListener {
     @FXML
     private Label wrong; // label who is show when the password is incorect
 
-    @FXML
-    private Button connectButton; // button to connect
-
     
     private LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
     private Connection c = l.connexion();
     
-
-
-
     @FXML
     /**
      * To check password and username / if they are good, you can connect
@@ -70,28 +59,46 @@ public class DebutListener {
     void connect(ActionEvent event) {
         try {
             String requete = "SELECT * FROM `utilisateur` WHERE prenomUtilisateur = \'" + user.getText() +"\'";
+            System.out.println(requete);
             PreparedStatement  stmt = c.prepareStatement(requete);
             ResultSet res = stmt.executeQuery();
-            if(res.next()){
+            while(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
-                    if(res.getString("estAdmin").equals("1")){
-                        util.changeScene("Admin");
+                    Stage newStage = new Stage();
+                    Parent r;
+                    try {
+                        FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\LoadBis.fxml"));
+                        r = loader.load();
+                        Scene s = new Scene(r);
+                        newStage.setTitle("Accueil");
+                        newStage.setScene(s);
+                        newStage.setMaximized(true);
+                        newStage.show();
+                        newStage.centerOnScreen();
+                        Utilitaire.setScene(s);
+                        Utilitaire.setCurrentNameUser(user.getText());
+                        Utilitaire.setCurrentUser(res.getInt("idUtilisateur"));
+                        
+                    }catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    else{
-                        util.changeScene("Utilisateur");
-                    }
+                    //fermeture de la page de connexion
+                    Button bt = (Button) event.getSource();
+                    Scene sc = bt.getScene();
+                    Stage st = (Stage) sc.getWindow();
+                    st.close();
                 }else{
                     wrong.setVisible(true);
                 }
-            } else {
-                wrong.setVisible(true);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } 
+
+    
     }
-   
+
     @FXML
     /**
      * To check password and username / if they are good, you can connect
@@ -103,6 +110,8 @@ public class DebutListener {
             connect(null);
         }
     }
+   
+
 
 
 }
