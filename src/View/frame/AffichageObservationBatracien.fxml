@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAffichageObsBatracien">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -39,7 +39,7 @@
                         <Insets left="25.0" top="8.0" />
                      </HBox.margin>
                   </Button>
-                  <Label minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°25" textFill="WHITE" HBox.hgrow="SOMETIMES">
+                  <Label fx:id="numObservation" minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°25" textFill="WHITE" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="40.0" />
                      </font>
@@ -75,7 +75,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#connect" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Button fx:id="retour" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>
@@ -141,12 +141,12 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Espèce : ">
+                                    <Label fx:id="esp" text="Espèce : ">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Temperature :" GridPane.columnIndex="1">
+                                    <Label fx:id="temp" text="Temperature :" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -154,12 +154,12 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Lambert X : " GridPane.rowIndex="1">
+                                    <Label fx:id="X" text="Lambert X : " GridPane.rowIndex="1">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="Y" text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -184,12 +184,12 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Date :">
+                                    <Label fx:id="date" text="Date :">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Heure : " GridPane.columnIndex="1">
+                                    <Label fx:id="heure" text="Heure : " GridPane.columnIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -197,12 +197,12 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Nombre Adultes :" GridPane.rowIndex="1">
+                                    <Label fx:id="nbAdulte" text="Nombre Adultes :" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Nombre Amplexus :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="nbAmplexus" text="Nombre Amplexus :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -210,12 +210,12 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Nombre Ponte :" GridPane.rowIndex="2">
+                                    <Label fx:id="nbPonte" text="Nombre Ponte :" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Nombre Tétard :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label fx:id="nbTetard" text="Nombre Tétard :" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -231,13 +231,13 @@
                         <HBox prefHeight="60.0" prefWidth="200.0">
                            <children>
                               <AnchorPane prefHeight="88.0" prefWidth="14.0" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE" HBox.hgrow="ALWAYS">
+                              <Button fx:id="visuObservateur" mnemonicParsing="false" onAction="#openVisuObs" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Button>
                               <AnchorPane prefHeight="88.0" prefWidth="15.0" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la météo" textFill="WHITE" HBox.hgrow="ALWAYS">
+                              <Button fx:id="visuMeteo" mnemonicParsing="false" onAction="#openVisuMeteo" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la météo" textFill="WHITE" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -248,13 +248,13 @@
                         <HBox prefHeight="75.0" prefWidth="476.0">
                            <children>
                               <AnchorPane prefHeight="88.0" prefWidth="14.0" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la zone humide" textFill="WHITE" HBox.hgrow="ALWAYS">
+                              <Button fx:id="visuZH" mnemonicParsing="false" onAction="#openVisuZH" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la zone humide" textFill="WHITE" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Button>
                               <AnchorPane prefHeight="88.0" prefWidth="15.0" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la végétation" textFill="WHITE" HBox.hgrow="ALWAYS">
+                              <Button fx:id="visuVege" mnemonicParsing="false" onAction="#openVisuVege" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la végétation" textFill="WHITE" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
