@@ -35,7 +35,7 @@ public class ObsChouetteBdd {
                 Lieu l = Utilitaire.recupLieu(r);
 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
-                ResultSet res = Utilitaire.recupObs(r.getInt("idObs"));
+                ResultSet res = Utilitaire.recupObs(r.getInt("numObs"));
                 while(res.next()){
                     int id = res.getInt("idObservateur");
                     String nom = res.getString("nom");
@@ -186,7 +186,7 @@ public class ObsChouetteBdd {
 
     public ResultSet getFilteredChouette(String recherche){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
+        String req  = "SELECT DISTINCT(numObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
         "FROM `obs_Chouette`, `observation` " +
         "WHERE numObs = idObs " +
         "AND leNumIndividu LIKE '%" + recherche + "%'" +
