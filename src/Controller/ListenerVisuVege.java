@@ -59,7 +59,7 @@ public class ListenerVisuVege {
 
 
     public void getControl(ObsBatracien batra) {
-        String vegetation = "SELECT * FROM Obs_Batracien, Vegetation WHERE concernes_vege = idVege" ;
+        String vegetation = "SELECT * FROM Obs_Batracien, Vegetation WHERE concernes_vege = idVege AND obsB = " + batra.getId() ;
         
         Connection con = Singleton.getInstance().getConnection();
         PreparedStatement stmt;

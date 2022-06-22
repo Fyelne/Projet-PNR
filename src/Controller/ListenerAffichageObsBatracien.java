@@ -184,12 +184,12 @@ public class ListenerAffichageObsBatracien {
  
     @FXML
     void openVisuZH(ActionEvent event) {
-        /*Stage newStage = new Stage();
+        Stage newStage = new Stage();
         Parent r;
         try {
             FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationZoneHumide.fxml"));
             r = loader.load();
-            ListenerVisuObs o = loader.getController();
+            ListenerVisuZH o = loader.getController();
             o.getControl(batra);
             Scene s = new Scene(r);
             newStage.setTitle("Visualisation de la zone humide ");
@@ -199,7 +199,7 @@ public class ListenerAffichageObsBatracien {
 
         }catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     } 
 
 }
