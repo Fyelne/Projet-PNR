@@ -4,6 +4,9 @@ package Controller;
 import java.io.*;
 import java.sql.*;
 
+/**
+ * Constructeur de la classe export, cette classe permet de récuperer la base de données.
+ */
 public class Export {
     public static void exportTableToCSV(String tablename) {
         try {
@@ -48,6 +51,10 @@ public class Export {
         }
     }
 
+    /**
+     * Permet de créer les tables en format CSV.
+     * @param tablenames nom des tables
+     */
     public static void exportAllTableToCSV(String[] tablenames) {
         for(String tablename : tablenames){
             exportTableToCSV(tablename);
