@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAffichageObsChouette">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -39,7 +39,7 @@
                         <Insets left="25.0" top="8.0" />
                      </HBox.margin>
                   </Button>
-                  <Label minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°25" textFill="WHITE" HBox.hgrow="SOMETIMES">
+                  <Label fx:id="titre" minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°" textFill="WHITE" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="40.0" />
                      </font>
@@ -75,7 +75,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#connect" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Button fx:id="retour" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>
@@ -112,14 +112,26 @@
                               <GridPane layoutX="144.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Nom de l'observation : ">
+                                    <Label fx:id="numIndividu" text="Numéro individu :">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="espece" text="Espece : " GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="sexe" text="Sexe : " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="17.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -141,12 +153,12 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Protocole :">
+                                    <Label fx:id="protocole" text="Protocole :">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Type d'observation :" GridPane.columnIndex="1">
+                                    <Label fx:id="typeObservation" text="Type d'observation :" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -154,12 +166,12 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Lambert X : " GridPane.rowIndex="1">
+                                    <Label fx:id="X" text="Lambert X : " GridPane.rowIndex="1">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="Y" text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -182,12 +194,12 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Date :">
+                                    <Label fx:id="date" text="Date :">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Heure : " GridPane.columnIndex="1">
+                                    <Label fx:id="heure" text="Heure : " GridPane.columnIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -199,15 +211,7 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="476.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="476.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="100.0">

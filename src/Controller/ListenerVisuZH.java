@@ -77,7 +77,7 @@ public class ListenerVisuZH {
             String ouv = rs.getString("zh_ouverture");
 
             temporaire.setText(temporaire.getText() + tempo);
-            typeMare.setText(typeMare.getText() + typeM);
+            typeMare.setText(typeMare.getText() + " " + typeM);
             profondeur.setText(profondeur.getText() + " " + prof);
             surface.setText(surface.getText() + " " + surf);
             pente.setText(pente.getText() + " " + pentes);

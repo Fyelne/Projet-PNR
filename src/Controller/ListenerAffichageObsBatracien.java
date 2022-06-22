@@ -73,7 +73,7 @@ public class ListenerAffichageObsBatracien {
 
     @FXML
     void goBack(ActionEvent event) {
-        util.changeScene("Consultation");
+        util.changeScene("ListeObsBatracien");
     }
 
     @FXML
@@ -102,6 +102,10 @@ public class ListenerAffichageObsBatracien {
     }
 
 
+    /**
+     * Il définit le texte des TextViews sur les valeurs de l'objet ObsBatracien
+     * @param batra l'objet ObsBatracien que l'on veut afficher
+     */
     public void getControl(ObsBatracien batra) {
         this.batra = batra ;
         date.setText(batra.getDate().toString());

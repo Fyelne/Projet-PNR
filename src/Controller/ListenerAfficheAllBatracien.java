@@ -79,10 +79,6 @@ public class ListenerAfficheAllBatracien implements Initializable{
                 System.out.println("Double clicked");
             }
         }
-        
-
-
-        
 
     }
 
