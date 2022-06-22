@@ -34,6 +34,8 @@ public class ListenerAfficheAllBatracien implements Initializable{
     private TableView<ObsBatracien> tab;
     @FXML
     private TextField rechercheTF;
+    @FXML
+    private ComboBox<String> especeCB;
     private Utilitaire util = new Utilitaire();
 
     @FXML
@@ -76,9 +78,13 @@ public class ListenerAfficheAllBatracien implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         ObsBatracienBdd data = new ObsBatracienBdd();
 
-       ArrayList<ObsBatracien> obs = data.builder(data.getAllBatracienToBuild());
+        ArrayList<ObsBatracien> obs = data.builder(data.getAllBatracienToBuild());
         
         initializeData(obs);
+
+        ObservableList<String> especeList = FXCollections.observableArrayList(data.getAllBatracienEspece());
+        especeCB.setItems(especeList);
+        especeCB.getSelectionModel().select("");
     }
 
     private void initializeData(ArrayList<ObsBatracien> obs){
@@ -102,15 +108,19 @@ public class ListenerAfficheAllBatracien implements Initializable{
         }
     }
 
-
+    @FXML
+    void comboBoxChange(ActionEvent event){
+        filtre();
+    }
 
 
     void filtre(){
         String rechercheString = rechercheTF.getText();
+        String especeString = especeCB.getSelectionModel().getSelectedItem();
         ObsBatracienBdd data = new ObsBatracienBdd();
 
-        // ArrayList<ObsBatracien> obs = data.builder(data.getFilteredBatracien(rechercheString));
-        // initializeData(obs);
+        ArrayList<ObsBatracien> obs = data.builder(data.getFilteredBatracien(rechercheString, especeString));
+        initializeData(obs);
     }
 
     @FXML

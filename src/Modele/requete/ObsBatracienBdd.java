@@ -303,4 +303,40 @@ public class ObsBatracienBdd {
         return ret;
     }
     
+    public ResultSet getFilteredBatracien(String recherche, String espece){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(ObsB), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y, " +
+        "nombreAdultes, nombreAmplexus, nombrePonte, nombreTetard, espece, temperature, meteo_ciel, meteo_temp, meteo_vent, meteo_pluie "+
+        "FROM `obs_Batracien`, `observation`" +
+        "WHERE ObsB = idObs " +
+        "AND espece LIKE '%" + espece + "%' " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public ArrayList<String> getAllBatracienEspece(){
+        ArrayList<String> ret = new ArrayList<String> ();
+        ret.add("");
+        String req  = "SELECT DISTINCT(espece) " +
+        "FROM `obs_Batracien` " +
+        "ORDER BY espece;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ResultSet query = stmt.executeQuery();
+            while(query.next()){
+                String espece = query.getString("espece");
+                ret.add(espece.substring(0, 1).toUpperCase() + espece.substring(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
 }
