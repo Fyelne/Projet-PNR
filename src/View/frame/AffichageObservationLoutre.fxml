@@ -39,7 +39,7 @@
                         <Insets left="25.0" top="8.0" />
                      </HBox.margin>
                   </Button>
-                  <Label minWidth="380.0" prefHeight="50.0" prefWidth="636.0" text="Observation : n°25" textFill="WHITE" HBox.hgrow="SOMETIMES">
+                  <Label minWidth="380.0" prefHeight="50.0" prefWidth="636.0" text="Observation" textFill="WHITE" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="40.0" />
                      </font>

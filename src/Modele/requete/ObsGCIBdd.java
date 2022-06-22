@@ -87,18 +87,20 @@ public class ObsGCIBdd {
 
         int nb = g.getNombre();
         ContenuNid c = g.getNatureNid();
-        String contenuNid = "";
+        System.out.println(c.toString());
+        String contenuNid = "Nid";
         switch(c){
             case OEUF:
-                contenuNid = "oeuf";
+                contenuNid = "Oeuf";
                 break;
             case POUSSIN:
-                contenuNid = "poussin";
+                contenuNid = "Poussin";
+                break;
             case NID_SEUL:
-                contenuNid = "nid";
+                contenuNid = "Nid";
+                break;
             default:
                 contenuNid = null;
-                break;
         }
         boolean pres = g.getPresentMaisNonObs();
         int present = 0;
@@ -109,7 +111,7 @@ public class ObsGCIBdd {
         String req = "INSERT INTO obs_gci VALUES(" + g.getId() + " , '" + contenuNid + "' , " + nb + " , " 
                         + present + " , " + nid +");";  
 
-        
+        System.out.println(req);
         try {
             PreparedStatement stmt = con.prepareStatement(req);
             stmt.executeUpdate();
