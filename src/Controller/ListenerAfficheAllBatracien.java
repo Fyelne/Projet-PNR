@@ -79,10 +79,6 @@ public class ListenerAfficheAllBatracien implements Initializable{
                 System.out.println("Double clicked");
             }
         }
-        
-
-
-        
 
     }
 
@@ -116,7 +112,8 @@ public class ListenerAfficheAllBatracien implements Initializable{
 
     @FXML
     void recherche(KeyEvent event){
-        if(event.getCode().equals(KeyCode.ENTER)){
+        TextField source = (TextField)event.getSource();
+        if(event.getCode().equals(KeyCode.ENTER) || source.getText().equals("")){
             filtre();
         }
     }

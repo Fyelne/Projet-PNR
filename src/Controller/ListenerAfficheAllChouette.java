@@ -57,17 +57,18 @@ public class ListenerAfficheAllChouette implements Initializable{
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
-                String url = "..//View//frame//AffichageObservationHippocampe.fxml";
+                String url = "..//View//frame//AffichageObservationChouette.fxml";
                 try {
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
                     root = fx.load();
-                    //ListenerObs lu = fx.getController();
-                    //lu.load(l);
+                    ListenerAffichageObsChouette lu = fx.getController();                    
+                    lu.getControl(tab.getSelectionModel().getSelectedItem());
                     sc.setRoot(root);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                System.out.println("Double clicked");
             }
         }
         
@@ -103,7 +104,8 @@ public class ListenerAfficheAllChouette implements Initializable{
 
     @FXML
     void recherche(KeyEvent event){
-        if(event.getCode().equals(KeyCode.ENTER)){
+        TextField source = (TextField)event.getSource();
+        if(event.getCode().equals(KeyCode.ENTER) || source.getText().equals("")){
             filtre();
         }
     }
