@@ -130,7 +130,7 @@ public class ListenerSaisieObsChouette extends ListenerObs{
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
+            
                         
         }catch (IOException e) {
             e.printStackTrace();

@@ -112,7 +112,7 @@ public class ListenerSaisieObsGCI extends ListenerObs {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
+            
                         
         }catch (IOException e) {
             e.printStackTrace();

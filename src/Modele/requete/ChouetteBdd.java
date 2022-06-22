@@ -99,6 +99,8 @@ public class ChouetteBdd {
         }
     }
 
+    
+
     public boolean check(String num){
         boolean ret = false;
         String req = "SELECT * FROM chouette WHERE numIndividu = '" + num + "';";

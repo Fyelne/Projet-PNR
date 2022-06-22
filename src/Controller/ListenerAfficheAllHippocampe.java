@@ -3,6 +3,8 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -25,6 +27,10 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     private TableColumn<ObsHippocampe, IndiceLoutre> indice;
     @FXML
     private TableColumn<ObsHippocampe, Integer> id;
+    @FXML
+    private TableColumn<ObsHippocampe, EspeceHippocampe> esp;
+    @FXML
+    private TableColumn<ObsHippocampe, Peche> pe;
     @FXML
     private Button menu;
     @FXML
@@ -79,25 +85,31 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         ObsHippocampeBdd data = new ObsHippocampeBdd();
 
-       // ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
+        ResultSet r = data.getAllHippocampeBDD();
+        ArrayList<ObsHippocampe> obs = data.builder(r);
         
-        //initializeData(obs);
+        
+
+            
+        
+        initializeData(obs);
     }
 
-    private void initializeData(ArrayList<ObsLoutre> obs){
-        ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
+    private void initializeData(ArrayList<ObsHippocampe> obs){
+        ObservableList<ObsHippocampe> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
+        pe.setCellValueFactory(new PropertyValueFactory<>("typePeche"));
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        esp.setCellValueFactory(new PropertyValueFactory<>("espece"));
 
-       // tab.setItems(tr);
+        tab.setItems(tr);
     }
 
+    /* 
     @FXML
     void recherche(KeyEvent event){
         if(event.getCode().equals(KeyCode.ENTER)){
@@ -107,14 +119,14 @@ public class ListenerAfficheAllHippocampe implements Initializable{
 
 
 
-
+    
     void filtre(){
         String rechercheString = rechercheTF.getText();
         ObsLoutreBdd data = new ObsLoutreBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        ArrayList<ObsHippocampe> obs = data.builder(data.getFilteredLoutre(rechercheString));
         initializeData(obs);
-    }
+    }*/
 
     @FXML
     void retourcons(ActionEvent event) {
