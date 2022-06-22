@@ -24,6 +24,7 @@ public class ObsGCI extends Observation {
         if(leNombre >= 0 && nature != null) {
             this.nombre = leNombre;
             this.presentMaisNonObs = present;
+            this.natureNid = nature;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
