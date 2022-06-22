@@ -92,7 +92,6 @@
                      <columns>
                         <TableColumn fx:id="id" prefWidth="75.0" text="Identifiant" />
                       <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
-                        <TableColumn fx:id="heure" prefWidth="75.0" text="Heure" />
                         <TableColumn fx:id="espece" prefWidth="75.0" text="Espece" />
                     </columns>
                      <columnResizePolicy>

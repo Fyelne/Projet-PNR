@@ -26,7 +26,7 @@ public class ListenerConsultation {
 
     @FXML
     void obsHippo(ActionEvent event) {
-        util.changeScene("ListeObsHippo");
+        util.changeScene("ListeObsHippocampe");
     }
 
     @FXML

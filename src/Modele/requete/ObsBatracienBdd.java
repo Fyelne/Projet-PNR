@@ -23,9 +23,15 @@ public class ObsBatracienBdd {
             while (r.next()) {
                 int idBatracien = r.getInt("obsB");
 
+
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
-
+                if(d == null){
+                    d = new Date(0);
+                }
+                if(t == null){
+                    t = new Time(0);
+                }
                 Lieu l = Utilitaire.recupLieu(r);
 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
@@ -45,7 +51,7 @@ public class ObsBatracienBdd {
                 tabObs[3] = r.getInt("nombreTetard");
 
                 EspeceBatracien especeBatra = null ;
-                if (r.getString("nature").equals("Oeuf")) {
+                if (r.getString("espece").equals("calamite")) {
                     especeBatra = EspeceBatracien.CALAMITE ;
                 }
                 else {
@@ -55,44 +61,54 @@ public class ObsBatracienBdd {
                 int temp = r.getInt("temperature");
   
                 MeteoCiel meteoCiel = null ;
-                if (r.getString("meteo_ciel").equals("dégagé")) {
-                    meteoCiel = MeteoCiel.DEGAGE ;
-                } else if (r.getString("meteo_ciel").equals("semi-dégagé")) {
-                    meteoCiel = MeteoCiel.SEMI_DEGAGE ;
-                }else {
-                    meteoCiel = MeteoCiel.NUAGEUX ;
+                if(r.getString("meteo_ciel") != null){
+                    if (r.getString("meteo_ciel").equals("dégagé")) {
+                        meteoCiel = MeteoCiel.DEGAGE ;
+                    } else if (r.getString("meteo_ciel").equals("semi-dégagé")) {
+                        meteoCiel = MeteoCiel.SEMI_DEGAGE ;
+                    }else {
+                        meteoCiel = MeteoCiel.NUAGEUX ;
+                    }
                 }
-                
+
                 MeteoTemp meteoTemp = null ;
-                if (r.getString("meteo_temp").equals("froid")) {
-                    meteoTemp = MeteoTemp.FROID ;
-                } else if (r.getString("meteo_temp").equals("moyen")) {
-                    meteoTemp = MeteoTemp.MOYEN ;
-                }else {
-                    meteoTemp = MeteoTemp.CHAUD ;
+                if(r.getString("meteo_temp") != null){
+                    if (r.getString("meteo_temp").equals("froid")) {
+                        meteoTemp = MeteoTemp.FROID ;
+                    } else if (r.getString("meteo_temp").equals("moyen")) {
+                        meteoTemp = MeteoTemp.MOYEN ;
+                    }else {
+                        meteoTemp = MeteoTemp.CHAUD ;
+                    }
                 }
 
                 MeteoVent meteoVent = null ;
-                if (r.getString("meteo_vent").equals("non")) {
-                    meteoVent = MeteoVent.NON ;
-                } else if (r.getString("meteo_vent").equals("léger")) {
-                    meteoVent = MeteoVent.LEGER ;
-                } else if (r.getString("meteo_vent").equals("moyen")) {
-                    meteoVent = MeteoVent.MOYEN ;
-                } else {
-                    meteoVent = MeteoVent.FORT ;
+                if(r.getString("meteo_vent") != null){
+                    if (r.getString("meteo_vent").equals("non")) {
+                        meteoVent = MeteoVent.NON ;
+                    } else if (r.getString("meteo_vent").equals("léger")) {
+                        meteoVent = MeteoVent.LEGER ;
+                    } else if (r.getString("meteo_vent").equals("moyen")) {
+                        meteoVent = MeteoVent.MOYEN ;
+                    } else {
+                        meteoVent = MeteoVent.FORT ;
+                    }
                 }
+ 
 
                 MeteoPluie meteoPluie = null ;
-                if (r.getString("meteo_pluie").equals("non")) {
-                    meteoPluie = MeteoPluie.NON ;
-                } else if (r.getString("meteo_pluie").equals("légère")) {
-                    meteoPluie = MeteoPluie.LEGERE ;
-                } else if (r.getString("meteo_pluie").equals("moyenne")) {
-                    meteoPluie = MeteoPluie.MOYENNE ;
-                }else {
-                    meteoPluie = MeteoPluie.FORTE ;
+                if(r.getString("meteo_pluie") != null){
+                    if (r.getString("meteo_pluie").equals("non")) {
+                        meteoPluie = MeteoPluie.NON ;
+                    } else if (r.getString("meteo_pluie").equals("légère")) {
+                        meteoPluie = MeteoPluie.LEGERE ;
+                    } else if (r.getString("meteo_pluie").equals("moyenne")) {
+                        meteoPluie = MeteoPluie.MOYENNE ;
+                    }else {
+                        meteoPluie = MeteoPluie.FORTE ;
+                    }
                 }
+
 
                 ObsBatracien oBatracien = new ObsBatracien(idBatracien, d, t, l, obs, tabObs, especeBatra, temp, meteoCiel, meteoTemp, meteoVent, meteoPluie) ;
                 ret.add(oBatracien);
@@ -262,7 +278,7 @@ public class ObsBatracienBdd {
 
     public ResultSet getAllBatracienToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y, nombreAdultes, nombreAmplexus, nombrePonte, nombreTetard, espece "+
+        String req  = "SELECT * "+
         "FROM `obs_Batracien`, `observation`" +
         "WHERE ObsB = idObs " +
         "ORDER BY dateObs DESC;";
@@ -275,6 +291,14 @@ public class ObsBatracienBdd {
         return ret;
     }
 
+    public ArrayList<ObsBatracien> getAndBuild(){
+        ArrayList<ObsBatracien> ret = null;
+
+        ResultSet r = this.getAllBatracienToBuild();
+        ret = this.builder(r);
+
+        return ret;
+    }
 
     public ResultSet getAllBatracienBDD(){
         ResultSet ret = null;

@@ -35,6 +35,7 @@ public class ListenerAfficheAllGCI {
     private TableView<ObsGCI> tab;
     @FXML
     private Button user;
+    Utilitaire util = new Utilitaire();
 
     protected void load(){
         ObsGCIBdd data = new ObsGCIBdd();
@@ -54,6 +55,11 @@ public class ListenerAfficheAllGCI {
 
 
         tab.setItems(tr);
+    }
+
+    @FXML
+    void retourcons(ActionEvent event) {
+        util.changeScene("Consultation");
     }
 
 }

@@ -80,7 +80,7 @@
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/batracien.jpg" />
+                                    <Image url="@image/batracien.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -105,7 +105,7 @@
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/gravelot.jpg" />
+                                    <Image url="@image/gravelot.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -130,7 +130,7 @@
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/hippocampe.jpg" />
+                                    <Image url="@image/hippocampe.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -163,7 +163,7 @@
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/loutre.jpg" />
+                                    <Image url="@image/loutre.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -191,7 +191,7 @@
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../1ère%20année/semestre%202/S201/Projet-PNR-master/src/View/frame/image/chouette.jpg" />
+                                    <Image url="@image/chouette.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>

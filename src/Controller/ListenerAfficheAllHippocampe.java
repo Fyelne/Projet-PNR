@@ -44,7 +44,7 @@ public class ListenerAfficheAllHippocampe {
     private TableView<ObsHippocampe> tab;
     @FXML
     private Button user;
-
+    private Utilitaire util = new Utilitaire();
     protected void load(){
         ObsHippocampeBdd data = new ObsHippocampeBdd();
 
@@ -70,7 +70,10 @@ public class ListenerAfficheAllHippocampe {
 
         tab.setItems(tr);
     }
-
+    @FXML
+    void retourcons(ActionEvent event) {
+        util.changeScene("Consultation");
+    }
     /* 
     @FXML
     void recherche(KeyEvent event){

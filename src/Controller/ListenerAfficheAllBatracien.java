@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import Modele.donnee.IndiceLoutre;
 import Modele.donnee.*;
 import Modele.requete.*;
 import javafx.collections.FXCollections;
@@ -22,13 +21,11 @@ public class ListenerAfficheAllBatracien implements Initializable{
     @FXML
     private TableColumn<ObsBatracien, Date> date;
     @FXML
-    private TableColumn<ObsBatracien, IndiceLoutre> indice;
+    private TableColumn<ObsBatracien, EspeceBatracien> espece;
     @FXML
     private TableColumn<ObsBatracien, Integer> id;
     @FXML
     private Button menu;
-    @FXML
-    private TableColumn<ObsBatracien, String> commune;
     @FXML
     private TableView<ObsBatracien> tab;
     @FXML
@@ -67,37 +64,29 @@ public class ListenerAfficheAllBatracien implements Initializable{
                 System.out.println("Double clicked");
             }
         }
-        
-
-
-        
-
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObsHippocampeBdd data = new ObsHippocampeBdd();
+        ObsBatracienBdd data = new ObsBatracienBdd();
 
-       // ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
+        ArrayList<ObsBatracien> obs = data.getAndBuild();
         
-        //initializeData(obs);
+        initializeData(obs);
     }
 
-    private void initializeData(ArrayList<ObsLoutre> obs){
-        ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
+    private void initializeData(ArrayList<ObsBatracien> obs){
+        ObservableList<ObsBatracien> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
+        espece.setCellValueFactory(new PropertyValueFactory<>("espece"));
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
-
-       // tab.setItems(tr);
+        tab.setItems(tr);
     }
-
+    /* 
     @FXML
     void recherche(KeyEvent event){
         if(event.getCode().equals(KeyCode.ENTER)){
@@ -110,11 +99,11 @@ public class ListenerAfficheAllBatracien implements Initializable{
 
     void filtre(){
         String rechercheString = rechercheTF.getText();
-        ObsLoutreBdd data = new ObsLoutreBdd();
+        ObsBatracienBdd data = new ObsBatracienBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        ArrayList<ObsBatracien> obs = data.builder(data.getFilteredLoutre(rechercheString));
         initializeData(obs);
-    }
+    }*/
 
     @FXML
     void retourcons(ActionEvent event) {

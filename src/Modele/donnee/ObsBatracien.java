@@ -28,7 +28,7 @@ public class ObsBatracien extends Observation {
      */
     public ObsBatracien(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, int[] resObs, EspeceBatracien lEspece, int temp, MeteoCiel metCiel, MeteoTemp metTemp, MeteoVent metVent, MeteoPluie metPluie) {
         super(id, date, heure, lieu, observateurs);
-        if ( (resObs != null) && (lEspece != null) && (resObs.length == 4) && (metCiel != null) && (metTemp != null) && (metVent != null) && (metPluie != null) ){
+        if ( (resObs != null) && (lEspece != null) && (resObs.length == 4) ){
             this.nombreAdultes = resObs[0];
             this.nombreAmplexus = resObs[1];
             this.nombreTetard = resObs[2];
