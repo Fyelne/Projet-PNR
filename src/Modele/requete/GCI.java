@@ -6,20 +6,21 @@ import java.sql.Date;
 import java.sql.Time;
 
 import Modele.Singleton;
+import Modele.donnee.ContenuNid;
 import Modele.donnee.Lieu;
-import Modele.donnee.ObsChouette;
+import Modele.donnee.ObsGCI;
 import Modele.donnee.Observateur;
 import Modele.donnee.TypeObservation;
 
-public class Chouette{
+public class GCI{
     private Connection con;
 
-    public Chouette(){
+    public GCI(){
         this.con = Singleton.getInstance().getConnection();
     }
 
-    public ArrayList<ObsChouette> builder(ResultSet r){
-        ArrayList<ObsChouette> ret = new ArrayList<ObsChouette>();
+    public ArrayList<ObsGCI> builder(ResultSet r){
+        ArrayList<ObsGCI> ret = new ArrayList<ObsGCI>();
         //Construction des objets
         try {
             while(r.next()){
@@ -38,7 +39,7 @@ public class Chouette{
                     obs.add(nObservateur);
                 }
 
-                int idChouette = r.getInt("idObs");
+                int idGCI = r.getInt("idObs");
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
 
@@ -48,16 +49,17 @@ public class Chouette{
                 if(t == null){
                     t = new Time(0);
                 }
-
-                String typeObString = r.getString("typeObs").toUpperCase();
-                if(typeObString.equals("SONORE ET VISUEL")){
-                    typeObString = "SONORE_VISUEL";
+                String natureString = r.getString("nature").toUpperCase();
+                if(natureString.equals("NID")){
+                    natureString = "NID_SEUL";
                 }
-
-                TypeObservation typeObs = TypeObservation.valueOf(typeObString);
-                ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObs);
-                ret.add(oChouette);
+                ContenuNid nature = ContenuNid.valueOf(natureString);
+                int leNombre = r.getInt("nombre");
+                
+                ObsGCI oGCI = new ObsGCI(idGCI, d, t, l, obs, nature, leNombre);
+                ret.add(oGCI);
             }
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -66,11 +68,11 @@ public class Chouette{
         return ret;
     }
 
-    public ResultSet getAllChouetteToBuild(){
+    public ResultSet getAllGCIToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs "+
-        "FROM `obs_Chouette`, `observation` " +
-        "WHERE numObs = idObs " +
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre "+
+        "FROM `obs_GCI`, `observation` " +
+        "WHERE ObsG = idObs " +
         "ORDER BY dateObs DESC;";
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
@@ -94,11 +96,11 @@ public class Chouette{
         
     }
 
-    public ResultSet getAllChouetteBDD(){
+    public ResultSet getAllGCIBDD(){
         ResultSet ret = null;
         try{
             PreparedStatement  stmt = con.prepareStatement(
-                "SELECT * FROM `bd_pnr`.`Obs_Chouette`");
+                "SELECT * FROM `bd_pnr`.`Obs_GCI`");
             ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();

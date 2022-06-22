@@ -22,6 +22,7 @@ public class ObsGCI extends Observation {
         super(id, date, heure, lieu, observateurs);
         if(leNombre >= 0 && nature != null) {
             this.nombre = leNombre;
+            this.natureNid = nature;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
