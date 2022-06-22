@@ -209,9 +209,12 @@ public class ObsGCIBdd {
         "FROM `obs_GCI`, `observation` " +
         "WHERE ObsG = idObs " +
         "AND leNid LIKE '%" + recherche + "%' " +
-        "AND nature LIKE '%" + nature + "%' " +
-        "AND nombre = " + nombre +
-        " ORDER BY dateObs DESC;";
+        "AND nature LIKE '%" + nature + "%' ";
+        if(nombre != ""){
+            req += "AND nombre = " + nature + " ";
+        }
+        req += " ORDER BY dateObs DESC;";
+
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();
