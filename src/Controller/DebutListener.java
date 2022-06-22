@@ -1,19 +1,12 @@
 package Controller;
-import java.awt.Dimension;
-import java.io.IOException;
 import java.sql.*;
 
 import Modele.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Dimension2D;
-import javafx.scene.*;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
 //Listener for the start of the program until connection
 public class DebutListener {

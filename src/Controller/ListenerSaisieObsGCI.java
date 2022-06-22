@@ -10,7 +10,6 @@ import Modele.donnee.Lieu;
 import Modele.donnee.NidGCI;
 import Modele.donnee.ObsGCI;
 import Modele.donnee.Observateur;
-import Modele.donnee.TypeObservation;
 import Modele.requete.ObsGCIBdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -99,7 +99,6 @@ public class ObsBatracienBdd {
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return ret;
@@ -114,7 +113,6 @@ public class ObsBatracienBdd {
             PreparedStatement s = con.prepareStatement(reqLieuVege);
             s.executeUpdate();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
         int idZh = this.idZH();
@@ -230,7 +228,6 @@ public class ObsBatracienBdd {
             stmt = con.prepareStatement(req);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

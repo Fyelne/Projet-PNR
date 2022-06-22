@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.*;
-
-import com.mysql.cj.xdevapi.PreparableStatement;
 
 import Modele.donnee.*;
 import Modele.requete.ObsLoutreBdd;
@@ -133,7 +129,6 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
 
     
     public void addObservateur() {
-        // TODO Auto-generated method stub
         
     }
 

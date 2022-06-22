@@ -76,7 +76,6 @@ public class ZoneHumideBdd {
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return ret;
@@ -161,7 +160,6 @@ public class ZoneHumideBdd {
             stmt = con.prepareStatement(req);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

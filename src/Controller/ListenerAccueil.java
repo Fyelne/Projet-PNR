@@ -62,7 +62,6 @@ public class ListenerAccueil implements Initializable{
             root = fx.load();
             sc.setRoot(root); 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -106,7 +105,6 @@ public class ListenerAccueil implements Initializable{
             lu.load(Utilitaire.getCurrentNameUser(), "Accueil");
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -31,7 +31,6 @@ public class Utilitaire {
             double y = r.getDouble("lieu_Lambert_Y");
             ret = new Lieu(x, y);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

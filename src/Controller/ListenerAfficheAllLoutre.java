@@ -3,13 +3,11 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.ObsLoutre;
-import Modele.donnee.Observation;
 import Modele.requete.ObsLoutreBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,6 +31,8 @@ public class ListenerAfficheAllLoutre implements Initializable{
     private TableColumn<ObsLoutre, String> commune;
     @FXML
     private TableView<ObsLoutre> tab;
+    @FXML
+    private TextField rechercheTF;
     private Utilitaire util = new Utilitaire();
 
     @FXML
@@ -62,7 +62,6 @@ public class ListenerAfficheAllLoutre implements Initializable{
                     lu.load(l);
                     sc.setRoot(root);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 System.out.println("Double clicked");
@@ -81,6 +80,11 @@ public class ListenerAfficheAllLoutre implements Initializable{
         ObsLoutreBdd data = new ObsLoutreBdd();
 
         ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
+        
+        initializeData(obs);
+    }
+
+    private void initializeData(ArrayList<ObsLoutre> obs){
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -89,11 +93,27 @@ public class ListenerAfficheAllLoutre implements Initializable{
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-
         commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
 
         tab.setItems(tr);
-        
+    }
+
+    @FXML
+    void recherche(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)){
+            filtre();
+        }
+    }
+
+
+
+
+    void filtre(){
+        String rechercheString = rechercheTF.getText();
+        ObsLoutreBdd data = new ObsLoutreBdd();
+
+        ArrayList<ObsLoutre> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        initializeData(obs);
     }
 
     @FXML

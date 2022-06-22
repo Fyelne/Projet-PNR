@@ -1,20 +1,14 @@
 package Controller;
 
-import java.net.URL;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-import Modele.Singleton;
 import Modele.donnee.NatureVege;
-import Modele.donnee.Observateur;
 import Modele.donnee.Vegetation;
 import Modele.requete.VegetationBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -44,7 +38,6 @@ public class ListenerGestionVege{
 
     @FXML
     private TextField vegetation;
-    private Connection con;
 
     private VegetationBdd ob = new VegetationBdd();
 
@@ -76,8 +69,6 @@ public class ListenerGestionVege{
         veg.setCellValueFactory(new PropertyValueFactory<>("vege"));
 
         nature.getItems().addAll(NatureVege.values());
-
-        this.con = Singleton.getInstance().getConnection();
         
         this.updateTable();
 

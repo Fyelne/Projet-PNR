@@ -5,17 +5,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
-
-import com.mysql.cj.xdevapi.Result;
 
 import Modele.Singleton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
-import javafx.stage.Stage;
+
 
 public class Utilitaire {
     private static int idUtilisateurCourant;
@@ -34,7 +29,6 @@ public class Utilitaire {
             root = FXMLLoader.load(getClass().getResource(url));
             actualScene.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -63,7 +57,6 @@ public class Utilitaire {
                 estAdmin = true;
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
