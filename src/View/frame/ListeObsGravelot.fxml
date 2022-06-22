@@ -91,9 +91,9 @@
                   <TableView fx:id="tab" prefHeight="490.0" prefWidth="943.0">
                     <columns>
                         <TableColumn fx:id="id" prefWidth="75.0" text="Identifiant" />
-                      <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
-                        <TableColumn fx:id="heure" prefWidth="75.0" text="Heure" />
-                        <TableColumn fx:id="statut" prefWidth="75.0" text="Statut" />
+                        <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
+                        <TableColumn fx:id="nature" prefWidth="75.0" text="Nature" />
+                        <TableColumn fx:id="nombre" prefWidth="75.0" text="Nombre" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

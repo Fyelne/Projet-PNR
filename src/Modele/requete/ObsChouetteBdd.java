@@ -19,7 +19,7 @@ public class ObsChouetteBdd {
         //Construction des objets
         try {
             while (r.next()) {
-                int idChouette = r.getInt("idObs");
+                int idChouette = r.getInt("numObs");
 
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
@@ -170,7 +170,7 @@ public class ObsChouetteBdd {
 
     public ResultSet getAllChouetteToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
+        String req  = "SELECT DISTINCT(numObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
         "FROM `obs_Chouette`, `observation` " +
         "WHERE numObs = idObs " +
         "ORDER BY dateObs DESC;";

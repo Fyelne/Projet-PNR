@@ -33,7 +33,7 @@ public class ObsGCIBdd {
                 Lieu l = Utilitaire.recupLieu(r);
 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
-                ResultSet res = Utilitaire.recupObs(r.getInt("idObs"));
+                ResultSet res = Utilitaire.recupObs(r.getInt("obsG"));
                 while(res.next()){
                     int id = res.getInt("idObservateur");
                     String nom = res.getString("nom");
@@ -42,26 +42,20 @@ public class ObsGCIBdd {
                     obs.add(nObservateur);
                 }
 
-                ContenuNid natureNid = null ;
-                if (r.getString("nature").equals("Oeuf")) {
+                ContenuNid natureNid = null;
+                String natureString = r.getString("nature").toUpperCase();
+                if (natureString.equals("OEUF")) {
                     natureNid = ContenuNid.OEUF ;
                 }
-                else if (r.getString("nature").equals("Poussin")) {
+                else if (natureString.equals("POUSSIN")) {
                     natureNid = ContenuNid.POUSSIN ;
                 }
                 else {
                     natureNid = ContenuNid.NID_SEUL ;
                 }
-
                 int nb = r.getInt("nombre");
-                //A vérifier (int ou boolean)
-                int p = r.getInt("presentMaisNonObs");
-                boolean present = false;
-                if (p == 1) {
-                    present = true ;
-                }
 
-                ObsGCI oGCI = new ObsGCI(idGCI, d, t, l, obs, natureNid, nb, present) ;
+                ObsGCI oGCI = new ObsGCI(idGCI, d, t, l, obs, natureNid, nb, false) ;
                 ret.add(oGCI);
             }
 
@@ -111,4 +105,21 @@ public class ObsGCIBdd {
         
 
     }
+
+
+    public ResultSet getAllGCIToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(ObsG), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre "+
+        "FROM `obs_GCI`, `observation` " +
+        "WHERE ObsG = idObs " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+    
 }
