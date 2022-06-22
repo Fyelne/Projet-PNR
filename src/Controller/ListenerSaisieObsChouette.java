@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 
 public class ListenerSaisieObsChouette extends ListenerObs{
 
+    private Utilitaire util = new Utilitaire();
+
     @FXML
     private Button ajouter;
     @FXML
@@ -81,7 +83,7 @@ public class ListenerSaisieObsChouette extends ListenerObs{
 
     @FXML
     void goBack(ActionEvent event) {
-
+        util.changeScene("ChoixAjouter");
     }
 
     @FXML

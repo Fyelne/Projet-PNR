@@ -33,6 +33,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ListenerSaisieObsBatracien extends ListenerObs implements Initializable{
+
+    private Utilitaire util = new Utilitaire();
+
     @FXML
     private TextField X;
     @FXML
@@ -169,7 +172,7 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
 
     @FXML
     void goBack(ActionEvent event) {
-
+        util.changeScene("ChoixAjouter");
     }
 
     @FXML

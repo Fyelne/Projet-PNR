@@ -51,19 +51,7 @@ public class ListenerAccueil implements Initializable{
 
     @FXML
     void tr(ActionEvent event) {
-        Button bt = (Button) event.getSource();
-        Scene sc = bt.getScene();
-        Parent root;
-        
-        String url = "..//View//frame//SaisieBatracien.fxml";
-        try {
-            // change the scene
-            FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
-            root = fx.load();
-            sc.setRoot(root); 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        util.changeScene("ChoixAjouter");
     }
 
 
