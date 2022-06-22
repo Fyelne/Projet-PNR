@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import Modele.donnee.ObsLoutre;
 import Modele.donnee.Observateur;
+import Modele.donnee.Observation;
 import Modele.requete.ObservateurBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,7 +46,7 @@ public class ListenerVisuObs {
         
     }
 
-    public void load(ObsLoutre obsL){
+    public void load(Observation obsL){
         int id = obsL.getId();
         oBdd = new ObservateurBdd();
         ResultSet res = Modele.requete.Utilitaire.recupObs(id);
