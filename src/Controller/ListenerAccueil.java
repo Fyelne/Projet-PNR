@@ -44,7 +44,7 @@ public class ListenerAccueil implements Initializable{
     @FXML
     void changeTest(ActionEvent event) {
             // change the scene
-            util.changeScene("ListeObsLoutre", user);
+            util.changeScene("z", user);
 
     }
 
