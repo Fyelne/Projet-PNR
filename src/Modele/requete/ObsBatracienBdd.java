@@ -70,7 +70,7 @@ public class ObsBatracienBdd {
                         meteoCiel = MeteoCiel.DEGAGE ;
                     } else if (meteoCielString.equals("semi-dégagé")) {
                         meteoCiel = MeteoCiel.SEMI_DEGAGE ;
-                    }else {
+                    } else {
                         meteoCiel = MeteoCiel.NUAGEUX ;
                     }
                 } else {

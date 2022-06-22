@@ -138,13 +138,13 @@ public class ObsChouetteBdd {
         String type = "";
         switch(t){
             case SONORE:
-                type = "Sonore";
+                type = "SONORE";
                 break;
             case VISUELLE:
-                type = "Visuelle";
+                type = "VISUEL";
                 break;
             case SONORE_VISUELLE:
-                type = "Sonore et Visuelle";
+                type = "SONORE ET VISUEL";
                 break;
         }
 
@@ -197,6 +197,27 @@ public class ObsChouetteBdd {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return ret;
+    }
+
+    public ArrayList<String> recupNumIndiv(){
+        ArrayList<String> ret = new ArrayList<String>();
+
+        String req = "SELECT * FROM chouette;";
+        System.out.println(req);
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement(req);
+            ResultSet res = stmt.executeQuery();
+            while(res.next()){
+                ret.add(res.getString("numIndividu"));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        
         return ret;
     }
 }

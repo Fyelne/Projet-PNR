@@ -94,7 +94,7 @@ public class ListenerAfficheAllGCI implements Initializable{
 
         ObservableList<String> nombreList = FXCollections.observableArrayList(data.getAllGCINombre());
         nombreCB.setItems(nombreList);
-        nombreCB.getSelectionModel().select("");
+        nombreCB.getSelectionModel().selectFirst();
     }
 
     private void initializeData(ArrayList<ObsGCI> obs){

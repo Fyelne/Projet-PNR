@@ -81,8 +81,8 @@ public class ObsHippocampeBdd {
                         especeHippocampe = EspeceHippocampe.valueOf("SYNGNATHUS_ACUS");
                     } else if(especeHippocampeString.equals("Hippocampus guttulatus")){
                         especeHippocampe = EspeceHippocampe.valueOf("HIPPOCAMPUS_GUTTULATUS");
-                    } else if(especeHippocampeString.equals("Enterurus aequoreus")){
-                        especeHippocampe = EspeceHippocampe.valueOf("ENTERURUS_AEQUOREUS");
+                    } else if(especeHippocampeString.equals("Entelurus aequoreus")){
+                        especeHippocampe = EspeceHippocampe.valueOf("ENTELURUS_AEQUOREUS");
                     } else {
                         especeHippocampe = EspeceHippocampe.valueOf("HIPPOCAMPUS_HIPPOCAMPUS");
                     }
@@ -156,11 +156,11 @@ public class ObsHippocampeBdd {
                 break;
 
             case HIPPOCAMPUS_HIPPOCAMPUS :
-                espece = "Hippocampus Hippocampus";
+                espece = "Hippocampus hippocampus";
                 break;
 
-            case ENTERURUS_AEQUOREUS:
-                espece = "Enterurus aequoreus";
+            case ENTELURUS_AEQUOREUS:
+                espece = "Entelurus aequoreus";
                 break;
         }
 
@@ -221,6 +221,63 @@ public class ObsHippocampeBdd {
             e.printStackTrace();
         }
 
+        return ret;
+    }
+
+    public ResultSet getFilteredHippocampe(String recherche, String espece, String typePeche){
+        ResultSet ret = null;
+        String req  = "SELECT ObsH, idObs, dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, espece, sexe, taille, gestant, typePeche, temperatureEau "+
+        "FROM `obs_Hippocampe`, `observation` " +
+        "WHERE ObsH = idObs " +
+        "AND espece LIKE '%" + espece + "%' " +
+        "AND typePeche LIKE '%" + typePeche + "%' " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public ArrayList<String> getAllHippocampeEspece(){
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add("");
+        String req  = "SELECT DISTINCT(espece) "+
+        "FROM `obs_Hippocampe` " +
+        "WHERE espece IS NOT NULL " +
+        "ORDER BY espece;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ResultSet query = stmt.executeQuery();
+            while(query.next()){
+                String espece = query.getString("espece");
+                ret.add(espece.substring(0, 1).toUpperCase() + espece.substring(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public ArrayList<String> getAllHippocampeTypePeche(){
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add("");
+        String req  = "SELECT DISTINCT(typePeche) "+
+        "FROM `obs_Hippocampe` " +
+        "WHERE typePeche IS NOT NULL " +
+        "ORDER BY espece;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ResultSet query = stmt.executeQuery();
+            while(query.next()){
+                String espece = query.getString("typePeche");
+                ret.add(espece.substring(0, 1).toUpperCase() + espece.substring(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return ret;
     }
 }

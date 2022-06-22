@@ -1,14 +1,25 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import Modele.Singleton;
 import Modele.donnee.*;
 import Modele.requete.ObsChouetteBdd;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,9 +29,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class ListenerSaisieObsChouette extends ListenerObs{
+public class ListenerSaisieObsChouette extends ListenerObs implements Initializable{
 
     private Utilitaire util = new Utilitaire();
 
@@ -46,12 +58,15 @@ public class ListenerSaisieObsChouette extends ListenerObs{
     private Button retour;
     @FXML
     private ComboBox<TypeObservation> typeObs;
+    @FXML
+    private ComboBox<String> numC;
 
     private ArrayList<Observateur> listDesObs = new ArrayList<Observateur>();
 
     private ObsChouetteBdd chBdd;
 
-    private Chouette chou;
+    private TextField txt;
+
 
     @FXML
 	public void addObs(ActionEvent event) {
@@ -72,9 +87,9 @@ public class ListenerSaisieObsChouette extends ListenerObs{
             protocole = true;
         }
 
-        ObsChouette obsC = new ObsChouette(id, da, t, l, this.listDesObs, type, protocole);
+        ObsChouette obsC = new ObsChouette(id, da, t, l, this.listDesObs, type, protocole, numC.getSelectionModel().getSelectedItem());
 
-        chBdd.insertIneIntoBdd(obsC, chou.getId());
+        chBdd.insertIneIntoBdd(obsC, numC.getSelectionModel().getSelectedItem());
 
         
 
@@ -97,21 +112,9 @@ public class ListenerSaisieObsChouette extends ListenerObs{
 
 
     public void load(Chouette ch) {
-        prot.getItems().add("OUI");
-        prot.getItems().add("NON");
+        
+        
 
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23);
-        valueFactory.setValue(00);
-        heure.setValueFactory(valueFactory);
-
-        SpinnerValueFactory<Integer> val = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
-        val.setValue(00);
-        minute.setValueFactory(val);
-
-        typeObs.getItems().addAll(TypeObservation.values());
-        laChouette.setText(laChouette.getText() + ch.getId());
-        chBdd = new ObsChouetteBdd();
-        chou = ch;
         
     }
 
@@ -139,6 +142,62 @@ public class ListenerSaisieObsChouette extends ListenerObs{
     @Override
     public void setListDesObs(ArrayList<Observateur> o){
         this.listDesObs = o;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        prot.getItems().add("OUI");
+        prot.getItems().add("NON");
+        chBdd = new ObsChouetteBdd();
+        ArrayList<String> t = chBdd.recupNumIndiv();
+        for(String g : t){
+            System.out.println(g);
+        }
+        numC.getItems().addAll(t);
+
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23);
+        valueFactory.setValue(00);
+        heure.setValueFactory(valueFactory);
+
+        SpinnerValueFactory<Integer> val = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
+        val.setValue(00);
+        minute.setValueFactory(val);
+
+        typeObs.getItems().addAll(TypeObservation.values());
+        txt = numC.getEditor();
+    }
+
+    @FXML
+    void search(KeyEvent event) {
+        ArrayList<String> newId = new ArrayList<String>();
+        Connection con = Singleton.getInstance().getConnection();
+        
+        numC.setVisibleRowCount(10);
+        String search = txt.getText().toUpperCase();
+        System.out.println(search);
+
+        String req = "SELECT * FROM chouette WHERE numIndividu LIKE '%"+search+"%';";
+        System.out.println(req);
+        ResultSet res = null;
+        try {
+            PreparedStatement stmt = con.prepareStatement(req);
+            res = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        
+            try {
+                while(res.next()){
+                    newId.add(res.getString("numIndividu"));
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        
+        ObservableList<String> ne = FXCollections.observableArrayList(newId);
+        numC.setItems(ne);
     }
 
 }

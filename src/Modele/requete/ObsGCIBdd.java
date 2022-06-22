@@ -20,6 +20,12 @@ public class ObsGCIBdd {
 
 
 
+    /**
+     * Prépare une liste d'observation pour le tableau
+     * 
+     * @param r Jeu de résultats
+     * @return Une ArrayList d'objets ObsGCI.
+     */
     public ArrayList<ObsGCI> builder(ResultSet r){
         ArrayList<ObsGCI> ret = new ArrayList<ObsGCI>();
         //Construction des objets
@@ -70,6 +76,12 @@ public class ObsGCIBdd {
 
 
 
+    /**
+     * Il insère une nouvelle observation d'un GCI dans la base de données
+     * 
+     * @param g l'objet ObsGCI
+     * @param nid l'identifiant du nid
+     */
     public void insertOneInto(ObsGCI g, int nid){
         Utilitaire.insertBaseObs(g);
 
@@ -104,11 +116,15 @@ public class ObsGCIBdd {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-
     }
 
 
+    /**
+     * Il renvoie un ResultSet contenant toutes les observations du GCI (Groupe de Chasseurs
+     * d'Insectes) dans la base de données
+     * 
+     * @return Un objet ResultSet.
+     */
     public ResultSet getAllGCIToBuild(){
         ResultSet ret = null;
         String req  = "SELECT DISTINCT(ObsG), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre, leNid "+
@@ -124,6 +140,12 @@ public class ObsGCIBdd {
         return ret;
     }
 
+    /**
+     * Il renvoie une ArrayList de toutes les différentes valeurs de la colonne "nature" dans la table
+     * "obs_GCI"
+     * 
+     * @return Une ArrayList de chaînes
+     */
     public ArrayList<String> getAllGCINature(){
         ArrayList<String> ret = new ArrayList<String>();
         ret.add("");
@@ -144,6 +166,12 @@ public class ObsGCIBdd {
         return ret;
     }
 
+    /**
+     * Elle renvoie une ArrayList de Strings contenant toutes les valeurs distinctes de la colonne
+     * "nombre" dans la table "obs_GCI" classées par "nombre"
+     * 
+     * @return Une ArrayList de chaînes.
+     */
     public ArrayList<String> getAllGCINombre(){
         ArrayList<String> ret = new ArrayList<String>();
         ret.add("");
@@ -164,15 +192,29 @@ public class ObsGCIBdd {
     }
 
 
+    /**
+     * Elle retourne un ResultSet contenant les résultats d'une requête qui sélectionne toutes les
+     * lignes de la table "obs_GCI" et "observation" où la colonne "leNid" contient la chaîne
+     * "recherche", la colonne "nature" contient la chaîne "nature" et la colonne "nombre" est égale à
+     * l'entier "nombre"
+     * 
+     * @param recherche une chaîne qui est le nom du nid
+     * @param nature un string
+     * @param nombre un nombre entier
+     * @return Un objet ResultSet.
+     */
     public ResultSet getFilteredGCI(String recherche, String nature, String nombre){
         ResultSet ret = null;
         String req  = "SELECT DISTINCT(ObsG), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre, leNid "+
         "FROM `obs_GCI`, `observation` " +
         "WHERE ObsG = idObs " +
         "AND leNid LIKE '%" + recherche + "%' " +
-        "AND nature LIKE '%" + nature + "%' " +
-        "AND nombre = " + nombre +
-        " ORDER BY dateObs DESC;";
+        "AND nature LIKE '%" + nature + "%' ";
+        if(nombre != ""){
+            req += "AND nombre = " + nature + " ";
+        }
+        req += " ORDER BY dateObs DESC;";
+
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();

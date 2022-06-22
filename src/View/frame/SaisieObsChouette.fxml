@@ -81,14 +81,16 @@
                   <AnchorPane minWidth="0.0" prefHeight="700.0" prefWidth="174.0" HBox.hgrow="SOMETIMES" />
                   <VBox alignment="CENTER_LEFT" prefHeight="588.0" prefWidth="391.0" HBox.hgrow="SOMETIMES">
                      <children>
-                        <AnchorPane prefHeight="102.0" prefWidth="386.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" prefHeight="132.0" prefWidth="386.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label fx:id="laChouette" alignment="CENTER" layoutY="41.0" text="Observation sur la chouette : " textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="laChouette" alignment="CENTER" text="Concerne la chouette : " textAlignment="CENTER" underline="true">
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="22.0" />
                                  </font>
                               </Label>
-                           </children></AnchorPane>
+                              <ComboBox fx:id="numC" editable="true" onKeyReleased="#search" prefHeight="25.0" prefWidth="137.0" />
+                           </children>
+                        </HBox>
                         <Label text="Date">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="20.0" />
