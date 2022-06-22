@@ -106,7 +106,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <AnchorPane prefHeight="108.0" prefWidth="475.0" VBox.vgrow="ALWAYS" />
+                        <AnchorPane prefHeight="40.0" prefWidth="476.0" />
                         <AnchorPane prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;">
                            <children>
                               <GridPane layoutX="144.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -227,19 +227,39 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                        <AnchorPane prefHeight="29.0" prefWidth="476.0" />
+                        <HBox prefHeight="60.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE">
+                              <AnchorPane prefHeight="88.0" prefWidth="14.0" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Button>
-                              <AnchorPane prefHeight="98.0" prefWidth="32.0" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la météo" textFill="WHITE">
+                              <AnchorPane prefHeight="88.0" prefWidth="15.0" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la météo" textFill="WHITE" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Button>
+                              <AnchorPane prefHeight="88.0" prefWidth="14.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="75.0" prefWidth="476.0">
+                           <children>
+                              <AnchorPane prefHeight="88.0" prefWidth="14.0" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la zone humide" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Button>
+                              <AnchorPane prefHeight="88.0" prefWidth="15.0" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser la végétation" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Button>
+                              <AnchorPane prefHeight="88.0" prefWidth="14.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                      </children>
