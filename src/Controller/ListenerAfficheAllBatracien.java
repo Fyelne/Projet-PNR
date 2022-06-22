@@ -50,13 +50,13 @@ public class ListenerAfficheAllBatracien implements Initializable{
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
-                String url = "..//View//frame//AffichageObservationHippocampe.fxml";
+                String url = "..//View//frame//AffichageObservationBatracien.fxml";
                 try {
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
                     root = fx.load();
-                    //ListenerObs lu = fx.getController();
-                    //lu.load(l);
+                    ListenerAffichageObsBatracien lu = fx.getController();                    
+                    lu.getControl(tab.getSelectionModel().getSelectedItem());
                     sc.setRoot(root);
                 } catch (IOException e) {
                     e.printStackTrace();

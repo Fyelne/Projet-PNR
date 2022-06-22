@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class ListenerVisuMeteo {
+    private Utilitaire util = new Utilitaire();
 
     @FXML
     private Label labelCiel;
@@ -28,7 +29,6 @@ public class ListenerVisuMeteo {
 
     @FXML
     void goBack(ActionEvent event) {
-
     }
 
 
