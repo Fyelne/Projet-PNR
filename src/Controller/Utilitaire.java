@@ -21,21 +21,26 @@ public class Utilitaire {
     private static int idUtilisateurCourant;
     private static String currentUsername;
     private static Scene actualScene;
+    private static boolean estAdmin = false; 
 
     //To change easily the frame
-    public  void changeScene(String file, Button bt) {
-        Scene sc = bt.getScene();
+    public void changeScene(String file) {
+        
         Parent root;
         
         String url = "..//View//frame//" + file + ".fxml";
         try {
             // change the scene
             root = FXMLLoader.load(getClass().getResource(url));
-            sc.setRoot(root);
+            actualScene.setRoot(root);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public void goUserMenu(Button bt){
+        
     }
 
     public static void setScene(Scene st){
@@ -45,13 +50,18 @@ public class Utilitaire {
     public static void setCurrentUser(int id){
         idUtilisateurCourant = id; 
         Connection con = Singleton.getInstance().getConnection();
-        String req = "SELECT prenomUtilisateur FROM utilisateur WHERE idUtilisateur = " + idUtilisateurCourant + ";";
+        String req = "SELECT * FROM utilisateur WHERE idUtilisateur = " + idUtilisateurCourant + ";";
         PreparedStatement stmt;
         try {
             stmt = con.prepareStatement(req);
             ResultSet res = stmt.executeQuery();
             res.next();
             currentUsername = res.getString("prenomUtilisateur");
+            int admin = res.getInt("estAdmin");
+            
+            if(admin == 1){
+                estAdmin = true;
+            }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -59,13 +69,16 @@ public class Utilitaire {
         
     }
 
+    public static boolean getEstAdmin(){
+        return estAdmin;
+    }
 
     public static int getCurrentUser(){
         return idUtilisateurCourant;
     }
 
     public static String getCurrentNameUser(){
-        System.out.println(currentUsername);
+        
         return currentUsername;
     }
 

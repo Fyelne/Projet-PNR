@@ -29,7 +29,7 @@ public class DebutListener {
      */
     void conClicked(ActionEvent event) {
         
-        util.changeScene("Connexion", (Button) event.getSource());
+        util.changeScene("Connexion");
         
     }
 
@@ -68,8 +68,8 @@ public class DebutListener {
             while(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
-                        Utilitaire.setCurrentNameUser(user.getText());
-                        util.changeScene("Accueil", connectButton);
+                        Utilitaire.setCurrentUser(res.getInt("idUtilisateur"));;
+                        util.changeScene("Accueil");
                         
                         
                 }else{

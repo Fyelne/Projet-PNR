@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.mysql.cj.util.Util;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,38 +15,37 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ListenerAccueil implements Initializable{
     @FXML
-    private AnchorPane Menu;
-
+    private HBox HMenu;
     @FXML
     private Button menu;
-
     @FXML
     private Button quit;
-
     @FXML
     private Button user;
+    @FXML
+    private Button admin;
     
+
+
     @FXML
     private Label bv;
-
-    
-
-    //@FXML
-    //private Label username;
-
     @FXML
     private Button test;
+    @FXML
+    private Button add;
+
 
     private Utilitaire util = new Utilitaire();
     @FXML
     void changeTest(ActionEvent event) {
             // change the scene
-            util.changeScene("ListeObsLoutre", user);
+            util.changeScene("ListeObsLoutre");
 
     }
 
@@ -67,24 +68,29 @@ public class ListenerAccueil implements Initializable{
     }
 
 
+    
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+        bv.setText("Bienvenue " + Utilitaire.getCurrentNameUser());
+        if(Utilitaire.getEstAdmin()){
+            admin.setVisible(true);
+        }
+    }
+
+
+
+    //code du Menu
     @FXML
     void openMenu(ActionEvent event) {
-        
-        Menu.setVisible(true);
-
+        HMenu.setVisible(true);
     }
-
-    @FXML
-    private void goToGestionUtilisateur(ActionEvent event) {
-        Utilitaire util = new Utilitaire();
-        util.changeScene("GestionUtilisateur", user);
-    }
-
     @FXML
     void quitMenu(ActionEvent event) {
-        Menu.setVisible(false);
+        HMenu.setVisible(false);
     }
-
     @FXML
     void openUserMenu(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -105,12 +111,25 @@ public class ListenerAccueil implements Initializable{
         }
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        
-        bv.setText("Bienvenue " + Utilitaire.getCurrentNameUser());
-        
+    @FXML
+    void goToAdmin(ActionEvent event) {
+        util.changeScene("Admin");
     }
+    @FXML
+    void goToAccueil(ActionEvent event) {
+        util.changeScene("Accueil");
+    }
+
+    @FXML
+    void goToAddDonnee(ActionEvent event) {
+        util.changeScene("ChoixAjouter");
+    }
+
+    @FXML
+    void goToChoixReleve(ActionEvent event) {
+        util.changeScene("Consultation");
+    }
+
+
 
 }

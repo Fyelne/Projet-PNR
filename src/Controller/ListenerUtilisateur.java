@@ -54,12 +54,12 @@ public class ListenerUtilisateur {
     @FXML
     void quitMenu(ActionEvent event) {
         
-        util.changeScene(this.pagePrec, quit);
+        util.changeScene(this.pagePrec);
     }
 
     @FXML
     void deconnexion(ActionEvent event) {
-        util.changeScene("Connexion", quit);
+        util.changeScene("Connexion");
     }
 
     @FXML

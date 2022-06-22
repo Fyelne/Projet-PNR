@@ -29,12 +29,12 @@ public class ListenerConsultation {
 
     @FXML
     void obsLoutre(ActionEvent event) {
-        util.changeScene("ChoixConsultation", loutre);
+        util.changeScene("ChoixConsultation");
     }
 
     @FXML
     void retouracc(ActionEvent event) {
-        util.changeScene("Accueil", retour);
+        util.changeScene("Accueil");
     }
 
 }
