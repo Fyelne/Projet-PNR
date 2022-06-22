@@ -64,8 +64,8 @@ public class ListenerAfficheAllHippocampe implements Initializable{
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
                     root = fx.load();
-                    //ListenerObs lu = fx.getController();
-                    //lu.load(l);
+                    ListenerAffichageObsHippocampe lu = fx.getController();
+                    lu.load(l);
                     sc.setRoot(root);
                 } catch (IOException e) {
                     e.printStackTrace();
