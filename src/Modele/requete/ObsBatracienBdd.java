@@ -105,9 +105,10 @@ public class ObsBatracienBdd {
         return ret;
     }
 
-    public void insertBatracienAndOther(ObsBatracien b, ArrayList<VegetationBdd> allVege, ZoneHumide zh){
-        int idVege = this.idLieuVege();
+    public void insertBatracienAndOther(ObsBatracien b, ArrayList<Vegetation> allVege, ZoneHumide zh){
+        int idVege = allVege.get(0).getDecritLieu();
         String reqLieuVege = "INSERT INTO lieu_vegetation VALUES(" + idVege + ");";
+        System.out.println(reqLieuVege);
         
         try {
             PreparedStatement s = con.prepareStatement(reqLieuVege);
@@ -119,6 +120,10 @@ public class ObsBatracienBdd {
         int idZh = this.idZH();
         ZoneHumideBdd zBdd = new ZoneHumideBdd();
         zBdd.insertOneInto(zh);
+        VegetationBdd vBdd = new VegetationBdd();
+        for(Vegetation v : allVege){
+            vBdd.insertOneInto(v);
+        }
         this.insertOneInto(b, idZh, idVege);
     }
 
@@ -142,15 +147,83 @@ public class ObsBatracienBdd {
         int nbAmpl = b.getNombreAmplexus();
         int nbPonte = b.getNombrePonte();
         int nbTet = b.getNombreTetard();
-        int temp = b.getTemperature();
+        int tem = b.getTemperature();
         MeteoCiel metCiel = b.getMeteoCiel();
+        String ciel = "";
+        switch(metCiel){
+            case DEGAGE:
+                ciel = "dégagé";
+                break;
+            case SEMI_DEGAGE:
+                ciel = "semi-dégagé";
+                break;
+            case NUAGEUX:
+                ciel = "nuageux";
+                break;
+            default:
+                ciel = null;
+                break;
+        }
         MeteoTemp metTemp = b.getMeteoTemp();
+        String temp = "";
+        switch(metTemp){
+            case FROID:
+                temp = "froid";
+                break;
+            case MOYEN:
+                temp = "moyen";
+                break;
+            case CHAUD:
+                temp = "chaud";
+                break;
+            default: 
+                temp = null;
+                break;
+        }
+
         MeteoVent metVent = b.getMeteoVent();
+        String vent = "";
+        switch(metVent){
+            case NON:
+                vent = "non";
+                break;
+            case LEGER:
+                vent = "léger";
+                break;
+            case MOYEN:
+                vent = "moyen";
+                break;
+            case FORT:
+                vent = "fort";
+                break;
+            default:
+                vent = null;
+                break;
+        }
         MeteoPluie metPluie = b.getMeteoPluie();
+        String pluie = "";
+        switch(metPluie){
+            case NON:
+                pluie = "non";
+                break;
+            case LEGERE:
+                pluie = "légère";
+                break;
+            case MOYENNE:
+                pluie = "moyenne";
+                break;
+            case FORTE:
+                pluie = "forte";
+                break;
+            default:
+                pluie = null;
+                break;
+        }
 
         String req = "INSERT INTO obs_batracien VALUES ( " + b.getId() + " , '" + espece + "' , " + nbAdulte + " , " + nbAmpl +
-                        " , " + nbPonte + " , " + nbTet + " , " + temp + " , '" + metCiel + "','" + metTemp + "','" + 
-                        metVent + "', '" + metPluie + "' , " + idZh + " , " + idVege + ");";
+                        " , " + nbPonte + " , " + nbTet + " , " + tem + " , '" + ciel + "','" + temp + "','" + 
+                        vent + "', '" + pluie + "' , " + idZh + " , " + idVege + ");";
+        System.out.println(req);
 
         PreparedStatement stmt;
         try {

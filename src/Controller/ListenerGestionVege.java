@@ -52,12 +52,11 @@ public class ListenerGestionVege{
 
     private ListenerObs lelistener;
 
-    private int idDecritLieu;
 
     @FXML
     void ajouterNew(ActionEvent event) {
-        Vegetation v = new Vegetation(ob.getIdVege(), nature.getSelectionModel().getSelectedItem()
-                                        , vegetation.getText(), idDecritLieu);
+        Vegetation v = new Vegetation((ob.getIdVege() + listVege.size()), nature.getSelectionModel().getSelectedItem()
+                                        , vegetation.getText(), ob.getIdDecritVege());
         this.updateTable(v);
 
     }
@@ -70,10 +69,9 @@ public class ListenerGestionVege{
         st.close();
     }
 
-    void getControl(ListenerObs s, ArrayList<Vegetation> o, int id){
+    void getControl(ListenerObs s, ArrayList<Vegetation> o){
         this.lelistener = s;
         this.listVege = o;
-        this.idDecritLieu = id;
         nat.setCellValueFactory(new PropertyValueFactory<>("natureVege"));
         veg.setCellValueFactory(new PropertyValueFactory<>("vege"));
 

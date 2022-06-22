@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieLoutre">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieObsGCI">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -86,7 +86,7 @@
                      <children>
                         <AnchorPane prefHeight="102.0" prefWidth="386.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" layoutX="-136.0" layoutY="41.0" prefHeight="98.0" prefWidth="515.0" text="Observation sur le nid : X Situé sur la plage de " textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-136.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="intitule" alignment="CENTER" layoutX="-136.0" layoutY="41.0" prefHeight="98.0" prefWidth="515.0" text="Observation sur le nid : X Situé sur la plage de " textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-136.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="20.0" />
                                  </font>
@@ -220,8 +220,8 @@
                                     <Font name="AvenirLTStd-Medium" size="18.0" />
                                  </font>
                               </Label>
-                              <ComboBox prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Spinner prefHeight="31.0" prefWidth="107.0" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="present" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Spinner fx:id="nb" prefHeight="31.0" prefWidth="107.0" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <AnchorPane prefHeight="0.0" prefWidth="372.0" VBox.vgrow="ALWAYS" />
@@ -236,7 +236,7 @@
                         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0">
                            <children>
                               <AnchorPane prefHeight="53.0" prefWidth="92.0" />
-                              <ComboBox fx:id="typeObs" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                              <ComboBox fx:id="nature" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
                               <AnchorPane prefHeight="53.0" prefWidth="119.0" />
                            </children>
                         </HBox>

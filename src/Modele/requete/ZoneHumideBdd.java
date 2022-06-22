@@ -154,7 +154,8 @@ public class ZoneHumideBdd {
         }
 
         String req = "INSERT INTO zonehumide VALUES(" + id + " , " + tempo + " , " + profondeur + " , " + surface 
-                        + " , '" + typeMare + "' , '" + pente + "' , '" + ouverture +");";
+                        + " , '" + typeMare + "' , '" + pente + "' , '" + ouverture +"');";
+        System.out.println(req);
         PreparedStatement stmt;
         try {
             stmt = con.prepareStatement(req);
@@ -166,5 +167,19 @@ public class ZoneHumideBdd {
         
     }
 
+    public  int giveIdZh(){
+        int id = 0;
+        String req = "SELECT MAX(zh_id) FROM zonehumide";
+        try{    
+            PreparedStatement stmt = con.prepareStatement(req);
+            ResultSet res =  stmt.executeQuery();
+            res.next();
+            id = res.getInt("MAX(zh_id)");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return id+1;
+    }
     
 }

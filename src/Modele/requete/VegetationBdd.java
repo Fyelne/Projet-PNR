@@ -62,7 +62,7 @@ public class VegetationBdd {
                 vege = "bordure";
                 break;
             case RISPYLE:
-                vege = "rispyle";
+                vege = "ripisyle";
                 break;
             default:
                 vege = null;
@@ -73,7 +73,7 @@ public class VegetationBdd {
         int decrit = v.getDecritLieu();
 
         String req = "INSERT INTO vegetation VALUES(" + id + " , '" + vege + "' , '" + vegetation +"' , " + decrit + ");";
-
+        System.out.println(req);
         try {
             PreparedStatement stmt = con.prepareStatement(req);
             stmt.executeUpdate();

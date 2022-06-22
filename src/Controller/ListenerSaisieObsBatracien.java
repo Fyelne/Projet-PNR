@@ -2,10 +2,13 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Modele.donnee.EspeceBatracien;
+import Modele.donnee.Lieu;
 import Modele.donnee.MeteoCiel;
 import Modele.donnee.MeteoPluie;
 import Modele.donnee.MeteoTemp;
@@ -13,6 +16,8 @@ import Modele.donnee.MeteoVent;
 import Modele.donnee.ObsBatracien;
 import Modele.donnee.Observateur;
 import Modele.donnee.Vegetation;
+import Modele.donnee.ZoneHumide;
+import Modele.requete.ObsBatracienBdd;
 import Modele.requete.VegetationBdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,11 +80,29 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
     private Button zh;
     private ArrayList<Observateur> listDesObs = new ArrayList<Observateur>();
     private ArrayList<Vegetation> laVege = new ArrayList<Vegetation>();
-    private ObsBatracien batracienBdd;
+    private ZoneHumide laZoneHumide;
+    private ObsBatracienBdd batracienBdd;
 
     @FXML
     public void addObs(ActionEvent event) {
+        Lieu l = new Lieu(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText()));
 
+
+        System.out.println(date.getValue().toString());
+        // à revoir pour avoir un timePicker
+        int h = heure.getValue();
+        int min = minute.getValue();
+        Time t = new Time((h-1)*60*100*60 + min*60*1000);
+        
+        int id = Modele.requete.Utilitaire.giveID();
+        Date da = Date.valueOf(date.getValue());
+
+        int[] resultats = {adulte.getValue(), ampexus.getValue(), tetard.getValue(), ponte.getValue()};
+        ObsBatracien obsB = new ObsBatracien(id, da, t, l, listDesObs, resultats, espece.getSelectionModel().getSelectedItem()
+                            , temperature.getValue(), ciel.getSelectionModel().getSelectedItem(), temp.getSelectionModel().getSelectedItem()
+                            , vent.getSelectionModel().getSelectedItem(), pluie.getSelectionModel().getSelectedItem());
+        
+        batracienBdd.insertBatracienAndOther(obsB, laVege, laZoneHumide);
     }
 
     @FXML
@@ -112,7 +135,7 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
             FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\gestionVege.fxml"));
             r = loader.load();
             ListenerGestionVege o = loader.getController();
-            o.getControl(this, laVege, vBdd.getIdDecritVege());
+            o.getControl(this, laVege);
             Scene s = new Scene(r);
             newStage.setTitle("Saisie de la végétation");
             newStage.setScene(s);
@@ -127,7 +150,24 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
 
     @FXML
     void addZh(ActionEvent event) {
-
+        Stage newStage = new Stage();
+        Parent r;
+        VegetationBdd vBdd = new VegetationBdd();
+        try {
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\gestionZoneHumide.fxml"));
+            r = loader.load();
+            ListenerGestionZh o = loader.getController();
+            o.getControl(this);
+            Scene s = new Scene(r);
+            newStage.setTitle("Saisie de la zone Humide");
+            newStage.setScene(s);
+            newStage.show();
+            newStage.centerOnScreen();
+            Utilitaire.setScene(s);
+                        
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -184,7 +224,7 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         temp.getItems().addAll(MeteoTemp.values());
         vent.getItems().addAll(MeteoVent.values());
         
-
+        batracienBdd = new ObsBatracienBdd();
     }
 
     @Override
@@ -194,6 +234,10 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
 
     public void setListVege(ArrayList<Vegetation> v){
         this.laVege = v;
+    }
+
+    public void setZoneHumide(ZoneHumide z){
+        this.laZoneHumide = z;
     }
 
 }
