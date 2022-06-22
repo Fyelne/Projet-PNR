@@ -19,7 +19,8 @@ public class Admin {
      */
     @FXML
     void goToSave(ActionEvent event) {
-
+        Utilitaire util = new Utilitaire();
+        util.changeScene("Export");
     }
 
     /**
