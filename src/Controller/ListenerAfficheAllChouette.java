@@ -104,7 +104,8 @@ public class ListenerAfficheAllChouette implements Initializable{
 
     @FXML
     void recherche(KeyEvent event){
-        if(event.getCode().equals(KeyCode.ENTER)){
+        TextField source = (TextField)event.getSource();
+        if(event.getCode().equals(KeyCode.ENTER) || source.getText().equals("")){
             filtre();
         }
     }

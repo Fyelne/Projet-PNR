@@ -5,22 +5,30 @@
 */
 package Controller;
 
-import Modele.requete.Utilisateur;
+import Modele.requete.UtilisateurBdd;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import Modele.Singleton;
+import Modele.donnee.Utilisateur;
+import Controller.Utilitaire;
 
 /**
 *
@@ -29,83 +37,103 @@ import javafx.scene.layout.AnchorPane;
 public class GestionUtilisateur implements Initializable {
     @FXML
     private AnchorPane Menu;
+    @FXML
+    private TableColumn<Utilisateur, String> nom;
+    @FXML
+    private TableColumn<Utilisateur, String> prenom;
+    @FXML
+    private TableColumn<Utilisateur, String> telephone;
+    @FXML
+    private TableColumn<Utilisateur, ComboBox<String>> adminCB;
+    @FXML
+    private TableColumn<Utilisateur, Button> supprButton;
+    @FXML
+    private TextField nomTF;
+    @FXML
+    private TextField prenomTF;
     
     @FXML
     private Label label;
     
     @FXML 
-    TableView<Utilisateur> tableview;   
+    TableView<Utilisateur> tab;   
     
     ObservableList<Utilisateur> data;
+
+    Connection con;
+
+    Utilitaire util = new Utilitaire();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Editable cell in tableview   
-        TableColumn<Utilisateur,String> nomCol = new TableColumn<Utilisateur,String>("Nom");
-        nomCol.setEditable(true);
-        TableColumn<Utilisateur,String> prenomCol = new TableColumn<Utilisateur,String>("Prenom");
-        TableColumn<Utilisateur,String> emailCol = new TableColumn<Utilisateur,String>("Email"); 
-        TableColumn<Utilisateur,String> droitsCol = new TableColumn<Utilisateur,String>("Droits");
-        TableColumn<Utilisateur,String> deleteCol = new TableColumn<Utilisateur,String>("Supprimer");
+        UtilisateurBdd data = new UtilisateurBdd();
+
+        ArrayList<Utilisateur> obs = data.builder(data.getAllUtilisateurToBuild());
         
-        tableview.getColumns().addAll(nomCol,prenomCol,emailCol,droitsCol,deleteCol);
+        initializeData(obs);
+        // con = Singleton.getInstance().getConnection();
+
+        // data = FXCollections.observableArrayList();
+        // try{
+        //     Statement stmt = con.createStatement();
+        //     ResultSet rs = stmt.executeQuery("SELECT nom,prenom FROM Observateur WHERE nom IS NOT NULL AND prenom IS NOT NULL");
+        //     while(rs.next()){
+        //         String nom = rs.getString("nom");
+        //         String prenom = rs.getString("prenom");
+        //         Utilisateur p = new Utilisateur(nom, prenom, "email", "Utilisateur");
+        //         data.add(p);
+        //     }
+        // } catch (SQLException e) {
+        //     System.out.println("Connection Failed! Check output console");
+        //     e.printStackTrace();
+        // }
         
-        // data = FXCollections.observableArrayList(
-        // new Person("Jacob", "Smith", "jacob.smith@example.com", "Good"),
-        // new Person("Isabella", "Johnson", "isabella.johnson@example.com", "Good"),
-        // new Person("Ethan", "Williams", "ethan.williams@example.com", "Good"),
-        // new Person("Emma", "Jones", "emma.jones@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good"),
-        // new Person("Michael", "Brown", "michael.brown@example.com", "Good")
+        
+        // nomCol.setCellValueFactory(
+        //     new PropertyValueFactory<Utilisateur,String>("Nom")
         // );
-        data = FXCollections.observableArrayList();
-        try{
-            Connection conn = SQLConnect.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT nom,prenom FROM Observateur WHERE nom IS NOT NULL AND prenom IS NOT NULL");
-            while(rs.next()){
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                Utilisateur p = new Utilisateur(nom, prenom, "email", "Utilisateur");
-                data.add(p);
-            }
-        } catch (SQLException e) {
-            System.out.println("Connection Failed! Check output console");
-            e.printStackTrace();
-        }
-        
-        
-        nomCol.setCellValueFactory(
-            new PropertyValueFactory<Utilisateur,String>("Nom")
-        );
 
-        prenomCol.setCellValueFactory(
-        new PropertyValueFactory<Utilisateur,String>("Prenom")
-        );
-        prenomCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        prenomCol.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setPrenom(e.getNewValue()));         
+        // prenomCol.setCellValueFactory(
+        // new PropertyValueFactory<Utilisateur,String>("Prenom")
+        // );
+        // prenomCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        // prenomCol.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setPrenom(e.getNewValue()));         
 
-        emailCol.setCellValueFactory(     
-        new PropertyValueFactory<Utilisateur,String>("Email")
-        );    
-        emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        emailCol.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setEmail(e.getNewValue()));         
+        // emailCol.setCellValueFactory(     
+        // new PropertyValueFactory<Utilisateur,String>("Email")
+        // );    
+        // emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        // emailCol.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setEmail(e.getNewValue()));         
         
-        droitsCol.setCellValueFactory(     
-        new PropertyValueFactory<Utilisateur,String>("Droits")
-        ); 
+        // droitsCol.setCellValueFactory(     
+        // new PropertyValueFactory<Utilisateur,String>("Droits")
+        // ); 
         
-        deleteCol.setCellValueFactory(
-        new PropertyValueFactory<Utilisateur,String>("Supprimer")
-        );
+        // deleteCol.setCellValueFactory(
+        // new PropertyValueFactory<Utilisateur,String>("Supprimer")
+        // );
         
-        tableview.setEditable(true);
+        // tableview.setEditable(true);
 
-        tableview.setItems(data);
+        // tableview.setItems(data);
                        
     } 
+
+    private void initializeData(ArrayList<Utilisateur> obs){
+        ObservableList<Utilisateur> tr = FXCollections.observableArrayList(obs);
+
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+
+        telephone.setCellValueFactory(new PropertyValueFactory<>("telephone"));
+
+        adminCB.setCellValueFactory(new PropertyValueFactory<>("adminCB"));
+
+        supprButton.setCellValueFactory(new PropertyValueFactory<>("supprButton"));
+
+        tab.setItems(tr);
+    }
     
     /**
      * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
@@ -124,6 +152,29 @@ public class GestionUtilisateur implements Initializable {
     @FXML
     void quitUserMenu(ActionEvent event) {
         Menu.setVisible(false);
+    }
+
+    @FXML
+    void retourcons(ActionEvent event) {
+        util.changeScene("Admin");
+    }
+
+
+    @FXML
+    void recherche(KeyEvent event){
+        TextField source = (TextField)event.getSource();
+        if(event.getCode().equals(KeyCode.ENTER) || source.getText().equals("")){
+            filter();
+        }
+    }
+
+    void filter(){
+        UtilisateurBdd data = new UtilisateurBdd();
+        String nomString = nomTF.getText();
+        String prenomString = prenomTF.getText();
+
+        ArrayList<Utilisateur> obs = data.builder(data.getFilteredUtilisateur(nomString, prenomString));
+        initializeData(obs);
     }
 
 }

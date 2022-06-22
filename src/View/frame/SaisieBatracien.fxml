@@ -19,341 +19,456 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieObsBatracien">
-   <top>
-      <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<GridPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieObsBatracien">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0">
+         <top>
+            <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/proto_blanc/menu.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="25.0" top="8.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Label minWidth="235.0" prefHeight="50.0" prefWidth="347.0" text="Saisie Batracien" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="40.0" />
-                     </font>
-                  </Label>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" HBox.hgrow="SOMETIMES">
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-                  <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;" HBox.hgrow="SOMETIMES">
-                     <graphic>
-                        <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/proto_blanc/user.png" />
-                           </image>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin>
-                  </Button>
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/proto_blanc/menu.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="25.0" top="8.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label minWidth="235.0" prefHeight="50.0" prefWidth="347.0" text="Saisie Batracien" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="40.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" HBox.hgrow="SOMETIMES">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </AnchorPane>
+                        <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;" HBox.hgrow="SOMETIMES">
+                           <graphic>
+                              <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/proto_blanc/user.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </top>
-   <center>
-      <AnchorPane prefHeight="583.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="605.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="583.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane minWidth="0.0" prefHeight="575.0" prefWidth="165.0" HBox.hgrow="SOMETIMES" />
-                  <VBox alignment="CENTER_LEFT" prefHeight="630.0" prefWidth="423.0" HBox.hgrow="SOMETIMES">
+                  <HBox prefHeight="605.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="59.0" prefWidth="386.0" />
-                        <Label text="Date">
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="-20.0" />
-                           </VBox.margin>
-                        </Label>
-                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="391.0">
+                        <AnchorPane minWidth="0.0" prefHeight="575.0" prefWidth="165.0" HBox.hgrow="SOMETIMES" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="630.0" prefWidth="423.0" HBox.hgrow="SOMETIMES">
                            <children>
-                              <AnchorPane prefHeight="56.0" prefWidth="124.0" HBox.hgrow="ALWAYS" />
-                              <DatePicker fx:id="date" editable="false" prefHeight="56.0" prefWidth="443.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
-                              <AnchorPane prefHeight="56.0" prefWidth="160.0" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                        <Label text="Horaire">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="30.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="20.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="386.0">
-                           <children>
-                              <AnchorPane prefHeight="66.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin></AnchorPane>
-                              <Spinner fx:id="heure" prefHeight="25.0" prefWidth="70.0" />
-                              <Label prefHeight="24.0" prefWidth="8.0" text=":">
+                              <AnchorPane prefHeight="59.0" prefWidth="386.0" />
+                              <Label text="Date">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="-20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="56.0" prefWidth="391.0">
+                                 <children>
+                                    <AnchorPane prefHeight="56.0" prefWidth="124.0" HBox.hgrow="ALWAYS" />
+                                    <DatePicker fx:id="date" editable="false" prefHeight="56.0" prefWidth="443.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                                    <AnchorPane prefHeight="56.0" prefWidth="160.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <Label text="Horaire">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="30.0" />
+                                 </VBox.margin>
                                  <font>
                                     <Font name="AvenirLTStd-Medium" size="20.0" />
                                  </font>
                               </Label>
-                              <Spinner fx:id="minute" prefHeight="25.0" prefWidth="70.0" />
-                              <AnchorPane prefHeight="66.0" prefWidth="102.0" HBox.hgrow="ALWAYS" />
-                           </children>
-                           <VBox.margin>
-                              <Insets top="-15.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Label text="Coordonnées Lambert X">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="30.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="X" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <VBox.margin>
-                              <Insets left="10.0" right="50.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Label text="Coordonnées Lambert Y">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="30.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="Y" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <VBox.margin>
-                              <Insets left="10.0" right="50.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <AnchorPane prefHeight="27.0" prefWidth="423.0" />
-                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Button fx:id="veg" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addVege" prefHeight="44.0" prefWidth="178.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Vegetation" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="15.0" />
-                                 </font>
-                              </Button>
-                              <AnchorPane prefHeight="68.0" prefWidth="71.0" HBox.hgrow="ALWAYS" />
-                              <Button fx:id="zh" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addZh" prefHeight="48.0" prefWidth="178.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Zone Humide" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="15.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="58.0" prefWidth="423.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Button fx:id="observateur" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addObservateur" prefHeight="48.0" prefWidth="203.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Gérer les observateurs">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="15.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <AnchorPane maxWidth="205.0" minWidth="0.0" prefHeight="575.0" prefWidth="205.0" HBox.hgrow="ALWAYS" />
-                  <VBox alignment="CENTER_LEFT" prefHeight="575.0" prefWidth="511.0" HBox.hgrow="SOMETIMES">
-                     <children>
-                        <AnchorPane prefHeight="17.0" prefWidth="372.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <HBox alignment="CENTER" prefHeight="38.0" prefWidth="386.0">
                                  <children>
-                                    <ImageView fitHeight="148.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@image/batracien.jpg" />
-                                       </image>
-                                    </ImageView>
+                                    <AnchorPane prefHeight="66.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </AnchorPane>
+                                    <Spinner fx:id="heure" prefHeight="25.0" prefWidth="70.0" />
+                                    <Label prefHeight="24.0" prefWidth="8.0" text=":">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Spinner fx:id="minute" prefHeight="25.0" prefWidth="70.0" />
+                                    <AnchorPane prefHeight="66.0" prefWidth="102.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="-15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label text="Coordonnées Lambert X">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="X" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="50.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Coordonnées Lambert Y">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Y" alignment="CENTER" minWidth="250.0" prefHeight="46.0" prefWidth="238.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="50.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <AnchorPane prefHeight="27.0" prefWidth="423.0" />
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="veg" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addVege" prefHeight="44.0" prefWidth="178.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Vegetation" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane prefHeight="68.0" prefWidth="71.0" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="zh" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addZh" prefHeight="48.0" prefWidth="178.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Zone Humide" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="58.0" prefWidth="423.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="observateur" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addObservateur" prefHeight="48.0" prefWidth="203.0" style="-fx-background-color: #6fb09c; -fx-label-padding: 5; -fx-background-radius: 25;" text="Gérer les observateurs">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <AnchorPane maxWidth="205.0" minWidth="0.0" prefHeight="575.0" prefWidth="205.0" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="575.0" prefWidth="511.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <AnchorPane prefHeight="17.0" prefWidth="372.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <ImageView fitHeight="148.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@image/batracien.jpg" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane maxHeight="70.0" prefHeight="7.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Ciel :">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Temp :" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Vent :" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Pluie :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="ciel" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="1" />
+                                    <ComboBox fx:id="temp" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <ComboBox fx:id="vent" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="3" />
+                                    <ComboBox fx:id="pluie" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <AnchorPane prefHeight="32.0" prefWidth="469.0" VBox.vgrow="ALWAYS" />
+                              <GridPane prefHeight="77.0" prefWidth="377.0">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Adulte">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Amplexus" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Ponte" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Tetard" GridPane.columnIndex="3">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Spinner fx:id="adulte" editable="true" prefHeight="25.0" prefWidth="90.0" GridPane.rowIndex="1" />
+                                    <Spinner fx:id="ampexus" editable="true" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Spinner fx:id="ponte" editable="true" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Spinner fx:id="tetard" editable="true" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <AnchorPane maxHeight="70.0" prefHeight="9.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
+                              <GridPane>
+                                <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="152.0" minWidth="10.0" prefWidth="133.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="235.0" minWidth="10.0" prefWidth="205.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="126.0" minWidth="10.0" prefWidth="112.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Température eau :" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <Spinner fx:id="temperature" editable="true" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <AnchorPane maxHeight="70.0" prefHeight="9.0" prefWidth="469.0" VBox.vgrow="ALWAYS" />
+                              <Label text="Espece">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="20.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0">
+                                 <children>
+                                    <AnchorPane prefHeight="53.0" prefWidth="92.0" />
+                                    <ComboBox fx:id="espece" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
+                                    <AnchorPane prefHeight="53.0" prefWidth="119.0" />
+                                 </children>
+                              </HBox>
+                              <AnchorPane prefHeight="5.0" prefWidth="373.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <AnchorPane prefHeight="700.0" prefWidth="109.0" HBox.hgrow="SOMETIMES" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="95.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" layoutY="-10.0" prefHeight="105.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="add" minWidth="140.0" mnemonicParsing="false" onAction="#addObs" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter" textFill="WHITE">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="23.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="95.0" prefWidth="119.0" HBox.hgrow="SOMETIMES" />
+                        <Button fx:id="ret" minWidth="140.0" mnemonicParsing="false" onAction="#goBack" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="23.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+      <HBox fx:id="HMenu" prefHeight="100.0" prefWidth="200.0" visible="false">
+         <children>
+            <AnchorPane maxHeight="1800.0" maxWidth="400.0" minHeight="-Infinity" minWidth="10.0" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;" HBox.hgrow="ALWAYS">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="22.0">
+                                 <children>
+                                    <Label maxHeight="2000.0" maxWidth="2000.0" minHeight="55.0" minWidth="121.0" text="MENU" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane maxWidth="2000.0" prefHeight="62.0" prefWidth="161.0" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="quit" cancelButton="true" minWidth="57.0" mnemonicParsing="false" onAction="#quitMenu" style="-fx-background-color: #008864;">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="12.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="41.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@image/proto_blanc/close.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane maxHeight="70.0" prefHeight="7.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
-                        <GridPane>
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                     </top>
+                     <center>
+                        <AnchorPane minWidth="10.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label text="Ciel :">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Temp :" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Vent :" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Pluie :" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="ciel" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="temp" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="vent" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="3" />
-                              <ComboBox fx:id="pluie" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
-                        <AnchorPane prefHeight="32.0" prefWidth="469.0" VBox.vgrow="ALWAYS" />
-                        <GridPane prefHeight="77.0" prefWidth="377.0">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label text="Adulte">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Amplexus" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Ponte" GridPane.columnIndex="2">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Tetard" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <Spinner fx:id="adulte" editable="true" prefHeight="25.0" prefWidth="90.0" GridPane.rowIndex="1" />
-                              <Spinner fx:id="ampexus" editable="true" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Spinner fx:id="ponte" editable="true" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Spinner fx:id="tetard" editable="true" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                           </children>
-                        </GridPane>
-                        <AnchorPane maxHeight="70.0" prefHeight="9.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
-                        <GridPane>
-                          <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="152.0" minWidth="10.0" prefWidth="133.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="235.0" minWidth="10.0" prefWidth="205.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="126.0" minWidth="10.0" prefWidth="112.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label text="Température eau :" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="19.0" />
-                                 </font>
-                              </Label>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <VBox alignment="CENTER" minWidth="10.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Spinner fx:id="temperature" editable="true" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                                    <AnchorPane prefHeight="214.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                                    <Button minHeight="52.0" minWidth="10.0" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Accueil" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Button minHeight="52.0" minWidth="10.0" mnemonicParsing="false" onAction="#goToChoixReleve" prefHeight="71.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Les relevés">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="25.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Button minHeight="52.0" minWidth="10.0" mnemonicParsing="false" onAction="#goToAddDonnee" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Ajout de données" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="25.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Button fx:id="admin" minHeight="52.0" minWidth="278.0" mnemonicParsing="false" onAction="#goToAdmin" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Administration" visible="false">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="25.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane prefHeight="172.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
                                  </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              </VBox>
                            </children>
-                        </GridPane>
-                        <AnchorPane maxHeight="70.0" prefHeight="9.0" prefWidth="469.0" VBox.vgrow="ALWAYS" />
-                        <Label text="Espece">
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="20.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="371.0">
+                        </AnchorPane>
+                     </center>
+                     <bottom>
+                        <AnchorPane prefHeight="279.0" prefWidth="400.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane prefHeight="53.0" prefWidth="92.0" />
-                              <ComboBox fx:id="espece" prefHeight="45.0" prefWidth="393.0" promptText="Choisissez" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-padding: 10;" />
-                              <AnchorPane prefHeight="53.0" prefWidth="119.0" />
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@image/copieP.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="33.0" prefWidth="265.0" text="&quot;Une autre vie s'invente ici.&quot;" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
                            </children>
-                        </HBox>
-                        <AnchorPane prefHeight="5.0" prefWidth="373.0" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-                  <AnchorPane prefHeight="700.0" prefWidth="109.0" HBox.hgrow="SOMETIMES" />
+                        </AnchorPane>
+                     </bottom>
+                  </BorderPane>
                </children>
-            </HBox>
+            </AnchorPane>
+            <AnchorPane minWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
          </children>
-      </AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="95.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" layoutY="-10.0" prefHeight="105.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="add" minWidth="140.0" mnemonicParsing="false" onAction="#addObs" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter" textFill="WHITE">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="23.0" />
-                     </font>
-                  </Button>
-                  <AnchorPane prefHeight="95.0" prefWidth="119.0" HBox.hgrow="SOMETIMES" />
-                  <Button fx:id="ret" minWidth="140.0" mnemonicParsing="false" onAction="#goBack" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="23.0" />
-                     </font>
-                  </Button>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </bottom>
-</BorderPane>
+      </HBox>
+   </children>
+</GridPane>
