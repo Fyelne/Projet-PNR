@@ -3,8 +3,6 @@ package Modele.requete;
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.mysql.cj.util.Util;
-
 import Modele.Singleton;
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.Lieu;
@@ -58,7 +56,6 @@ public class ObsLoutreBdd{
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

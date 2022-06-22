@@ -4,10 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import Modele.Singleton;
-import Modele.donnee.TypeObservation;
-import Modele.donnee.Lieu;
 import Modele.donnee.*;
-import Modele.donnee.Observateur;
 
 public class ChouetteBdd {
     private Connection con;
@@ -46,7 +43,6 @@ public class ChouetteBdd {
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return ret;
@@ -94,7 +90,6 @@ public class ChouetteBdd {
             PreparedStatement stmt = con.prepareStatement(req);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

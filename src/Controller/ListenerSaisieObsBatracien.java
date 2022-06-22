@@ -18,7 +18,6 @@ import Modele.donnee.Observateur;
 import Modele.donnee.Vegetation;
 import Modele.donnee.ZoneHumide;
 import Modele.requete.ObsBatracienBdd;
-import Modele.requete.VegetationBdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,7 +129,6 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
     void addVege(ActionEvent event) {
         Stage newStage = new Stage();
         Parent r;
-        VegetationBdd vBdd = new VegetationBdd();
         try {
             FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\gestionVege.fxml"));
             r = loader.load();
@@ -152,7 +150,6 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
     void addZh(ActionEvent event) {
         Stage newStage = new Stage();
         Parent r;
-        VegetationBdd vBdd = new VegetationBdd();
         try {
             FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\gestionZoneHumide.fxml"));
             r = loader.load();

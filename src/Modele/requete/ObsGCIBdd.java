@@ -3,15 +3,11 @@ package Modele.requete;
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.mysql.cj.util.Util;
-
 import Modele.Singleton;
 import Modele.donnee.Lieu;
 import Modele.donnee.Observateur;
 import Modele.donnee.ContenuNid;
-import Modele.donnee.NidGCI;
 import Modele.donnee.ObsGCI;
-import Modele.donnee.RaisonArretObs;
 
 public class ObsGCIBdd {
     
@@ -70,7 +66,6 @@ public class ObsGCIBdd {
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

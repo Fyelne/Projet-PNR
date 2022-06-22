@@ -3,15 +3,10 @@ package Modele.requete;
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.mysql.cj.util.Util;
 
 import Modele.Singleton;
-import Modele.donnee.IndiceLoutre;
-import Modele.donnee.Lieu;
 import Modele.donnee.NidGCI;
 import Modele.donnee.ObsGCI;
-import Modele.donnee.ObsLoutre;
-import Modele.donnee.Observateur;
 import Modele.donnee.RaisonArretObs;
 
 public class NidGCIBdd {
@@ -63,7 +58,6 @@ public class NidGCIBdd {
             PreparedStatement stmt = con.prepareStatement(req1);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -85,7 +79,6 @@ public class NidGCIBdd {
             res.next();
             ret = res.getInt("MAX(idNid)") + 1;
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return ret;

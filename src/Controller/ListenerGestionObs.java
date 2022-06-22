@@ -18,11 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldListCell;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class ListenerGestionObs implements Initializable{
 
@@ -66,7 +63,6 @@ public class ListenerGestionObs implements Initializable{
             rep = stmt.executeQuery();
             
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         ArrayList<Observateur> observe = ob.builder(rep);
@@ -173,7 +169,6 @@ public class ListenerGestionObs implements Initializable{
             stmt = con.prepareStatement(req);
             res = stmt.executeQuery();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -184,7 +179,6 @@ public class ListenerGestionObs implements Initializable{
                 this.updateTable(n);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

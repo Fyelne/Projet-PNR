@@ -13,8 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class ListenerAccueil implements Initializable{
     @FXML
@@ -61,7 +59,6 @@ public class ListenerAccueil implements Initializable{
             root = fx.load();
             sc.setRoot(root); 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -100,7 +97,6 @@ public class ListenerAccueil implements Initializable{
             lu.load(Utilitaire.getCurrentNameUser(), "Accueil");
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

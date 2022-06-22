@@ -58,7 +58,6 @@ public class ObsChouetteBdd {
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -154,7 +153,6 @@ public class ObsChouetteBdd {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

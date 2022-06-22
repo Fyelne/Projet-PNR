@@ -10,12 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+
 
 public class LoadBis implements Initializable{
 
@@ -23,7 +19,6 @@ public class LoadBis implements Initializable{
     private Label bonjour;
 
     private String name;
-    private Utilitaire util = new Utilitaire();
 
     @FXML
     void change() {
@@ -36,7 +31,6 @@ public class LoadBis implements Initializable{
             }
             
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -48,7 +42,6 @@ public class LoadBis implements Initializable{
             root = FXMLLoader.load(getClass().getResource(url));
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

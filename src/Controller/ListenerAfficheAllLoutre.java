@@ -3,13 +3,11 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.ObsLoutre;
-import Modele.donnee.Observation;
 import Modele.requete.ObsLoutreBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -64,7 +62,6 @@ public class ListenerAfficheAllLoutre implements Initializable{
                     lu.load(l);
                     sc.setRoot(root);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 System.out.println("Double clicked");
