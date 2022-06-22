@@ -19,10 +19,18 @@ public class ObsChouetteBdd {
         //Construction des objets
         try {
             while (r.next()) {
-                int idChouette = r.getInt("numObs");
+                int idChouette = r.getInt("idObs");
 
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
+
+                if(d == null){
+                    d = new Date(0);
+                }
+
+                if(t == null){
+                    t = new Time(0);
+                }
 
                 Lieu l = Utilitaire.recupLieu(r);
 
@@ -53,7 +61,9 @@ public class ObsChouetteBdd {
                     protocole = true;
                 }
 
-                ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObserv, protocole) ;
+                String numIndividu = r.getString("leNumIndividu");
+
+                ObsChouette oChouette = new ObsChouette(idChouette, d, t, l, obs, typeObserv, protocole, numIndividu);
                 ret.add(oChouette);
             }
 
@@ -155,8 +165,38 @@ public class ObsChouetteBdd {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
+    }
+
+    public ResultSet getAllChouetteToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
+        "FROM `obs_Chouette`, `observation` " +
+        "WHERE numObs = idObs " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
 
 
+    public ResultSet getFilteredChouette(String recherche){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
+        "FROM `obs_Chouette`, `observation` " +
+        "WHERE numObs = idObs " +
+        "AND leNumIndividu LIKE '%" + recherche + "%'" +
+        "ORDER BY dateObs DESC ";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
 }

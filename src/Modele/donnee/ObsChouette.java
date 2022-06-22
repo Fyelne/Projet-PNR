@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class ObsChouette extends Observation {
     private TypeObservation typeObs;
     private boolean protocole;
+    String numIndividu;
     
 
     /**
@@ -18,11 +19,12 @@ public class ObsChouette extends Observation {
      * @param observateurs observateurs de l'observation
      * @param type type de l'observation
      */
-    public ObsChouette(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, TypeObservation type, boolean prot) {
+    public ObsChouette(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, TypeObservation type, boolean prot, String num) {
         super(id, date, heure, lieu, observateurs);
         if(type != null) {
             this.typeObs = type;
             this.protocole = prot;
+            this.numIndividu = num;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -62,4 +64,14 @@ public class ObsChouette extends Observation {
     public void setProtocole(boolean prot){
         this.protocole = prot;
     } 
+
+    public String getNumIndividu(){
+        return this.numIndividu;
+    }
+
+    public void setNumIndivdu(String num){
+        if(null != null){
+            this.numIndividu = num;
+        }
+    }
 }
