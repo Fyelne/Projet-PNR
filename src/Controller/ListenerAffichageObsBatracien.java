@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ListenerAffichageObsBatracien {
+    private Utilitaire util = new Utilitaire();
+
     private ObsBatracien batra ;
 
     @FXML
@@ -71,7 +73,7 @@ public class ListenerAffichageObsBatracien {
 
     @FXML
     void goBack(ActionEvent event) {
-
+        util.changeScene("Consultation");
     }
 
     @FXML
@@ -100,7 +102,8 @@ public class ListenerAffichageObsBatracien {
     }
 
 
-    void getControl(ObsBatracien batra) {
+    public void getControl(ObsBatracien batra) {
+        this.batra = batra ;
         date.setText(batra.getDate().toString());
         if(batra.getHeure() == null){
             heure.setText(heure.getText() +  " Heure non renseigné");
@@ -117,11 +120,10 @@ public class ListenerAffichageObsBatracien {
         nbTetard.setText(nbTetard.getText() + " " + Integer.toString(batra.getNombreTetard()));
         numObservation.setText(numObservation.getText() + " " + Integer.toString(batra.getId()));
         temp.setText(temp.getText() + " " + Integer.toString(batra.getTemperature()));
-
     }
 
     @FXML
-    void openVisuMeteo(ActionEvent event) {
+    public void openVisuMeteo(ActionEvent event) {
         Stage newStage = new Stage();
         Parent r;
         try {
@@ -134,8 +136,7 @@ public class ListenerAffichageObsBatracien {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
-
+            
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,13 +150,12 @@ public class ListenerAffichageObsBatracien {
             FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationObservateur.fxml"));
             r = loader.load();
             ListenerVisuObs o = loader.getController();
-            o.getControl(batra);
+            o.load(batra);
             Scene s = new Scene(r);
-            newStage.setTitle("Visualisation des différents observations ");
+            newStage.setTitle("Visualisation des différents observateurs ");
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
 
         }catch (IOException e) {
             e.printStackTrace();
@@ -164,12 +164,42 @@ public class ListenerAffichageObsBatracien {
 
     @FXML
     void openVisuVege(ActionEvent event) {
+        Stage newStage = new Stage();
+        Parent r;
+        try {
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationVegetation.fxml"));
+            r = loader.load();
+            ListenerVisuVege o = loader.getController();
+            o.getControl(batra);
+            Scene s = new Scene(r);
+            newStage.setTitle("Visualisation des la végétation ");
+            newStage.setScene(s);
+            newStage.show();
+            newStage.centerOnScreen();
 
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
+ 
     @FXML
     void openVisuZH(ActionEvent event) {
+        /*Stage newStage = new Stage();
+        Parent r;
+        try {
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationZoneHumide.fxml"));
+            r = loader.load();
+            ListenerVisuObs o = loader.getController();
+            o.getControl(batra);
+            Scene s = new Scene(r);
+            newStage.setTitle("Visualisation de la zone humide ");
+            newStage.setScene(s);
+            newStage.show();
+            newStage.centerOnScreen();
 
-    }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }*/
+    } 
 
 }

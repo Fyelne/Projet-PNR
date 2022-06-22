@@ -48,8 +48,8 @@ public class ListenerVisuObs {
         st.close();
     }
 
-    public void load(Observation obsL){
-        int id = obsL.getId();
+    public void load(Observation obs){
+        int id = obs.getId();
         oBdd = new ObservateurBdd();
         ResultSet res = Modele.requete.Utilitaire.recupObs(id);
 

@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerVisuVege">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerVisuObs">
    <top>
       <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="titre" text="Visualisation végétation(s)" textFill="WHITE">
+                  <Label text="Visualisation Observateur(s)" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="25.0" />
                      </font>
@@ -65,9 +65,8 @@
                         <AnchorPane prefHeight="50.0" prefWidth="308.0" VBox.vgrow="ALWAYS" />
                         <TableView fx:id="table" prefHeight="350.0" prefWidth="667.0" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="id" prefWidth="153.0" text="Identifiant" />
-                            <TableColumn fx:id="natuVege" prefWidth="153.0" text="Nature végétation" />
-                              <TableColumn fx:id="typeVegeta" prefWidth="75.0" text="Type végétation" />
+                            <TableColumn fx:id="no" prefWidth="153.0" text="Nom" />
+                            <TableColumn fx:id="pre" prefWidth="153.0" text="Prénom" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
