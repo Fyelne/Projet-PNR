@@ -72,13 +72,11 @@ public class DebutListener {
             PreparedStatement  stmt = c.prepareStatement(requete);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
-                System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
                     if(res.getString("estAdmin").equals("1")){
                         util.changeScene("Admin", connectButton);
                     }
                     else{
-                        System.out.println(connectButton.toString());
                         util.changeScene("Accueil", connectButton);
                     }
                 }else{

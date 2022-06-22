@@ -2,6 +2,6 @@ package Modele.donnee;
 
 public enum TypeObservation {
     SONORE,
-    VISUELLE,
-    SONORE_VISUELLE
+    VISUEL,
+    SONORE_VISUEL
 }

@@ -44,12 +44,12 @@ public class ListenerAccueil {
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//ListeObsBatracien.fxml";
+        String url = "..//View//frame//ListeObsChouette.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
             root = fx.load();
-            ListenerAfficheAllBatracien lu = fx.getController();
+            ListenerAfficheAllChouette lu = fx.getController();
             lu.load();
             sc.setRoot(root);
         } catch (IOException e) {
