@@ -54,7 +54,7 @@ public class ListenerAccueil implements Initializable{
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//SaisieHippocampe.fxml";
+        String url = "..//View//frame//SaisieBatracien.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));

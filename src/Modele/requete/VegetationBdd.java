@@ -82,6 +82,36 @@ public class VegetationBdd {
             e.printStackTrace();
         }
         
-    }   
+    }
+    
+    public int getIdDecritVege(){
+        int ret = 0;
+        String req = "SELECT MAX(idVegeLieu) FROM lieu_vegetation";
+        try{    
+            PreparedStatement stmt = con.prepareStatement(req);
+            ResultSet res =  stmt.executeQuery();
+            res.next();
+            ret = res.getInt("MAX(idVegeLieu)");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return ret+1;
+    }
+
+    public int getIdVege(){
+        int ret = 0;
+        String req = "SELECT MAX(idVege) FROM vegetation";
+        try{    
+            PreparedStatement stmt = con.prepareStatement(req);
+            ResultSet res =  stmt.executeQuery();
+            res.next();
+            ret = res.getInt("MAX(idVege)");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return ret+1;
+    }
 
 }
