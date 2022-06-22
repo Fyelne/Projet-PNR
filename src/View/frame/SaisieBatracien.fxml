@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieObsBatracien">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -238,10 +238,10 @@
                                     <Font name="AvenirLTStd-Medium" size="19.0" />
                                  </font>
                               </Label>
-                              <ComboBox prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="1" />
-                              <ComboBox prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ComboBox prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="3" />
-                              <ComboBox prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="ciel" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="temp" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="vent" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="pluie" prefWidth="150.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <AnchorPane prefHeight="32.0" prefWidth="469.0" VBox.vgrow="ALWAYS" />
@@ -277,10 +277,10 @@
                                     <Font name="AvenirLTStd-Medium" size="19.0" />
                                  </font>
                               </Label>
-                              <Spinner editable="true" prefHeight="25.0" prefWidth="90.0" GridPane.rowIndex="1" />
-                              <Spinner editable="true" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Spinner editable="true" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Spinner editable="true" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Spinner fx:id="adulte" editable="true" prefHeight="25.0" prefWidth="90.0" GridPane.rowIndex="1" />
+                              <Spinner fx:id="ampexus" editable="true" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Spinner fx:id="ponte" editable="true" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Spinner fx:id="tetard" editable="true" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <AnchorPane maxHeight="70.0" prefHeight="9.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
@@ -302,7 +302,7 @@
                               </Label>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <Spinner fx:id="temperature" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                                    <Spinner fx:id="temperature" editable="true" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -339,7 +339,7 @@
             <HBox alignment="CENTER" layoutY="-10.0" prefHeight="105.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="add" minWidth="140.0" mnemonicParsing="false" onAction="#ajoute" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter" textFill="WHITE">
+                  <Button fx:id="add" minWidth="140.0" mnemonicParsing="false" onAction="#addObs" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerGestionObs">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerGestionVege">
    <top>
       <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -58,7 +58,7 @@
                               <Font name="AvenirLTStd-Medium" size="19.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="nom" onAction="#updateNom" onKeyReleased="#proposeNom" prefHeight="27.0" prefWidth="215.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;">
+                        <ComboBox fx:id="nature" prefHeight="27.0" prefWidth="215.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ComboBox>
@@ -72,7 +72,7 @@
                               <Font name="AvenirLTStd-Medium" size="19.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;">
+                        <TextField fx:id="vegetation" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -95,8 +95,8 @@
                   <AnchorPane prefHeight="173.0" prefWidth="101.0" HBox.hgrow="ALWAYS" />
                   <TableView fx:id="table" prefHeight="173.0" prefWidth="317.0">
                     <columns>
-                      <TableColumn fx:id="no" prefWidth="75.0" text="Nature" />
-                      <TableColumn fx:id="pre" prefWidth="92.0" text="Végétation" />
+                      <TableColumn fx:id="nat" prefWidth="75.0" text="Nature" />
+                      <TableColumn fx:id="veg" prefWidth="92.0" text="Végétation" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

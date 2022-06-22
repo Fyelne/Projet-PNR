@@ -122,7 +122,7 @@ public class ListenerGestionObs implements Initializable{
         }
         ObservableList<String> ne = FXCollections.observableArrayList(newPrenom);
         prenom.setItems(ne);
-        prenom.getSelectionModel().select(1);
+        prenom.getSelectionModel().select(0);
     }
 
     @FXML

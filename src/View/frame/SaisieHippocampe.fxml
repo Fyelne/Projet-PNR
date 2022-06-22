@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerObsHippocampe">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerSaisieObsHippocampe">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -226,14 +226,14 @@
                            </children>
                         </GridPane>
                         <AnchorPane maxHeight="70.0" prefHeight="9.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
-                        <GridPane>
+                        <GridPane prefHeight="70.0" prefWidth="366.0">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label text="Température eau :">
@@ -246,19 +246,34 @@
                                     <Font name="AvenirLTStd-Medium" size="19.0" />
                                  </font>
                               </Label>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                              <HBox alignment="CENTER" prefHeight="44.0" prefWidth="183.0" GridPane.rowIndex="1">
                                  <children>
-                                    <Spinner fx:id="temperature" prefHeight="25.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="temperature" alignment="CENTER" minWidth="119.0" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <Spinner fx:id="taille" prefWidth="110.0" />
+                                    <TextField fx:id="taille" alignment="CENTER" minWidth="112.0" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25; -fx-font-family: Avenir LT Std;">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
                                  </children>
                               </HBox>
                            </children>
                         </GridPane>
-                        <AnchorPane maxHeight="70.0" prefHeight="17.0" prefWidth="365.0" VBox.vgrow="ALWAYS" />
+                        <AnchorPane maxHeight="70.0" prefHeight="17.0" prefWidth="365.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="erreurValue" layoutX="-41.0" layoutY="13.0" prefHeight="28.0" prefWidth="442.0" text="Les valeurs saisie pour la tempéarature ou la taille ne sont pas valide" visible="false" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="-41.0" AnchorPane.rightAnchor="-35.0" AnchorPane.topAnchor="13.0">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                         <Label text="Espece">
                            <VBox.margin>
                               <Insets bottom="10.0" />
