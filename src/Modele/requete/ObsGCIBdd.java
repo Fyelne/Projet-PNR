@@ -123,5 +123,65 @@ public class ObsGCIBdd {
         }
         return ret;
     }
+
+    public ArrayList<String> getAllGCINature(){
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add("");
+        String req  = "SELECT DISTINCT(nature) "+
+        "FROM `obs_GCI` " +
+        "ORDER BY nature;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ResultSet query = stmt.executeQuery();
+            while(query.next()){
+                String nature = query.getString("nature");
+                ret.add(nature.substring(0, 1).toUpperCase() + nature.substring(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public ArrayList<String> getAllGCINombre(){
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add("");
+        String req  = "SELECT DISTINCT(nombre) "+
+        "FROM `obs_GCI` " +
+        "ORDER BY nombre;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ResultSet query = stmt.executeQuery();
+            while(query.next()){
+                ret.add(query.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+
+    public ResultSet getFilteredGCI(String recherche, String nature, String nombre){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(ObsG), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre, leNid "+
+        "FROM `obs_GCI`, `observation` " +
+        "WHERE ObsG = idObs " +
+        "AND leNid LIKE '%" + recherche + "%' " +
+        "AND nature LIKE '%" + nature + "%' " +
+        "AND nombre = " + nombre +
+        " ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
     
 }
