@@ -248,7 +248,29 @@
                         </BorderPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane minWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="88.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="retour" mnemonicParsing="false" onAction="#retourcons" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="AvenirLTStd-Medium" size="23.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>

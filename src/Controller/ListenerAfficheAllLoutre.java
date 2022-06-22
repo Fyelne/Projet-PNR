@@ -33,8 +33,11 @@ public class ListenerAfficheAllLoutre implements Initializable{
     private TableColumn<ObsLoutre, String> commune;
     @FXML
     private TableView<ObsLoutre> tab;
+    private Utilitaire util = new Utilitaire();
+
     @FXML
-    private Button user;
+    private Button retour;
+
 
     protected void load(){
 
@@ -93,6 +96,9 @@ public class ListenerAfficheAllLoutre implements Initializable{
         
     }
 
-
+    @FXML
+    void retourcons(ActionEvent event) {
+        util.changeScene("Consultation", retour);
+    }
 
 }

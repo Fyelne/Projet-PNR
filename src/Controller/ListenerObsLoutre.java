@@ -43,14 +43,26 @@ public class ListenerObsLoutre {
     private Button user;
 
     @FXML
-    void connect(ActionEvent event) {
+    private Button retour;
 
+    @FXML
+    private Button visu;
+
+    private Utilitaire util = new Utilitaire();
+
+    @FXML
+    void retourliste(ActionEvent event) {
+        util.changeScene("ListeObsLoutre", retour);
     }
 
     @FXML
     void openMenu(ActionEvent event) {
 
+    }
 
+    @FXML
+    void visuobs(ActionEvent event) {
+        util.changeScene("VisualisationObservateur", visu);
     }
 
     @FXML
