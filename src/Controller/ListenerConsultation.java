@@ -10,51 +10,33 @@ public class ListenerConsultation {
     private Utilitaire util = new Utilitaire();
 
     @FXML
-    private Button loutre;
-
-    @FXML
-    private Button retour;
-
-    @FXML
-    private Button Hippo;
-
-    @FXML
-    private Button bat;
-
-    @FXML
-    private Button chouette;
-
-    @FXML
-    private Button grav;
-
-    @FXML
     void obsBat(ActionEvent event) {
-
+        util.changeScene("ListeObsBatracien");
     }
 
     @FXML
     void obsChouette(ActionEvent event) {
-
+        util.changeScene("ListeObsChouette");
     }
 
     @FXML
     void obsGrav(ActionEvent event) {
-
+        util.changeScene("ListeObsGravelot");
     }
 
     @FXML
     void obsHippo(ActionEvent event) {
-        util.changeScene("ListeObsHippo", Hippo);
+        util.changeScene("ListeObsHippocampe");
     }
 
     @FXML
     void obsLoutre(ActionEvent event) {
-        util.changeScene("ListeObsLoutre", loutre);
+        util.changeScene("ListeObsLoutre");
     }
 
     @FXML
     void retouracc(ActionEvent event) {
-        util.changeScene("Accueil", retour);
+        util.changeScene("Accueil");
     }
 
 }

@@ -76,7 +76,7 @@
                   <AnchorPane minWidth="0.0" prefHeight="193.0" prefWidth="288.0" />
                   <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
+                        <Button fx:id="bat" mnemonicParsing="false" onAction="#obsBat" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -101,7 +101,7 @@
                   <AnchorPane minWidth="0.0" prefHeight="193.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
+                        <Button fx:id="grav" mnemonicParsing="false" onAction="#obsGrav" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -126,7 +126,7 @@
                   <AnchorPane minWidth="0.0" prefHeight="200.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
+                        <Button fx:id="Hippo" mnemonicParsing="false" onAction="#obsHippo" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -187,7 +187,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
+                        <Button fx:id="chouette" mnemonicParsing="false" onAction="#obsChouette" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
