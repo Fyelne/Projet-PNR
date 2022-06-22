@@ -232,7 +232,6 @@ public class ObsHippocampeBdd {
         "AND espece LIKE '%" + espece + "%' " +
         "AND typePeche LIKE '%" + typePeche + "%' " +
         "ORDER BY dateObs DESC;";
-        System.out.println(req);
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();
