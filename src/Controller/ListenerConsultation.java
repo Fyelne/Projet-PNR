@@ -31,6 +31,10 @@ public class ListenerConsultation {
         util.changeScene("ListeObsBatracien");
     }
 
+    /**
+     * Lorsque le bouton est cliqué, la scène est changée en scène ListeObsChouette
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void obsChouette(ActionEvent event) {
         util.changeScene("ListeObsChouette");
@@ -44,6 +48,7 @@ public class ListenerConsultation {
     @FXML
     void obsHippo(ActionEvent event) {
         util.changeScene("ListeObsHippocampe");
+        
     }
 
     @FXML

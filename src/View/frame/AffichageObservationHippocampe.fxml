@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAffichageObsHippocampe">
    <top>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -39,7 +39,7 @@
                         <Insets left="25.0" top="8.0" />
                      </HBox.margin>
                   </Button>
-                  <Label minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°25" textFill="WHITE" HBox.hgrow="SOMETIMES">
+                  <Label minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation" textFill="WHITE" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="40.0" />
                      </font>
@@ -75,7 +75,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#connect" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Button mnemonicParsing="false" onAction="#goback" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>
@@ -100,14 +100,14 @@
          <children>
             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane prefHeight="590.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
-                  <VBox alignment="CENTER" prefHeight="590.0" prefWidth="596.0">
+                  <AnchorPane prefHeight="590.0" prefWidth="318.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" prefHeight="590.0" prefWidth="744.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <children>
                         <AnchorPane prefHeight="108.0" prefWidth="475.0" VBox.vgrow="ALWAYS" />
-                        <AnchorPane prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;">
+                        <AnchorPane prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;" VBox.vgrow="ALWAYS">
                            <children>
                               <GridPane layoutX="144.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
@@ -117,7 +117,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Nom de l'observation : ">
+                                    <Label text="Observation Hippocampe">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -129,7 +129,7 @@
                               <Insets />
                            </VBox.margin>
                         </AnchorPane>
-                        <AnchorPane prefHeight="110.0" prefWidth="366.0" style="-fx-background-color: #D4D4D4;">
+                        <AnchorPane prefHeight="110.0" prefWidth="366.0" style="-fx-background-color: #D4D4D4;" VBox.vgrow="ALWAYS">
                            <children>
                               <GridPane prefHeight="121.0" prefWidth="465.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
@@ -141,7 +141,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Espèce : ">
+                                    <Label fx:id="esp" prefHeight="20.0" prefWidth="214.0" text="Espèce : ">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -154,12 +154,12 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Lambert X : " GridPane.rowIndex="1">
+                                    <Label fx:id="X" text="Lambert X : " GridPane.rowIndex="1">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="Y" text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -171,7 +171,7 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="160.0" prefWidth="475.0" style="-fx-background-color: #C4C4C4;">
+                        <AnchorPane prefHeight="160.0" prefWidth="475.0" style="-fx-background-color: #C4C4C4;" VBox.vgrow="ALWAYS">
                            <children>
                               <GridPane prefHeight="137.0" prefWidth="465.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
@@ -184,12 +184,12 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Date :">
+                                    <Label fx:id="date" text="Date :">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Taille :" GridPane.rowIndex="1">
+                                    <Label fx:id="taille" text="Taille :" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -197,7 +197,7 @@
                                           <Insets />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="Heure : " GridPane.columnIndex="1">
+                                    <Label fx:id="heure" text="Heure : " GridPane.columnIndex="1">
                                        <font>
                                           <Font name="AvenirLTStd-Medium" size="17.0" />
                                        </font>
@@ -205,7 +205,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Sexe :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="sexe" text="Sexe :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -213,12 +213,12 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="Gestation :" GridPane.rowIndex="2">
+                                    <Label fx:id="gestant" text="Gestation :" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Type de peche :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label fx:id="peche" text="Type de peche :" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -232,7 +232,7 @@
                         </AnchorPane>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE">
+                              <Button fx:id="visu" mnemonicParsing="false" onAction="#visuobs" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
