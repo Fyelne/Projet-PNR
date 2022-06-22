@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import Modele.donnee.IndiceLoutre;
 import Modele.donnee.*;
 import Modele.requete.*;
 import javafx.collections.FXCollections;
@@ -20,28 +19,25 @@ import javafx.scene.input.*;
 
 public class ListenerAfficheAllChouette implements Initializable{
     @FXML
-    private TableColumn<ObsChouette, Date> date;
-    @FXML
-    private TableColumn<ObsChouette, IndiceLoutre> indice;
-    @FXML
     private TableColumn<ObsChouette, Integer> id;
     @FXML
     private Button menu;
     @FXML
-    private TableColumn<ObsChouette, String> commune;
+    private TableColumn<ObsChouette, TypeObservation> typeObs;
+    @FXML
+    private TableColumn<ObsChouette, Boolean> protocole;
+    @FXML
+    private TableColumn<ObsChouette, String> numIndividu;
     @FXML
     private TableView<ObsChouette> tab;
+    @FXML
+    private Button user;
     @FXML
     private TextField rechercheTF;
     private Utilitaire util = new Utilitaire();
 
     @FXML
     private Button retour;
-
-
-    protected void load(){
-
-    }
 
 
     @FXML
@@ -76,25 +72,25 @@ public class ListenerAfficheAllChouette implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObsHippocampeBdd data = new ObsHippocampeBdd();
+        ObsChouetteBdd data = new ObsChouetteBdd();
 
-       // ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
+        ArrayList<ObsChouette> obs = data.builder(data.getAllChouetteToBuild());
         
-        //initializeData(obs);
+        initializeData(obs);
     }
 
-    private void initializeData(ArrayList<ObsLoutre> obs){
-        ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
-
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
+    private void initializeData(ArrayList<ObsChouette> obs){
+        ObservableList<ObsChouette> tr = FXCollections.observableArrayList(obs);
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        typeObs.setCellValueFactory(new PropertyValueFactory<>("typeObs"));
 
-       // tab.setItems(tr);
+        protocole.setCellValueFactory(new PropertyValueFactory<>("protocole"));
+
+        numIndividu.setCellValueFactory(new PropertyValueFactory<>("numIndividu"));
+
+        tab.setItems(tr);
     }
 
     @FXML
@@ -109,9 +105,9 @@ public class ListenerAfficheAllChouette implements Initializable{
 
     void filtre(){
         String rechercheString = rechercheTF.getText();
-        ObsLoutreBdd data = new ObsLoutreBdd();
+        ObsChouetteBdd data = new ObsChouetteBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        ArrayList<ObsChouette> obs = data.builder(data.getFilteredChouette(rechercheString));
         initializeData(obs);
     }
 
