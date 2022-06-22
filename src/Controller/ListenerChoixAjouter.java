@@ -40,6 +40,11 @@ public class ListenerChoixAjouter {
     void openMenu(ActionEvent event) {
         HMenu.setVisible(true);
     }
+    
+    /**
+     * When the quit button is clicked, the menu is set to invisible.
+     * @param event The event that triggered the action.
+     */
     @FXML
     void quitMenu(ActionEvent event) {
         HMenu.setVisible(false);

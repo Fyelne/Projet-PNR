@@ -43,11 +43,13 @@ public class ListenerVisuObs {
 
     @FXML
     void goBack(ActionEvent event) {
-        
+        Button bt = (Button) event.getSource();
+        Stage st = (Stage) bt.getScene().getWindow();
+        st.close();
     }
 
-    public void load(Observation obsL){
-        int id = obsL.getId();
+    public void load(Observation obs){
+        int id = obs.getId();
         oBdd = new ObservateurBdd();
         ResultSet res = Modele.requete.Utilitaire.recupObs(id);
 
