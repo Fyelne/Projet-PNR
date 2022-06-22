@@ -84,13 +84,8 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         ObsHippocampeBdd data = new ObsHippocampeBdd();
 
-        ResultSet r = data.getAllHippocampeBDD();
-        ArrayList<ObsHippocampe> obs = data.builder(r);
-        
-        
+        ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
 
-            
-        
         initializeData(obs);
     }
 

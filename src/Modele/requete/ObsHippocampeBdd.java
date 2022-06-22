@@ -181,7 +181,6 @@ public class ObsHippocampeBdd {
 
         String addHippo = "INSERT INTO obs_hippocampe (obsH, espece, sexe, temperatureEau, typePeche, taille, gestant) VALUES ("
                             + h.getId() + " , \'" + espece + "\' , \'" + sexe + "\' , " +  + h.getTemperature() +  " , \'" + typePeche + "\' , " + taille + " , " + gestant + ");" ;
-        System.out.println(addHippo);
 
         try{
             PreparedStatement  stmt = con.prepareStatement(addHippo);
@@ -199,7 +198,7 @@ public class ObsHippocampeBdd {
 
     public ResultSet getAllHippocampeToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT ObsH, idObs, dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, espece, sexe, taille, gestant, typePeche "+
+        String req  = "SELECT ObsH, idObs, dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, espece, sexe, taille, gestant, typePeche, temperatureEau "+
         "FROM `obs_Hippocampe`, `observation` " +
         "WHERE ObsH = idObs " +
         "ORDER BY dateObs DESC;";
