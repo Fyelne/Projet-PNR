@@ -43,7 +43,10 @@ public class ListenerAfficheAllLoutre implements Initializable{
 
     }
 
-
+    /**
+     * Permet de savoir si un double click a été effectué et affiche les détails de l'observation
+     * @param event
+     */
     @FXML
     void chooseObs(MouseEvent event) {
 

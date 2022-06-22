@@ -42,22 +42,10 @@ public class ListenerAccueil implements Initializable{
 
 
     private Utilitaire util = new Utilitaire();
-    @FXML
-    void changeTest(ActionEvent event) {
-            // change the scene
-            util.changeScene("Consultation");
 
-    }
-
-    @FXML
-    void tr(ActionEvent event) {
-        util.changeScene("ChoixAjouter");
-    }
-
-
-    
-
-
+    /**
+     * Affiche Bienvenue et le nom de l'utilisateur
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -70,14 +58,28 @@ public class ListenerAccueil implements Initializable{
 
 
     //code du Menu
+    /**
+     * Affiche le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void openMenu(ActionEvent event) {
         HMenu.setVisible(true);
     }
+
+    /**
+     * Quitte le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void quitMenu(ActionEvent event) {
         HMenu.setVisible(false);
     }
+
+    /**
+     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
     @FXML
     void openUserMenu(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -97,20 +99,37 @@ public class ListenerAccueil implements Initializable{
         }
     }
 
+    /**
+     * Permet de changer de scene et d'acceder à la page Admin
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToAdmin(ActionEvent event) {
         util.changeScene("Admin");
     }
+
+    /**
+     * Permet de changer de scene et d'acceder à la page Accueil
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToAccueil(ActionEvent event) {
         util.changeScene("Accueil");
     }
 
+    /**
+     * Permet de changer de scene et d'acceder à la page ChoixAjouter
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToAddDonnee(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
+    /**
+     * Permet de changer de scene et d'acceder à la page Consultation
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToChoixReleve(ActionEvent event) {
         util.changeScene("Consultation");

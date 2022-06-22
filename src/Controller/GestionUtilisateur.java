@@ -107,11 +107,20 @@ public class GestionUtilisateur implements Initializable {
                        
     } 
     
+    /**
+     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
     @FXML
     void openUserMenu(ActionEvent event) {
         Menu.setVisible(true);
     }
 
+
+    /**
+     * Permet de quitter le menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
     @FXML
     void quitUserMenu(ActionEvent event) {
         Menu.setVisible(false);

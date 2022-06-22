@@ -17,7 +17,7 @@ public class DebutListener {
     //passer a la page de connexion
     @FXML
     /**
-     * To change the scene when the "connexion" button is clicked
+     * Change la scène quand le bouton "Connexion" est cliqué
      * @param event Event
      */
     void conClicked(ActionEvent event) {
@@ -48,8 +48,7 @@ public class DebutListener {
     
     @FXML
     /**
-     * To check password and username / if they are good, you can connect
-     * Change the scene if it's good
+     * Vérifie si le mot de passe et le nom d'utilisateur est bon, si oui change la scène
      * @param event Event
      */
     void connect(ActionEvent event) {
@@ -78,8 +77,7 @@ public class DebutListener {
 
     @FXML
     /**
-     * To check password and username / if they are good, you can connect
-     * Change the scene if it's good
+     * Lance la méthode connect si la touche entrée est activée
      * @param event Event
      */
     void enterPressed(KeyEvent event) {
