@@ -3,136 +3,87 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/* 
-        
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package Modele.requete;
+
+import java.sql.*;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Statement;
-
-import Controller.SQLConnect;
 import Modele.Singleton;
+import javafx.beans.property.*;
+import javafx.scene.control.*;
 import Modele.donnee.Utilisateur;
 
 public class UtilisateurBdd {
+    private String nom;
+    private String prenom;
+    private String telephone;
+    private ComboBox<String> droitsCB;
+    private Button supprimer;
     private Connection con;
-
+    
+ 
     public UtilisateurBdd() {
-        con = Singleton.getInstance().getConnection();
+        con = Singleton.getInstance().getConnection(); 
     }
-
-    public ArrayList<Utilisateur> builder (ResultSet r) {
+ 
+    public ArrayList<Utilisateur> builder(ResultSet r){
         ArrayList<Utilisateur> ret = new ArrayList<Utilisateur>();
         //Construction des objets
         try {
-            while (r.next()) {
+            while(r.next()){
+                // Creation lieu 
                 int id = r.getInt("idUtilisateur");
-
                 String nom = r.getString("nomUtilisateur");
                 String prenom = r.getString("prenomUtilisateur");
-
-                int e =  r.getInt("estAdmin");
-                boolean isAdmin = false;
-                if (e == 1) {
-                    isAdmin = true;
+                String telephone = r.getString("telephone");
+                boolean estAdmin = false;
+                if(r.getInt("estAdmin") == 1){
+                    estAdmin = true;
                 }
 
-                Utilisateur utilisateur = new Utilisateur(id, nom, prenom, isAdmin) ;
-                ret.add(utilisateur);
+
+                if(!nom.equals("Utilisateur supprimé")){
+                    Utilisateur user = new Utilisateur(id, nom, prenom, telephone, estAdmin);
+                    ret.add(user);
+                }
+            
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
         return ret;
-    }   
+    }
 
-    public boolean ajouterUtilisateur(String nom, String prenom, String mdp, String telephone, String adresse, boolean admin) {
-        try {
-            Statement stmt = con.createStatement();
-            String sql = "INSERT INTO utilisateur (nomUtilisateur, prenomUtilisateur, mdpUtilisateur, telephone, adresse, estAdmin, dateCreation)"
-                + " VALUES ('" + nom + "', '" + prenom + "', '" + mdp + "', '" + telephone + "', '" + adresse + "'," + admin + ", DEFAULT)";
-            stmt.executeUpdate(sql);
-            sql = "CREATE USER '" + nom + "'@'localhost' IDENTIFIED BY '" + mdp + "'";
-            return true;
+
+    public ResultSet getAllUtilisateurToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT Utilisateur.* "+
+        "FROM `Utilisateur`" +
+        "ORDER BY nomUtilisateur DESC ";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+        return ret;
     }
 
-    public boolean supprimerUtilisateur(String idUtilisateur) {
-        try {
-            Statement stmt = con.createStatement();
-            String sql = "DELETE FROM utilisateur WHERE idUtilisateur = " + idUtilisateur;
-            stmt.executeUpdate(sql);
-            return true;
+    public ResultSet getFilteredUtilisateur(String nom, String prenom){
+        ResultSet ret = null;
+        String req  = "SELECT Utilisateur.* "+
+        "FROM `Utilisateur` " +
+        "WHERE nomUtilisateur LIKE '%" + nom + "%' " +
+        "AND prenomUtilisateur LIKE '%" + prenom + "%' "+
+        "ORDER BY nomUtilisateur DESC ";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+        return ret;
     }
-
-    public boolean ajouterRole(String idUtilisateur, String idRole) {
-        try {
-            Statement stmt = con.createStatement();
-            String sql = "INSERT INTO utilisateur_role (idUtilisateur, idRole)"
-                + " VALUES (" + idUtilisateur + ", " + idRole + ")";
-            stmt.executeUpdate(sql);
-            return true;
-        } catch (SQLException e) {
-            e.getErrorCode();
-            return false;
-        }
-    }
-
-    public static void main(String[] args) {
-
-        // Utilisateur u = new Utilisateur();
-        // u.ajouterUtilisateur("Dupont", "Jean", "mdp", "0612345678", "1 rue de la paix", false);
-        
-    }
- 
-    
-    public void setNom(String nom) {
-        try {
-            SQLConnect.connect().createStatement().executeUpdate(
-                "UPDATE Observateur SET nom = '" + nom + "' WHERE nom = '" + getNom() + "' AND prenom = '" + getPrenom() + "'");
-        } catch (SQLException ex) {
-            System.out.println("Erreur lors de la modification du nom de l'utilisateur");
-        }
-        this.nom.set(nom);
-    }
-        
-
-    public void setPrenom(String prenom) {
-        try {
-            SQLConnect.connect().createStatement().executeUpdate(
-                "UPDATE Observateur SET prenom = '" + prenom + "' WHERE nom = '" + getNom() + "' AND prenom = '" + getPrenom() + "'");
-        } catch (SQLException ex) {
-            System.out.println("Erreur lors de la modification du prenom de l'utilisateur");
-        }
-        this.prenom.set(prenom);
-    }
-    
-
-
-    
-
- 
-    public void setDroits(ComboBox<String> droits) {
-        this.droits = droits;
-    }
-    
-    public Button getSupprimer() {
-        return supprimer;
-    }
-
-    public void setSupprimer(Button supprimer) {
-        this.supprimer = supprimer;
-    }
-    
 }
-*/
