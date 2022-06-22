@@ -1,9 +1,11 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import Modele.donnee.ContenuNid;
 import Modele.donnee.Lieu;
@@ -14,6 +16,7 @@ import Modele.requete.ObsGCIBdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,7 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class ListenerSaisieObsGCI extends ListenerObs {
+public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
 
     private Utilitaire util = new Utilitaire();
 
@@ -75,8 +78,12 @@ public class ListenerSaisieObsGCI extends ListenerObs {
     @FXML
     private Label intitule;
 
+    
+    @FXML
+    private Button chNid;
+
     private ArrayList<Observateur> listDesObs = new ArrayList<Observateur>();
-    private NidGCI lNid;
+    private int leNid;
 
     @FXML
     public void addObs(ActionEvent event) {
@@ -93,16 +100,17 @@ public class ListenerSaisieObsGCI extends ListenerObs {
         Date da = Date.valueOf(date.getValue());
 
         ContenuNid cont = nature.getSelectionModel().getSelectedItem();
+        System.out.println(cont.toString());
         String res = present.getSelectionModel().getSelectedItem();
         boolean pres = false;
         if(res.equals("OUI")){
             pres = true;
         }
 
-        ObsGCI g = new ObsGCI(id, da, t, l, listDesObs, cont, nb.getValue(), pres);
+        ObsGCI g = new ObsGCI(id, da, t, l, listDesObs, cont, nb.getValue(), pres, leNid);
 
         ObsGCIBdd gBdd = new ObsGCIBdd();
-        gBdd.insertOneInto(g, lNid.getId());
+        gBdd.insertOneInto(g, leNid);
     }
 
     @FXML
@@ -127,24 +135,7 @@ public class ListenerSaisieObsGCI extends ListenerObs {
     }
 
     public void load(NidGCI nid){
-        intitule.setText("Observation sur le nid " + nid.getId() + " situé sur la plage " + nid.getNomPlage());
-        this.lNid = nid;
-        present.getItems().add("OUI");
-        present.getItems().add("NON");
-
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23);
-        valueFactory.setValue(00);
-        heure.setValueFactory(valueFactory);
-
-        SpinnerValueFactory<Integer> val = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
-        val.setValue(00);
-        minute.setValueFactory(val);
-
-        SpinnerValueFactory<Integer> n = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
-        n.setValue(00);
-        nb.setValueFactory(n);
-
-        nature.getItems().addAll(ContenuNid.values());
+       
     }
 
     @FXML
@@ -154,7 +145,7 @@ public class ListenerSaisieObsGCI extends ListenerObs {
 
     @Override
     public void setListDesObs(ArrayList<Observateur> o) {
-        // TODO Auto-generated method stub
+        listDesObs = o;
         
     }
     //code du Menu
@@ -234,5 +225,53 @@ public class ListenerSaisieObsGCI extends ListenerObs {
     void goToChoixReleve(ActionEvent event) {
         util.changeScene("Consultation");
     }
+
+    @FXML
+    void chooseNid(ActionEvent event) {
+        Stage newStage = new Stage();
+        Parent r;
+        try {
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\ChoixNidGCI.fxml"));
+            r = loader.load();
+            ListenerChoixNidGCI o = loader.getController();
+            o.load(this);
+            Scene s = new Scene(r);
+            newStage.setTitle("Choix du Nid");
+            newStage.setScene(s);
+            newStage.show();
+            newStage.centerOnScreen();
+            
+                        
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        present.getItems().add("OUI");
+        present.getItems().add("NON");
+
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23);
+        valueFactory.setValue(00);
+        heure.setValueFactory(valueFactory);
+
+        SpinnerValueFactory<Integer> val = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
+        val.setValue(00);
+        minute.setValueFactory(val);
+
+        SpinnerValueFactory<Integer> n = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
+        n.setValue(00);
+        nb.setValueFactory(n);
+
+        nature.getItems().addAll(ContenuNid.values());
+        leNid = 0;
+    }
+
+    public void setLeNid(int n){
+        this.leNid = n;
+    }
+
+
 
 }
