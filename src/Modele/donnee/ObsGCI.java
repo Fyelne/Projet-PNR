@@ -8,6 +8,7 @@ public class ObsGCI extends Observation {
     private int nombre;
     private ContenuNid natureNid ;
     private boolean presentMaisNonObs;
+    private int leNid;
 
     /**
      * Constructeur de la classe ObsGCI
@@ -19,11 +20,13 @@ public class ObsGCI extends Observation {
      * 
      * @param leNombre nombre d'oiseaux observés
      */
-    public ObsGCI(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, ContenuNid nature, int leNombre, boolean present) {
+    public ObsGCI(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, ContenuNid nature, int leNombre, boolean present, int leNid) {
         super(id, date, heure, lieu, observateurs);
         if(leNombre >= 0 && nature != null) {
+            this.natureNid = nature;
             this.nombre = leNombre;
             this.presentMaisNonObs = present;
+            this.leNid = leNid;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -82,5 +85,13 @@ public class ObsGCI extends Observation {
 
     public void setPresentMaisNonObs(boolean present){
         this.presentMaisNonObs = present;
+    }
+
+    public int getLeNid(){
+        return this.leNid;
+    }
+
+    public void setLeNid(int idNid){
+        this.leNid = idNid;
     }
 }

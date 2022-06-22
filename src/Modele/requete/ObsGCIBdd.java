@@ -55,7 +55,9 @@ public class ObsGCIBdd {
                 }
                 int nb = r.getInt("nombre");
 
-                ObsGCI oGCI = new ObsGCI(idGCI, d, t, l, obs, natureNid, nb, false) ;
+                int leNid = r.getInt("leNid");
+
+                ObsGCI oGCI = new ObsGCI(idGCI, d, t, l, obs, natureNid, nb, false, leNid) ;
                 ret.add(oGCI);
             }
 
@@ -109,7 +111,7 @@ public class ObsGCIBdd {
 
     public ResultSet getAllGCIToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(ObsG), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre "+
+        String req  = "SELECT DISTINCT(ObsG), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre, leNid "+
         "FROM `obs_GCI`, `observation` " +
         "WHERE ObsG = idObs " +
         "ORDER BY dateObs DESC;";

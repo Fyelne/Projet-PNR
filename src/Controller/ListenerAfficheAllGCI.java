@@ -33,6 +33,8 @@ public class ListenerAfficheAllGCI implements Initializable{
     @FXML
     private TableColumn<ObsGCI, Integer> nombre;
     @FXML
+    private TableColumn<ObsGCI, Integer> idNid;
+    @FXML
     private TableView<ObsGCI> tab;
     @FXML
     private TextField rechercheTF;
@@ -91,6 +93,8 @@ public class ListenerAfficheAllGCI implements Initializable{
         nature.setCellValueFactory(new PropertyValueFactory<>("natureNid"));
 
         nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+
+        idNid.setCellValueFactory(new PropertyValueFactory<>("leNid"));
 
         tab.setItems(tr);
     }

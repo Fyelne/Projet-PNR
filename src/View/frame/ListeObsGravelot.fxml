@@ -94,6 +94,7 @@
                         <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
                         <TableColumn fx:id="nature" prefWidth="75.0" text="Nature" />
                         <TableColumn fx:id="nombre" prefWidth="75.0" text="Nombre" />
+                        <TableColumn fx:id="idNid" prefWidth="75.0" text="Identifiant Nid" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
