@@ -6,43 +6,60 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Result;
-
-import Modele.Singleton;
-import Modele.donnee.ObsBatracien;
-import Modele.donnee.Vegetation;
-import Modele.requete.VegetationBdd;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import com.mysql.cj.xdevapi.Result;
+
+import Modele.Singleton;
+import Modele.donnee.NatureVege;
+import Modele.donnee.ObsBatracien;
+import Modele.donnee.Vegetation;
+import Modele.requete.VegetationBdd;
+import javafx.stage.Stage;
+
+
+
 
 public class ListenerVisuVege {
-    private Utilitaire util = new Utilitaire();
+
 
     @FXML
-    private Label description;
+    private TableColumn<Vegetation, Integer> id;
 
     @FXML
-    private Label natVege;
+    private TableColumn<Vegetation, NatureVege> natuVege;
 
     @FXML
     private Button retour;
 
     @FXML
+    private TableView<Vegetation> table;
+
+    @FXML
     private Label titre;
 
     @FXML
-    private Label typeVege;
+    private TableColumn<Vegetation, String> typeVegeta;
+
 
     @FXML
     void goBack(ActionEvent event) {
-        util.changeScene("AffichageObservationBatracien");
+        Button bt = (Button) event.getSource();
+        Stage st = (Stage) bt.getScene().getWindow();
+        st.close();
     }
 
 
     public void getControl(ObsBatracien batra) {
-        String vegetation = "SELECT * FROM ObsBatracien, Vegetation WHERE concerne_vege = decritLieu" ;
+        String vegetation = "SELECT * FROM Obs_Batracien, Vegetation WHERE concernes_vege = idVege" ;
         
         Connection con = Singleton.getInstance().getConnection();
         PreparedStatement stmt;
@@ -51,18 +68,18 @@ public class ListenerVisuVege {
             ResultSet rs = stmt.executeQuery();
             VegetationBdd vgBdd = new VegetationBdd();
             ArrayList<Vegetation> listVege = vgBdd.builder(rs);
-            for (Vegetation ve : listVege) {
-                System.out.println(ve.getId());
-            }
+            ObservableList<Vegetation> tr = FXCollections.observableArrayList(listVege);
+
+ 
+            id.setCellValueFactory(new PropertyValueFactory<>("id"));
+            natuVege.setCellValueFactory(new PropertyValueFactory<>("NatureVege"));
+            typeVegeta.setCellValueFactory(new PropertyValueFactory<>("Vege"));
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
-        /* 
-        natVege.setText(natVege.getText() + " " + vege.getNatureVege());
-        typeVege.setText(typeVege.getText() + " " + vege.getVege());
-        description.setText(description.getText() + " " + vege.getDecritLieu());*/
     }
 
 }
+

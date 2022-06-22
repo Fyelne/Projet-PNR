@@ -43,7 +43,9 @@ public class ListenerVisuObs {
 
     @FXML
     void goBack(ActionEvent event) {
-        
+        Button bt = (Button) event.getSource();
+        Stage st = (Stage) bt.getScene().getWindow();
+        st.close();
     }
 
     public void load(Observation obs){

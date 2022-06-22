@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class ListenerVisuMeteo {
     private Utilitaire util = new Utilitaire();
@@ -29,13 +30,16 @@ public class ListenerVisuMeteo {
 
     @FXML
     void goBack(ActionEvent event) {
+        Button bt = (Button) event.getSource();
+        Stage st = (Stage) bt.getScene().getWindow();
+        st.close();
     }
 
 
     void getControl(ObsBatracien batra) {
         labelCiel.setText(labelCiel.getText() + " " + batra.getMeteoCiel());
         labelTemp.setText(labelTemp.getText() + " " + batra.getMeteoTemp());
-        labelVent.setText(labelTemp.getText() + " " + batra.getMeteoVent());
+        labelVent.setText(labelVent.getText() + " " + batra.getMeteoVent());
         labelPluie.setText(labelPluie.getText() + " " +  batra.getMeteoPluie());
     }
 

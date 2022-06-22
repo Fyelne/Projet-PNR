@@ -36,5 +36,7 @@
         "c:\\Program Files\\Java\\javafx-sdk-18.0.1\\lib\\javafx.web.jar",
         "c:\\Program Files\\Java\\javafx-sdk-18.0.1\\lib\\javafx-swt.jar"
     ],
-    "docwriter.language": "French"
+    "docwriter.style": "Auto-detect",
+    "docwriter.language": "French",
+    "docwriter.hotkey.windows": "Ctrl + ."
 }
