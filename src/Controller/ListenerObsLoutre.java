@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,10 +10,14 @@ import com.sothawo.mapjfx.MapView;
 import Modele.donnee.ObsLoutre;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ListenerObsLoutre {
     @FXML
@@ -49,10 +54,11 @@ public class ListenerObsLoutre {
     private Button visu;
 
     private Utilitaire util = new Utilitaire();
+    private ObsLoutre laLoutre;
 
     @FXML
     void retourliste(ActionEvent event) {
-        util.changeScene("ListeObsLoutre", retour);
+        util.changeScene("ListeObsLoutre");
     }
 
     @FXML
@@ -62,8 +68,25 @@ public class ListenerObsLoutre {
 
     @FXML
     void visuobs(ActionEvent event) {
-        util.changeScene("VisualisationObservateur", visu);
+        Stage newStage = new Stage();
+        Parent r;
+        try {
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\VisualisationObservateur.fxml"));
+            r = loader.load();
+            ListenerVisuObs o = loader.getController();
+            o.load(laLoutre);
+            Scene s = new Scene(r);
+            newStage.setTitle("Affiche des observateur");
+            newStage.setScene(s);
+            newStage.show();
+            newStage.centerOnScreen();
+            
+                        
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    
 
     @FXML
     void openUserMenu(ActionEvent event) {
@@ -72,6 +95,7 @@ public class ListenerObsLoutre {
 
     void load(ObsLoutre l){
         System.out.println(l.getLieuDit());
+        laLoutre = l;
         date.setText(l.getDate().toString());
         if(l.getHeure() == null){
             heure.setText(heure.getText() +  " Heure non renseigné");

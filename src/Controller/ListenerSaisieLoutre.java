@@ -82,7 +82,7 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
+            
                         
         }catch (IOException e) {
             e.printStackTrace();

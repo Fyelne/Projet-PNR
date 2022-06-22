@@ -23,6 +23,7 @@ public class ObservateurBdd {
                 int id = res.getInt("idObservateur");
                 String nom = res.getString("nom");
                 String prenom = res.getString("prenom");
+                
                 Observateur o = new Observateur(id, nom, prenom);
                 ret.add(o);
             }

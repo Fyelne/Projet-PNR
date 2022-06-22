@@ -10,9 +10,10 @@ public class Utilitaire {
     private static Connection con = Singleton.getInstance().getConnection();;
 
 
-    protected static ResultSet recupObs(int id){
+    public static ResultSet recupObs(int id){
         ResultSet ret = null;
-        String req = "SELECT idObservateur, nom, prenom FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
+        String req = "SELECT * FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
+        System.out.println(req);
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();

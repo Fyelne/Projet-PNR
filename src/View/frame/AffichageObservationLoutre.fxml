@@ -201,7 +201,7 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="468.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="468.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Button fx:id="visu" mnemonicParsing="false" onAction="#visuobs" prefHeight="47.0" prefWidth="243.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE">
                                  <font>
