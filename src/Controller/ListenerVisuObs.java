@@ -16,25 +16,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ListenerConsultation {
-
+public class ListenerVisuObs {
     private Utilitaire util = new Utilitaire();
-
-    @FXML
-    private Button loutre;
 
     @FXML
     private Button retour;
 
-
     @FXML
-    void obsLoutre(ActionEvent event) {
-        util.changeScene("ListeObsLoutre", loutre);
+    void goBack(ActionEvent event) {
+        util.changeScene("AffichageObservationLoutre", retour);
     }
-
-    @FXML
-    void retouracc(ActionEvent event) {
-        util.changeScene("Accueil", retour);
-    }
-
 }

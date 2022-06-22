@@ -75,7 +75,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#connect" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Button fx:id="retour" mnemonicParsing="false" onAction="#retourliste" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>
@@ -203,7 +203,7 @@
                         </AnchorPane>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="468.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="243.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE">
+                              <Button fx:id="visu" mnemonicParsing="false" onAction="#visuobs" prefHeight="47.0" prefWidth="243.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Visualiser les observateurs" textFill="WHITE">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
