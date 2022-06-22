@@ -27,7 +27,7 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#openMenu" prefHeight="55.0" prefWidth="55.0" style="-fx-padding: 0; -fx-background-color: #008864;" textFill="TRANSPARENT">
+                  <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="55.0" prefWidth="55.0" style="-fx-padding: 0; -fx-background-color: #008864;" textFill="TRANSPARENT">
                      <HBox.margin>
                         <Insets left="25.0" top="27.5" />
                      </HBox.margin>
@@ -51,7 +51,7 @@
                      </font>
                   </Label>
                   <AnchorPane minWidth="0.0" prefHeight="100.0" prefWidth="856.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#openUserMenu" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #008864;" textFill="#ffffff00">
+                  <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #008864;" textFill="#ffffff00">
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
