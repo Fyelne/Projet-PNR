@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerConsultation">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
          <children>
@@ -55,7 +55,7 @@
       </HBox>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #008864; -fx-background-radius: 80;" BorderPane.alignment="CENTER">
+      <Button fx:id="retour" mnemonicParsing="false" onAction="#retouracc" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #008864; -fx-background-radius: 80;" BorderPane.alignment="CENTER">
          <graphic>
             <ImageView fitHeight="47.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -159,7 +159,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #DDDDDD;">
+                        <Button fx:id="loutre" mnemonicParsing="false" onAction="#obsLoutre" style="-fx-background-color: #DDDDDD;">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

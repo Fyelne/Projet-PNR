@@ -44,7 +44,7 @@ public class ListenerAccueil implements Initializable{
     @FXML
     void changeTest(ActionEvent event) {
             // change the scene
-            util.changeScene("ChoixConsultation", user);
+            util.changeScene("z", user);
 
     }
 
@@ -54,7 +54,7 @@ public class ListenerAccueil implements Initializable{
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//SaisieHippocampe.fxml";
+        String url = "..//View//frame//AjoutChouette.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
