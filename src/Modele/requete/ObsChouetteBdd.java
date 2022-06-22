@@ -44,7 +44,7 @@ public class ObsChouetteBdd {
                     typeObserv = TypeObservation.VISUELLE ;
                 }
                 else {
-                    typeObserv = TypeObservation.SONORE_VISUELLE ;
+                    typeObserv = TypeObservation.SONORE ;
                 }
 
                 int p = r.getInt("protocole");

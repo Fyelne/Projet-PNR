@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import Modele.donnee.ObsChouette;
 import Modele.donnee.Observation;
 import Modele.donnee.TypeObservation;
-import Modele.requete.Chouette;
+import Modele.requete.ChouetteBdd;
+import Modele.requete.ObsChouetteBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,10 +36,10 @@ public class ListenerAfficheAllChouette {
     private Button user;
 
     protected void load(){
-        Chouette data = new Chouette();
+        ObsChouetteBdd data = new ObsChouetteBdd();
 
-        ArrayList<ObsChouette> obs = data.builder(data.getAllChouetteToBuild());
-        ObservableList<ObsChouette> tr = FXCollections.observableArrayList(obs);
+        //ArrayList<ObsChouette> obs = data.builder(data.getAllChouetteToBuild());
+        //ObservableList<ObsChouette> tr = FXCollections.observableArrayList(obs);
 
         // date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
@@ -49,7 +50,7 @@ public class ListenerAfficheAllChouette {
 
         typeObs.setCellValueFactory(new PropertyValueFactory<>("typeObs"));
 
-        tab.setItems(tr);
+        //tab.setItems(tr);
     }
 
 }

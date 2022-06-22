@@ -116,6 +116,35 @@ public class ChouetteBdd {
 
     }
 
+    public ResultSet getAllChouetteToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs "+
+        "FROM `obs_Chouette`, `observation` " +
+        "WHERE numObs = idObs " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
+    public ResultSet getAllChouetteBDD(){
+        ResultSet ret = null;
+        try{
+            PreparedStatement  stmt = con.prepareStatement(
+                "SELECT * FROM `bd_pnr`.`Obs_Chouette`");
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
 
 
     

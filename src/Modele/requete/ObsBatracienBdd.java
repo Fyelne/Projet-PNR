@@ -260,5 +260,32 @@ public class ObsBatracienBdd {
         return id+1;
     }
 
-    
+    public ResultSet getAllBatracienToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y, nombreAdultes, nombreAmplexus, nombrePonte, nombreTetard, espece "+
+        "FROM `obs_Batracien`, `observation`" +
+        "WHERE ObsB = idObs " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
+    public ResultSet getAllBatracienBDD(){
+        ResultSet ret = null;
+        try{
+            PreparedStatement  stmt = con.prepareStatement(
+                "SELECT * FROM `bd_pnr`.`Obs_Batracien`");
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
 }

@@ -111,4 +111,33 @@ public class ObsGCIBdd {
         
 
     }
+
+    public ResultSet getAllGCIToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, nature, nombre "+
+        "FROM `obs_GCI`, `observation` " +
+        "WHERE ObsG = idObs " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
+    public ResultSet getAllGCIBDD(){
+        ResultSet ret = null;
+        try{
+            PreparedStatement  stmt = con.prepareStatement(
+                "SELECT * FROM `bd_pnr`.`Obs_GCI`");
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
 }

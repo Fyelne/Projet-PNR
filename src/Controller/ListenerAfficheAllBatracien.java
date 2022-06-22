@@ -8,8 +8,8 @@ import Modele.donnee.EspeceBatracien;
 import Modele.donnee.IndiceLoutre;
 import Modele.donnee.ObsBatracien;
 import Modele.donnee.Observation;
-import Modele.requete.Batracien;
-import Modele.requete.Loutre;
+import Modele.requete.ObsBatracienBdd;
+import Modele.requete.ObsLoutreBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,7 +37,7 @@ public class ListenerAfficheAllBatracien {
     private Button user;
 
     protected void load(){
-        Batracien data = new Batracien();
+        ObsBatracienBdd data = new ObsBatracienBdd();
 
         ArrayList<ObsBatracien> obs = data.builder(data.getAllBatracienToBuild());
         ObservableList<ObsBatracien> tr = FXCollections.observableArrayList(obs);

@@ -176,4 +176,33 @@ public class ObsHippocampeBdd {
             insertOneHippocampe(obsH);
         }
     }
+
+    public ResultSet getAllHippocampeToBuild(){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, espece, sexe, taille, gestant, typePeche "+
+        "FROM `obs_Hippocampe`, `observation` " +
+        "WHERE ObsH = idObs " +
+        "ORDER BY dateObs DESC;";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
+    public ResultSet getAllHippocampeBDD(){
+        ResultSet ret = null;
+        try{
+            PreparedStatement  stmt = con.prepareStatement(
+                "SELECT * FROM `bd_pnr`.`Obs_Hippocampe`");
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
 }

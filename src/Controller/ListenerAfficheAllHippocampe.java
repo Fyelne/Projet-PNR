@@ -10,7 +10,7 @@ import Modele.donnee.ObsHippocampe;
 import Modele.donnee.Observation;
 import Modele.donnee.Peche;
 import Modele.donnee.Sexe;
-import Modele.requete.Hippocampe;
+import Modele.requete.ObsHippocampeBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,7 +46,7 @@ public class ListenerAfficheAllHippocampe {
     private Button user;
 
     protected void load(){
-        Hippocampe data = new Hippocampe();
+        ObsHippocampeBdd data = new ObsHippocampeBdd();
 
         ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
         ObservableList<ObsHippocampe> tr = FXCollections.observableArrayList(obs);

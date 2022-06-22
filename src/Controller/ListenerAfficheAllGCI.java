@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import Modele.donnee.ContenuNid;
 import Modele.donnee.ObsGCI;
 import Modele.donnee.Observation;
-import Modele.requete.GCI;
+import Modele.requete.ObsGCIBdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,7 +37,7 @@ public class ListenerAfficheAllGCI {
     private Button user;
 
     protected void load(){
-        GCI data = new GCI();
+        ObsGCIBdd data = new ObsGCIBdd();
 
         ArrayList<ObsGCI> obs = data.builder(data.getAllGCIToBuild());
         ObservableList<ObsGCI> tr = FXCollections.observableArrayList(obs);
