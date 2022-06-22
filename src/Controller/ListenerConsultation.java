@@ -15,15 +15,46 @@ public class ListenerConsultation {
     @FXML
     private Button retour;
 
+    @FXML
+    private Button Hippo;
+
+    @FXML
+    private Button bat;
+
+    @FXML
+    private Button chouette;
+
+    @FXML
+    private Button grav;
+
+    @FXML
+    void obsBat(ActionEvent event) {
+
+    }
+
+    @FXML
+    void obsChouette(ActionEvent event) {
+
+    }
+
+    @FXML
+    void obsGrav(ActionEvent event) {
+
+    }
+
+    @FXML
+    void obsHippo(ActionEvent event) {
+        util.changeScene("ListeObsHippo", Hippo);
+    }
 
     @FXML
     void obsLoutre(ActionEvent event) {
-        util.changeScene("ChoixConsultation");
+        util.changeScene("ListeObsLoutre", loutre);
     }
 
     @FXML
     void retouracc(ActionEvent event) {
-        util.changeScene("Accueil");
+        util.changeScene("Accueil", retour);
     }
 
 }
