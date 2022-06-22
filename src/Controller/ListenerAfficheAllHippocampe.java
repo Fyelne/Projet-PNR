@@ -28,9 +28,9 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     @FXML
     private TableColumn<ObsHippocampe, Integer> id;
     @FXML
-    private TableColumn<ObsHippocampe, EspeceHippocampe> esp;
+    private TableColumn<ObsHippocampe, EspeceHippocampe> espece;
     @FXML
-    private TableColumn<ObsHippocampe, Peche> pe;
+    private TableColumn<ObsHippocampe, Peche> typePeche;
     @FXML
     private Button menu;
     @FXML
@@ -39,15 +39,15 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     private TableView<ObsHippocampe> tab;
     @FXML
     private TextField rechercheTF;
+    @FXML
+    private ComboBox<String> especeCB;
+    @FXML
+    private ComboBox<String> typePecheCB;
+
     private Utilitaire util = new Utilitaire();
 
     @FXML
     private Button retour;
-
-
-    protected void load(){
-
-    }
 
 
     @FXML
@@ -87,6 +87,14 @@ public class ListenerAfficheAllHippocampe implements Initializable{
         ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
 
         initializeData(obs);
+
+        ObservableList<String> especeList = FXCollections.observableArrayList(data.getAllHippocampeEspece());
+        especeCB.setItems(especeList);
+        especeCB.getSelectionModel().select("");
+
+        ObservableList<String> typePecheList = FXCollections.observableArrayList(data.getAllHippocampeTypePeche());
+        typePecheCB.setItems(typePecheList);
+        typePecheCB.getSelectionModel().select("");
     }
 
     private void initializeData(ArrayList<ObsHippocampe> obs){
@@ -94,16 +102,15 @@ public class ListenerAfficheAllHippocampe implements Initializable{
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        pe.setCellValueFactory(new PropertyValueFactory<>("typePeche"));
+        typePeche.setCellValueFactory(new PropertyValueFactory<>("typePeche"));
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        esp.setCellValueFactory(new PropertyValueFactory<>("espece"));
+        espece.setCellValueFactory(new PropertyValueFactory<>("espece"));
 
         tab.setItems(tr);
     }
-
-    /* 
+ 
     @FXML
     void recherche(KeyEvent event){
         if(event.getCode().equals(KeyCode.ENTER)){
@@ -111,16 +118,21 @@ public class ListenerAfficheAllHippocampe implements Initializable{
         }
     }
 
-
+    @FXML
+    void comboBoxChange(ActionEvent event){
+        filtre();
+    }
 
     
     void filtre(){
         String rechercheString = rechercheTF.getText();
-        ObsLoutreBdd data = new ObsLoutreBdd();
+        ObsHippocampeBdd data = new ObsHippocampeBdd();
+        String especeString = especeCB.getSelectionModel().getSelectedItem();
+        String typePecheString = typePecheCB.getSelectionModel().getSelectedItem();
 
-        ArrayList<ObsHippocampe> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        ArrayList<ObsHippocampe> obs = data.builder(data.getFilteredHippocampe(rechercheString, especeString, typePecheString));
         initializeData(obs);
-    }*/
+    }
 
     @FXML
     void retourcons(ActionEvent event) {
