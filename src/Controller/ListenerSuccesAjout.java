@@ -1,16 +1,19 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
-public class ListenerSuccèsAjout{    
+public class ListenerSuccesAjout implements Initializable{    
 
     private Utilitaire util = new Utilitaire();
 
@@ -19,20 +22,13 @@ public class ListenerSuccèsAjout{
 
     }
 
-    @FXML
-    void charge(MouseEvent event) {
-        try {
-            for(int i = 0; i < 40 ; i ++){
-                Thread.sleep(10);
-            }
-            
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("TestLoc");
         util.changeScene("ChoixAjouter");
 
+
+        
         
     }
 

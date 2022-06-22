@@ -121,7 +121,6 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
                         
         }catch (IOException e) {
             e.printStackTrace();
