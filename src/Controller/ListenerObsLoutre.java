@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sothawo.mapjfx.Coordinate;
-import com.sothawo.mapjfx.MapView;
+
 
 import Modele.donnee.ObsLoutre;
 import javafx.event.ActionEvent;

@@ -44,17 +44,17 @@ public class ListenerConsultation {
 
     @FXML
     void obsHippo(ActionEvent event) {
-        util.changeScene("ListeObsHippo", Hippo);
+        util.changeScene("ListeObsHippo");
     }
 
     @FXML
     void obsLoutre(ActionEvent event) {
-        util.changeScene("ListeObsLoutre", loutre);
+        util.changeScene("ListeObsLoutre");
     }
 
     @FXML
     void retouracc(ActionEvent event) {
-        util.changeScene("Accueil", retour);
+        util.changeScene("Accueil");
     }
 
 }
