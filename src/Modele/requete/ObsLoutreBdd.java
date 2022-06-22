@@ -133,4 +133,20 @@ public class ObsLoutreBdd{
             insertOneIntoBdd(o);
         }
     }
+
+    public ResultSet getFilteredLoutre(String recherche){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice, commune, lieuDit "+
+        "FROM `obs_loutre`, `observation` " +
+        "WHERE ObsL = idObs " +
+        "AND commune LIKE '%" + recherche + "%'" +
+        "ORDER BY dateObs DESC ";
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
 }

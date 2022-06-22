@@ -74,7 +74,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <TextField alignment="CENTER" prefHeight="40.0" prefWidth="441.0" promptText="Recherche">
+                  <TextField fx:id="rechercheTF" onKeyPressed="#recherche" alignment="CENTER" prefHeight="40.0" prefWidth="441.0" promptText="Recherche Commune">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="18.0" />
                      </font>

@@ -33,6 +33,8 @@ public class ListenerAfficheAllLoutre implements Initializable{
     private TableColumn<ObsLoutre, String> commune;
     @FXML
     private TableView<ObsLoutre> tab;
+    @FXML
+    private TextField rechercheTF;
     private Utilitaire util = new Utilitaire();
 
     @FXML
@@ -81,6 +83,11 @@ public class ListenerAfficheAllLoutre implements Initializable{
         ObsLoutreBdd data = new ObsLoutreBdd();
 
         ArrayList<ObsLoutre> obs = data.builder(data.getAllLoutreToBuild());
+        
+        initializeData(obs);
+    }
+
+    private void initializeData(ArrayList<ObsLoutre> obs){
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -89,11 +96,27 @@ public class ListenerAfficheAllLoutre implements Initializable{
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-
         commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
 
         tab.setItems(tr);
-        
+    }
+
+    @FXML
+    void recherche(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)){
+            filtre();
+        }
+    }
+
+
+
+
+    void filtre(){
+        String rechercheString = rechercheTF.getText();
+        ObsLoutreBdd data = new ObsLoutreBdd();
+
+        ArrayList<ObsLoutre> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        initializeData(obs);
     }
 
     @FXML
