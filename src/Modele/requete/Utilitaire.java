@@ -13,7 +13,6 @@ public class Utilitaire {
     public static ResultSet recupObs(int id){
         ResultSet ret = null;
         String req = "SELECT * FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
-        System.out.println(req);
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();
@@ -56,7 +55,6 @@ public class Utilitaire {
         try{    
             PreparedStatement stmt = con.prepareStatement(req);
             stmt.executeUpdate();
-            System.out.println(req);
 
         }catch(SQLException e){
             e.printStackTrace();
@@ -75,7 +73,6 @@ public class Utilitaire {
                 String insert = "INSERT INTO Observateur (idObservateur,nom, prenom) VALUES("+ o.getId() + ", \'" + nom + "\' , \'" + prenom + "\');"; 
                 PreparedStatement add = con.prepareStatement(insert);
                 add.executeUpdate();
-                System.out.println(insert);
             }else{
                 ret = false;
             }
@@ -90,7 +87,6 @@ public class Utilitaire {
         ArrayList<Observateur> obs = o.getObservateurs();
         for(Observateur observe : obs){
             String reqBis = req + observe.getId() + " , " + o.getId() + ");";
-            System.out.println(reqBis);
             try{    
                 PreparedStatement stmt = con.prepareStatement(reqBis);
                 stmt.executeUpdate();
@@ -104,7 +100,6 @@ public class Utilitaire {
     private static void insertObs(Observation l){
         String req = "INSERT INTO observation (idObs, dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y) VALUES( " 
                         + l.getId() + " , \'" + l.getDate() + "\' , \'" + l.getHeure() + "\' , " + l.getLieu().getxCoord() + " , " + l.getLieu().getyCoord() + ");";
-        System.out.println(req);
         try{    
             PreparedStatement stmt = con.prepareStatement(req);
             stmt.executeUpdate();        

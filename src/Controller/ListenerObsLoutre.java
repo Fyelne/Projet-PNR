@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sothawo.mapjfx.Coordinate;
-import com.sothawo.mapjfx.MapView;
-
 import Modele.donnee.ObsLoutre;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -94,7 +91,6 @@ public class ListenerObsLoutre {
     }
 
     void load(ObsLoutre l){
-        System.out.println(l.getLieuDit());
         laLoutre = l;
         date.setText(l.getDate().toString());
         if(l.getHeure() == null){

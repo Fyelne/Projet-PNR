@@ -107,7 +107,6 @@ public class ObsBatracienBdd {
     public void insertBatracienAndOther(ObsBatracien b, ArrayList<Vegetation> allVege, ZoneHumide zh){
         int idVege = allVege.get(0).getDecritLieu();
         String reqLieuVege = "INSERT INTO lieu_vegetation VALUES(" + idVege + ");";
-        System.out.println(reqLieuVege);
         
         try {
             PreparedStatement s = con.prepareStatement(reqLieuVege);
@@ -221,7 +220,6 @@ public class ObsBatracienBdd {
         String req = "INSERT INTO obs_batracien VALUES ( " + b.getId() + " , '" + espece + "' , " + nbAdulte + " , " + nbAmpl +
                         " , " + nbPonte + " , " + nbTet + " , " + tem + " , '" + ciel + "','" + temp + "','" + 
                         vent + "', '" + pluie + "' , " + idZh + " , " + idVege + ");";
-        System.out.println(req);
 
         PreparedStatement stmt;
         try {

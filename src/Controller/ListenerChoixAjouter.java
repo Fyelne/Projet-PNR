@@ -39,7 +39,6 @@ public class ListenerChoixAjouter {
     @FXML
     void openMenu(ActionEvent event) {
         HMenu.setVisible(true);
-        System.out.println("t");
     }
     @FXML
     void quitMenu(ActionEvent event) {

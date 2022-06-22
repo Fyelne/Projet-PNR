@@ -154,7 +154,6 @@ public class ZoneHumideBdd {
 
         String req = "INSERT INTO zonehumide VALUES(" + id + " , " + tempo + " , " + profondeur + " , " + surface 
                         + " , '" + typeMare + "' , '" + pente + "' , '" + ouverture +"');";
-        System.out.println(req);
         PreparedStatement stmt;
         try {
             stmt = con.prepareStatement(req);

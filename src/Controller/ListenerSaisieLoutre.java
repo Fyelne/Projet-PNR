@@ -110,7 +110,6 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         Lieu l = new Lieu(Double.parseDouble(coordX.getText()), Double.parseDouble(coordY.getText()));
 
 
-        System.out.println(date.getValue().toString());
         // à revoir pour avoir un timePicker
         int h = heure.getValue();
         int min = minute.getValue();

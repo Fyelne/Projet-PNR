@@ -64,7 +64,6 @@ public class ListenerAfficheAllChouette implements Initializable{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Double clicked");
             }
         }
         
