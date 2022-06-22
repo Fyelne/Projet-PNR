@@ -8,17 +8,46 @@ public class NidGCI implements IObs<ObsGCI>{
     private int nbEnvol = 0;
     private String nomPlage;
     private ArrayList<ObsGCI> lesObservations;
+    private RaisonArretObs raisonArretObs;
+    private boolean protection;
+    private String bagueMale;
+    private String bagueFemelle;
 
     /**
      * Constructeur de la classe NidGCI
      * @param id id du nid
      * @param plage nom de la plage
      */
-    public NidGCI(int id, String plage) {
+    public NidGCI(int id, String plage, boolean protect, String bagueM, String bagueF) {
         if(id >= 0 && plage != null) {
             this.idNid = id;
             this.nomPlage = plage;
             this.lesObservations = new ArrayList<ObsGCI>();
+            this.raisonArretObs = null;
+            this.protection = protect;
+            this.bagueMale = bagueM;
+            this.bagueFemelle = bagueF;
+
+        } else {
+            throw new IllegalArgumentException("Parametres invalides");
+        }
+    }
+
+    /**
+     * Constructeur de la classe NidGCI
+     * @param id id du nid
+     * @param plage nom de la plage
+     */
+    public NidGCI(int id, String plage, boolean protect) {
+        if(id >= 0 && plage != null) {
+            this.idNid = id;
+            this.nomPlage = plage;
+            this.lesObservations = new ArrayList<ObsGCI>();
+            this.raisonArretObs = null;
+            this.protection = protect;
+            this.bagueMale = null;
+            this.bagueFemelle = null;
+
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -174,5 +203,37 @@ public class NidGCI implements IObs<ObsGCI>{
         } else {
             throw new IllegalArgumentException("Parametre invalide");
         }
+    }
+
+    public RaisonArretObs getRaisonArretObs(){
+        return this.raisonArretObs;
+    }
+
+    public void setRaisonArretObs(RaisonArretObs r){
+        this.raisonArretObs = r;
+    }
+
+    public boolean getProtection(){
+        return this.protection;
+    }
+
+    public void setProtection(boolean p){
+        this.protection = p;
+    }
+
+    public String getBagueMale(){
+        return this.bagueMale;
+    }
+
+    public void setBagueMale(String bM){
+        this.bagueMale = bM;
+    }
+
+    public String getBagueFemelle(){
+        return this.bagueFemelle;
+    }
+
+    public void setBagueFemelle(String bF){
+        this.bagueFemelle = bF;
     }
 }

@@ -9,10 +9,10 @@ import Modele.donnee.Lieu;
 import Modele.donnee.ObsLoutre;
 import Modele.donnee.Observateur;
 
-public class Loutre{
+public class ObsLoutreBdd{
     private Connection con;
 
-    public Loutre(){
+    public ObsLoutreBdd(){
         this.con = Singleton.getInstance().getConnection();
     }
 
@@ -35,7 +35,7 @@ public class Loutre{
                 }
                 
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
-                ResultSet res = this.recupObs(r.getInt("idObs"));
+                ResultSet res = Utilitaire.recupObs(r.getInt("idObs"));
                 while(res.next()){
                     int id = res.getInt("idObservateur");
                     String nom = res.getString("nom");
@@ -47,14 +47,15 @@ public class Loutre{
                 int idLoutre = r.getInt("idObs");
                 Date d = r.getDate("dateObs");
                 Time t = r.getTime("heureObs");
-                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice);
+                String lieuD = r.getString("lieuDit");
+                String commune = r.getString("commune");
+                ObsLoutre oLoutre = new ObsLoutre(idLoutre, d, t, l, obs, indice, lieuD, commune);
 
                 ret.add(oLoutre);
             
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -63,7 +64,7 @@ public class Loutre{
 
     public ResultSet getAllLoutreToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice "+
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice, commune, lieuDit "+
         "FROM `obs_loutre`, `observation`" +
         "WHERE ObsL = idObs " +
         "ORDER BY dateObs DESC ";
@@ -76,29 +77,73 @@ public class Loutre{
         return ret;
     }
 
-    private ResultSet recupObs(int id){
+
+
+    public ResultSet getAllLoutreBDD(){
         ResultSet ret = null;
-        String req = "SELECT idObservateur, nom, prenom FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
+        try{
+            PreparedStatement  stmt = con.prepareStatement(
+                "SELECT * FROM `bd_pnr`.`Obs_Loutre`");
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    
+    public void insertOneIntoBdd(ObsLoutre l){
+        
+        Utilitaire.insertBaseObs(l);
+        
+        String indice = "";
+        IndiceLoutre ind = l.getIndice();
+        switch(ind){
+            case POSITIF:
+                indice = "positif";
+                break;
+            
+            case NEGATIF:
+                indice = "negatif";
+                break;
+
+            case NON_PROSPECTION:
+                indice = "non prospection";
+                break;
+
+        } 
+        String addLoutre = "INSERT INTO Obs_Loutre (ObsL,commune,lieuDit,indice) VALUES ("
+                            + l.getId()  + " , \'" +  l.getLieuDit() + "\' , \'" + l.getCommune() + "\' , \'" + indice + "\');";
+        System.out.println(addLoutre);
+        
+        try{
+            PreparedStatement  stmt = con.prepareStatement(addLoutre);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertAllIntoBdd(ArrayList<ObsLoutre> oL){
+        for(ObsLoutre o : oL){
+            insertOneIntoBdd(o);
+        }
+    }
+
+    public ResultSet getFilteredLoutre(String recherche){
+        ResultSet ret = null;
+        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X,lieu_Lambert_Y,indice, commune, lieuDit "+
+        "FROM `obs_loutre`, `observation` " +
+        "WHERE ObsL = idObs " +
+        "AND commune LIKE '%" + recherche + "%'" +
+        "ORDER BY dateObs DESC ";
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ret;
-        
-    }
-
-    public ResultSet getAllLoutreBDD(){
-        ResultSet ret = null;
-        try{
-            PreparedStatement  stmt = con.prepareStatement(
-                "SELECT * FROM `bd_pnr`.`Obs_Chouette`");
-            ret = stmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         return ret;
     }
 }

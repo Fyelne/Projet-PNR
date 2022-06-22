@@ -27,7 +27,11 @@ public class ScenarioDonnee {
 
 
         int[] resObs = {1, 2, 3, 4};
-        ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE);
+        MeteoCiel meteoCiel = MeteoCiel.DEGAGE;
+        MeteoTemp meteoTemp = MeteoTemp.CHAUD;
+        MeteoVent meteoVent = MeteoVent.FORT;
+        MeteoPluie meteoPluie = MeteoPluie.FORTE;
+        ObsBatracien obsBatracien = new ObsBatracien(1, new Date(1000), new Time(1), lieu, observateurs, resObs, EspeceBatracien.CALAMITE, 8, meteoCiel, meteoTemp, meteoVent, meteoPluie);
         System.out.println("Informations de l'observation du batracien :" 
         + "\n\tId : " + obsBatracien.getId() + "\n\tDate : " + obsBatracien.getDate() + "\n\tHeure : " + obsBatracien.getHeure()
         + "\n\tLieu : " + printLieu(obsBatracien.getLieu()) + "\n\tObservateurs : " + printObservateur(obsBatracien.getObservateurs())
@@ -35,9 +39,13 @@ public class ScenarioDonnee {
         + "\n\tNombres d'amplexus : " + obsBatracien.getNombreAmplexus()
         + "\n\tNombres de tetard : " + obsBatracien.getNombreTetard()
         + "\n\tNombres de ponte : " + obsBatracien.getNombrePonte()
-        + "\n\tEspece : " + obsBatracien.getEspece());
+        + "\n\tEspece : " + obsBatracien.getEspece()
+        + "\n\tMeteo Ciel : " + obsBatracien.getMeteoCiel()
+        + "\n\tMeteo Temperature : " + obsBatracien.getMeteoTemp()
+        + "\n\tMeteo Vent : " + obsBatracien.getMeteoVent()
+        + "\n\tMeteo Pluie : " + obsBatracien.getMeteoPluie() );
 
-        ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE);
+        ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE, false);
         System.out.println("Informations de l'observation de la chouette :"
         + "\n\tId : " + obsChouette.getId() 
         + "\n\tDate : " + obsChouette.getDate() 
@@ -46,7 +54,7 @@ public class ScenarioDonnee {
         + "\n\tObservateurs : " + printObservateur(obsChouette.getObservateurs())
         + "\n\tType d'observation : " + obsChouette.getTypeObs());
         
-        ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1);
+        ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1, false);
         System.out.println("Informations de l'observation du GCI :"
         + "\n\tId : " + obsGCI.getId() 
         + "\n\tDate : " + obsGCI.getDate() 
@@ -56,7 +64,7 @@ public class ScenarioDonnee {
         + "\n\tContenu du nid : " + obsGCI.getNatureNid()
         + "\n\tNombre d'oiseaux observés : " + obsGCI.getNombre());
 
-        ObsHippocampe obsHippocampe = new ObsHippocampe(1, new Date(1000), new Time(1), lieu, observateurs, 5.0, false, Peche.PETIT_FILET, EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS, Sexe.FEMELLE);
+        ObsHippocampe obsHippocampe = new ObsHippocampe(1, new Date(1000), new Time(1), lieu, observateurs, 5.0, false, Peche.PETIT_FILET, EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS, Sexe.FEMELLE,18);
         System.out.println("Informations de l'observation du hippocampe :"
         + "\n\tId : " + obsHippocampe.getId() 
         + "\n\tDate : " + obsHippocampe.getDate() 
@@ -68,7 +76,7 @@ public class ScenarioDonnee {
         + "\n\tEspece : " + obsHippocampe.getEspece()
         + "\n\tSexe : " + obsHippocampe.getSexe());
 
-        ObsLoutre obsLoutre = new ObsLoutre(1, new Date(1000), new Time(1), lieu, observateurs, IndiceLoutre.POSITIF);
+        ObsLoutre obsLoutre = new ObsLoutre(1, new Date(1000), new Time(1), lieu, observateurs, IndiceLoutre.POSITIF, "Lieu Dit", "Com");
         System.out.println("Informations de l'observation de la loutre :"
         + "\n\tId : " + obsLoutre.getId() 
         + "\n\tDate : " + obsLoutre.getDate() 
@@ -91,7 +99,7 @@ public class ScenarioDonnee {
         chouette.videObs();
         System.out.println("Observations : " + printObsChouette(chouette.getObservations()));
 
-        NidGCI nidGCI = new NidGCI(1, "laPlage");
+        NidGCI nidGCI = new NidGCI(1, "laPlage", false);
         System.out.println("Informations du nidGCI : \n\tId : " + nidGCI.getId() + "\n\tNom de la plage : " + nidGCI.getNomPlage() + "\n\tNombre d'envol : " + nidGCI.getNbEnvol());
         nidGCI.setNomPlage("laNouvellePlage");
         nidGCI.setNbEnvol(1);

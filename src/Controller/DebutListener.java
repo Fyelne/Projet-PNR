@@ -1,17 +1,12 @@
 package Controller;
-import java.awt.Dimension;
-import java.io.IOException;
 import java.sql.*;
 
 import Modele.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Dimension2D;
-import javafx.scene.*;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 //Listener for the start of the program until connection
 public class DebutListener {
@@ -27,7 +22,7 @@ public class DebutListener {
      */
     void conClicked(ActionEvent event) {
         
-        util.changeScene("Connexion", event);
+        util.changeScene("Connexion");
         
     }
 
@@ -43,6 +38,9 @@ public class DebutListener {
 
     @FXML
     private Label wrong; // label who is show when the password is incorect
+
+    @FXML
+    private Button connectButton;
 
     
     private LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
@@ -63,28 +61,10 @@ public class DebutListener {
             while(res.next()){
                 System.out.println(res.getString("mdpUtilisateur"));
                 if(res.getString("mdpUtilisateur").equals(mdp.getText())){
-                    Stage newStage = new Stage();
-                    Parent r;
-                    try {
-                        FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\LoadBis.fxml"));
-                        r = loader.load();
-                        LoadBis controle = loader.getController();
-                        controle.myFonction(true, user.getText());
-                        Scene s = new Scene(r);
-                        newStage.setTitle("Accueil");
-                        newStage.setScene(s);
-                        newStage.setMaximized(true);
-                        newStage.show();
-                        newStage.centerOnScreen();
+                        Utilitaire.setCurrentUser(res.getInt("idUtilisateur"));;
+                        util.changeScene("Accueil");
                         
-                    }catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //fermeture de la page de connexion
-                    Button bt = (Button) event.getSource();
-                    Scene sc = bt.getScene();
-                    Stage st = (Stage) sc.getWindow();
-                    st.close();
+                        
                 }else{
                     wrong.setVisible(true);
                 }
@@ -94,6 +74,18 @@ public class DebutListener {
         } 
 
     
+    }
+
+    @FXML
+    /**
+     * To check password and username / if they are good, you can connect
+     * Change the scene if it's good
+     * @param event Event
+     */
+    void enterPressed(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.ENTER)){
+            connect(null);
+        }
     }
    
 

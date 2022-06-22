@@ -10,13 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
-public class LoadBis {
+
+public class LoadBis implements Initializable{
 
     @FXML
     private Label bonjour;
@@ -24,48 +21,40 @@ public class LoadBis {
     private String name;
 
     @FXML
-    void change(MouseEvent event) {
+    void change() {
+        System.out.print("tru");
         try {
             for(int i = 0; i < 50 ; i ++){
+                
                 Thread.sleep(10);
+                System.out.println("test");
             }
             
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        BorderPane bt = (BorderPane) event.getSource();
-        Scene sc = bt.getScene();
-        Parent root;
         
         String url = "..//View//frame//Accueil.fxml";
+        Scene sc = bonjour.getScene();
+        Parent root;
         try {
             // change the scene
-            FXMLLoader l = new FXMLLoader(getClass().getResource(url));
-            root = l.load();
-            ListenerAccueil controle = l.getController();
-            controle.setNom(this.name);
+            root = FXMLLoader.load(getClass().getResource(url));
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         
     }
-    
 
-    public void myFonction(boolean connecter, String name){
-        if(connecter && name != null){
-            this.ecranCon(name);
-            this.name = name;
-        }
-
-    }
-
-    private void ecranCon(String name){
-        bonjour.setText("Bonjour Monsieur " + name);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        name = Utilitaire.getCurrentNameUser();
+        bonjour.setText("Bonjour " + name);
         bonjour.setVisible(true);
+        change();
+        
     }
 
     

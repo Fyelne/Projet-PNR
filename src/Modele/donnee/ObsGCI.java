@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class ObsGCI extends Observation {
     private int nombre;
     private ContenuNid natureNid ;
+    private boolean presentMaisNonObs;
 
     /**
      * Constructeur de la classe ObsGCI
@@ -18,10 +19,11 @@ public class ObsGCI extends Observation {
      * 
      * @param leNombre nombre d'oiseaux observés
      */
-    public ObsGCI(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, ContenuNid nature, int leNombre) {
+    public ObsGCI(int id, Date date, Time heure, Lieu lieu, ArrayList<Observateur> observateurs, ContenuNid nature, int leNombre, boolean present) {
         super(id, date, heure, lieu, observateurs);
         if(leNombre >= 0 && nature != null) {
             this.nombre = leNombre;
+            this.presentMaisNonObs = present;
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
@@ -72,5 +74,13 @@ public class ObsGCI extends Observation {
         } else {
             throw new IllegalArgumentException("Parametres invalides");
         }
+    }
+
+    public boolean getPresentMaisNonObs(){
+        return this.presentMaisNonObs;
+    }
+
+    public void setPresentMaisNonObs(boolean present){
+        this.presentMaisNonObs = present;
     }
 }

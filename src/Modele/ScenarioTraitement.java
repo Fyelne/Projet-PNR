@@ -41,7 +41,7 @@ public class ScenarioTraitement {
         observateurs.add(new Observateur(1, "Noel", "Andy"));
         observateurs.add(new Observateur(2, "Auger", "Mateo"));
 
-        ObsChouette obsChouette = new ObsChouette(3, new Date(1000), new Time(1), lieu3, observateurs, TypeObservation.SONORE_VISUELLE);
+        ObsChouette obsChouette = new ObsChouette(3, new Date(1000), new Time(1), lieu3, observateurs, TypeObservation.SONORE_VISUELLE, true);
         Sommet s1 = new Sommet(1, lieu1, date1, EspeceObservee.BATRACIEN);
         Sommet s2 = new Sommet(2, lieu2, date2, EspeceObservee.GCI);
         
