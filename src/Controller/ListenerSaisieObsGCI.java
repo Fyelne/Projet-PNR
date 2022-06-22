@@ -27,6 +27,8 @@ import javafx.stage.Stage;
 
 public class ListenerSaisieObsGCI extends ListenerObs {
 
+    private Utilitaire util = new Utilitaire();
+
     @FXML
     private Button ajouter;
 
@@ -110,7 +112,7 @@ public class ListenerSaisieObsGCI extends ListenerObs {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
+            
                         
         }catch (IOException e) {
             e.printStackTrace();
@@ -139,8 +141,8 @@ public class ListenerSaisieObsGCI extends ListenerObs {
     }
 
     @FXML
-    void connect(ActionEvent event) {
-
+    void goBack(ActionEvent event) {
+        util.changeScene("ChoixAjouter");
     }
 
     @FXML

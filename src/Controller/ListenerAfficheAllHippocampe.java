@@ -71,4 +71,28 @@ public class ListenerAfficheAllHippocampe {
         tab.setItems(tr);
     }
 
+    /* 
+    @FXML
+    void recherche(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)){
+            filtre();
+        }
+    }
+
+
+
+    
+    void filtre(){
+        String rechercheString = rechercheTF.getText();
+        ObsLoutreBdd data = new ObsLoutreBdd();
+
+        ArrayList<ObsHippocampe> obs = data.builder(data.getFilteredLoutre(rechercheString));
+        initializeData(obs);
+    }
+
+    @FXML
+    void retourcons(ActionEvent event) {
+        util.changeScene("Consultation");
+    }*/
+
 }

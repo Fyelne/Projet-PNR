@@ -87,12 +87,32 @@ public class ListenerChoixAjouter {
 
     @FXML
     void obsLoutre(ActionEvent event) {
+        util.changeScene("SaisieLoutre");
+    }
 
+    @FXML
+    void obsBat(ActionEvent event) {
+        util.changeScene("SaisieBatracien");
+    }
+
+    @FXML
+    void obsGrav(ActionEvent event) {
+        util.changeScene("SaisieObsGCI");
+    }
+
+    @FXML
+    void obsChouette(ActionEvent event) {
+        util.changeScene("SaisieObsChouette");
+    }
+
+    @FXML
+    void obsHippo(ActionEvent event) {
+        util.changeScene("SaisieHippocampe");
     }
 
     @FXML
     void retouracc(ActionEvent event) {
-
+        util.changeScene("Accueil");
     }
 
 }

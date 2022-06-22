@@ -31,6 +31,8 @@ import javafx.stage.Stage;
 
 public class ListenerSaisieObsHippocampe extends ListenerObs implements Initializable{
 
+    private Utilitaire util = new Utilitaire();
+
     @FXML
     private TextField X;
     @FXML
@@ -128,7 +130,7 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            Utilitaire.setScene(s);
+            
                         
         }catch (IOException e) {
             e.printStackTrace();
@@ -137,7 +139,7 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
 
     @FXML
     void goBack(ActionEvent event) {
-
+        util.changeScene("ChoixAjouter");
     }
 
     @FXML

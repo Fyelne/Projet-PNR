@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
+    private Utilitaire util = new Utilitaire();
 
     @FXML
     private Button ajouter;
@@ -47,8 +48,8 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
     private ArrayList<Observateur> listDesObs = new ArrayList<Observateur>();
 
     @FXML
-    void connect(ActionEvent event) {
-
+    void goBack(ActionEvent event) {
+        util.changeScene("ChoixAjouter");
     }
 
     @FXML
@@ -124,12 +125,16 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         ObsLoutreBdd loutreBDD = new ObsLoutreBdd();
         
         loutreBDD.insertOneIntoBdd(obsL);
-        System.out.println("L'observation a été Ajouté");
+        ajoutReussi("Observation ajouter");
+        util.changeScene("ChoixAjouter");
     }
 
-    
-    public void addObservateur() {
-        
+    public void ajoutReussi(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(message);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

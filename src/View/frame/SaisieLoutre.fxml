@@ -249,7 +249,7 @@
                      </font>
                   </Button>
                   <AnchorPane prefHeight="95.0" prefWidth="119.0" HBox.hgrow="SOMETIMES" />
-                  <Button minWidth="140.0" mnemonicParsing="false" onAction="#connect" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
+                  <Button minWidth="140.0" mnemonicParsing="false" onAction="#goBack" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
                      </font>

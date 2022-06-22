@@ -22,16 +22,14 @@ public class ObsHippocampeBdd {
         ArrayList<ObsHippocampe> ret = new ArrayList<ObsHippocampe>();
         //Construction des objets
         try {
-            while (r.next()) {
-                int idHippocampe = r.getInt("obsH");
-
-                Date d = r.getDate("dateObs");
-                Time t = r.getTime("heureObs");
-
-                Lieu l = Utilitaire.recupLieu(r);
-
+            while(r.next()){
+                // Creation lieu 
+                double x = r.getDouble("lieu_Lambert_X");
+                double y = r.getDouble("lieu_Lambert_Y");
+                Lieu l = new Lieu(x, y);
+                
                 ArrayList<Observateur> obs = new ArrayList<Observateur>();
-                ResultSet res = Utilitaire.recupObs(r.getInt("idObs"));
+                ResultSet res = this.recupObs(r.getInt("idObs"));
                 while(res.next()){
                     int id = res.getInt("idObservateur");
                     String nom = res.getString("nom");
@@ -40,50 +38,61 @@ public class ObsHippocampeBdd {
                     obs.add(nObservateur);
                 }
 
-                double taille = res.getDouble("taille");
+                int idHippocampe = r.getInt("idObs");
+                Date d = r.getDate("dateObs");
+                Time t = r.getTime("heureObs");
 
-                int g = res.getInt("gestant");
-                boolean gestant = false ;
-                if (g == 1) {
-                    gestant = true ;
+                if(d == null){
+                    d = new Date(0);
                 }
-
-                Peche unTypePeche = null ;
-                if (r.getString("typePeche").equals("casierMorgates")) {
-                    unTypePeche = Peche.CASIER_MORGATES ;
-                } else if (r.getString("typePeche").equals("casierCrevettes")) {
-                    unTypePeche = Peche.CASIER_CREVETTES ;
-                } else if (r.getString("typePeche").equals("petitFilet")) {
-                    unTypePeche = Peche.PETIT_FILET ;
-                } else if (r.getString("typePeche").equals("VerveuxAnguilles")) {
-                    unTypePeche = Peche.VERVEUX_ANGUILLES ;
-                } else {
-                    unTypePeche = Peche.NON_RENSEIGNE ;
-                }
-
-                EspeceHippocampe especeHip = null ;
-                if (r.getString("espece").equals("Syngnathus acus")) {
-                    especeHip = EspeceHippocampe.SYNGNATHUS_ACUS ;
-                } else if (r.getString("espece").equals("Hippocampus guttulatus")) {
-                    especeHip = EspeceHippocampe.HIPPOCAMPUS_GUTTULATUS ;
-                } else if (r.getString("espece").equals("Hippocampus hippocampus")) {
-                    especeHip = EspeceHippocampe.HIPPOCAMPUS_HIPPOCAMPUS ;
-                } else {
-                    especeHip = EspeceHippocampe.ENTERURUS_AEQUOREUS ;
-                }
-
-                Sexe sexeHip = null ;
-                if (r.getString("sexe").equals("male")) {
-                    sexeHip = Sexe.MALE ;
-                } else if (r.getString("sexe").equals("femelle")) {
-                    sexeHip = Sexe.FEMELLE ;
-                } else {
-                    sexeHip = Sexe.INCONNU ;
+                if(t == null){
+                    t = new Time(0);
                 }
                 
-                double tempEau = (double) r.getInt("temperatureEau") ;
+                double laTaille = r.getDouble("taille");
+                boolean estGestant = false;
+                if(r.getInt("gestant") == 1){
+                    estGestant = true;
+                }
 
-                ObsHippocampe oHippocampe = new ObsHippocampe(idHippocampe, d, t, l, obs, taille, gestant, unTypePeche, especeHip, sexeHip, tempEau) ;
+                String leTypePecheString = r.getString("typePeche");
+                Peche leTypePeche;
+
+                if(leTypePecheString != null) {
+                    if(leTypePecheString.equals("casierCrevettes")){
+                        leTypePeche = Peche.valueOf("CASIER_CREVETTES");
+                    } else if(leTypePecheString.equals("verveuxAnguilles")){
+                        leTypePeche = Peche.valueOf("VERVEUX_ANGUILLES");
+                    } else if(leTypePecheString.equals("casierMorgates")){
+                        leTypePeche = Peche.valueOf("CASIER_MORGATES");
+                    } else if(leTypePecheString.equals("petitFilet")){
+                        leTypePeche = Peche.valueOf("PETIT_FILET");
+                    } else {
+                        leTypePeche = Peche.valueOf("NON_RENSEIGNE");
+                    }
+                } else {
+                    leTypePeche = Peche.valueOf("NON_RENSEIGNE");
+                }
+
+                String especeHippocampeString = r.getString("espece");
+                EspeceHippocampe especeHippocampe;
+                if(especeHippocampeString != null){
+                    if(especeHippocampeString.equals("Syngnathus acus")){
+                        especeHippocampe = EspeceHippocampe.valueOf("SYNGNATHUS_ACUS");
+                    } else if(especeHippocampeString.equals("Hippocampus guttulatus")){
+                        especeHippocampe = EspeceHippocampe.valueOf("HIPPOCAMPUS_GUTTULATUS");
+                    } else if(especeHippocampeString.equals("Enterurus aequoreus")){
+                        especeHippocampe = EspeceHippocampe.valueOf("ENTERURUS_AEQUOREUS");
+                    } else {
+                        especeHippocampe = EspeceHippocampe.valueOf("HIPPOCAMPUS_HIPPOCAMPUS");
+                    }
+                } else {
+                    especeHippocampe = EspeceHippocampe.valueOf("HIPPOCAMPUS_HIPPOCAMPUS");
+                }
+
+                Sexe leSexe = Sexe.valueOf(r.getString("sexe").toUpperCase());
+                double tempe = r.getDouble("temperatureEau");
+                ObsHippocampe oHippocampe = new ObsHippocampe(idHippocampe, d, t, l, obs, laTaille, estGestant, leTypePeche, especeHippocampe, leSexe, tempe);
                 ret.add(oHippocampe);
             }
 
@@ -92,9 +101,20 @@ public class ObsHippocampeBdd {
         }
         
         return ret;
-
     }
 
+    private ResultSet recupObs(int id){
+        ResultSet ret = null;
+        String req = "SELECT idObservateur, nom, prenom FROM Observateur, aobserve WHERE lObservation = " + id + " AND  lObservateur = idObservateur"; 
+        try{
+            PreparedStatement  stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+        
+    }
 
     public void insertOneHippocampe(ObsHippocampe h){
         Utilitaire.insertBaseObs(h);
@@ -179,7 +199,7 @@ public class ObsHippocampeBdd {
 
     public ResultSet getAllHippocampeToBuild(){
         ResultSet ret = null;
-        String req  = "SELECT DISTINCT(idObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, espece, sexe, taille, gestant, typePeche "+
+        String req  = "SELECT ObsH, idObs, dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, espece, sexe, taille, gestant, typePeche "+
         "FROM `obs_Hippocampe`, `observation` " +
         "WHERE ObsH = idObs " +
         "ORDER BY dateObs DESC;";
@@ -191,7 +211,6 @@ public class ObsHippocampeBdd {
         }
         return ret;
     }
-
 
     public ResultSet getAllHippocampeBDD(){
         ResultSet ret = null;
