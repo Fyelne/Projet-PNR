@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -22,13 +23,13 @@ public class ListenerAfficheAllBatracien implements Initializable{
     @FXML
     private TableColumn<ObsBatracien, Date> date;
     @FXML
-    private TableColumn<ObsBatracien, IndiceLoutre> indice;
+    private TableColumn<ObsBatracien, Time> heure;
     @FXML
     private TableColumn<ObsBatracien, Integer> id;
     @FXML
     private Button menu;
     @FXML
-    private TableColumn<ObsBatracien, String> commune;
+    private TableColumn<ObsBatracien, EspeceBatracien> espece;
     @FXML
     private TableView<ObsBatracien> tab;
     @FXML
@@ -38,10 +39,6 @@ public class ListenerAfficheAllBatracien implements Initializable{
     @FXML
     private Button retour;
 
-
-    protected void load(){
-
-    }
 
 
     @FXML
@@ -77,25 +74,25 @@ public class ListenerAfficheAllBatracien implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObsHippocampeBdd data = new ObsHippocampeBdd();
+        ObsBatracienBdd data = new ObsBatracienBdd();
 
-       // ArrayList<ObsHippocampe> obs = data.builder(data.getAllHippocampeToBuild());
+       ArrayList<ObsBatracien> obs = data.builder(data.getAllBatracienToBuild());
         
-        //initializeData(obs);
+        initializeData(obs);
     }
 
-    private void initializeData(ArrayList<ObsLoutre> obs){
-        ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
+    private void initializeData(ArrayList<ObsBatracien> obs){
+        ObservableList<ObsBatracien> tr = FXCollections.observableArrayList(obs);
 
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        indice.setCellValueFactory(new PropertyValueFactory<>("indice"));
+        heure.setCellValueFactory(new PropertyValueFactory<>("heure"));
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        commune.setCellValueFactory(new PropertyValueFactory<>("commune"));
+        espece.setCellValueFactory(new PropertyValueFactory<>("espece"));
 
-       // tab.setItems(tr);
+       tab.setItems(tr);
     }
 
     @FXML
@@ -110,10 +107,10 @@ public class ListenerAfficheAllBatracien implements Initializable{
 
     void filtre(){
         String rechercheString = rechercheTF.getText();
-        ObsLoutreBdd data = new ObsLoutreBdd();
+        ObsBatracienBdd data = new ObsBatracienBdd();
 
-        ArrayList<ObsLoutre> obs = data.builder(data.getFilteredLoutre(rechercheString));
-        initializeData(obs);
+        // ArrayList<ObsBatracien> obs = data.builder(data.getFilteredBatracien(rechercheString));
+        // initializeData(obs);
     }
 
     @FXML
