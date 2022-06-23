@@ -22,13 +22,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<BorderPane minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin">
-   <center>
-      <AnchorPane prefHeight="489.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="242.0" prefWidth="403.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-=======
 
 <GridPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin">
    <columnConstraints>
@@ -41,7 +34,6 @@
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;">
          <center>
             <AnchorPane prefHeight="489.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
->>>>>>> 78f2a259b4b93604ce3bbbec91831680e7b11ed9
                <children>
                   <HBox alignment="CENTER" prefHeight="242.0" prefWidth="403.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -49,11 +41,6 @@
                         <VBox alignment="CENTER" prefHeight="213.0" prefWidth="420.0" HBox.hgrow="ALWAYS">
                            <children>
                               <AnchorPane prefHeight="103.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
-                              <Button fx:id="champ" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des champs">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="25.0" />
-                                 </font>
-                              </Button>
                               <AnchorPane prefHeight="51.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
                               <Button fx:id="gestionUtilisateur" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToGestionUtilisateur" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des utilisateurs">
                                  <font>

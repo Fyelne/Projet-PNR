@@ -23,9 +23,6 @@ public class Admin {
     private Button admin;
 
     @FXML
-    private Button champ;
-
-    @FXML
     private Button gestionUtilisateur;
     /**
      * Permet d'acceder au menu qui sauvegarde
