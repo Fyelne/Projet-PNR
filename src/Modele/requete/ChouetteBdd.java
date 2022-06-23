@@ -13,6 +13,12 @@ public class ChouetteBdd {
         this.con = Singleton.getInstance().getConnection();
     }
 
+
+    /**
+     * Construit une arraylist d'objet de type Chouette
+     * @param r
+     * @return Une ArrayList d'objet de type Chouette
+     */
     public ArrayList<Chouette> builder(ResultSet r) {
         ArrayList<Chouette> ret = new ArrayList<Chouette>();
         //Construction des objets
@@ -50,6 +56,10 @@ public class ChouetteBdd {
     }
 
 
+    /**
+     * Permet d'inserer un objet Chouette dans la base de données 
+     * @param ch objet de type Chouette
+     */
     public void insertOneIntoBdd(Chouette ch){
         String id = ch.getId();
 
@@ -101,6 +111,11 @@ public class ChouetteBdd {
 
     
 
+    /**
+     * Verifie que le num est deja dans la base de données
+     * @param num numéro à verifier l'existence
+     * @return Un boolean
+     */
     public boolean check(String num){
         boolean ret = false;
         String req = "SELECT * FROM chouette WHERE numIndividu = '" + num + "';";
