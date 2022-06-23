@@ -58,7 +58,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="101.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="193.0" prefWidth="203.0">
+                        <VBox alignment="CENTER" prefHeight="112.0" prefWidth="203.0">
                            <children>
                               <AnchorPane prefHeight="85.0" prefWidth="203.0" />
                               <Label text="Plage">
@@ -66,7 +66,7 @@
                                     <Font name="AvenirLTStd-Medium" size="19.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="plage" minHeight="25.0" onAction="#setCoord" prefHeight="143.0" prefWidth="179.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;">
+                              <ComboBox fx:id="plage" minHeight="25.0" onAction="#setCoord" prefHeight="90.0" prefWidth="179.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>

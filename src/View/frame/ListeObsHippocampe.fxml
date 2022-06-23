@@ -86,24 +86,34 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <ComboBox fx:id="especeCB" layoutX="155.0" layoutY="24.0" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="162.0" />
-                              <ComboBox fx:id="typePecheCB" layoutX="380.0" layoutY="24.0" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="158.0" />
-                              <TextField fx:id="rechercheTF" alignment="CENTER" layoutX="604.0" layoutY="24.0" prefHeight="40.0" prefWidth="441.0" promptText="Recherche">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="18.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="especeCB" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="162.0" promptText="Espece" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" stylesheets="@css/try.css">
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <AnchorPane prefHeight="612.0" prefWidth="49.0" />
+                        <ComboBox fx:id="typePecheCB" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="158.0" promptText="Type de pêche" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" stylesheets="@css/try.css">
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <AnchorPane prefHeight="612.0" prefWidth="42.0" />
+                        <TextField fx:id="rechercheTF" alignment="CENTER" prefHeight="40.0" prefWidth="441.0" promptText="Recherche" style="-fx-background-radius: 25;">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                        </TextField>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="490.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                  <HBox prefHeight="490.0" prefWidth="1200.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <TableView fx:id="tab" onMouseClicked="#chooseObs" prefHeight="490.0" prefWidth="943.0">
+                        <AnchorPane maxWidth="500.0" prefHeight="490.0" prefWidth="55.0" HBox.hgrow="ALWAYS" />
+                        <TableView fx:id="tab" maxWidth="1.7976931348623157E308" onMouseClicked="#chooseObs" prefHeight="490.0" prefWidth="776.0" HBox.hgrow="ALWAYS">
                           <columns>
                               <TableColumn fx:id="id" prefWidth="75.0" text="Identifiant" />
                               <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
@@ -114,7 +124,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                        <AnchorPane maxWidth="500.0" prefHeight="490.0" prefWidth="56.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -133,13 +143,20 @@
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#retourcons" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Button mnemonicParsing="false" onAction="#retourcons" prefHeight="42.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="23.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/retour.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>

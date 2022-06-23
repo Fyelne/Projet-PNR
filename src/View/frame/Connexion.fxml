@@ -34,17 +34,23 @@
                         <AnchorPane prefHeight="220.0" prefWidth="400.0" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="user" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="400.0" promptText="Identifiant" style="-fx-background-color: #6fb09c; -fx-background-radius: 12; -fx-font-family: Avenir LT Std;">
+                              <TextField fx:id="user" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="400.0" promptText="Identifiant" style="-fx-background-color: #6fb09c; -fx-background-radius: 12; -fx-font-family: Avenir LT Std;">
                                  <cursor>
                                     <Cursor fx:constant="TEXT" />
                                  </cursor>
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="19.0" />
+                                 </font>
                               </TextField>
                            </children>
                         </HBox>
-                        <AnchorPane prefHeight="181.0" prefWidth="400.0" />
+                        <AnchorPane prefHeight="223.0" prefWidth="400.0" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <PasswordField fx:id="mdp" onKeyPressed="#enterPressed" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="400.0" promptText="Mot de passe" style="-fx-background-color: #6fb09c; -fx-background-radius: 12;" />
+                              <PasswordField fx:id="mdp" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#enterPressed" prefHeight="45.0" prefWidth="400.0" promptText="Mot de passe" style="-fx-background-color: #6fb09c; -fx-background-radius: 12;">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="19.0" />
+                                 </font></PasswordField>
                            </children>
                         </HBox>
                         <Label fx:id="wrong" prefHeight="15.0" prefWidth="395.0" text="Identifiant ou mot de passe incorrect" visible="false">
@@ -53,12 +59,12 @@
                            </font>
                         </Label>
                         <AnchorPane prefHeight="220.0" prefWidth="400.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="71.0" prefWidth="400.0">
                            <children>
-                              <AnchorPane prefHeight="31.0" prefWidth="128.0" />
-                              <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connect" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Se connecter" textFill="WHITE">
+                              <AnchorPane prefHeight="31.0" prefWidth="122.0" />
+                              <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connect" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Se connecter" textFill="WHITE">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="AvenirLTStd-Medium" size="17.0" />
                                  </font>
                               </Button>
                            </children>

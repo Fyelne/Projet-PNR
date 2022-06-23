@@ -51,7 +51,7 @@
                               <Insets left="25.0" top="8.0" />
                            </HBox.margin>
                         </Button>
-                        <Label minWidth="130.4" prefHeight="58.0" prefWidth="572.0" text="Observations Batracien" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Label minWidth="130.4" prefHeight="58.0" prefWidth="618.0" text="Observations Batracien" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="40.0" />
                            </font>
@@ -86,23 +86,31 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <ComboBox fx:id="especeCB" layoutX="153.0" layoutY="30.0" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="195.0" />
-                              <TextField fx:id="rechercheTF" alignment="CENTER" layoutX="456.0" layoutY="30.0" prefHeight="40.0" prefWidth="441.0" promptText="Recherche">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="18.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="especeCB" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="195.0" promptText="Espece" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" stylesheets="@css/try.css">
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </ComboBox>
+                        <AnchorPane prefHeight="612.0" prefWidth="80.0" />
+                        <TextField fx:id="rechercheTF" alignment="CENTER" prefHeight="40.0" prefWidth="441.0" promptText="Recherche" style="-fx-background-radius: 25;">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                        </TextField>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="490.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                  <HBox prefHeight="490.0" prefWidth="1200.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <TableView fx:id="tab" onMouseClicked="#chooseObs" prefHeight="490.0" prefWidth="943.0">
+                        <AnchorPane maxWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <TableView fx:id="tab" maxWidth="1.7976931348623157E308" onMouseClicked="#chooseObs" prefHeight="490.0" prefWidth="943.0" HBox.hgrow="ALWAYS">
                           <columns>
                               <TableColumn fx:id="id" prefWidth="75.0" text="Identifiant" />
                               <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
@@ -113,7 +121,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                        <AnchorPane maxWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -132,13 +140,20 @@
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#retourcons" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Retour" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Button mnemonicParsing="false" onAction="#retourcons" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="23.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/retour.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>

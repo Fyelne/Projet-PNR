@@ -19,23 +19,27 @@
             <HBox alignment="CENTER" prefHeight="242.0" prefWidth="403.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="500.0" prefWidth="339.0" HBox.hgrow="ALWAYS" />
-                  <VBox alignment="CENTER" prefHeight="213.0" prefWidth="420.0" spacing="70.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" prefHeight="213.0" prefWidth="420.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="champ" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="401.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des champs">
+                        <AnchorPane prefHeight="103.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="champ" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des champs">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="gestionUtilisateur" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToGestionUtilisateur" prefHeight="87.0" prefWidth="401.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des utilisateurs">
+                        <AnchorPane prefHeight="51.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="gestionUtilisateur" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToGestionUtilisateur" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des utilisateurs">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="25.0" />
                            </font>
                         </Button>
-                        <Button maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToSave" prefHeight="87.0" prefWidth="750.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Sauvegarde">
+                        <AnchorPane prefHeight="51.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
+                        <Button maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToSave" prefHeight="92.0" prefWidth="750.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Sauvegarde">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="25.0" />
                            </font>
                         </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="500.0" prefWidth="339.0" HBox.hgrow="ALWAYS" />
