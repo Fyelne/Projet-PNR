@@ -16,6 +16,10 @@ public class NidGCIBdd {
         this.con = Singleton.getInstance().getConnection();
     }
 
+    /**
+     * Permet d'inserer un objet Chouette dans la base de données 
+     * @param ch objet de type Chouette
+     */
     public void insertOneInto(NidGCI n){
         int idNid = n.getId();
         int nbEnvol = n.getNbEnvol();
@@ -48,9 +52,10 @@ public class NidGCIBdd {
         }
     }
 
-
-
-
+    /**
+     * Renvoie les identifiants d'un nid
+     * @return
+     */
     public int getIdNid(){
         int ret = 0;
         String req = "SELECT MAX(idNid) FROM nid_gci;";
@@ -82,6 +87,12 @@ public class NidGCIBdd {
         return ret;
     }
 
+
+    /**
+     * Construit une arraylist d'objet de type Chouette
+     * @param r
+     * @return Une ArrayList d'objet de type Chouette
+     */
     public ArrayList<NidGCI> builder(ResultSet r){
         ArrayList<NidGCI> ret = new ArrayList<NidGCI>();
 
