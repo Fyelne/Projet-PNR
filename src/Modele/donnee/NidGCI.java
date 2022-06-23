@@ -205,18 +205,34 @@ public class NidGCI implements IObs<ObsGCI>{
         }
     }
 
+    /**
+     * donne la raison de l'arret de l'observation
+     * @return la raison de l'arret de l'observation
+     */
     public RaisonArretObs getRaisonArretObs(){
         return this.raisonArretObs;
     }
 
+    /**
+     * modifie la raison d'arret d'obs
+     * @param r la raison d'arret
+     */
     public void setRaisonArretObs(RaisonArretObs r){
         this.raisonArretObs = r;
     }
 
+    /**
+     * Donne la protection
+     * @return la protection , true si protegé sinon false
+     */
     public boolean getProtection(){
         return this.protection;
     }
 
+    /**
+     * modifie la valeur de la protection
+     * @param p la valeur de protection
+     */
     public void setProtection(boolean p){
         this.protection = p;
     }
