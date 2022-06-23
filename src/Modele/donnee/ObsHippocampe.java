@@ -147,10 +147,18 @@ public class ObsHippocampe extends Observation {
         }
     }
 
+    /**
+     * Retourne la température
+     * @return la température
+     */
     public double getTemperature(){
         return this.temperature;
     }
 
+    /**
+     * modifie la température
+     * @param temp nouvelle valeur
+     */
     public void setTemperature(double temp){
         this.temperature = temp;
     }

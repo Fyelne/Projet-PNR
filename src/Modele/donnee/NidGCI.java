@@ -237,18 +237,34 @@ public class NidGCI implements IObs<ObsGCI>{
         this.protection = p;
     }
 
+    /**
+     * la valeur de la bague du male
+     * @return valeur de la bague du mal
+     */
     public String getBagueMale(){
         return this.bagueMale;
     }
 
+    /**
+     * modifie la valeur de la bagueMale
+     * @param bM valeur de la bague du mal
+     */
     public void setBagueMale(String bM){
         this.bagueMale = bM;
     }
 
+    /**
+     * 
+     * @return valeur de la bague femelle
+     */
     public String getBagueFemelle(){
         return this.bagueFemelle;
     }
 
+    /**
+     * modifie la valeur de la bague Femelle
+     * @param bF valeur de la bague Femelle
+     */
     public void setBagueFemelle(String bF){
         this.bagueFemelle = bF;
     }
