@@ -40,21 +40,40 @@ public class ListenerAffichageObsHippocampe {
     private Button visu;
     private ObsHippocampe obsH;
     private Utilitaire util = new Utilitaire();
+
+    /**
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goback(ActionEvent event) {
         util.changeScene("ListeObsHippocampe");
     }
 
+    /**
+     * Affiche le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void openMenu(ActionEvent event) {
 
     }
 
+    /**
+     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
     @FXML
     void openUserMenu(ActionEvent event) {
 
     }
 
+    /**
+     * Ouvre la fenêtre des observateur(s) lié(s) à l'observation de batracien en cours.
+     * Créé une nouvelle étape, charge un nouveau fichier FXML, obtient le contrôleur de ce fichier
+     * FXML, appelle une méthode sur ce contrôleur, puis affiche l'étape
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void visuobs(ActionEvent event) {
         Stage newStage = new Stage();
@@ -69,13 +88,16 @@ public class ListenerAffichageObsHippocampe {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            
                         
         }catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Prend un objet ObsHippocampe et affiche ses attributs dans les TextViews correspondants
+     * @param h ObsHippocampe
+     */
     public void load(ObsHippocampe h){
         X.setText(X.getText() + " " + h.getLieu().getxCoord());
         Y.setText(Y.getText() + " " + h.getLieu().getyCoord());

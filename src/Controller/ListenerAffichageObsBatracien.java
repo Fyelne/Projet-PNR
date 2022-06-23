@@ -71,16 +71,29 @@ public class ListenerAffichageObsBatracien {
     @FXML
     private Button visuZH;
 
+    /**
+     * Change la scène à celle spécifiée dans le paramètre
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ListeObsBatracien");
     }
 
+    /**
+     * Affiche le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void openMenu(ActionEvent event) {
-
+        //URGENT
     }
 
+   /**
+    * Ouvre une nouvelle scène (InfoUser.fxml) et charge le nom de l'utilisateur actuel dans une
+    * étiquette
+    * @param event L'événement qui a déclenché la méthode.
+    */
     @FXML
     void openUserMenu(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -125,6 +138,12 @@ public class ListenerAffichageObsBatracien {
         temp.setText(temp.getText() + " " + Integer.toString(batra.getTemperature()));
     }
 
+
+    /**
+     * Ouvre une nouvelle fenêtre et passe une référence au contrôleur principal au contrôleur de la
+     * nouvelle fenêtre.
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     public void openVisuMeteo(ActionEvent event) {
         Stage newStage = new Stage();
@@ -145,6 +164,11 @@ public class ListenerAffichageObsBatracien {
         }
     }
 
+
+    /**
+     * Ouvre la fenêtre des observateur(s) lié(s) à l'observation de batracien en cours.
+     * @param event l'événement qui a déclenché l'action (un bouton en l'occurrence)
+     */
     @FXML
     void openVisuObs(ActionEvent event) {
         Stage newStage = new Stage();
@@ -165,6 +189,11 @@ public class ListenerAffichageObsBatracien {
         }
     }
 
+
+    /**
+     * Ouvre la fenêtre des végétations liée l'observation de batracien en cours.
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void openVisuVege(ActionEvent event) {
         Stage newStage = new Stage();
@@ -185,6 +214,10 @@ public class ListenerAffichageObsBatracien {
         }
     }
  
+    /**
+     * Ouvre la fenêtre de la zone humide liée à l'observation de batracien en cours.
+     * @param event l'événement qui a déclenché l'action (un bouton en l'occurrence)
+     */
     @FXML
     void openVisuZH(ActionEvent event) {
         Stage newStage = new Stage();

@@ -3,6 +3,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/**
+ * Une classe de contrôleur pour le fichier Admin.fxml.
+ */
 public class Admin {
     @FXML
     private Button champ;

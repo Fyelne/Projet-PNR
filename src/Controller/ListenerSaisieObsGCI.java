@@ -85,11 +85,14 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
     private ArrayList<Observateur> listDesObs = new ArrayList<Observateur>();
     private int leNid;
 
+    /**
+     * Ajoute une observation de GCI à la base de données
+     * @param event ActionÉvénement
+     */
     @FXML
     public void addObs(ActionEvent event) {
         Lieu l = new Lieu(Double.parseDouble(coordX.getText()), Double.parseDouble(coordY.getText()));
 
-;
         System.out.println(date.getValue().toString());
         // à revoir pour avoir un timePicker
         int h = heure.getValue();
@@ -113,6 +116,11 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
         gBdd.insertOneInto(g, leNid);
     }
 
+    /**
+     * Ajoute un observateur pour une observation de GCI
+     * 
+     * @param event l'ActionEvent qui a déclenché le gestionnaire
+     */
     @FXML
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
@@ -138,16 +146,27 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
        
     }
 
+    /**
+     * Change la scène à celle spécifiée dans le paramètre
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
+    /**
+     * Cette fonction est utilisée pour définir la liste des observateurs
+     * 
+     * @param o la liste des observateurs
+     */
     @Override
     public void setListDesObs(ArrayList<Observateur> o) {
         listDesObs = o;
         
     }
+
     //code du Menu
     /**
      * Affiche le menu
@@ -226,6 +245,11 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
         util.changeScene("Consultation");
     }
 
+
+    /**
+     * Choisi le nid 
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void chooseNid(ActionEvent event) {
         Stage newStage = new Stage();
@@ -247,6 +271,13 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
         }
     }
 
+    /**
+     * Obtiens les valeurs des spinners et de les mets dans un nouvel objet de la classe
+     * ObsGCI
+     * 
+     * @param location l'emplacement du fichier FXML
+     * @param resources Faisceau de ressources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         present.getItems().add("OUI");
@@ -268,10 +299,13 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
         leNid = 0;
     }
 
+    /**
+     * Cette fonction fixe la valeur de la variable leNid à la valeur du paramètre n
+     * 
+     * @param n l'identifiant du nœud
+     */
     public void setLeNid(int n){
         this.leNid = n;
     }
-
-
 
 }

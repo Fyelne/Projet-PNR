@@ -20,6 +20,9 @@ public class LoadBis implements Initializable{
 
     private String name;
 
+    /**
+     * Change la scène après un délai de 5 secondes
+     */
     @FXML
     void change() {
         System.out.print("tru");
@@ -45,9 +48,17 @@ public class LoadBis implements Initializable{
             e.printStackTrace();
         }
 
-        
     }
 
+    /**
+     * Cette fonction est appelée lors du chargement du fichier FXML et elle définit le nom de
+     * l'utilisateur dans l'étiquette bonjour.
+     * 
+     * @param location L'emplacement utilisé pour résoudre les chemins relatifs de l'objet racine, ou
+     * null si l'emplacement n'est pas connu.
+     * @param resources Les ressources utilisées pour localiser l'objet racine, ou null si l'objet
+     * racine n'a pas été localisé.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         name = Utilitaire.getCurrentNameUser();

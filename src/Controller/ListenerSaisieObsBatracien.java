@@ -93,10 +93,14 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
     private ZoneHumide laZoneHumide;
     private ObsBatracienBdd batracienBdd;
 
+    /**
+     * Prend les données de l'interface graphique et les insère dans la base de données
+     * Ajoute une observation de batracien
+     * @param event ActionÉvénement
+     */
     @FXML
     public void addObs(ActionEvent event) {
         Lieu l = new Lieu(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText()));
-
 
         System.out.println(date.getValue().toString());
         // à revoir pour avoir un timePicker
@@ -115,6 +119,10 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         batracienBdd.insertBatracienAndOther(obsB, laVege, laZoneHumide);
     }
 
+    /**
+     * Ajoute un observateur pour une observation de batracien
+     * @param event l'ActionEvent qui a déclenché le gestionnaire
+     */
     @FXML
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
@@ -135,6 +143,10 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         }
     }
 
+    /**
+     * Ajoute un objet végétation pour une observation de batracien
+     * @param event l'ActionEvent qui a déclenché le gestionnaire
+     */
     @FXML
     void addVege(ActionEvent event) {
         Stage newStage = new Stage();
@@ -156,6 +168,10 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         }
     }
 
+    /**
+     * Ajoute un objet zoneHumide pour une observation de batracien
+     * @param event l'ActionEvent qui a déclenché le gestionnaire
+     */
     @FXML
     void addZh(ActionEvent event) {
         Stage newStage = new Stage();
@@ -177,11 +193,22 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         }
     }
 
+    /**
+     * Change la scène à celle spécifiée dans le paramètre
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
+    /**
+     * Obtiens les valeurs des spinners et de les mets dans un nouvel objet de la classe
+     * ObsBatracien
+     * @param location l'emplacement du fichier FXML
+     * @param resources les ressources à utiliser pour la localisation
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -201,7 +228,6 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         SpinnerValueFactory<Integer> amp = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25);
         amp.setValue(00);
         ampexus.setValueFactory(amp);
-
         
         SpinnerValueFactory<Integer> p = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25);
         p.setValue(00);
@@ -224,15 +250,28 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         batracienBdd = new ObsBatracienBdd();
     }
 
+    /**
+     * Cette fonction est utilisée pour définir la liste des observateurs
+     * @param o la liste des observateurs
+     */
     @Override
     public void setListDesObs(ArrayList<Observateur> o) {
         this.listDesObs = o;
     }
 
+    /**
+     * Cette fonction fixe la liste des végétations à la liste des végétations passée en paramètre
+     * @param v la ArrayList des objets Vegetation
+     */
     public void setListVege(ArrayList<Vegetation> v){
         this.laVege = v;
     }
 
+    /**
+     * Cette fonction définit l'attribut zoneHumide de la classe sur l'objet zoneHumide passé en
+     * paramètre
+     * @param z ZoneHumide
+     */
     public void setZoneHumide(ZoneHumide z){
         this.laZoneHumide = z;
     }

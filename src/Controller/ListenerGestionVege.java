@@ -46,6 +46,10 @@ public class ListenerGestionVege{
     private ListenerObs lelistener;
 
 
+    /**
+     * Ajoute une nouvelle ligne au tableau.
+     * @param event ActionÉvénement
+     */
     @FXML
     void ajouterNew(ActionEvent event) {
         Vegetation v = new Vegetation((ob.getIdVege() + listVege.size()), nature.getSelectionModel().getSelectedItem()
@@ -54,6 +58,12 @@ public class ListenerGestionVege{
 
     }
 
+    /**
+     * Lorsque l'utilisateur clique sur le bouton "Valider", la liste des légumes est envoyée à
+     * l'auditeur, et la fenêtre se ferme.
+     * 
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void valide(ActionEvent event) {
         this.lelistener.setListVege(this.listVege);
@@ -62,6 +72,14 @@ public class ListenerGestionVege{
         st.close();
     }
 
+    /**
+     * Prend un ListenerObs et un ArrayList d'objets Vegetation et définit la fabrique de valeurs de
+     * cellule pour les propriétés natureVege et vege de la classe Vegetation
+     * 
+     * @param s ListenerObs est une interface que créée pour écouter les changements dans la
+     * table.
+     * @param o ArrayList of Vegetation
+     */
     void getControl(ListenerObs s, ArrayList<Vegetation> o){
         this.lelistener = s;
         this.listVege = o;
@@ -71,22 +89,30 @@ public class ListenerGestionVege{
         nature.getItems().addAll(NatureVege.values());
         
         this.updateTable();
-
     }
 
+    /**
+     * Prend la liste des objets Vegetation et les place dans une ObservableList, qui est ensuite
+     * définie comme éléments de la table
+     */
     private void updateTable(){
         ObservableList<Vegetation> ne = FXCollections.observableArrayList(listVege);
         table.setItems(ne);
     }
 
 
-
+    /**
+     * Ajoute un nouvel objet Vegetation à la liste listVege, puis il crée une nouvelle
+     * ObservableList à partir de la liste listVege, puis il définit les éléments de la table sur la
+     * nouvelle ObservableList
+     * 
+     * @param ve Végétation
+     */
     void updateTable(Vegetation ve){
         listVege.add(ve);
         ObservableList<Vegetation> ne = FXCollections.observableArrayList(listVege);
 
         table.setItems(ne);
-
     }
 
 }

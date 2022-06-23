@@ -52,6 +52,11 @@ public class ListenerAfficheAllChouette implements Initializable{
     private Button retour;
 
 
+    /**
+     * C'est une fonction qui est appelée lors d'un double clic sur une ligne d'un tableau.
+     * Choisi vers quelle observation de chouette il faut aller.
+     * @param event l'événement qui a déclenché la méthode - double click sur une observation (ligne d'un tableau)
+     */
     @FXML
     void chooseObs(MouseEvent event) {
 
@@ -74,14 +79,25 @@ public class ListenerAfficheAllChouette implements Initializable{
                 System.out.println("Double clicked");
             }
         }
-        
-
-
-        
-
     }
 
 
+    /**
+     * Initialise un ComboBox avec les données d'une base de données.
+     * Utilise la classe appelée ObsChouetteBdd pour obtenir les données de la base de données.
+     * Utilise la classe appelée ObsChouette pour stocker les données.
+     * Utilise la classe appelée ObsChouetteController pour afficher les données.
+     * Utilise la classe appelée ObsChouetteMain pour lancer le programme.
+     * Utilise la classe appelée ObsChouetteModel pour stocker les données.
+     * Utilise la classe appelée ObsChouetteView pour afficher les données.
+     * Utilise la classe appelée ObsChouetteViewController pour afficher les données.
+     * Utilise la classe appelée ObsChouetteViewModel pour stocker les données.
+     * Utilise la classe appelée ObsChouetteViewModelController pour afficher les données.
+     * Utilise la classe appelée ObsChouetteViewModelMain pour lancer le programme.
+     * @param location l'emplacement du fichier FXML
+     * @param resources les ressources utilisées pour localiser l'objet racine, ou null si l'objet
+     * racine n'a pas été localisé.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObsChouetteBdd data = new ObsChouetteBdd();
@@ -113,6 +129,11 @@ public class ListenerAfficheAllChouette implements Initializable{
         tab.setItems(tr);
     }
 
+    /**
+     * Si l'utilisateur appuie sur Entrée ou si le champ de texte est vide, appelez la fonction
+     * filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void recherche(KeyEvent event){
         TextField source = (TextField)event.getSource();
@@ -121,14 +142,22 @@ public class ListenerAfficheAllChouette implements Initializable{
         }
     }
 
+    /**
+     * Lorsque l'utilisateur sélectionne une nouvelle valeur dans la combo, appelez la fonction
+     * filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void comboBoxChange(ActionEvent event){
         filtre();
     }
 
 
-
-
+    /**
+     * Prend le texte d'un champ de texte, l'élément sélectionné d'une zone de liste déroulante et
+     * l'élément sélectionné d'une autre zone de liste déroulante, puis il utilise ces valeurs pour
+     * filtrer les données dans une vue de table
+     */
     void filtre(){
         String rechercheString = rechercheTF.getText();
         String typeObsString = typeObsCB.getSelectionModel().getSelectedItem();
@@ -140,6 +169,10 @@ public class ListenerAfficheAllChouette implements Initializable{
         initializeData(obs);
     }
 
+    /**
+     * "Lorsque le bouton est cliqué, changez la scène en scène de consultation."
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Consultation");

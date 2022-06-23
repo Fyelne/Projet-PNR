@@ -48,7 +48,10 @@ public class ListenerVisuVege {
     @FXML
     private TableColumn<Vegetation, String> typeVegeta;
 
-
+    /**
+     * Ferme la fenêtre popup en cours
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -57,6 +60,12 @@ public class ListenerVisuVege {
     }
 
 
+    /**
+     * Récupère les données de la base de données et les place dans la table.
+     * Permet d'initialiser les les valeurs de la table de Vegetation
+     * 
+     * @param batra l'objet Obsbatracien qui permet de lier ObsBatracien à Vegetation
+     */
     public void getControl(ObsBatracien batra) {
         String vegetation = "SELECT DISTINCT(idVege), natureVege, decrit_LieuVege, vegetation FROM Obs_Batracien, Vegetation, lieu_vegetation WHERE obsB = "+ batra.getId() 
         + " AND concernes_vege = idVegeLieu AND idVegeLieu = decrit_LieuVege;";

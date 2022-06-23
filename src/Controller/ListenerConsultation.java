@@ -26,6 +26,10 @@ public class ListenerConsultation {
     
     private Utilitaire util = new Utilitaire();
 
+    /**
+     * Lorsque le bouton est cliqué, la scène est changée en scène appelée "ListeObsBatracien".
+     * @param event l'événement qui a déclenché l'action
+     */
     @FXML
     void obsBat(ActionEvent event) {
         util.changeScene("ListeObsBatracien");
@@ -40,29 +44,45 @@ public class ListenerConsultation {
         util.changeScene("ListeObsChouette");
     }
 
+    /**
+     * Lorsque le bouton est cliqué, la scène est changée en scène ListeObsGravelot.
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void obsGrav(ActionEvent event) {
         util.changeScene("ListeObsGravelot");
     }
 
+    /**
+     * Cela change la scène vers le fichier ListeObsHippocampe.fxml
+     * @param event l'événement qui a déclenché l'action
+     */
     @FXML
     void obsHippo(ActionEvent event) {
         util.changeScene("ListeObsHippocampe");
         
     }
 
+    /**
+     * Ça change la scène pour celle qui s'appelle "ListeObsLoutre"
+     * @param event l'événement qui a déclenché l'action
+     */
     @FXML
     void obsLoutre(ActionEvent event) {
         util.changeScene("ListeObsLoutre");
     }
 
+    /**
+     * Retourne vers la page d'accueil
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retouracc(ActionEvent event) {
         util.changeScene("Accueil");
     }
 
 
-        //code du Menu
+    //code du Menu
     /**
      * Affiche le menu
      * @param event le bouton cliqué

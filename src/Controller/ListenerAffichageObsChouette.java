@@ -61,16 +61,28 @@ public class ListenerAffichageObsChouette {
     private Button user;
 
 
+    /**
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ListeObsChouette");
     }
 
+    /**
+     * Affiche le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void openMenu(ActionEvent event) {
     }
 
 
+    /**
+     * Obtient les informations de la base de données liée à l'observation de chouette en cours et les affiche dans l'interface graphique
+     * @param chouette ObsChouette
+     */
     public void getControl(ObsChouette chouette) {
         this.obsChouette = chouette ;
 
@@ -110,10 +122,12 @@ public class ListenerAffichageObsChouette {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
-
+    /**
+     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
     @FXML
     void openUserMenu(ActionEvent event) {
         Button bt = (Button) event.getSource();

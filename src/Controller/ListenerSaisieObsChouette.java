@@ -79,11 +79,14 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
     private TextField txt;
 
 
+    /**
+     * Ajoute une observation à la base de données
+     * @param event ActionÉvénement
+     */
     @FXML
 	public void addObs(ActionEvent event) {
         Lieu l = new Lieu(Double.parseDouble(coordX.getText()), Double.parseDouble(coordY.getText()));
 
-;
         // à revoir pour avoir un timePicker
         int h = heure.getValue();
         int min = minute.getValue();
@@ -101,22 +104,23 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
         ObsChouette obsC = new ObsChouette(id, da, t, l, this.listDesObs, type, protocole, numC.getSelectionModel().getSelectedItem());
 
         chBdd.insertIneIntoBdd(obsC, numC.getSelectionModel().getSelectedItem());
-
-        
-
     }
 
+    /**
+     * Change la scène à celle spécifiée dans le paramètre
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
 
-    public void load(Chouette ch) {
-        
-        
-    }
-
+    /**
+     * Ajoute un observateur pour une observation de chouette
+     * @param event l'événement qui a déclenché la méthode
+     */
     @Override
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
@@ -131,18 +135,31 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            
-                        
+                    
         }catch (IOException e) {
             e.printStackTrace();
         }
         
     }
+
+
+    /**
+     * Cette fonction est utilisée pour définir la liste des observateurs
+     * 
+     * @param o la liste des observateurs
+     */
     @Override
     public void setListDesObs(ArrayList<Observateur> o){
         this.listDesObs = o;
     }
 
+    /**
+     * Obtiens les valeurs des spinners et de les mets dans un nouvel objet de la classe
+     * ObsChouette
+     * 
+     * @param location l'emplacement du fichier FXML
+     * @param resources Faisceau de ressources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         prot.getItems().add("OUI");
@@ -166,6 +183,12 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
         txt = numC.getEditor();
     }
 
+    /**
+     * Recherche une chaîne dans une base de données et affiche les résultats dans une liste
+     * déroulante
+     * 
+     * @param event javafx.scene.input.KeyEvent
+     */
     @FXML
     void search(KeyEvent event) {
         ArrayList<String> newId = new ArrayList<String>();
@@ -184,15 +207,14 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         
-            try {
-                while(res.next()){
-                    newId.add(res.getString("numIndividu"));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+        try {
+            while(res.next()){
+                newId.add(res.getString("numIndividu"));
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
         ObservableList<String> ne = FXCollections.observableArrayList(newId);
         numC.setItems(ne);
