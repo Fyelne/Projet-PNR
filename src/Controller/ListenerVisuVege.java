@@ -58,8 +58,9 @@ public class ListenerVisuVege {
 
 
     public void getControl(ObsBatracien batra) {
-        String vegetation = "SELECT * FROM Obs_Batracien, Vegetation WHERE concernes_vege = idVege AND obsB = " + batra.getId() ;
-        
+        String vegetation = "SELECT DISTINCT(idVege), natureVege, decrit_LieuVege, vegetation FROM Obs_Batracien, Vegetation, lieu_vegetation WHERE obsB = "+ batra.getId() 
+        + " AND concernes_vege = idVegeLieu AND idVegeLieu = decrit_LieuVege;";
+        System.out.println(vegetation);
         Connection con = Singleton.getInstance().getConnection();
         PreparedStatement stmt;
         try {

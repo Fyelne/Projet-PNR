@@ -66,4 +66,44 @@ public class NidGCIBdd {
         return ret;
     }
 
+    public ResultSet getAllNidGci(){
+        ResultSet ret = null;
+
+        String req = "SELECT * FROM nid_gci;";
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public ArrayList<NidGCI> builder(ResultSet r){
+        ArrayList<NidGCI> ret = new ArrayList<NidGCI>();
+
+        try {
+            while(r.next()){
+                int id = r.getInt("idNid");
+                String pl = r.getString("nomPlage");
+                int pr = r.getInt("protection");
+                boolean prot = false;
+                if(pr == 1){
+                    prot = true;
+                }
+                NidGCI ad = new NidGCI(id, pl, prot);
+                ad.setNbEnvol(r.getInt("nbEnvol"));
+
+                ret.add(ad);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
 }
