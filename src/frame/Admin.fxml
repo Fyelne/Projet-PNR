@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin">
+   <center>
+      <AnchorPane prefHeight="489.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="242.0" prefWidth="403.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="500.0" prefWidth="339.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" prefHeight="213.0" prefWidth="420.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <AnchorPane prefHeight="103.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="champ" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des champs">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="51.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="gestionUtilisateur" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToGestionUtilisateur" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des utilisateurs">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="51.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
+                        <Button maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToSave" prefHeight="92.0" prefWidth="750.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Sauvegarde">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="500.0" prefWidth="339.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <AnchorPane prefHeight="80.0" prefWidth="14.0" />
+                  <Label minWidth="291.0" prefHeight="58.0" prefWidth="389.0" text="Administrateur" textFill="WHITE" HBox.hgrow="NEVER">
+                     <font>
+                        <Font name="AvenirLTStd-Medium" size="40.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane maxHeight="2000.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="860.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;">
+                     <graphic>
+                        <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/proto_blanc/user.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

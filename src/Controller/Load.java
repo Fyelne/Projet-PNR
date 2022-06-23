@@ -27,10 +27,10 @@ public class Load{
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//Debut.fxml";
         try {
             // change the scene
-            root = FXMLLoader.load(getClass().getResource(url));
+            System.out.println(getClass().getResource("/"));
+            root = FXMLLoader.load(getClass().getResource("/frame/Debut.fxml"));
             sc.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

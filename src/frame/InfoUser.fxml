@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerUtilisateur">
+   <top>
+      <AnchorPane prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox minWidth="0.0" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <Label fx:id="enTete" minWidth="155.0" prefHeight="49.0" prefWidth="155.0" text="Durand" textFill="WHITE">
+                     <font>
+                        <Font name="AvenirLTStd-Medium" size="40.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <AnchorPane maxHeight="2000.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="860.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <Button fx:id="quit" cancelButton="true" minWidth="57.0" mnemonicParsing="false" onAction="#quitMenu" style="-fx-background-color: #008864;">
+                     <font>
+                        <Font name="AvenirLTStd-Roman" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/proto_blanc/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="533.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox minWidth="0.0" prefHeight="301.0" prefWidth="1200.0" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane minWidth="0.0" prefHeight="302.0" prefWidth="229.0" />
+                  <VBox alignment="CENTER_LEFT" minWidth="0.0" prefHeight="266.0" prefWidth="297.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Informations Générales ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="-15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="prenom" text="Prénom : ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nom" text="Nom : ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="adresse" text="Adresse : ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tel" text="Télephone :  ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
+                  <AnchorPane minWidth="0.0" prefHeight="327.0" prefWidth="252.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER_LEFT" minWidth="0.0" prefHeight="302.0" prefWidth="293.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Informations Rôles ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="-15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="role" text="Rôle : ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nb_Obs" text="Nombre d'observation : ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="since" text="Membres depuis : ">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane prefHeight="17.0" prefWidth="308.0" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
+                  <AnchorPane minWidth="0.0" prefHeight="302.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" minWidth="0.0" prefHeight="311.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="296.0">
+               <children>
+                  <AnchorPane minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" minWidth="0.0" prefHeight="266.0" prefWidth="297.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="notif" minWidth="0.0" text="Changer de mot de passe" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="-15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label minWidth="0.0" text="Ancien mot de passe :" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="oldPass" minWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Label minWidth="0.0" text="Nouveau :  " VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="newPass" minWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Label minWidth="0.0" text="Validation du nouveau :" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="checkPass" minWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="btPass" alignment="CENTER" minWidth="0.0" mnemonicParsing="false" onAction="#changePass" style="-fx-background-color: #07B137; -fx-background-radius: 20;" text="Valider" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
+                  <AnchorPane minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="93.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="deco" mnemonicParsing="false" onAction="#deconnexion" style="-fx-background-color: #008864; -fx-background-radius: 25;" text="Déconnexion" textFill="WHITE">
+                     <font>
+                        <Font name="AvenirLTStd-Medium" size="25.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

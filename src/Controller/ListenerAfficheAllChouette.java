@@ -60,7 +60,7 @@ public class ListenerAfficheAllChouette implements Initializable{
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
-                String url = "..//View//frame//AffichageObservationChouette.fxml";
+                String url = "/frame/AffichageObservationChouette.fxml";
                 try {
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
@@ -174,7 +174,7 @@ public class ListenerAfficheAllChouette implements Initializable{
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//InfoUser.fxml";
+        String url = "/frame/InfoUser.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));

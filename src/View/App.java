@@ -14,21 +14,20 @@ import javafx.stage.Stage;
 
 public class App extends Application{
 
-    private Stage primaryStage;
 
     public void start(Stage primaryStage) {
         Parent root;
         
         try {
             // Création de la 1ère frame, celle d'accueil
-            root = FXMLLoader.load(getClass().getResource("frame\\Loading.fxml"));
+            // System.out.println(getClass().getResource("/frame").toString());
+            root = FXMLLoader.load(getClass().getResource("/frame/Loading.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Connexion");
             primaryStage.setMaximized(true);
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.centerOnScreen();
-            this.primaryStage = primaryStage;
             Utilitaire.setScene(scene);
 
         } catch (IOException e) {
