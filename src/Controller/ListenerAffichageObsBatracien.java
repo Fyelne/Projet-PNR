@@ -96,7 +96,6 @@ public class ListenerAffichageObsBatracien {
             lu.load(Utilitaire.getCurrentNameUser(), "Accueil");
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

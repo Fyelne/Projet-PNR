@@ -67,7 +67,6 @@ public class ListenerChoixNidGCI {
             r.next();
             ret = r.getInt("idNid");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         if(arret.isSelected()){
@@ -128,7 +127,6 @@ public class ListenerChoixNidGCI {
                 lesPlages.add(res.getString("nomPlage"));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -151,7 +149,6 @@ public class ListenerChoixNidGCI {
                 lesNid.add(r.getInt("idNid"));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -169,7 +166,6 @@ public class ListenerChoixNidGCI {
                 coordX.add(ret.getDouble("lieu_Lambert_X"));
                 coordY.add(ret.getDouble("lieu_Lambert_Y"));
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }            
         }

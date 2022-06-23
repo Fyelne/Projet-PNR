@@ -4,14 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import Modele.Singleton;
 import Modele.donnee.ObsBatracien;
-import Modele.donnee.ZoneHumide;
-import Modele.requete.ZoneHumideBdd;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -84,7 +79,6 @@ public class ListenerVisuZH {
             ouverture.setText(ouverture.getText() + " " + ouv);
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

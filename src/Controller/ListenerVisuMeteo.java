@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ListenerVisuMeteo {
-    private Utilitaire util = new Utilitaire();
 
     @FXML
     private Label labelCiel;

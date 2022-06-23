@@ -45,7 +45,7 @@ public class ScenarioDonnee {
         + "\n\tMeteo Vent : " + obsBatracien.getMeteoVent()
         + "\n\tMeteo Pluie : " + obsBatracien.getMeteoPluie() );
 
-        ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE, false);
+        ObsChouette obsChouette = new ObsChouette(1, new Date(1000), new Time(1), lieu, observateurs, TypeObservation.SONORE_VISUELLE, false, "");
         System.out.println("Informations de l'observation de la chouette :"
         + "\n\tId : " + obsChouette.getId() 
         + "\n\tDate : " + obsChouette.getDate() 
@@ -54,7 +54,7 @@ public class ScenarioDonnee {
         + "\n\tObservateurs : " + printObservateur(obsChouette.getObservateurs())
         + "\n\tType d'observation : " + obsChouette.getTypeObs());
         
-        ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1, false);
+        ObsGCI obsGCI = new ObsGCI(1, new Date(1000), new Time(1), lieu, observateurs, ContenuNid.POUSSIN, 1, false, 1);
         System.out.println("Informations de l'observation du GCI :"
         + "\n\tId : " + obsGCI.getId() 
         + "\n\tDate : " + obsGCI.getDate() 

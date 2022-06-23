@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Modele.Singleton;
-import Modele.donnee.Chouette;
 import Modele.donnee.ObsChouette;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class ListenerAffichageObsChouette {
     private Utilitaire util = new Utilitaire();
@@ -110,7 +108,6 @@ public class ListenerAffichageObsChouette {
             typeObservation.setText(typeObservation.getText() + " " + typeObs);
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -132,7 +129,6 @@ public class ListenerAffichageObsChouette {
             lu.load(Utilitaire.getCurrentNameUser(), "Accueil");
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

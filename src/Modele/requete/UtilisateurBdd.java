@@ -9,16 +9,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import Modele.Singleton;
-import javafx.beans.property.*;
-import javafx.scene.control.*;
 import Modele.donnee.Utilisateur;
 
 public class UtilisateurBdd {
-    private String nom;
-    private String prenom;
-    private String telephone;
-    private ComboBox<String> droitsCB;
-    private Button supprimer;
     private Connection con;
     
  

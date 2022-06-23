@@ -7,10 +7,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import Modele.donnee.IndiceLoutre;
 import Modele.donnee.*;
 import Modele.requete.*;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -65,7 +63,6 @@ public class ListenerAfficheAllGCI implements Initializable{
 
         if(event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2){
-                ObsGCI l = tab.getSelectionModel().getSelectedItem();
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
