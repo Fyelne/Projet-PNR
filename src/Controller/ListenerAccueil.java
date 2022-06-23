@@ -26,7 +26,8 @@ public class ListenerAccueil implements Initializable{
     private Button user;
     @FXML
     private Button admin;
-    
+    @FXML
+    private Button adminAccueil;
 
 
     @FXML
@@ -48,6 +49,7 @@ public class ListenerAccueil implements Initializable{
         bv.setText("Bienvenue " + Utilitaire.getCurrentNameUser());
         if(Utilitaire.getEstAdmin()){
             admin.setVisible(true);
+            adminAccueil.setVisible(true);
         }
     }
 
