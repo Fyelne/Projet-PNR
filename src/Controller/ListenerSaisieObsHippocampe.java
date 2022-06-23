@@ -118,7 +118,7 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
                                                      te);
 
             hippoBdd.insertOneHippocampe(obsH);
-            ajoutReussi("Observation ajouter");
+            ajoutReussi("Observation ajoutée");
             util.changeScene("ChoixAjouter");
         }else{
             erreurValue.setVisible(true);
