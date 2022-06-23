@@ -152,14 +152,26 @@ public class ObsBatracien extends Observation {
         }
     }
 
+    /**
+     * donne la température
+     * @return la température
+     */
     public int getTemperature(){
         return this.temperature;
     }
 
+    /**
+     * modifie la valeur de la température
+     * @param temp valeur de la température
+     */
     public void setTemperature(int temp){
         this.temperature = temp;
     }
 
+    /**
+     * donne la météo
+     * @return la météo
+     */
     public MeteoCiel getMeteoCiel(){
         return this.meteoCiel;
     }
@@ -176,7 +188,10 @@ public class ObsBatracien extends Observation {
         }
     }
 
-
+    /**
+     * donne la météo
+     * @return la meteo
+     */
     public MeteoTemp getMeteoTemp(){
         return this.meteoTemp;
     }
@@ -193,7 +208,10 @@ public class ObsBatracien extends Observation {
         }
     }
 
-
+    /**
+     * Donne la météo du vent 
+     * @return meteoVent
+     */
     public MeteoVent getMeteoVent(){
         return this.meteoVent;
     }
@@ -210,7 +228,10 @@ public class ObsBatracien extends Observation {
         }
     }
 
-
+    /**
+     * donne la météo pluie 
+     * @return la météo plue
+     */
     public MeteoPluie getMeteoPluie(){
         return this.meteoPluie;
     }

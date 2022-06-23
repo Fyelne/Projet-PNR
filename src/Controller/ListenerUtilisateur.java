@@ -51,17 +51,30 @@ public class ListenerUtilisateur {
     private Connection log = Singleton.getInstance().getConnection();
 
     private Utilitaire util = new Utilitaire();
+
+    /**
+     * Quitte le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void quitMenu(ActionEvent event) {
-        
         util.changeScene(this.pagePrec);
     }
 
+    /**
+     * L'utilisateur se déconnecte et on retourne à la page de connection
+     * @param event le bouton cliqué
+     */
     @FXML
     void deconnexion(ActionEvent event) {
         util.changeScene("Connexion");
     }
 
+    /**
+     * Essaie de changer le mot de passe d'un utilisateur dans une base de données
+     * 
+     * @param event ActionÉvénement
+     */
     @FXML
     void changePass(ActionEvent event) {
         String old = this.oldPass.getText();
@@ -111,12 +124,18 @@ public class ListenerUtilisateur {
         }
     }
 
+    /**
+     * Prend un nom et une pagePrec (page précédente) comme paramètres, puis charge les
+     * informations de l'utilisateur à partir de la base de données
+     * 
+     * @param name Le nom d'utilisateur
+     * @param pagePrec la page précédente
+     */
     void load(String name, String pagePrec){
         if(pagePrec != null && name != null){
             this.pagePrec = pagePrec;
             this.name = name;
         }
-        
 
         try{
             String requete = "SELECT * FROM `utilisateur` WHERE prenomUtilisateur = \'" + name +"\'";
@@ -166,7 +185,5 @@ public class ListenerUtilisateur {
         } 
         
     }
-
-    
 
 }

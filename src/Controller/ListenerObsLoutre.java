@@ -23,7 +23,6 @@ public class ListenerObsLoutre {
     @FXML
     private Button admin;
 
-
     @FXML
     private Label X;
 
@@ -61,12 +60,21 @@ public class ListenerObsLoutre {
     private Utilitaire util = new Utilitaire();
     private ObsLoutre laLoutre;
 
+    /**
+     * Lorsque le bouton est cliqué, change la scène en scène ListeObsLoutre.
+     * @param event l'événement qui a déclenché l'action
+     */
     @FXML
     void retourliste(ActionEvent event) {
         util.changeScene("ListeObsLoutre");
     }
 
 
+    /**
+     * Ouvre une nouvelle fenêtre et charge un nouveau fichier FXML
+     * 
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void visuobs(ActionEvent event) {
         Stage newStage = new Stage();
@@ -87,9 +95,14 @@ public class ListenerObsLoutre {
             e.printStackTrace();
         }
     }
-    
 
 
+    /**
+     * Prend un objet ObsLoutre comme paramètre, puis définit le texte d'un groupe de TextViews sur
+     * les valeurs de l'objet ObsLoutre
+     * 
+     * @param l ObsLoutre est un objet qui contient toutes les informations sur l'observation.
+     */
     void load(ObsLoutre l){
         titre.setText(titre.getText() + l.getId());
         laLoutre = l;

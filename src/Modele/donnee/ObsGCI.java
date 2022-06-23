@@ -79,18 +79,34 @@ public class ObsGCI extends Observation {
         }
     }
 
+    /**
+     * Donne si présent ou pas 
+     * @return true si présent sinon, false
+     */
     public boolean getPresentMaisNonObs(){
         return this.presentMaisNonObs;
     }
 
+    /**
+     * modifie le present mais non observer 
+     * @param present valeur à mettre 
+     */
     public void setPresentMaisNonObs(boolean present){
         this.presentMaisNonObs = present;
     }
 
+    /**
+     * donne le nid auquel appartient l'obs
+     * @return l'id du nid 
+     */
     public int getLeNid(){
         return this.leNid;
     }
 
+    /**
+     * modifie le nid auquel appartient l'obs du nid
+     * @param idNid valeur pour le nouveau nid
+     */
     public void setLeNid(int idNid){
         this.leNid = idNid;
     }

@@ -80,6 +80,10 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
     private ArrayList<Observateur> listDesObs;
     private ObsHippocampeBdd hippoBdd;
 
+    /**
+     * Ajoute une observation d'hippocampe à la base de données
+     * @param event ActionÉvénement
+     */
     @FXML
     public void addObs(ActionEvent event) {
         Lieu l = new Lieu(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText()));
@@ -124,6 +128,12 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
             erreurValue.setVisible(true);
         }
     }
+
+
+    /**
+     * Affiche que l'ajout est réussi
+     * @param message Le message à afficher.
+     */
     public void ajoutReussi(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -132,6 +142,11 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
         alert.showAndWait();
     }
 
+    /**
+     * Ajoute un observateur pour une observation d'hippocampe
+     * 
+     * @param event l'ActionEvent qui a déclenché le gestionnaire
+     */
     @FXML
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
@@ -153,12 +168,24 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
         }
     }
 
+    /**
+     * Change la scène à celle spécifiée dans le paramètre
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
 
+    /**
+     * Obtiens les valeurs des spinners et de les mets dans un nouvel objet de la classe
+     * ObsHippocampe
+     * 
+     * @param location l'emplacement du fichier FXML
+     * @param resources Faisceau de ressources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listDesObs = new ArrayList<Observateur>();
@@ -187,6 +214,11 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
         
     }
 
+    /**
+     * Cette fonction est utilisée pour définir la liste des observateurs.
+     * 
+     * @param o la liste des observateurs
+     */
     @Override
     public void setListDesObs(ArrayList<Observateur> o) {
         this.listDesObs = o; 

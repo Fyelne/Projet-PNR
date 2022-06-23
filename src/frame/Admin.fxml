@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -34,11 +41,6 @@
                         <VBox alignment="CENTER" prefHeight="213.0" prefWidth="420.0" HBox.hgrow="ALWAYS">
                            <children>
                               <AnchorPane prefHeight="103.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
-                              <Button fx:id="champ" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des champs">
-                                 <font>
-                                    <Font name="AvenirLTStd-Medium" size="25.0" />
-                                 </font>
-                              </Button>
                               <AnchorPane prefHeight="51.0" prefWidth="454.0" VBox.vgrow="ALWAYS" />
                               <Button fx:id="gestionUtilisateur" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToGestionUtilisateur" prefHeight="92.0" prefWidth="400.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Gestion des utilisateurs">
                                  <font>

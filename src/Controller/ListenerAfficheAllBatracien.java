@@ -52,8 +52,9 @@ public class ListenerAfficheAllBatracien implements Initializable{
 
 
     /**
-     * permet de savoir 
-     * @param event
+     * C'est une fonction qui est appelée lors d'un double clic sur une ligne d'un tableau.
+     * Choisi vers quelle observation de batracien il faut aller.
+     * @param event l'événement qui a déclenché la méthode - double click sur une observation (ligne d'un tableau)
      */
     @FXML
     void chooseObs(MouseEvent event) {
@@ -77,10 +78,14 @@ public class ListenerAfficheAllBatracien implements Initializable{
                 System.out.println("Double clicked");
             }
         }
-
     }
 
 
+    /**
+     * Prend une ArrayList d'objets ObsBatracien et les ajoute à une TableView.
+     * @param location l'emplacement du fichier FXML
+     * @param resources les ressources avec lesquelles localiser l'objet racine.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObsBatracienBdd data = new ObsBatracienBdd();
@@ -94,6 +99,10 @@ public class ListenerAfficheAllBatracien implements Initializable{
         especeCB.getSelectionModel().select("");
     }
 
+    /**
+     * Prend une ArrayList d'objets ObsBatracien et les place dans une TableView
+     * @param obs TableauListe des ObsBatracien
+     */
     private void initializeData(ArrayList<ObsBatracien> obs){
         ObservableList<ObsBatracien> tr = FXCollections.observableArrayList(obs);
 
@@ -108,6 +117,12 @@ public class ListenerAfficheAllBatracien implements Initializable{
         tab.setItems(tr);
     }
 
+
+    /**
+     * Si l'utilisateur appuie sur la touche entrée ou si le champ de texte est vide, alors appelez la
+     * fonction filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void recherche(KeyEvent event){
         TextField source = (TextField)event.getSource();
@@ -116,12 +131,22 @@ public class ListenerAfficheAllBatracien implements Initializable{
         }
     }
 
+
+    /**
+     * Lorsque l'utilisateur sélectionne une nouvelle valeur dans la comboBox, appelez la fonction
+     * filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void comboBoxChange(ActionEvent event){
         filtre();
     }
 
 
+    /**
+     * Prend le texte d'un champ de texte et d'une zone de liste déroulante et l'utilise pour
+     * filtrer les données dans une vue de table
+     */
     void filtre(){
         String rechercheString = rechercheTF.getText();
         String especeString = especeCB.getSelectionModel().getSelectedItem();
@@ -131,6 +156,10 @@ public class ListenerAfficheAllBatracien implements Initializable{
         initializeData(obs);
     }
 
+    /**
+     * "Lorsque le bouton est cliqué, changez la scène en scène de consultation."
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Consultation");

@@ -69,12 +69,20 @@ public class ListenerAffichageObsChouette {
     private Label typeObservation;
 
 
+    /**
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ListeObsChouette");
     }
 
 
+    /**
+     * Obtient les informations de la base de données liée à l'observation de chouette en cours et les affiche dans l'interface graphique
+     * @param chouette ObsChouette
+     */
     public void getControl(ObsChouette chouette) {
         this.obsChouette = chouette ;
 
@@ -114,7 +122,6 @@ public class ListenerAffichageObsChouette {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 

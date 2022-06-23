@@ -56,8 +56,9 @@ public class ListenerAfficheAllLoutre implements Initializable{
     }
 
     /**
-     * Permet de savoir si un double click a été effectué et affiche les détails de l'observation
-     * @param event
+     * C'est une fonction qui est appelée lors d'un double clic sur une ligne d'un tableau.
+     * Choisi vers quelle observation de loutre il faut aller.
+     * @param event l'événement qui a déclenché la méthode - double click sur une observation (ligne d'un tableau)
      */
     @FXML
     void chooseObs(MouseEvent event) {
@@ -82,14 +83,15 @@ public class ListenerAfficheAllLoutre implements Initializable{
                 System.out.println("Double clicked");
             }
         }
-        
-
-
-        
-
     }
 
 
+    /**
+     * J'essaie d'obtenir les données de la base de données et de les mettre dans la table.
+     * @param location l'emplacement du fichier FXML
+     * @param resources les ressources utilisées pour localiser l'objet racine, ou null si l'objet
+     * racine n'a pas été localisé.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObsLoutreBdd data = new ObsLoutreBdd();
@@ -99,6 +101,10 @@ public class ListenerAfficheAllLoutre implements Initializable{
         initializeData(obs);
     }
 
+    /**
+     * Il prend une ArrayList d'objets ObsLoutre et les place dans une TableView
+     * @param obs ArrayListe des ObsLoutre
+     */
     private void initializeData(ArrayList<ObsLoutre> obs){
         ObservableList<ObsLoutre> tr = FXCollections.observableArrayList(obs);
 
@@ -113,6 +119,11 @@ public class ListenerAfficheAllLoutre implements Initializable{
         tab.setItems(tr);
     }
 
+    /**
+     * Si l'utilisateur appuie sur la touche entrée ou si le champ de texte est vide, alors appelez la
+     * fonction filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void recherche(KeyEvent event){
         TextField source = (TextField)event.getSource();
@@ -122,8 +133,10 @@ public class ListenerAfficheAllLoutre implements Initializable{
     }
 
 
-
-
+    /**
+     * Prend le texte d'un champ de texte, l'utilise pour filtrer une base de données, puis met à
+     * jour la vue de table avec les données filtrées
+     */
     void filtre(){
         String rechercheString = rechercheTF.getText();
         ObsLoutreBdd data = new ObsLoutreBdd();
@@ -132,6 +145,10 @@ public class ListenerAfficheAllLoutre implements Initializable{
         initializeData(obs);
     }
 
+    /**
+     * "Lorsque le bouton est cliqué, changez la scène en scène de consultation."
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Consultation");

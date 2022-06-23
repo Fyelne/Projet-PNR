@@ -81,34 +81,66 @@ public class Utilisateur {
         }
     }
     
+    /**
+     * Modifie le role de l'utilisateur
+     * @param estAdmin nouveaux role
+     */
     public void setEstAdmin(boolean estAdmin){
         this.estAdmin = estAdmin;
     }
 
+    /**
+     * retourne si admin
+     * @return les droits
+     */
     public boolean getEstAdmin(){
         return this.estAdmin;
     }
     
+    /**
+     * donne l'id de l'utilisateur
+     * @return l'id de l'utilisateur
+     */
     public int getId(){
         return this.idUtilisateur;
     }
     
+    /**
+     * donne le nom
+     * @return le nom
+     */
     public String getNom(){
         return this.nomUtilisateur;
     }
     
+    /**
+     * donne le prenom
+     * @return le prenom
+     */
     public String getPrenom(){
         return this.prenomUtilisateur;
     }
 
+    /**
+     * donne le telephone 
+     * @return le telephone
+     */
     public String getTelephone(){
         return this.telephone;
     }
 
+    /**
+     * admin CB
+     * @return admin CB
+     */
     public ComboBox<String> getAdminCB(){
         return this.adminCB;
     }
 
+    /**
+     * donne le bouton supprimer 
+     * @return le bouton supprimer 
+     */
     public Button getSupprButton(){
         return this.supprButton;
     }

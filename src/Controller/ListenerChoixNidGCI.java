@@ -51,6 +51,11 @@ public class ListenerChoixNidGCI {
 
     private ListenerSaisieObsGCI l;
 
+    /**
+     * Essaie d'obtenir l'identifiant d'une ligne dans une table, puis de l'utiliser pour mettre à
+     * jour une autre table
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void valide(ActionEvent event) {
 
@@ -104,16 +109,21 @@ public class ListenerChoixNidGCI {
             }
             Utilitaire util = new Utilitaire();
             util.changeScene("ChoixAjouter");
-            
 
         }else{
             this.l.setLeNid(ret);
         }
+        
         Button bt = (Button) event.getSource();
         Stage st = (Stage) bt.getScene().getWindow();
         st.close();
     }
 
+
+    /**
+     * Charge les données de la base de données dans les ComboBoxes
+     * @param obs l'auditeur
+     */
     public void load(ListenerSaisieObsGCI obs){
         this.con = Singleton.getInstance().getConnection();
         this.l = obs;
@@ -132,10 +142,13 @@ public class ListenerChoixNidGCI {
 
         plage.getItems().addAll(lesPlages);
         arr.getItems().addAll(RaisonArretObs.values());
-
     }
 
     
+    /**
+     * Récupère les coordonnées des nids d'une plage et les affiche dans deux combobox
+     * @param event ActionÉvénement
+     */
     @FXML
     void setCoord(ActionEvent event) {
         String pl = plage.getSelectionModel().getSelectedItem();
@@ -176,20 +189,33 @@ public class ListenerChoixNidGCI {
         y.getItems().addAll(ty);
     }
 
+    /**
+     * Lorsque l'utilisateur sélectionne un élément dans la première liste, le même élément est
+     * sélectionné dans la seconde liste.
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void choixX(ActionEvent event) {
         int ind = x.getSelectionModel().getSelectedIndex();
         y.getSelectionModel().select(ind);
     }
 
+    /**
+     * Lorsque l'utilisateur sélectionne un élément dans la liste déroulante y, sélectionnez le même
+     * élément dans la liste déroulante x.
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void choixY(ActionEvent event) {
         int ind = y.getSelectionModel().getSelectedIndex();
         x.getSelectionModel().select(ind);
     }
-
-
     
+    /**
+     * Si la case est cochée, le champ de texte est visible.
+     * Si la case n'est pas cochée, le champ de texte n'est pas visible.
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void is(ActionEvent event) {
         boolean s = arret.isSelected();

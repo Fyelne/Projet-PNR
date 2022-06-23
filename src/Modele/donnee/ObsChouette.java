@@ -57,18 +57,33 @@ public class ObsChouette extends Observation {
         }
     }
 
+    /**
+     * donne le protocole 
+     * @return le protocole
+     */
     public boolean getProtocole(){
         return this.protocole;
     }
 
+    /**
+     * modifie le protocole 
+     * @param prot le nouveau protocole
+     */
     public void setProtocole(boolean prot){
         this.protocole = prot;
     } 
 
+    /**
+     * donne le Num de l'individu
+     * @return Num de l'individu
+     */
     public String getNumIndividu(){
         return this.numIndividu;
     }
-
+    /**
+     * modifie le num de l'individu
+     * @param num le nouveau num de l'individu
+     */
     public void setNumIndivdu(String num){
         if(null != null){
             this.numIndividu = num;

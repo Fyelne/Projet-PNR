@@ -12,6 +12,11 @@ import javafx.scene.layout.BorderPane;
 
 public class Load{    
 
+    /**
+     * Change la scène après un délai de 5 secondes
+     * 
+     * @param event L'événement qui a été déclenché.
+     */
     @FXML
     void charge(MouseEvent event) {
         try {
@@ -37,7 +42,5 @@ public class Load{
         }
         
     }
-
-
 
 }

@@ -9,6 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
+/**
+ * Une classe de contrôleur pour le fichier Admin.fxml.
+ */
 public class Admin {
 
     Utilitaire util = new Utilitaire();
@@ -21,9 +24,6 @@ public class Admin {
     private Button user;
     @FXML
     private Button admin;
-
-    @FXML
-    private Button champ;
 
     @FXML
     private Button gestionUtilisateur;

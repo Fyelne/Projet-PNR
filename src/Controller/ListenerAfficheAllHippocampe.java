@@ -59,7 +59,11 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     @FXML
     private Button retour;
 
-
+    /**
+     * C'est une fonction qui est appelée lors d'un double clic sur une ligne d'un tableau.
+     * Choisi vers quelle observation d'hippocampe il faut aller.
+     * @param event l'événement qui a déclenché la méthode - double click sur une observation (ligne d'un tableau)
+     */
     @FXML
     void chooseObs(MouseEvent event) {
 
@@ -86,6 +90,11 @@ public class ListenerAfficheAllHippocampe implements Initializable{
     }
 
 
+    /**
+     * Initialise les données dans la tableView
+     * @param location l'emplacement du fichier FXML
+     * @param resources Faisceau de ressources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObsHippocampeBdd data = new ObsHippocampeBdd();
@@ -103,6 +112,10 @@ public class ListenerAfficheAllHippocampe implements Initializable{
         typePecheCB.getSelectionModel().select("");
     }
 
+    /**
+     * Prend une ArrayList d'objets ObsHippocampe et les place dans une TableView
+     * @param obs TableauListe des ObsHippocampe
+     */
     private void initializeData(ArrayList<ObsHippocampe> obs){
         ObservableList<ObsHippocampe> tr = FXCollections.observableArrayList(obs);
 
@@ -117,6 +130,11 @@ public class ListenerAfficheAllHippocampe implements Initializable{
         tab.setItems(tr);
     }
  
+    /**
+     * Si l'utilisateur appuie sur la touche entrée ou si le champ de texte est vide, alors appelez la
+     * fonction filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void recherche(KeyEvent event){
         TextField source = (TextField)event.getSource();
@@ -125,12 +143,22 @@ public class ListenerAfficheAllHippocampe implements Initializable{
         }
     }
 
+    /**
+     * Lorsque l'utilisateur sélectionne une nouvelle valeur dans la combo, appelez la fonction
+     * filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void comboBoxChange(ActionEvent event){
         filtre();
     }
 
     
+    /**
+     * Prend le texte d'un champ de texte, l'élément sélectionné d'une zone de liste déroulante et
+     * l'élément sélectionné d'une autre zone de liste déroulante, puis il utilise ces valeurs pour
+     * filtrer les données dans une vue de table
+     */
     void filtre(){
         String rechercheString = rechercheTF.getText();
         ObsHippocampeBdd data = new ObsHippocampeBdd();
@@ -141,6 +169,10 @@ public class ListenerAfficheAllHippocampe implements Initializable{
         initializeData(obs);
     }
 
+    /**
+     * "Lorsque le bouton est cliqué, la scène change en scène de consultation."
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Consultation");

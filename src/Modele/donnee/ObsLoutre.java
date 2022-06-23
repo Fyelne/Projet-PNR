@@ -44,10 +44,18 @@ public class ObsLoutre extends Observation {
         return this.indice;
     }
 
+    /**
+     * retourne le lieuDit 
+     * @return le lieu
+     */
     public String getLieuDit(){
         return this.lieuDit;
     }
 
+    /**
+     * retourne la commune de l'obs
+     * @return la Commune 
+     */
     public String getCommune(){
         return this.commune;
     }

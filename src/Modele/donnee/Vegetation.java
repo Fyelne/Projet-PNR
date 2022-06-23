@@ -7,6 +7,13 @@ public class Vegetation {
     private String vege;
     private int decritLieu;
 
+    /**
+     * Constructor for vegetation
+     * @param i 
+     * @param nat
+     * @param veg
+     * @param desc
+     */
     public Vegetation(int i, NatureVege nat, String veg, int desc){
         if(nat != null){
             this.id = i;
