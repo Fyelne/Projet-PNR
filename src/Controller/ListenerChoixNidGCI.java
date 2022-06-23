@@ -6,17 +6,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.text.AbstractDocument.BranchElement;
+
 import Modele.Singleton;
 import Modele.donnee.NidGCI;
+import Modele.donnee.RaisonArretObs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ListenerChoixNidGCI {
+
+    @FXML
+    private ComboBox<RaisonArretObs> arr;
+
+    @FXML
+    private CheckBox arret;
+
+    @FXML
+    private Label enTete;
+
+    @FXML
+    private VBox toShow;
 
     @FXML
     private ComboBox<String> plage;
@@ -52,11 +70,49 @@ public class ListenerChoixNidGCI {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        this.l.setLeNid(ret);
+        if(arret.isSelected()){
+            RaisonArretObs r = arr.getSelectionModel().getSelectedItem();
+            String raison = "";
+            switch(r){
+                case ENVOL:
+                    raison = "Envol";
+                    break;
+                case INCONNU:
+                    raison = "Inconnu";
+                    break;
+                case MAREE:
+                    raison = "Maree";
+                    break;
+                case PIETINEMENT:
+                    raison = "Pietinement";
+                    break;
+                case PREDATION:
+                    raison = "Predation";
+                    break;
+                default:
+                    raison = "Inconnu";
+                    break;
+            }
+            String upda = "UPDATE nid_gci SET raisonArretObservation = '"+ raison 
+                         + "' WHERE idNid = " + ret +"; "; 
+            System.out.println(upda);
+            try {
+                PreparedStatement s = con.prepareStatement(upda);
+                s.executeUpdate();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Utilitaire util = new Utilitaire();
+            util.changeScene("ChoixAjouter");
+            
+
+        }else{
+            this.l.setLeNid(ret);
+        }
         Button bt = (Button) event.getSource();
         Stage st = (Stage) bt.getScene().getWindow();
         st.close();
-        
     }
 
     public void load(ListenerSaisieObsGCI obs){
@@ -77,6 +133,7 @@ public class ListenerChoixNidGCI {
         }
 
         plage.getItems().addAll(lesPlages);
+        arr.getItems().addAll(RaisonArretObs.values());
 
     }
 
@@ -133,5 +190,18 @@ public class ListenerChoixNidGCI {
     void choixY(ActionEvent event) {
         int ind = y.getSelectionModel().getSelectedIndex();
         x.getSelectionModel().select(ind);
+    }
+
+
+    
+    @FXML
+    void is(ActionEvent event) {
+        boolean s = arret.isSelected();
+        System.out.println(s);
+        if(s){
+            toShow.setVisible(true);
+        }else{
+            toShow.setVisible(false);
+        }
     }
 }

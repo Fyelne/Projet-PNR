@@ -84,10 +84,6 @@ public class ListenerAfficheAllHippocampe implements Initializable{
                 }
             }
         }
-        
-
-
-        
 
     }
 

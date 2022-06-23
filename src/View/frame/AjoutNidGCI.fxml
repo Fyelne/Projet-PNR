@@ -55,7 +55,7 @@
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="plage" minHeight="30.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="plage" alignment="CENTER" minHeight="30.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="123.0" prefWidth="245.0" VBox.vgrow="ALWAYS" />
                         <Label prefHeight="30.0" prefWidth="95.0" text="Protection : " VBox.vgrow="ALWAYS">
                            <font>
@@ -75,14 +75,14 @@
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="bMale" minHeight="30.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="bMale" alignment="CENTER" minHeight="30.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="190.0" prefWidth="230.0" VBox.vgrow="ALWAYS" />
                         <Label text="Bague de la Femelle :" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="AvenirLTStd-Medium" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="bFemelle" minHeight="30.0" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="bFemelle" alignment="CENTER" minHeight="30.0" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #6fb09c; -fx-background-radius: 25;" VBox.vgrow="ALWAYS" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>

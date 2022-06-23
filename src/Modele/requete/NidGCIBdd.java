@@ -19,29 +19,9 @@ public class NidGCIBdd {
     public void insertOneInto(NidGCI n){
         int idNid = n.getId();
         int nbEnvol = n.getNbEnvol();
-        String nomPlage = n.getNomPlage();
-        RaisonArretObs r = n.getRaisonArretObs();
-        String raison = "";
-        switch(r){
-            case ENVOL:
-                raison = "envol";
-                break;
-            case INCONNU:
-                raison = "inconnu";
-                break;
-            case MAREE:
-                raison = "maree";
-                break;
-            case PIETINEMENT:
-                raison = "pietinement";
-                break;
-            case PREDATION:
-                raison = "predation";
-                break;
-            default:
-                raison = null;
-                break;
-        }
+        String nomPlage = n.getNomPlage().toUpperCase();
+        
+        
         boolean p = n.getProtection();
         int protection = 0;
         if(p){
@@ -51,7 +31,7 @@ public class NidGCIBdd {
         String bagueMale = n.getBagueMale();
         String bagueFemelle = n.getBagueFemelle();
 
-        String req1 = "INSERT INTO nid_gci VALUES(" + idNid + " , '" + nomPlage + "' , '" + raison + " , " 
+        String req1 = "INSERT INTO nid_gci VALUES(" + idNid + " , '" + nomPlage + "' , " + null + " , " 
                         + nbEnvol + " , " + protection + " , '" + bagueMale + "' , '" + bagueFemelle + "');";
 
         try {
@@ -66,8 +46,10 @@ public class NidGCIBdd {
         for(ObsGCI obs : lesObs){
             obsBdd.insertOneInto(obs, idNid);
         }
-        
     }
+
+
+
 
     public int getIdNid(){
         int ret = 0;
