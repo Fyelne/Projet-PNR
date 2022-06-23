@@ -17,9 +17,11 @@ public abstract class ListenerObs {
     public abstract void  addObservateur(ActionEvent event);
 
 
+
     /**
-     * Modifie la liste des observateurs
-     * @param ArrayList<Observateur> liste des observateurs
+     * Il fixe la liste des observateurs.
+     * 
+     * @param o la liste des observateurs
      */
     public abstract void setListDesObs(ArrayList<Observateur> o);
 
@@ -31,7 +33,7 @@ public abstract class ListenerObs {
 
     /**
      * 
-     * @param ArrayList<Vegetation> liste des  végétations
+     * @param v liste des  végétations
      */
     public void setListVege(ArrayList<Vegetation> v){
 
@@ -39,7 +41,7 @@ public abstract class ListenerObs {
 
     /**
      * Modifie la zone humide
-     * @param ZoneHumide zone humide en cours
+     * @param zh zone humide en cours
      */
     public void setZoneHumide(ZoneHumide zh){
     }
