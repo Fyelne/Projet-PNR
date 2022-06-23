@@ -102,7 +102,7 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
         ObsChouette obsC = new ObsChouette(id, da, t, l, this.listDesObs, type, protocole, numC.getSelectionModel().getSelectedItem());
 
         chBdd.insertIneIntoBdd(obsC, numC.getSelectionModel().getSelectedItem());
-        ajoutReussi("Observation ajouter");
+        ajoutReussi("Observation ajoutée");
         util.changeScene("ChoixAjouter");
     }
 

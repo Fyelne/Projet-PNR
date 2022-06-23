@@ -12,3 +12,5 @@ CREATE TABLE utilisateur (
 
     CONSTRAINT pk_utilisateur PRIMARY KEY(idUtilisateur)
 );
+
+INSERT INTO Utilisateur VALUES (0, "Admin", "Admin", "admin", "0123456789", "1 rue de la Paix", 1, DEFAULT);

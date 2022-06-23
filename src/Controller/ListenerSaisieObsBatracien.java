@@ -114,7 +114,7 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
                             , vent.getSelectionModel().getSelectedItem(), pluie.getSelectionModel().getSelectedItem());
         
         batracienBdd.insertBatracienAndOther(obsB, laVege, laZoneHumide);
-        ajoutReussi("Observation ajouter");
+        ajoutReussi("Observation ajoutée");
         util.changeScene("ChoixAjouter");
     }
 

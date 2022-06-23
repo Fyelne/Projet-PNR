@@ -40,7 +40,7 @@ CREATE TABLE `obs_batracien` (
   KEY `fk_ObsBatracien_ZoneHumide` (`concerne_ZH`),
   KEY `fk_ObsBatracien_Vegetation` (`concernes_vege`),
   CONSTRAINT `fk_ObsBatracien_Observation` FOREIGN KEY (`obsB`) REFERENCES `observation` (`idObs`),
-  CONSTRAINT `fk_ObsBatracien_Vegetation` FOREIGN KEY (`concernes_vege`) REFERENCES `vegetation` (`idVege`),
+  CONSTRAINT `fk_ObsBatracien_Vegetation` FOREIGN KEY (`concernes_vege`) REFERENCES `Lieu_Vegetation` (`idVegeLieu`),
   CONSTRAINT `fk_ObsBatracien_ZoneHumide` FOREIGN KEY (`concerne_ZH`) REFERENCES `zonehumide` (`zh_id`),
   CONSTRAINT `dom_especeBatracien` CHECK ((`espece` in (_utf8mb4'calamite',_utf8mb4'pelodyte'))),
   CONSTRAINT `dom_meteoCiel` CHECK ((`meteo_ciel` in (_utf8mb4'dégagé',_utf8mb4'semi-dégagé',_utf8mb4'nuageux'))),

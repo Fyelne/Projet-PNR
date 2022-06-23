@@ -112,7 +112,7 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
 
         ObsGCIBdd gBdd = new ObsGCIBdd();
         gBdd.insertOneInto(g, leNid);
-        ajoutReussi("Observation ajouter");
+        ajoutReussi("Observation ajoutée");
         util.changeScene("ChoixAjouter");
     }
 

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Modele.LogBDD;
+import Modele.Singleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -47,8 +47,7 @@ public class ListenerUtilisateur {
     private String pagePrec;
     private String name;
 
-    private LogBDD bd = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
-    private Connection log = bd.connexion();
+    private Connection log = Singleton.getInstance().getConnection();
 
     private Utilitaire util = new Utilitaire();
     @FXML

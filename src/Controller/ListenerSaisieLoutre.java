@@ -125,7 +125,7 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         ObsLoutreBdd loutreBDD = new ObsLoutreBdd();
         
         loutreBDD.insertOneIntoBdd(obsL);
-        ajoutReussi("Observation ajouter");
+        ajoutReussi("Observation ajoutée");
         util.changeScene("ChoixAjouter");
     }
 
