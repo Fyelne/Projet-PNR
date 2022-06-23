@@ -28,6 +28,9 @@ public class ListenerObsLoutre {
     private Label X;
 
     @FXML
+    private Label titre;
+
+    @FXML
     private Label Y;
 
     @FXML
@@ -88,6 +91,7 @@ public class ListenerObsLoutre {
 
 
     void load(ObsLoutre l){
+        titre.setText(titre.getText() + l.getId());
         laLoutre = l;
         date.setText(l.getDate().toString());
         if(l.getHeure() == null){
@@ -139,7 +143,7 @@ public class ListenerObsLoutre {
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
             root = fx.load();
             ListenerUtilisateur lu = fx.getController();
-            lu.load(Utilitaire.getCurrentNameUser(), "AffichageObservationLoutre");
+            lu.load(Utilitaire.getCurrentNameUser(), "ListeObsLoutre");
             sc.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
