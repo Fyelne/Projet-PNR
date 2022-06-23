@@ -106,6 +106,8 @@ public class ListenerAfficheAllNid implements Initializable{
 
     }
 
+
+    
     /**
      * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
      * @param event le bouton cliqué

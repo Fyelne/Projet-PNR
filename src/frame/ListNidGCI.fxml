@@ -85,7 +85,7 @@
                   <HBox prefHeight="490.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <TableView fx:id="tab" onMouseClicked="#showNid" prefHeight="490.0" prefWidth="943.0">
+                        <TableView fx:id="tab" prefHeight="490.0" prefWidth="943.0">
                           <columns>
                               <TableColumn fx:id="id" prefWidth="75.0" text="Identifiant" />
                               <TableColumn fx:id="plage" prefWidth="75.0" text="nomPlage" />
