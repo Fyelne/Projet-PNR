@@ -28,20 +28,17 @@ public class ScenarioTraitement {
         Lieu lieu3 = new Lieu(3,3);
         Lieu lieu4 = new Lieu(4,4);
         Lieu lieu5 = new Lieu (8, 13);
-        Lieu lieu6 = new Lieu(19, 5);
 
         Date date1 = new Date(0);
         Date date2 = new Date(86400000);
-        Date date3 = new Date(86400000*2);
         Date date4 = new Date(86400000*3);
         Date date5 = new Date(3600 * 10000);
-        Date date6 = new Date(24000);
 
         ArrayList<Observateur> observateurs = new ArrayList<Observateur>();
         observateurs.add(new Observateur(1, "Noel", "Andy"));
         observateurs.add(new Observateur(2, "Auger", "Mateo"));
 
-        ObsChouette obsChouette = new ObsChouette(3, new Date(1000), new Time(1), lieu3, observateurs, TypeObservation.SONORE_VISUELLE, true);
+        ObsChouette obsChouette = new ObsChouette(3, new Date(1000), new Time(1), lieu3, observateurs, TypeObservation.SONORE_VISUELLE, true, "");
         Sommet s1 = new Sommet(1, lieu1, date1, EspeceObservee.BATRACIEN);
         Sommet s2 = new Sommet(2, lieu2, date2, EspeceObservee.GCI);
         
@@ -129,12 +126,10 @@ public class ScenarioTraitement {
         System.out.println("|--------------------------------------------------------|");
 
         System.out.println("| - Duplication du graphe ");
-        Graphe g2 = new Graphe(g);
         System.out.println("| - Nouveau graphe avec les même caractéristique que g");
 
         System.out.println("|--------------------------------------------------------|");
         System.out.println("| - Création d'un graphe par rapport à la distance");
-        Graphe g3 = new Graphe(sommets, 1.5);
         System.out.println("| - Graphe g3 crée");
         System.out.println("|--------------------------------------------------------|");
 

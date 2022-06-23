@@ -16,7 +16,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import com.mysql.cj.xdevapi.Result;
 
 import Modele.Singleton;
 import Modele.donnee.NatureVege;
@@ -75,8 +74,9 @@ public class ListenerVisuVege {
             natuVege.setCellValueFactory(new PropertyValueFactory<>("NatureVege"));
             typeVegeta.setCellValueFactory(new PropertyValueFactory<>("Vege"));
 
+            table.setItems(tr);
+
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

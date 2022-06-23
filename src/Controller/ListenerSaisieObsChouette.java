@@ -191,7 +191,6 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
                     newId.add(res.getString("numIndividu"));
                 }
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         

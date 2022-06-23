@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Modele.Singleton;
-import Modele.donnee.NidGCI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,7 +48,6 @@ public class ListenerChoixNidGCI {
             r.next();
             ret = r.getInt("idNid");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         this.l.setLeNid(ret);
@@ -72,7 +70,6 @@ public class ListenerChoixNidGCI {
                 lesPlages.add(res.getString("nomPlage"));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -94,7 +91,6 @@ public class ListenerChoixNidGCI {
                 lesNid.add(r.getInt("idNid"));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -112,7 +108,6 @@ public class ListenerChoixNidGCI {
                 coordX.add(ret.getDouble("lieu_Lambert_X"));
                 coordY.add(ret.getDouble("lieu_Lambert_Y"));
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }            
         }

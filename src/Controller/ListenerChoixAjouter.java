@@ -64,7 +64,6 @@ public class ListenerChoixAjouter {
             lu.load(Utilitaire.getCurrentNameUser(), "ChoixAjouter");
             sc.setRoot(root);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -58,7 +57,6 @@ public class ListenerAfficheAllChouette implements Initializable{
 
         if(event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2){
-                ObsChouette l = tab.getSelectionModel().getSelectedItem();
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
