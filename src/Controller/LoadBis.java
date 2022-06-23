@@ -34,7 +34,7 @@ public class LoadBis implements Initializable{
             e.printStackTrace();
         }
         
-        String url = "..//View//frame//Accueil.fxml";
+        String url = "/frame/Accueil.fxml";
         Scene sc = bonjour.getScene();
         Parent root;
         try {

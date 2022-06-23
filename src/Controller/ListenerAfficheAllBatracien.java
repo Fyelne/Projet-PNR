@@ -63,7 +63,7 @@ public class ListenerAfficheAllBatracien implements Initializable{
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
-                String url = "..//View//frame//AffichageObservationBatracien.fxml";
+                String url = "/frame/AffichageObservationBatracien.fxml";
                 try {
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
@@ -165,7 +165,7 @@ public class ListenerAfficheAllBatracien implements Initializable{
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//InfoUser.fxml";
+        String url = "/frame/InfoUser.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));

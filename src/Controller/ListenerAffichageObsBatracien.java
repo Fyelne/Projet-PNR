@@ -87,7 +87,7 @@ public class ListenerAffichageObsBatracien {
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//InfoUser.fxml";
+        String url = "/frame/InfoUser.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
@@ -130,7 +130,7 @@ public class ListenerAffichageObsBatracien {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationMeteo.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/VisualisationMeteo.fxml"));
             r = loader.load();
             ListenerVisuMeteo o = loader.getController();
             o.getControl(batra);
@@ -150,7 +150,7 @@ public class ListenerAffichageObsBatracien {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/VisualisationObservateur.fxml"));
             r = loader.load();
             ListenerVisuObs o = loader.getController();
             o.load(batra);
@@ -170,7 +170,7 @@ public class ListenerAffichageObsBatracien {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationVegetation.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/VisualisationVegetation.fxml"));
             r = loader.load();
             ListenerVisuVege o = loader.getController();
             o.getControl(batra);
@@ -190,7 +190,7 @@ public class ListenerAffichageObsBatracien {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..//View//frame//VisualisationZoneHumide.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/View//frame/VisualisationZoneHumide.fxml"));
             r = loader.load();
             ListenerVisuZH o = loader.getController();
             o.getControl(batra);

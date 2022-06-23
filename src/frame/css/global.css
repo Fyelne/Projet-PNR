@@ -1,0 +1,20 @@
+.background{
+    -fx-background-color: #dddddd;
+}
+
+.button{
+    -fx-background-color: #008864;
+    -fx-background-radius: 30px;
+}
+
+.textfield{
+    -fx-background-color: white;
+    -fx-border-color: #bbbbbb;
+    -fx-border-radius: 7.5px;
+    -fx-background-radius: 7.5px;
+}
+
+.bar{
+    -fx-background-color: #008864;
+}
+

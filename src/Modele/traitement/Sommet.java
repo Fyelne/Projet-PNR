@@ -43,4 +43,12 @@ public class Sommet {
     public Lieu getCoordLieu() {
         return this.coordLieu;
     }
+
+    public Date getDate(){
+        return this.date;
+    }
+
+    public EspeceObservee getEspece(){
+        return this.espece;
+    }
 }

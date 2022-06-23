@@ -22,11 +22,9 @@ public class Utilitaire {
     public void changeScene(String file) {
         
         Parent root;
-        
-        String url = "..//View//frame//" + file + ".fxml";
         try {
             // change the scene
-            root = FXMLLoader.load(getClass().getResource(url));
+            root = FXMLLoader.load(getClass().getResource("/frame/" + file + ".fxml"));
             actualScene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

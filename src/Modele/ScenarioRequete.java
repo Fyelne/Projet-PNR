@@ -1,17 +1,14 @@
 package Modele;
 
 import java.util.ArrayList;
-import java.sql.Date;
 import java.sql.Time;
 
 import Modele.donnee.*;
-import Modele.requete.*;
 
 public class ScenarioRequete {
     public static void main(String[] args) {
 
 
-        Lieu lieu = new Lieu(13, 6);
 
         Observateur observateur = new Observateur(81, "leNom", "lePrenom");
         observateur.setNom("NOEL");
@@ -21,7 +18,6 @@ public class ScenarioRequete {
         observateurs.add(observateur);
         observateurs.add(new Observateur(82, "leNom", "lePrenom"));
 
-        int id = Utilitaire.giveID();
         Time t = new Time(17*60*60*1000 );
         System.out.println(t.toString());
         

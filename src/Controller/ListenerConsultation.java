@@ -91,7 +91,7 @@ public class ListenerConsultation {
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//InfoUser.fxml";
+        String url = "/frame/InfoUser.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));

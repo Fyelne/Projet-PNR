@@ -66,7 +66,7 @@ public class ListenerAfficheAllGCI implements Initializable{
                 Scene sc = ((Node) event.getSource()).getScene();
                 Parent root;
                 
-                String url = "..//View//frame//AffichageObservationHippocampe.fxml";
+                String url = "/frame/AffichageObservationHippocampe.fxml";
                 try {
                     // change the scene
                     FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
@@ -178,7 +178,7 @@ public class ListenerAfficheAllGCI implements Initializable{
         Scene sc = bt.getScene();
         Parent root;
         
-        String url = "..//View//frame//InfoUser.fxml";
+        String url = "/frame/InfoUser.fxml";
         try {
             // change the scene
             FXMLLoader fx = new FXMLLoader(getClass().getResource(url));

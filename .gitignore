@@ -5,3 +5,6 @@ bdd
 doc
 .gitignore
 .vscode/launch.json
+/.metadata/
+out
+.idea
