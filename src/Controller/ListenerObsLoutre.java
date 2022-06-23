@@ -69,7 +69,7 @@ public class ListenerObsLoutre {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\VisualisationObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/VisualisationObservateur.fxml"));
             r = loader.load();
             ListenerVisuObs o = loader.getController();
             o.load(laLoutre);

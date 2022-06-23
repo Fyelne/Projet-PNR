@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -111,14 +112,23 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
 
         ObsGCIBdd gBdd = new ObsGCIBdd();
         gBdd.insertOneInto(g, leNid);
+        ajoutReussi("Observation ajouter");
+        util.changeScene("ChoixAjouter");
     }
 
+    public void ajoutReussi(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(message);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\GestionObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/GestionObservateur.fxml"));
             r = loader.load();
             ListenerGestionObs o = loader.getController();
             o.getControl(this, listDesObs);
@@ -231,7 +241,7 @@ public class ListenerSaisieObsGCI extends ListenerObs implements Initializable {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\ChoixNidGCI.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/ChoixNidGCI.fxml"));
             r = loader.load();
             ListenerChoixNidGCI o = loader.getController();
             o.load(this);

@@ -190,7 +190,7 @@ public class ListenerAffichageObsBatracien {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/View//frame/VisualisationZoneHumide.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/VisualisationZoneHumide.fxml"));
             r = loader.load();
             ListenerVisuZH o = loader.getController();
             o.getControl(batra);

@@ -71,7 +71,7 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\GestionObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/GestionObservateur.fxml"));
             r = loader.load();
             ListenerGestionObs o = loader.getController();
             o.getControl(this, listDesObs);
