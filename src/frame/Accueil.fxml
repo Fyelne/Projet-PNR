@@ -38,7 +38,7 @@
                         <AnchorPane minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="272.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+                  <HBox prefHeight="167.0" prefWidth="1200.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
                      <children>
                         <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="test" maxWidth="400.0" minWidth="366.0" mnemonicParsing="false" onAction="#goToChoixReleve" prefHeight="87.0" prefWidth="401.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 80;" text="Consulter les relevés" HBox.hgrow="ALWAYS">
@@ -59,6 +59,15 @@
                            </HBox.margin>
                         </Button>
                         <AnchorPane maxWidth="2000.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0">
+                     <children>
+                        <Button fx:id="adminAccueil" minHeight="52.0" minWidth="278.0" mnemonicParsing="false" onAction="#goToAdmin" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Administration" visible="false">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="25.0" />
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                </children>
@@ -118,9 +127,9 @@
             </AnchorPane>
          </top>
          <bottom>
-            <AnchorPane prefHeight="258.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="231.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox layoutY="35.0" prefHeight="223.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <ImageView fitHeight="203.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">

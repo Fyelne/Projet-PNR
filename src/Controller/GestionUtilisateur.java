@@ -170,4 +170,9 @@ public class GestionUtilisateur implements Initializable {
         initializeData(obs);
     }
 
+    @FXML
+    void GoToAddUser(ActionEvent event) {
+        util.changeScene("adduser");
+    }
+
 }
