@@ -42,6 +42,11 @@ public class ListenerAfficheAllChouette implements Initializable{
 
     @FXML
     private TextField rechercheTF;
+    @FXML
+    private ComboBox<String> typeObsCB;
+    @FXML
+    private ComboBox<String> protocoleCB;
+
     private Utilitaire util = new Utilitaire();
 
     @FXML
@@ -84,6 +89,14 @@ public class ListenerAfficheAllChouette implements Initializable{
         ObsChouetteBdd data = new ObsChouetteBdd();
 
         ArrayList<ObsChouette> obs = data.builder(data.getAllChouetteToBuild());
+
+        ObservableList<String> typeObsList = FXCollections.observableArrayList(data.getAllBatracienTypeObs());
+        typeObsCB.setItems(typeObsList);
+        typeObsCB.getSelectionModel().select("");
+
+        ObservableList<String> protocoleList = FXCollections.observableArrayList(data.getAllBatracienProtocole());
+        protocoleCB.setItems(protocoleList);
+        protocoleCB.getSelectionModel().select("");
         
         initializeData(obs);
     }
@@ -110,14 +123,22 @@ public class ListenerAfficheAllChouette implements Initializable{
         }
     }
 
+    @FXML
+    void comboBoxChange(ActionEvent event){
+        filtre();
+    }
+
 
 
 
     void filtre(){
         String rechercheString = rechercheTF.getText();
+        String typeObsString = typeObsCB.getSelectionModel().getSelectedItem();
+        String protocoleString = protocoleCB.getSelectionModel().getSelectedItem();
+
         ObsChouetteBdd data = new ObsChouetteBdd();
 
-        ArrayList<ObsChouette> obs = data.builder(data.getFilteredChouette(rechercheString));
+        ArrayList<ObsChouette> obs = data.builder(data.getFilteredChouette(rechercheString, typeObsString, protocoleString));
         initializeData(obs);
     }
 

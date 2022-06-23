@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -18,7 +25,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAfficheAllChouette">
+<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAfficheAllChouette">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -85,15 +92,16 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="rechercheTF" alignment="CENTER" onKeyPressed="#recherche" prefHeight="40.0" prefWidth="441.0" promptText="Recherche Numéro Individu">
-                           <font>
-                              <Font name="AvenirLTStd-Medium" size="18.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
-                        </TextField>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ComboBox fx:id="typeObsCB" layoutX="155.0" layoutY="33.0" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="171.0" promptText="Type Observation" />
+                              <ComboBox fx:id="protocoleCB" layoutX="355.0" layoutY="33.0" onAction="#comboBoxChange" prefHeight="40.0" prefWidth="172.0" promptText="Protocole" />
+                              <TextField fx:id="rechercheTF" alignment="CENTER" layoutX="548.0" layoutY="33.0" onKeyPressed="#recherche" prefHeight="40.0" prefWidth="441.0" promptText="Recherche Numéro Individu">
+                                 <font>
+                                    <Font name="AvenirLTStd-Medium" size="18.0" />
+                                 </font>
+                              </TextField>
+                           </children></AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>

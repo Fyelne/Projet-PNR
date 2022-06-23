@@ -184,13 +184,22 @@ public class ObsChouetteBdd {
     }
 
 
-    public ResultSet getFilteredChouette(String recherche){
+    public ResultSet getFilteredChouette(String recherche, String typeObs, String protocole){
         ResultSet ret = null;
         String req  = "SELECT DISTINCT(numObs), dateObs, heureObs, lieu_Lambert_X, lieu_Lambert_Y, typeObs, protocole, leNumIndividu "+
         "FROM `obs_Chouette`, `observation` " +
         "WHERE numObs = idObs " +
-        "AND leNumIndividu LIKE '%" + recherche + "%'" +
-        "ORDER BY dateObs DESC ";
+        "AND leNumIndividu LIKE '%" + recherche + "%'";
+        if(!typeObs.equals("")){
+            req += "AND typeObs = '" + typeObs + "'";
+        }
+
+        if(!protocole.equals("")){
+            req += "AND protocole = " + protocole + " ";
+        }
+
+        req += "ORDER BY dateObs DESC ";
+
         try{
             PreparedStatement  stmt = con.prepareStatement(req);
             ret = stmt.executeQuery();
@@ -213,11 +222,49 @@ public class ObsChouetteBdd {
                 ret.add(res.getString("numIndividu"));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
         
+        return ret;
+    }
+
+    public ArrayList<String> getAllBatracienTypeObs(){
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add("");
+
+        String req = "SELECT DISTINCT(typeObs) FROM Obs_Chouette;";
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement(req);
+            ResultSet res = stmt.executeQuery();
+            while(res.next()){
+                String typeObs = res.getString("typeObs");
+                ret.add(typeObs.substring(0, 1).toUpperCase() + typeObs.substring(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public ArrayList<String> getAllBatracienProtocole(){
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add("");
+
+        String req = "SELECT DISTINCT(protocole) FROM Obs_Chouette;";
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement(req);
+            ResultSet res = stmt.executeQuery();
+            while(res.next()){
+                ret.add(res.getString("protocole"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return ret;
     }
 }
