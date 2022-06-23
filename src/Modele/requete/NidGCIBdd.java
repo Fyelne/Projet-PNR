@@ -19,29 +19,9 @@ public class NidGCIBdd {
     public void insertOneInto(NidGCI n){
         int idNid = n.getId();
         int nbEnvol = n.getNbEnvol();
-        String nomPlage = n.getNomPlage();
-        RaisonArretObs r = n.getRaisonArretObs();
-        String raison = "";
-        switch(r){
-            case ENVOL:
-                raison = "envol";
-                break;
-            case INCONNU:
-                raison = "inconnu";
-                break;
-            case MAREE:
-                raison = "maree";
-                break;
-            case PIETINEMENT:
-                raison = "pietinement";
-                break;
-            case PREDATION:
-                raison = "predation";
-                break;
-            default:
-                raison = null;
-                break;
-        }
+        String nomPlage = n.getNomPlage().toUpperCase();
+        
+        
         boolean p = n.getProtection();
         int protection = 0;
         if(p){
@@ -51,7 +31,7 @@ public class NidGCIBdd {
         String bagueMale = n.getBagueMale();
         String bagueFemelle = n.getBagueFemelle();
 
-        String req1 = "INSERT INTO nid_gci VALUES(" + idNid + " , '" + nomPlage + "' , '" + raison + " , " 
+        String req1 = "INSERT INTO nid_gci VALUES(" + idNid + " , '" + nomPlage + "' , " + null + " , " 
                         + nbEnvol + " , " + protection + " , '" + bagueMale + "' , '" + bagueFemelle + "');";
 
         try {
@@ -66,8 +46,10 @@ public class NidGCIBdd {
         for(ObsGCI obs : lesObs){
             obsBdd.insertOneInto(obs, idNid);
         }
-        
     }
+
+
+
 
     public int getIdNid(){
         int ret = 0;
@@ -79,6 +61,46 @@ public class NidGCIBdd {
             res.next();
             ret = res.getInt("MAX(idNid)") + 1;
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public ResultSet getAllNidGci(){
+        ResultSet ret = null;
+
+        String req = "SELECT * FROM nid_gci;";
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement(req);
+            ret = stmt.executeQuery();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public ArrayList<NidGCI> builder(ResultSet r){
+        ArrayList<NidGCI> ret = new ArrayList<NidGCI>();
+
+        try {
+            while(r.next()){
+                int id = r.getInt("idNid");
+                String pl = r.getString("nomPlage");
+                int pr = r.getInt("protection");
+                boolean prot = false;
+                if(pr == 1){
+                    prot = true;
+                }
+                NidGCI ad = new NidGCI(id, pl, prot);
+                ad.setNbEnvol(r.getInt("nbEnvol"));
+
+                ret.add(ad);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return ret;

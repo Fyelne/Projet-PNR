@@ -87,6 +87,10 @@ public class ListenerAfficheAllGCI implements Initializable{
 
     }
 
+    @FXML
+    void GoToNid(ActionEvent event) {
+        util.changeScene("listNidGCI");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

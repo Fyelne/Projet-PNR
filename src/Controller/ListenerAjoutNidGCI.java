@@ -9,6 +9,7 @@ import Modele.requete.NidGCIBdd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -64,13 +65,12 @@ public class ListenerAjoutNidGCI implements Initializable{
         nidBdd = new NidGCIBdd();
     }
 
-    public String ajoutReussi(String message) {
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Ajout d'un nid GCI");
-        dialog.setHeaderText(message);
-        Optional<String> nomObs = dialog.showAndWait();
-        String result = nomObs.get();
-        return result;
+    public void ajoutReussi(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(message);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
