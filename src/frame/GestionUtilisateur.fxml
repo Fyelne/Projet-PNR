@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="TOP_CENTER" maxHeight="120.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <AnchorPane prefHeight="88.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" onAction="#retourcons" prefHeight="54.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="AvenirLTStd-Medium" size="23.0" />
@@ -36,7 +36,13 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#GoToAddUser" prefHeight="54.0" prefWidth="283.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" text="Ajouter un Utilisateur" textFill="WHITE">
+                     <font>
+                        <Font name="AvenirLTStd-Medium" size="23.0" />
+                     </font>
+                  </Button>
+                  <AnchorPane prefHeight="88.0" prefWidth="142.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>

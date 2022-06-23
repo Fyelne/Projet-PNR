@@ -175,7 +175,7 @@ public class ListenerChoixAjouter {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\AjoutChouette.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/AjoutChouette.fxml"));
             r = loader.load();
             Scene s = new Scene(r);
             newStage.setTitle("Ajout Chouette");
@@ -199,7 +199,7 @@ public class ListenerChoixAjouter {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\AjoutNidGCI.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/AjoutNidGCI.fxml"));
             r = loader.load();
             Scene s = new Scene(r);
             newStage.setTitle("Ajout un nid");

@@ -24,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -117,18 +118,32 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
                             , vent.getSelectionModel().getSelectedItem(), pluie.getSelectionModel().getSelectedItem());
         
         batracienBdd.insertBatracienAndOther(obsB, laVege, laZoneHumide);
+        ajoutReussi("Observation ajoutée");
+        util.changeScene("ChoixAjouter");
+    }
+
+    /**
+     * Affiche que l'ajout est réussi
+     * @param message Le message à afficher.
+     */
+    public void ajoutReussi(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(message);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
      * Ajoute un observateur pour une observation de batracien
-     * @param event l'ActionEvent qui a déclenché le gestionnaire
+     * @param event l'événement qui a déclenché la méthode
      */
     @FXML
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\GestionObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/GestionObservateur.fxml"));
             r = loader.load();
             ListenerGestionObs o = loader.getController();
             o.getControl(this, listDesObs);
@@ -152,7 +167,7 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\gestionVege.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/gestionVege.fxml"));
             r = loader.load();
             ListenerGestionVege o = loader.getController();
             o.getControl(this, laVege);
@@ -177,7 +192,7 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\gestionZoneHumide.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/gestionZoneHumide.fxml"));
             r = loader.load();
             ListenerGestionZh o = loader.getController();
             o.getControl(this);
@@ -186,8 +201,6 @@ public class ListenerSaisieObsBatracien extends ListenerObs implements Initializ
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            
-                        
         }catch (IOException e) {
             e.printStackTrace();
         }

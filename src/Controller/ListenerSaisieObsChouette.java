@@ -22,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -104,10 +105,24 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
         ObsChouette obsC = new ObsChouette(id, da, t, l, this.listDesObs, type, protocole, numC.getSelectionModel().getSelectedItem());
 
         chBdd.insertIneIntoBdd(obsC, numC.getSelectionModel().getSelectedItem());
+        ajoutReussi("Observation ajoutée");
+        util.changeScene("ChoixAjouter");
     }
 
+
     /**
-     * Change la scène à celle spécifiée dans le paramètre
+     * Affiche que l'ajout est réussi
+     * @param message Le message à afficher.
+     */
+    public void ajoutReussi(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(message);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    
+    /**
      * Retourne à la page précédente
      * @param event l'événement qui a déclenché la méthode
      */
@@ -126,7 +141,7 @@ public class ListenerSaisieObsChouette extends ListenerObs implements Initializa
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\GestionObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/GestionObservateur.fxml"));
             r = loader.load();
             ListenerGestionObs o = loader.getController();
             o.getControl(this, listDesObs);

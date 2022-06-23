@@ -10,9 +10,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ListenerAffichageObsHippocampe {
+
+    @FXML
+    private HBox HMenu;
+    @FXML
+    private Button quit;
+    @FXML
+    private Button user;
+    @FXML
+    private Button admin;
 
     @FXML
     private Label X;
@@ -34,8 +44,10 @@ public class ListenerAffichageObsHippocampe {
     private Label sexe;
     @FXML
     private Label taille;
+
     @FXML
-    private Button user;
+    private Label titre;
+
     @FXML
     private Button visu;
     private ObsHippocampe obsH;
@@ -50,23 +62,6 @@ public class ListenerAffichageObsHippocampe {
         util.changeScene("ListeObsHippocampe");
     }
 
-    /**
-     * Affiche le menu
-     * @param event le bouton cliqué
-     */
-    @FXML
-    void openMenu(ActionEvent event) {
-
-    }
-
-    /**
-     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
-     * @param event le bouton cliqué
-     */
-    @FXML
-    void openUserMenu(ActionEvent event) {
-
-    }
 
     /**
      * Ouvre la fenêtre des observateur(s) lié(s) à l'observation de batracien en cours.
@@ -99,6 +94,8 @@ public class ListenerAffichageObsHippocampe {
      * @param h ObsHippocampe
      */
     public void load(ObsHippocampe h){
+
+        titre.setText(titre.getText() + h.getId());
         X.setText(X.getText() + " " + h.getLieu().getxCoord());
         Y.setText(Y.getText() + " " + h.getLieu().getyCoord());
 
@@ -114,6 +111,84 @@ public class ListenerAffichageObsHippocampe {
         gestant.setText(gestant.getText() + " " + estGestant);
         peche.setText(peche.getText() + " " + h.getTypePeche());
         this.obsH = h;
+    }
+
+    //code du Menu
+    /**
+     * Affiche le menu
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void openMenu(ActionEvent event) {
+        HMenu.setVisible(true);
+    }
+
+    /**
+     * Quitte le menu
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void quitMenu(ActionEvent event) {
+        HMenu.setVisible(false);
+    }
+
+    /**
+     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void openUserMenu(ActionEvent event) {
+        Button bt = (Button) event.getSource();
+        Scene sc = bt.getScene();
+        Parent root;
+        
+        String url = "/frame/InfoUser.fxml";
+        try {
+            // change the scene
+            FXMLLoader fx = new FXMLLoader(getClass().getResource(url));
+            root = fx.load();
+            ListenerUtilisateur lu = fx.getController();
+            lu.load(Utilitaire.getCurrentNameUser(), "ListeObsHippocampe");
+            sc.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Permet de changer de scene et d'acceder à la page Admin
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void goToAdmin(ActionEvent event) {
+        util.changeScene("Admin");
+    }
+
+    /**
+     * Permet de changer de scene et d'acceder à la page Accueil
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void goToAccueil(ActionEvent event) {
+        util.changeScene("Accueil");
+    }
+
+    /**
+     * Permet de changer de scene et d'acceder à la page ChoixAjouter
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void goToAddDonnee(ActionEvent event) {
+        util.changeScene("ChoixAjouter");
+    }
+
+    /**
+     * Permet de changer de scene et d'acceder à la page Consultation
+     * @param event le bouton cliqué
+     */
+    @FXML
+    void goToChoixReleve(ActionEvent event) {
+        util.changeScene("Consultation");
     }
 
 }

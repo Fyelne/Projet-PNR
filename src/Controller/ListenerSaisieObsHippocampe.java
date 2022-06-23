@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -121,10 +122,24 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
                                                      te);
 
             hippoBdd.insertOneHippocampe(obsH);
+            ajoutReussi("Observation ajoutée");
+            util.changeScene("ChoixAjouter");
         }else{
             erreurValue.setVisible(true);
         }
-        
+    }
+
+
+    /**
+     * Affiche que l'ajout est réussi
+     * @param message Le message à afficher.
+     */
+    public void ajoutReussi(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(message);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -137,7 +152,7 @@ public class ListenerSaisieObsHippocampe extends ListenerObs implements Initiali
         Stage newStage = new Stage();
         Parent r;
         try {
-            FXMLLoader loader  = new FXMLLoader(getClass().getResource("..\\View\\frame\\GestionObservateur.fxml"));
+            FXMLLoader loader  = new FXMLLoader(getClass().getResource("/frame/GestionObservateur.fxml"));
             r = loader.load();
             ListenerGestionObs o = loader.getController();
             o.getControl(this, listDesObs);

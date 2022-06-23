@@ -5,6 +5,9 @@ import java.sql.*;
 public class Singleton {
     private static Singleton instance = null;
     private static Connection con;
+    /**
+     * Singleton
+     */
     private Singleton(){
         //importer l'url, le user et le pass d'une autre classe ici
         String url = "jdbc:mysql://localhost/bd_PNR";

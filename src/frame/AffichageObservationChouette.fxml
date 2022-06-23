@@ -15,226 +15,336 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAffichageObsChouette">
-   <top>
-      <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<GridPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListenerAffichageObsChouette">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #DDDDDD;">
+         <top>
+            <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="SOMETIMES">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/proto_blanc/menu.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="25.0" top="8.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Label fx:id="titre" minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°" textFill="WHITE" HBox.hgrow="SOMETIMES">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="40.0" />
-                     </font>
-                  </Label>
-                  <AnchorPane maxHeight="2000.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="860.0" HBox.hgrow="SOMETIMES">
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-                  <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;">
-                     <graphic>
-                        <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/proto_blanc/user.png" />
-                           </image>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1191.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="menu" mnemonicParsing="false" onAction="#openMenu" prefHeight="50.0" prefWidth="71.0" style="-fx-background-color: #008864; -fx-padding: 0px;" textFill="TRANSPARENT" HBox.hgrow="SOMETIMES">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/proto_blanc/menu.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="25.0" top="8.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label fx:id="titre" minWidth="130.4" prefHeight="50.0" prefWidth="636.0" text="Observation : n°" textFill="WHITE" HBox.hgrow="SOMETIMES">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="40.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane maxHeight="2000.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="860.0" HBox.hgrow="SOMETIMES">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </AnchorPane>
+                        <Button fx:id="user" mnemonicParsing="false" onAction="#openUserMenu" prefHeight="65.0" prefWidth="61.0" style="-fx-background-color: #008864;">
+                           <graphic>
+                              <ImageView fitHeight="57.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/proto_blanc/user.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </top>
-   <bottom>
-      <AnchorPane prefHeight="109.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane prefHeight="109.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="retour" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font name="AvenirLTStd-Medium" size="23.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" x="50.0">
-                           <image>
-                              <Image url="@image/retour.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-         </children></AnchorPane>
-   </bottom>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane prefHeight="590.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
-                  <VBox alignment="CENTER" prefHeight="590.0" prefWidth="596.0">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="108.0" prefWidth="475.0" VBox.vgrow="ALWAYS" />
-                        <AnchorPane prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;">
-                           <children>
-                              <GridPane layoutX="144.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Label fx:id="numIndividu" text="Numéro individu :">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="espece" text="Espece : " GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="sexe" text="Sexe : " GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </GridPane>
-                           </children>
-                           <VBox.margin>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="retour" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #008864; -fx-background-radius: 30;" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="AvenirLTStd-Medium" size="23.0" />
+                           </font>
+                           <HBox.margin>
                               <Insets />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="110.0" prefWidth="366.0" style="-fx-background-color: #D4D4D4;">
-                           <children>
-                              <GridPane prefHeight="121.0" prefWidth="465.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Label fx:id="protocole" text="Protocole :">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="typeObservation" text="Type d'observation :" GridPane.columnIndex="1">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="17.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label fx:id="X" text="Lambert X : " GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="Y" text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="17.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="95.0" prefWidth="476.0" style="-fx-background-color: #C4C4C4;">
-                           <children>
-                              <GridPane prefHeight="146.0" prefWidth="466.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Label fx:id="date" text="Date :">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="heure" text="Heure : " GridPane.columnIndex="1">
-                                       <font>
-                                          <Font name="AvenirLTStd-Medium" size="17.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="476.0" VBox.vgrow="ALWAYS" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" x="50.0">
+                                 <image>
+                                    <Image url="@image/retour.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="100.0">
-                     <children>
-                        <ImageView fitHeight="209.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                           <image>
-                              <Image url="@image/chouette.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="227.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                           <image>
-                              <Image url="@image/chouette.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="100.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <AnchorPane prefHeight="590.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
+                  </HBox>
                </children>
-            </HBox>
+            </AnchorPane>
+         </bottom>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="590.0" prefWidth="175.0" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER" prefHeight="590.0" prefWidth="596.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <children>
+                              <AnchorPane prefHeight="108.0" prefWidth="475.0" VBox.vgrow="ALWAYS" />
+                              <AnchorPane prefHeight="110.0" prefWidth="510.0" style="-fx-background-color: #C4C4C4;">
+                                 <children>
+                                    <GridPane layoutX="144.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label fx:id="numIndividu" text="Numéro individu :">
+                                             <font>
+                                                <Font name="AvenirLTStd-Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="espece" text="Espece : " GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="sexe" text="Sexe : " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="110.0" prefWidth="366.0" style="-fx-background-color: #D4D4D4;">
+                                 <children>
+                                    <GridPane prefHeight="121.0" prefWidth="465.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label fx:id="protocole" text="Protocole :">
+                                             <font>
+                                                <Font name="AvenirLTStd-Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="typeObservation" text="Type d'observation :" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="AvenirLTStd-Medium" size="17.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="X" text="Lambert X : " GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="Y" text="Lambert Y :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="AvenirLTStd-Medium" size="17.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="95.0" prefWidth="476.0" style="-fx-background-color: #C4C4C4;">
+                                 <children>
+                                    <GridPane prefHeight="146.0" prefWidth="466.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label fx:id="date" text="Date :">
+                                             <font>
+                                                <Font name="AvenirLTStd-Medium" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="heure" text="Heure : " GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="AvenirLTStd-Medium" size="17.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <HBox alignment="CENTER" prefHeight="80.0" prefWidth="476.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="100.0">
+                           <children>
+                              <ImageView fitHeight="272.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@image/chouette.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <AnchorPane prefHeight="590.0" prefWidth="138.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <HBox fx:id="HMenu" prefHeight="100.0" prefWidth="200.0" visible="false">
+         <children>
+            <AnchorPane maxHeight="1800.0" maxWidth="400.0" minHeight="-Infinity" minWidth="10.0" prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #DDDDDD;" HBox.hgrow="ALWAYS">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #008864;" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="22.0">
+                                 <children>
+                                    <Label maxHeight="2000.0" maxWidth="2000.0" minHeight="55.0" minWidth="121.0" text="MENU" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane maxWidth="2000.0" prefHeight="62.0" prefWidth="161.0" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="quit" cancelButton="true" minWidth="57.0" mnemonicParsing="false" onAction="#quitMenu" style="-fx-background-color: #008864;">
+                                       <font>
+                                          <Font name="AvenirLTStd-Roman" size="12.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="41.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@image/proto_blanc/close.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <center>
+                        <AnchorPane minWidth="10.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER" minWidth="10.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="214.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                                    <Button minHeight="52.0" minWidth="10.0" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Accueil" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Button minHeight="52.0" minWidth="10.0" mnemonicParsing="false" onAction="#goToChoixReleve" prefHeight="71.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Les relevés">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="25.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Button minHeight="52.0" minWidth="10.0" mnemonicParsing="false" onAction="#goToAddDonnee" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Ajout de données" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="25.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Button fx:id="admin" minHeight="52.0" minWidth="278.0" mnemonicParsing="false" onAction="#goToAdmin" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: #6FB09C; -fx-background-radius: 30;" text="Administration" visible="false">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="25.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane prefHeight="172.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <bottom>
+                        <AnchorPane prefHeight="279.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@image/copieP.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="33.0" prefWidth="265.0" text="&quot;Une autre vie s'invente ici.&quot;" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="AvenirLTStd-Medium" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane minWidth="500.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
          </children>
-      </AnchorPane>
-   </center>
-</BorderPane>
+      </HBox>
+   </children>
+</GridPane>

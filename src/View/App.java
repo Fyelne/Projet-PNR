@@ -23,7 +23,7 @@ public class App extends Application{
             // System.out.println(getClass().getResource("/frame").toString());
             root = FXMLLoader.load(getClass().getResource("/frame/Loading.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Connexion");
+            primaryStage.setTitle("PNR");
             primaryStage.setMaximized(true);
             primaryStage.setScene(scene);
             primaryStage.show();
