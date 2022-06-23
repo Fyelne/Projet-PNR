@@ -30,7 +30,6 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
     @FXML
     private Button admin;
 
-
     @FXML
     private Button ajouter;
     @FXML
@@ -57,15 +56,27 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
 
     private ArrayList<Observateur> listDesObs = new ArrayList<Observateur>();
 
+    /**
+     * Retourne à la page précédente
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
+    /**
+     * Modifie la liste des observateurs
+     * @param o la liste des observateurs
+     */
     public void setListDesObs(ArrayList<Observateur> o){
         this.listDesObs = o;
     }
 
+    /**
+     * Ajoute un observateur
+     * @param event l'événement qui a déclenché la méthode
+     */
     @Override
     public void addObservateur(ActionEvent event) {
         Stage newStage = new Stage();
@@ -80,13 +91,17 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            
                         
         }catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Initialise la saisie de loutre 
+     * @param location l'emplacement du fichier FXML
+     * @param resources Faisceau de ressources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         indice.getItems().addAll(IndiceLoutre.values());
@@ -99,17 +114,18 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         SpinnerValueFactory<Integer> val =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59);
         val.setValue(00);
-        minute.setValueFactory(val);
-        
-
-
-        
+        minute.setValueFactory(val);        
     }
 
+
+    /**
+     *Ajoute une observation à la base de données
+     * 
+     * @param event ActionÉvénement
+     */
     @FXML
     public void addObs(ActionEvent event) {
         Lieu l = new Lieu(Double.parseDouble(coordX.getText()), Double.parseDouble(coordY.getText()));
-
 
         // à revoir pour avoir un timePicker
         int h = heure.getValue();
@@ -119,16 +135,19 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         int id = Modele.requete.Utilitaire.giveID();
         Date da = Date.valueOf(date.getValue());
         
-
         ObsLoutre obsL = new ObsLoutre(id, da, t, l, this.listDesObs, indice.getValue(), commune.getText(), lieuDit.getText());
 
         ObsLoutreBdd loutreBDD = new ObsLoutreBdd();
         
         loutreBDD.insertOneIntoBdd(obsL);
-        ajoutReussi("Observation ajouter");
+        ajoutReussi("Observation ajoutée");
         util.changeScene("ChoixAjouter");
     }
 
+    /**
+     * Lance un popup avec le message à afficher
+     * @param message Le message à afficher.
+     */
     public void ajoutReussi(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -137,7 +156,7 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         alert.showAndWait();
     }
 
-//code du Menu
+    //code du Menu
     /**
      * Affiche le menu
      * @param event le bouton cliqué
@@ -215,3 +234,8 @@ public class ListenerSaisieLoutre extends ListenerObs implements Initializable {
         util.changeScene("Consultation");
     }
 }
+/**
+ * Il ouvre une nouvelle fenêtre et charge un nouveau contrôleur
+ * 
+ * @param event l'événement qui a déclenché la méthode
+ */

@@ -57,6 +57,12 @@ public class GestionUtilisateur implements Initializable {
 
     Utilitaire util = new Utilitaire();
     
+    /**
+     * Cette méthode permet obtenir des données d'une base de données et de les mettre dans une table.
+     * @param url l'emplacement utilisé pour résoudre les chemins relatifs de l'objet racine, ou null
+     * si l'emplacement n'est pas connu.
+     * @param rb Faisceau de ressources
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         UtilisateurBdd data = new UtilisateurBdd();
@@ -112,6 +118,10 @@ public class GestionUtilisateur implements Initializable {
                        
     } 
 
+    /**
+     * Prend une ArrayList d'objets Utilisateur et remplit une TableView avec les données de l'ArrayList
+     * @param obs ArrayList of Utilisateur
+     */
     private void initializeData(ArrayList<Utilisateur> obs){
         ObservableList<Utilisateur> tr = FXCollections.observableArrayList(obs);
 
@@ -147,12 +157,20 @@ public class GestionUtilisateur implements Initializable {
         Menu.setVisible(false);
     }
 
+    /**
+     * Lorsque le bouton est cliqué, la scène change avec la scène Admin avec le nom de fichier fxml Admin.fxml
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Admin");
     }
 
 
+    /**
+     * Si l'utilisateur appuie sur Entrée ou si le champ de texte est vide, filtrez le tableau.
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void recherche(KeyEvent event){
         TextField source = (TextField)event.getSource();
@@ -161,6 +179,9 @@ public class GestionUtilisateur implements Initializable {
         }
     }
 
+    /**
+     * Prend le texte de deux champs de texte et l'utilise pour filtrer les données dans une table
+     */
     void filter(){
         UtilisateurBdd data = new UtilisateurBdd();
         String nomString = nomTF.getText();

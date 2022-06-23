@@ -39,6 +39,10 @@ public class ListenerVisuZH {
     @FXML
     private Label typeMare;
 
+    /**
+     * Ferme la fenêtre popup en cours
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -47,6 +51,11 @@ public class ListenerVisuZH {
     }
 
 
+    /**
+     * Récupère les données de la base de données et les place dans les champs de texte
+     * 
+     * @param batra l'objet Obsbatracien qui permet de lier ObsBatracien à ZoneHumide
+     */
     void getControl(ObsBatracien batra) {
         String zh = "SELECT * FROM Obs_Batracien, ZoneHumide WHERE concerne_ZH = zh_id" ;
         

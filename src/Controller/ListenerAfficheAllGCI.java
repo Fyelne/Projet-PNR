@@ -58,6 +58,11 @@ public class ListenerAfficheAllGCI implements Initializable{
     @FXML
     private Button retour;
 
+    /**
+     * C'est une fonction qui est appelée lors d'un double clic sur une ligne d'un tableau.
+     * Choisi vers quelle observation de GCI il faut aller.
+     * @param event l'événement qui a déclenché la méthode - double click sur une observation (ligne d'un tableau)
+     */
     @FXML
     void chooseObs(MouseEvent event) {
 
@@ -87,11 +92,23 @@ public class ListenerAfficheAllGCI implements Initializable{
 
     }
 
+    /**
+     * Lorsque le bouton est cliqué, la scène est remplacée par la scène listNidGCI.
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void GoToNid(ActionEvent event) {
         util.changeScene("listNidGCI");
     }
 
+    /**
+     * J'essaie d'obtenir les données de ma base de données et de les mettre dans une table.
+     * J'utilise une classe appelée ObsGCIBdd pour obtenir les données de la base de données.
+     * J'utilise une classe appelée ObsGCI pour stocker les données.
+     * @param location l'emplacement du fichier FXML
+     * @param resources les ressources utilisées pour localiser l'objet racine, ou null si l'objet
+     * racine n'a pas été localisé.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObsGCIBdd data = new ObsGCIBdd();
@@ -109,6 +126,10 @@ public class ListenerAfficheAllGCI implements Initializable{
         nombreCB.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Prend une ArrayList d'objets ObsGCI et les place dans une TableView
+     * @param obs ArrayList of ObsGCI
+     */
     private void initializeData(ArrayList<ObsGCI> obs){
         ObservableList<ObsGCI> tr = FXCollections.observableArrayList(obs);
         
@@ -125,6 +146,11 @@ public class ListenerAfficheAllGCI implements Initializable{
         tab.setItems(tr);
     }
 
+    /**
+     * Si l'utilisateur appuie sur la touche entrée ou si le champ de texte est vide, alors appelez la
+     * fonction filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void recherche(KeyEvent event){
         TextField source = (TextField)event.getSource();
@@ -133,11 +159,20 @@ public class ListenerAfficheAllGCI implements Initializable{
         }
     }
 
+    /**
+     * Lorsque l'utilisateur sélectionne une nouvelle valeur dans la combo, appelez la fonction
+     * filtre().
+     * @param event L'événement qui a déclenché la méthode.
+     */
     @FXML
     void comboBoxChange(ActionEvent event){
         filtre();
     }
 
+    /**
+     * Prend le texte d'un champ de texte, les éléments sélectionnés de deux listes déroulantes et
+     * les utilise pour filtrer les données dans une vue de table
+     */
     void filtre(){
         String rechercheString = rechercheTF.getText();
         ObsGCIBdd data = new ObsGCIBdd();
@@ -148,6 +183,10 @@ public class ListenerAfficheAllGCI implements Initializable{
         initializeData(obs);
     }
 
+    /**
+     * "Lorsque le bouton est cliqué, changez la scène en scène de consultation."
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Consultation");

@@ -33,6 +33,10 @@ public class ListenerAjoutChouette implements Initializable{
 
     private ChouetteBdd cBdd;
 
+    /**
+     * Ferme la fenêtre après que l'utilisateur ait cliqué sur le bouton
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void valide(ActionEvent event) {
         String num = numIndiv.getText();
@@ -52,6 +56,12 @@ public class ListenerAjoutChouette implements Initializable{
         }
     }
 
+   /**
+    * Essaie d'ajouter les valeurs de l'énumération Sexe et EspeceChouette aux ComboBoxes sexe et
+    * espece.
+    * @param location l'emplacement du fichier FXML
+    * @param resources Faisceau de ressources
+    */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sexe.getItems().addAll(Sexe.values());
@@ -59,6 +69,18 @@ public class ListenerAjoutChouette implements Initializable{
         cBdd = new ChouetteBdd();
     }
 
+    /**
+     * //Java
+     * public void ajoutReussi(String message) {
+     *         Alerte alerte = nouvelle Alerte(Alert.AlertType.INFORMATION);
+     *         alert.setTitle("Informations");
+     *         alert.setHeaderText(message);
+     *         alert.setContentText(message);
+     *         alert.showAndWait();
+     *     }
+     * 
+     * @param message Le message à afficher.
+     */
     public void ajoutReussi(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");

@@ -27,11 +27,24 @@ public class Export implements Initializable {
     Label exportLabel;
 
 
+    /**
+     * C'est une fonction qui initialise la connexion à la base de données.
+     * @param location L'emplacement utilisé pour résoudre les chemins relatifs de l'objet racine, ou
+     * null si l'emplacement n'est pas connu.
+     * @param resources Les ressources utilisées pour localiser l'objet racine, ou null si l'objet
+     * racine n'a pas été localisé.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources){
         con = Singleton.getInstance().getConnection();
     }
 
+    /**
+     * Il prend un nom de table et un chemin comme paramètres, et exporte la table vers un fichier csv
+     * dans le chemin
+     * @param tablename le nom de la table à exporter
+     * @param path le chemin vers le dossier où le fichier csv sera créé
+     */
     public void exportTableToCSV(String tablename, String path) {
         try {
             Files.createDirectories(Paths.get(path+"/Observations/"));
@@ -84,11 +97,21 @@ public class Export implements Initializable {
         }
     }
 
+    /**
+     * "Lorsque le bouton est cliqué, changez la scène en celle avec le nom de fichier fxml 'Admin'."
+     * </code>
+     * @param event l'événement qui a déclenché l'action
+     */
     @FXML
     void retourcons(ActionEvent event) {
         util.changeScene("Admin");
     }
 
+    /**
+     * Ouvre un sélecteur de répertoire, puis exporte toutes les tables de la base de données vers
+     * des fichiers CSV dans le répertoire sélectionné
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void exportAll(ActionEvent event){
         DirectoryChooser chooser = new DirectoryChooser();

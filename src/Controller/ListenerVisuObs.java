@@ -33,6 +33,10 @@ public class ListenerVisuObs {
     private TableView<Observateur> table;
     private ObservateurBdd oBdd;
 
+    /**
+     * Ferme la fenêtre popup en cours
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void goBack(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -40,6 +44,14 @@ public class ListenerVisuObs {
         st.close();
     }
 
+    /**
+     * Prend un objet de type Observation, obtient l'identifiant de l'observation, créé un nouvel
+     * objet ObservateurBdd, obtient le résultat d'une requête, crée une ArrayList d'objets
+     * Observateur, crée une ObservableList d'objets Observateur, définit la fabrique de valeurs de
+     * cellule de deux colonnes , et définit les éléments d'une table sur ObservableList
+     * 
+     * @param obs l'objet qui est sélectionné dans la tableView
+     */
     public void load(Observation obs){
         int id = obs.getId();
         oBdd = new ObservateurBdd();

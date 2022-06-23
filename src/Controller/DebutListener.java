@@ -43,8 +43,7 @@ public class DebutListener {
     private Button connectButton;
 
     
-    private LogBDD l = new LogBDD("jdbc:mysql://localhost/bd_PNR", "PNR", "PNR");
-    private Connection c = l.connexion();
+    private Connection c = Singleton.getInstance().getConnection();
     
     @FXML
     /**
@@ -85,8 +84,5 @@ public class DebutListener {
             connect(null);
         }
     }
-   
-
-
 
 }

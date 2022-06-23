@@ -32,7 +32,12 @@ public class ListenerChoixAjouter {
     @FXML
     private Button retour;
     private Utilitaire util = new Utilitaire();
-//code du Menu
+    
+    //code du Menu
+    /**
+     * Affiche le menu
+     * @param event le bouton cliqué
+     */
     @FXML
     void openMenu(ActionEvent event) {
         HMenu.setVisible(true);
@@ -46,6 +51,11 @@ public class ListenerChoixAjouter {
     void quitMenu(ActionEvent event) {
         HMenu.setVisible(false);
     }
+
+    /**
+     * Permet d'acceder au menu qui donne des informations sur l'utilisateur 
+     * @param event le bouton cliqué
+     */
     @FXML
     void openUserMenu(ActionEvent event) {
         Button bt = (Button) event.getSource();
@@ -65,56 +75,101 @@ public class ListenerChoixAjouter {
         }
     }
 
+    /**
+     * Permet d'acceder au menu admin
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToAdmin(ActionEvent event) {
         util.changeScene("Admin");
     }
+
+    /**
+     * Permet d'acceder à l'accueil
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToAccueil(ActionEvent event) {
         util.changeScene("Accueil");
     }
 
+    /**
+     * Permet d'acceder au menu d'ajout de données
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToAddDonnee(ActionEvent event) {
         util.changeScene("ChoixAjouter");
     }
 
+    /**
+     * Permet d'acceder au menu des choix de relevé
+     * @param event le bouton cliqué
+     */
     @FXML
     void goToChoixReleve(ActionEvent event) {
         util.changeScene("Consultation");
     }
 
-
+    /**
+     * Permet d'acceder au menu de saisie de loutre
+     * @param event le bouton cliqué
+     */
     @FXML
     void obsLoutre(ActionEvent event) {
         util.changeScene("SaisieLoutre");
     }
 
+    /**
+     * Permet d'acceder au menu de saisie de batracien
+     * @param event le bouton cliqué
+     */
     @FXML
     void obsBat(ActionEvent event) {
         util.changeScene("SaisieBatracien");
     }
 
+    /**
+     * Permet d'acceder au menu de saisie de gravelot
+     * @param event le bouton cliqué
+     */
     @FXML
     void obsGrav(ActionEvent event) {
         util.changeScene("SaisieObsGCI");
     }
 
+    /**
+     * Permet d'acceder au menu de saisie de chouette
+     * @param event le bouton cliqué
+     */
     @FXML
     void obsChouette(ActionEvent event) {
         util.changeScene("SaisieObsChouette");
     }
 
+    /**
+     * Permet d'acceder au menu de saisie de loutre
+     * @param event le bouton cliqué
+     */
     @FXML
     void obsHippo(ActionEvent event) {
         util.changeScene("SaisieHippocampe");
     }
 
+    /**
+    * Retourne à l'accueil
+     * @param event le bouton cliqué
+     */
     @FXML
     void retouracc(ActionEvent event) {
         util.changeScene("Accueil");
     }
 
+    /**
+     * Ouvre une nouvelle fenêtre (AjoutChouette.fxml) lorsque l'utilisateur clique sur le bouton
+     * "Ajouter une Chouette"
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void ToAddChouette(ActionEvent event) {
         Stage newStage = new Stage();
@@ -127,13 +182,18 @@ public class ListenerChoixAjouter {
             newStage.setScene(s);
             newStage.show();
             newStage.centerOnScreen();
-            
                         
         }catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
+    /**
+     * Ouvre une nouvelle fenêtre (AjoutNidGCI.fxml) lorsque l'utilisateur clique sur le bouton
+     * "Ajouter un nid"
+     * @param event L'événement qui a déclenché l'action.
+     */
     @FXML
     void ToAddNid(ActionEvent event) {
         Stage newStage = new Stage();
@@ -145,8 +205,7 @@ public class ListenerChoixAjouter {
             newStage.setTitle("Ajout un nid");
             newStage.setScene(s);
             newStage.show();
-            newStage.centerOnScreen();
-            
+            newStage.centerOnScreen(); 
                         
         }catch (IOException e) {
             e.printStackTrace();

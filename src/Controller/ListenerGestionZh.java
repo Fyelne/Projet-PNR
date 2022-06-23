@@ -38,6 +38,12 @@ public class ListenerGestionZh {
     private ListenerObs listenerO;
     private ZoneHumideBdd zBdd = new ZoneHumideBdd();
 
+    /**
+     * Prend les valeurs des champs de texte et des listes déroulantes, crée un nouvel objet
+     * ZoneHumide et le transmet à l'objet listenerO
+     * 
+     * @param event l'événement qui a déclenché la méthode
+     */
     @FXML
     void valide(ActionEvent event) {
         int id = zBdd.giveIdZh();
@@ -66,6 +72,12 @@ public class ListenerGestionZh {
     }
 
 
+    /**
+     * La fonction getControl() est appelée par la classe ListenerObs, et elle est utilisée pour
+     * initialiser les ComboBoxes de l'IHM
+     * 
+     * @param o AuditeurObs
+     */
     public void getControl(ListenerObs o){
         this.listenerO = o;
 
@@ -74,10 +86,7 @@ public class ListenerGestionZh {
         pente.getItems().addAll(Pente.values());
         tempo.getItems().add("OUI");
         tempo.getItems().add("NON");
-
-
     }
 
     
-
 }
